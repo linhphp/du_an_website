@@ -18,14 +18,12 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('brand_id');
             $table->unsignedBigInteger('category_id');
             $table->string('name');
-            $table->string('desc');
-            $table->string('content');
-            $table->float('price', 20, 2);
+            $table->text('desc');
+            $table->text('content');
+            $table->float('price', 30, 2);
             $table->integer('discount');
             $table->string('accessories');
             $table->integer('quantity');
-            $table->foreign('category_id')->references('id')->on('categories');
-            $table->foreign('brand_id')->references('id')->on('brands');
             $table->softDeletes();
             $table->timestamps();
         });
