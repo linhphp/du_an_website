@@ -23,7 +23,7 @@ use App\Http\Controllers\ProductController;
         ->except(['create', 'edit', 'show']);
     Route::resource('categories', CategoryController::class)
         ->except(['create', 'edit', 'show']);
-    Route::resource('product', ProductController::class);
+    Route::resource('products', ProductController::class);
 // });
 Route::view('login', 'backend.login')->name('login.admin')->middleware(['checklogout']);
 Route::post('login', [UserController::class, 'loginAdmin'])->name('login.admin.post');
