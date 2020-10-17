@@ -7,7 +7,7 @@
         <div class="table-agile-info">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                Responsive Table
+                List Brand
                 </div>
 				<form class="cmxform form-horizontal " id="commentForm" method="post" action="{{ route('brands.store') }}" novalidate="novalidate">
                     @csrf

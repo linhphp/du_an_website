@@ -14,14 +14,22 @@ class Product extends Model
     protected $table = 'products';
 
     protected $fillable = [
+        'brand_id',
+        'category_id',
         'name',
         'price',
+        'image',
         'desc',
         'content',
         'discount',
         'accessories',
         'quantity',
     ];
+
+    public function scopeOrderDesc ($query)
+    {
+        $query->orderBy('id', 'desc');
+    }
 
     public function brand ()
     {

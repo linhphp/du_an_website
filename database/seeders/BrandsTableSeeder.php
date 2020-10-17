@@ -34,7 +34,7 @@ class BrandsTableSeeder extends Seeder
                     'status' => 1
                 ],
                 [
-                    'name' => 'dell',
+                    'name' => 'asus',
                     'status' => 2
                 ],
                 [

@@ -23,10 +23,11 @@ class ProductsTableSeeder extends Seeder
                     'brand_id' => rand(1, 6),
                     'category_id' => rand(1, 4),
                     'name' => Str::random(10),
+                    'image' => rand(2, 9).'.png',
                     'desc' => Str::random(150),
                     'content' => Str::random(200),
                     'price' => rand(100000, 900000),
-                    'discount' => rand(1, 50),
+                    'discount' => rand(0, 50),
                     'quantity' => rand(1,10),
                     'accessories' => Str::random(10)
                 ]

@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->text('desc');
             $table->text('content');
+            $table->string('image');
             $table->float('price', 30, 2);
             $table->integer('discount');
             $table->string('accessories');

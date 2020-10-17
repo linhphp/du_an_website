@@ -22,8 +22,8 @@
                         <span>product</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="{{ route('product.index') }}">index</a></li>
-                        <li><a href="{{ route('product.create') }}">create</a></li>
+                        <li><a href="{{ route('products.index') }}">index</a></li>
+                        <li><a href="{{ route('products.create') }}">create</a></li>
                     </ul>
                 </li>
                 
