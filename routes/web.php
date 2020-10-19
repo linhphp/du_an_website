@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,3 +32,10 @@ Route::post('logout', [UserController::class, 'logoutAdmin'])->name('logout.admi
 Route::get('error', function(){ echo 'hello'; })->name('error');
 
 //-------------end backend----------------------
+Route::prefix('eshop')->group(function () {
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('products/{id}', [HomeController::class, 'show'])->name('product.detail');
+    Route::get('eshop', [HomeController::class, 'eshop'])->name('eshop');
+    Route::get('eshop/{id}/brand', [HomeController::class, 'eshopBrand'])->name('eshop.brand');
+    Route::get('eshop/{id}/category', [HomeController::class, 'eshopCategory'])->name('eshop.category');
+});
