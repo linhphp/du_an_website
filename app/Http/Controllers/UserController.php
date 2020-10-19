@@ -4,27 +4,52 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Product;
 use Auth;
+use Cart;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
     //
-    public function loginAdmin (Request $request)
+    public function index ()
     {
-    	$result = array('jurisdiction' => 2, 'email' => $request->email, 'password' => $request->password);
-    	if (Auth::attempt($result)) {
-            return redirect()->route('home.admin');
-    	}
+        $users = User::all();
+        $products = Product::all();
 
-    	return redirect()->back();
+        return view('backend.pages.index',compact('users', 'products'));
     }
 
-    public function logoutAdmin () {
+    public function loginAdmin (Request $request)
+    {
+        $result = array('jurisdiction' => 2, 'email' => $request->email, 'password' => $request->password);
+        if (Auth::attempt($result)) {
+            return redirect()->route('home.admin');
+        }
 
-    	Auth::logout();
+        return redirect()->back();
+    }
+
+    public function logoutAdmin ()
+    {
+
+        Auth::logout();
 
         return redirect()->route('login.admin');
     }
 
+    public function signIn (Request $request)
+    {
+        $result = array('jurisdiction' => null, 'email' => $request->email, 'password' => $request->password);
+        if (Auth::attempt($result)) {
+            return redirect()->route('home');
+        }
+
+        return redirect()->back();
+    }
+    public function signOut ()
+    {
+        Auth::logout();
+        return redirect()->route('home');
+    }
 }

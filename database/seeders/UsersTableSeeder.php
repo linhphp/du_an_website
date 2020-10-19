@@ -3,25 +3,33 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use App\Models\User;
+
 
 class UsersTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
         //
-        User::create(
+        User::upsert(
             [
-               'name' => 'Cao Thuc Linh',
-               'email' => 'thuclinh@gmail.com',
-               'password' => Hash::make(123456),
-               'jurisdiction' => 2
+                [
+                    'name' => 'Cao Thục Linh',
+                    'email' => 'thuclinh@gmail.com',
+                    'password' => Hash::make(123456),
+                    'jurisdiction' => 2
+                ],
+                [
+                    'name' => 'Lê Thị Hồ Hương',
+                    'email' => 'hohuong@gmail.com',
+                    'password' => Hash::make('linh1997'),
+                    'jurisdiction' => null
+                ]
+            ],
+            [
+               'name', 'email', 'password' , 'jurisdiction'
             ]
         );
     }

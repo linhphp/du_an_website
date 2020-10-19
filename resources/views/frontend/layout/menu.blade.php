@@ -12,7 +12,7 @@
         <div class="offcanvas__nav__option">
             <a class="search-switch"><img src="frontend/img/icon/search.png" alt=""></a>
             <a href="#"><img src="frontend/img/icon/heart.png" alt=""></a>
-            <a href="#"><img src="frontend/img/icon/cart.png" alt=""> <span>0</span></a>
+            <a href="#"><img src="frontend/img/icon/cart.png" alt=""> <span>{{ Cart::count() }}</span></a>
             <div class="price"></div>
         </div>
         <div id="mobile-menu-wrap"></div>

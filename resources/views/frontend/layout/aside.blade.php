@@ -11,7 +11,7 @@
                             <div class="shop__sidebar__categories">
                                 <ul class="nice-scroll">
                                     @foreach($cates as $key => $value)
-                                    <li><a href="#">{{ $key }}</a></li>
+                                    <li><a href="{{ route('eshop.category', $value) }}">{{ $key }}</a></li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -27,7 +27,7 @@
                             <div class="shop__sidebar__brand">
                                 <ul>
                                     @foreach($brands as $key => $value)
-                                    <li><a href="#">{{ $key }}</a></li>
+                                    <li><a href="{{ route('eshop.brand', $value) }}">{{ $key }}</a></li>
                                     @endforeach
                                 </ul>
                             </div>
