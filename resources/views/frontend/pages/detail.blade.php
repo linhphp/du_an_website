@@ -2,6 +2,7 @@
 @section('title')
 product | {{ $product->name }}
 @endsection
+@section('eshop', 'active')
 @section('content')
 
 <section class="shop-details">
@@ -11,8 +12,8 @@ product | {{ $product->name }}
                     <div class="col-lg-12">
                         <div class="product__details__breadcrumb">
                             <a href="{{ route('home') }}">Home</a>
-                            <a href="./shop.html">Shop</a>
-                            <span>Product Details</span>
+                            <a href="{{ route('eshop') }}">Shop</a>
+                            <span>{{ $product->name }}</span>
                         </div>
                     </div>
                 </div>
@@ -62,34 +63,38 @@ product | {{ $product->name }}
             <div class="container">
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-8">
-                        <div class="product__details__text">
-                            <h4>{{ $product->name }}</h4>
-                            <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-o"></i>
-                                <span> - 5 Reviews</span>
-                            </div>
-                            <h3>{{ number_format($product->price-(($product->price * $product->discount)/100)) }} VND
-                            	@if($product->discount != 0)
-                            	<span>{{ number_format($product->price) }} VND</span>
-                            	@endif
-                            </h3>
-                            <p>{{ $product->desc }}</p>
-                            <div class="product__details__cart__option">
-                                <div class="quantity">
-                                    <div class="pro-qty">
-                                        <input type="text" value="1">
-                                    </div>
+                        <form action="{{ route('cart.add', $product->id) }}" method="post">
+                            @csrf
+                            <input type="hidden" name="qty" value="1">
+                            <div class="product__details__text">
+                                <h4>{{ $product->name }}</h4>
+                                <div class="rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <span> - 5 Reviews</span>
                                 </div>
-                                <a href="#" class="primary-btn">add to cart</a>
+                                <h3>{{ number_format($product->price-(($product->price * $product->discount)/100)) }} VND
+                                	@if($product->discount != 0)
+                                	<span>{{ number_format($product->price) }} VND</span>
+                                	@endif
+                                </h3>
+                                <p>{{ $product->desc }}</p>
+                                <div class="product__details__cart__option">
+                                    <div class="quantity">
+                                        <div class="pro-qty">
+                                            <input type="text" value="1">
+                                        </div>
+                                    </div>
+                                    <button class="primary-btn">add to cart</button>
+                                </div>
+                                <div class="product__details__btns__option">
+                                    <a href="#"><i class="fa fa-heart"></i> add to wishlist</a>
+                                </div>
                             </div>
-                            <div class="product__details__btns__option">
-                                <a href="#"><i class="fa fa-heart"></i> add to wishlist</a>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
                 <div class="row">
@@ -139,10 +144,9 @@ product | {{ $product->name }}
             	@foreach ($productByBrand as $byBrand)
             	@if ($byBrand['discount'] == 0)
                 <div class="col-lg-3 col-md-6 col-sm-6 col-sm-6">
-                    <form action="" method="post">
+                    <form action="{{ route('cart.add', $product['id']) }}" method="post">
                     @csrf
                     <input type="hidden" name="qty" value="1">
-                    <input type="hidden" name="pro_id" value="{{ $byBrand['id'] }}">
                     <div class="product__item">
                         <div class="product__item__pic set-bg" data-setbg="storage/image/{{ $byBrand['image'] }}">
                             <span class="label">New</span>
@@ -173,7 +177,6 @@ product | {{ $product->name }}
                     <form action="" method="post">
                         @csrf
                         <input type="hidden" name="qty" value="1">
-                        <input type="hidden" name="pro_id" value="{{ $byBrand['id'] }}">
                         <div class="product__item">
                             <div class="product__item__pic set-bg" data-setbg="storage/image/{{ $byBrand['image'] }}">
                                 <span class="label">sale</span>

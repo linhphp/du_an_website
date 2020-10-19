@@ -8,3 +8,4 @@
     <script src="frontend/js/mixitup.min.js"></script>
     <script src="frontend/js/owl.carousel.min.js"></script>
     <script src="frontend/js/main.js"></script>
+    <script src="frontend/js/ajax.js"></script>

@@ -42,12 +42,18 @@ class HomeController extends Controller
 
     public function eshopBrand ($id)
     {
+        $brand = Brand::find($id);
+        $products = $brand->products->toArray();
 
+        return view('frontend.pages.brand_eshop', compact('products', 'brand'));
     }
 
     public function eshopCategory ($id)
     {
+        $category = Category::find($id);
+        $products = $category->products->toArray();
 
+        return view('frontend.pages.category_eshop', compact('products', 'category'));
     }
 
     

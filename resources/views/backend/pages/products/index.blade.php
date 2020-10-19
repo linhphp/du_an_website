@@ -34,9 +34,15 @@
                                 <td><a href="{{ route('products.edit', $product->id) }}" class="btn">
                                     <i class="fa fa-check text-success text-active"></i>
                                 </a></td>
-                                <td><button class="btn">
-                                    <i class="fa fa-times text-danger text"></i>
-                                </button></td>
+                                <form action="{{ route('products.destroy', $product->id) }}" method="post">
+                                    @method("DELETE")
+                                    @csrf
+                                    <td>
+                                        <button class="btn" type="submit">
+                                            <i class="fa fa-times text-danger text"></i>
+                                        </button>
+                                    </td>
+                                </form>
                             </tr>
                             @endforeach
                         </tbody>
