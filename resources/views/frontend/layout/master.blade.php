@@ -4,11 +4,6 @@
 @include('frontend/layout/head')
 
 <body>
-
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
-
     <div class="offcanvas-menu-overlay"></div>
     @include('frontend/layout/menu')
     @include('frontend/layout/header')

@@ -62,13 +62,12 @@
             <!-- end col -->
             @else
             <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix hot-sales">
-                <form action="" method="post">
+                <form action="{{ route('cart.add', $product->id) }}" method="post">
                     @csrf
                     <div class="product__item">
                         <div class="product__item__pic set-bg" data-setbg="storage/image/{{$product->image}}">
                             <span class="label">Sale</span>
-                             <input type="hidden" name="quantity" value="1">
-                             <input type="hidden" name="product_id" value="{{$product->id}}">
+                             <input type="hidden" name="qty" value="1">
                             <ul class="product__hover">
                                 <li><a href="#"><img src="frontend/img/icon/heart.png" alt=""></a></li>
                                 <li><a class="detail" href="{{ route('product.detail', $product->id) }}"><i class="fa fa-info"></i> chi tiết</a></li>
