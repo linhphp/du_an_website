@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\AddressController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,7 +41,7 @@ Route::get('error', function(){ echo 'ahihi đồ ngốc!'; })
     ->name('error');
 
 //-------------end backend----------------------
-Route::prefix('eshop')->group(function ()
+Route::prefix('index')->group(function ()
 {
     Route::get('/', [HomeController::class, 'index'])
         ->name('home');
@@ -52,7 +53,9 @@ Route::prefix('eshop')->group(function ()
         ->name('eshop.brand');
     Route::get('eshop/{id}/category', [HomeController::class, 'eshopCategory'])
         ->name('eshop.category');
-    Route::prefix('checkout')->group(function () 
+    Route::get('districts/{id}', [AddressController::class, 'getDistricts']);
+    Route::get('wards/{id}', [AddressController::class, 'getWards']);
+    Route::prefix('checkout')->group(function ()
     {
         Route::post('cart/{id}', [CartController::class, 'cartAdd'])
             ->name('cart.add');
@@ -60,8 +63,10 @@ Route::prefix('eshop')->group(function ()
             ->name('cart.show');
         Route::get('cart/update', [CartController::class, 'cartUpdate'])
             ->name('cart.update');
-        Route::post('cart/{rowId}/remote', [CartController::class ,'cartRemote'])
+        Route::post('cart/{id}/remote', [CartController::class , 'cartRemote'])
             ->name('cart.remote');
+        Route::get('cart/{id}/checkout', [CartController::class, 'getFormCheckout'])->name('checkout.get');
+        Route::post('cart/{id}/checkout', [CartController::class, 'checkout'])->name('checkout.post');
     });
     Route::prefix('user')->group(function ()
     {

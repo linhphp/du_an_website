@@ -1,12 +1,12 @@
 @extends('frontend/layout.master')
-@section('title', 'home')
+@section('title', 'cart')
 @section('content')
 <script type="text/javascript">
-	function updateCart (qty, rowId)
+	function updateCart (qty, id)
 	{
         $.get(
-            '{{ asset("eshop/cart/update") }}',
-            {qty:qty, rowId:rowId},
+            '{{ asset("index/checkout/cart/update") }}',
+            {qty:qty, id:id},
             function(){
             	location.reload();
             }
@@ -45,27 +45,36 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($carts as $cart)
+                            <?php
+                                $totalQty = 0; 
+                                $totalP = 0; 
+                            ?>
+                            @foreach($cartDetails as $cartDetail)
+                            <?php $price =  ($cartDetail->price -($cartDetail->price * $cartDetail->discout)/100);
+                                $totalPrice = $price * $cartDetail->qty;
+                                $totalP += $totalPrice;
+                                $totalQty += $cartDetail->qty;
+                            ?>
                             <tr>
                                 <td class="product__cart__item">
                                     <div class="product__cart__item__pic">
                                         <img src="img/shopping-cart/cart-1.jpg" alt="">
                                     </div>
                                     <div class="product__cart__item__text">
-                                        <h6>{{ $cart->name }}</h6>
-                                        <h5>{{ number_format($cart->price) }} VNĐ</h5>
+                                        <h6>{{ $cartDetail->name }}</h6>
+                                        <h5>{{ number_format($price) }} VNĐ</h5>
                                     </div>
                                 </td>
                                 <td>
-                                    <img src="storage/image/{{ $cart->options->image }}" alt="">
+                                    <img src="storage/image/{{ $cartDetail->image }}" alt="">
                                 </td>
                                 <td class="quantity__item">
                                     <div class="form-group ml-2 mr-2">
-                                        <input  type="number" class="form-control" value="{{ $cart->qty }}" onchange="updateCart(this.value, '{{ $cart->rowId }}')">
+                                        <input  type="number" min="1" class="form-control" value="{{ $cartDetail->qty }}" onchange="updateCart(this.value, '{{ $cartDetail->id }}')">
                                     </div>
                                 </td>
-                                <td class="cart__price">{{ number_format($cart->price * $cart->qty) }} VNĐ</td>
-                                <form action="{{ route('cart.remote', $cart->rowId) }}" method="post">
+                                <td class="cart__price">{{ number_format($totalPrice) }} VNĐ</td>
+                                <form action="{{ route('cart.remote', $cartDetail->id) }}" method="post">
                                     @csrf
                                     <td class="cart__close">
                                         <button class="btn-outline-danger btn"><i class="fa fa-close"></i></button>
@@ -96,10 +105,10 @@
                 <div class="cart__total">
                     <h6>Tổng giỏ hàng</h6>
                     <ul>
-                        <li>Số lượng <span>{{ Cart::count() }}</span></li>
-                        <li>Tổng tiền <span>{{ Cart::total() }} VNĐ</span></li>
+                        <li>Số lượng mặt hàng <span>{{ $totalQty }}</span></li>
+                        <li>Tổng tiền <span>{{ $totalP }} VNĐ</span></li>
                     </ul>
-                    <a href="#" class="primary-btn">Proceed to checkout</a>
+                    <a href="{{ route('checkout.get', $cart->id) }}" class="primary-btn">Tiến hành thanh toán</a>
                 </div>
             </div>
         </div>

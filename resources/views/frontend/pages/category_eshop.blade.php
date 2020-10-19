@@ -1,5 +1,6 @@
 @extends('frontend.layout.master')
 @section('title','Category')
+@section('eshop', 'active')
 @section('content')
 
 <section class="breadcrumb-option">

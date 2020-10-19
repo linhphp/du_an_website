@@ -4,49 +4,112 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
-use Cart;
+use App\Models\Cart;
+use App\Models\CartDetail;
+use App\Models\Province;
 use Session;
+use Auth;
 
 class CartController extends Controller
 {
     public function __construct ()
     {
-    	$this->middleware('checkout');
+        $this->middleware('checkout');
     }
 
-    public function cartAdd (Request $request, $id)
+    public function cartAdd ($id)
     {
         $product = Product::find($id);
-        $cartProduct = [
-            'id' => $product->id,
-            'name' => $product->name,
-            'qty' => $request->qty,
-            'price' => ($product->price - (($product->price * $product->discount)/100)),
-            'weight' => 1,
-            'options' => ['image' => $product->image]
-        ];
-        Cart::add($cartProduct);
+        $cart = Cart::where([['user_id', Auth::id()], ['status', 1]])->first();
+        if ($cart) {
+            $cartDetail = CartDetail::where([['cart_id', $cart->id], ['product_id', $product->id]])
+                ->first();
+            if ($cartDetail) {
+                $cartDetail->qty++;
+                $cartDetail->save();
+                echo 'luu 1';
+            }
+            else {
+                $cartDetail = new CartDetail;
+                $cartDetail->cart_id = $cart->id;
+                $cartDetail->product_id = $product->id;
+                $cartDetail->qty =1;
+                $cartDetail->save();
+                echo 'luu 2';
+            }
+        }
+        else {
+            $cart = new Cart;
+            $cart->user_id = Auth::id();
+            $cart->status = 1;
+            $cart->save();
+            $cartDetail = new CartDetail;
+            $cartDetail->cart_id = $cart->id;
+            $cartDetail->product_id = $product->id;
+            $cartDetail->qty =1;
+            $cartDetail->save();
+            echo 'luu 3';
+        }        
 
         return redirect()->route('cart.show'); 
     }
+
+    public function getCartDetail ($cart)
+    {
+        return $cartDetails = CartDetail::join('products', 'products.id', '=', 'cart_details.product_id')
+            ->select('products.name', 'products.price', 'products.discount', 'products.image','cart_details.*')
+            ->all($cart);
+    }
+
     public function cartShow ()
     {
-    	$carts = Cart::content();
+        $cart = Cart::getOne(Auth::id());
+        $cartDetails = $this->getCartDetail($cart->id);
 
-        return view('frontend.pages.cart', compact('carts'));
+        return view('frontend.pages.cart', compact('cartDetails', 'cart'));
     }
-    public function cartRemote ($rowId)
+    public function cartRemote ($id)
     {
-    	Cart::remove($rowId);
-    	if (Cart::count() == 0) {
-            Cart::destroy();
-    	}
+    	$cartDetail = CartDetail::find($id);
+        $cartDetail->status = 1;
+        $cartDetail->save();
 
     	return redirect()->back();
     }
 
     public function cartUpdate (Request $request)
     {
-    	Cart::update($request->rowId, $request->qty);
+        $cartDetail = CartDetail::find($request->id);
+        $cartDetail->qty = $request->qty++;
+        if ($cartDetail->qty <= 0) {
+            $cartDetail->qty = 1;
+        }
+        $cartDetail->save();
+    }
+
+    public function getFormCheckout ($id)
+    {
+        $provinces = Province::all()->pluck('province_code', 'name');
+        $cart = Cart::where([['user_id', Auth::id()], ['status', 1], ['id', $id]])->first();
+        if ($cart) {
+            $cartDetails = $this->getCartDetail($cart->id);
+
+            return view('frontend.pages.checkout',compact('cart', 'cartDetails', 'provinces'));
+        }
+    }
+
+    public function getAddress($provinceCode, $districtCode, $wardCode, $house)
+    {
+        $city = Province::getCity($provinceCode);
+        $district = District::getDistrict($districtCode);
+        $ward = Ward::getWard($wardCode);
+        $address = $city->name . ' - ' . $district->name . ' - ' . $ward->name . ' - ' . $house;
+
+        return $address;
+    }
+
+    public function checkout (Request $request, $id)
+    {
+        
     }
 }

@@ -4,7 +4,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__logo">
-                            <a href="{{route('home')}}">THUCLINH-SHOP..</a>
+                            <a href="{{route('home')}}"><img width="120" src="storage/logo/logo.png"></a>
                         </div>
                         <p>Khách hàng là trọng tâm của mô hình kinh doanh độc đáo của chúng tôi, bao gồm cả thiết kế.</p>
                         <a href="#"><img src="img/payment.png" alt=""></a>

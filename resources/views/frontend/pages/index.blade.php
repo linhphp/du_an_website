@@ -1,5 +1,6 @@
 @extends('frontend.layout.master')
 @section('title','trang chu')
+@section('home', 'active')
 @section('content')
     @if(Session::has('note'))
 
@@ -30,10 +31,9 @@
             @foreach($products as $product)
             @if($product->discount == 0)
             <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
-                <form action="" method="post">
+                <form action="{{ route('cart.add', $product->id) }}" method="post">
                     @csrf
                     <input type="hidden" name="qty" value="1">
-                    <input type="hidden" name="pro_id" value="{{$product->id}}">
                     <div class="product__item">
                         <div class="product__item__pic set-bg" data-setbg="storage/image/{{$product->image}}">
                             <span class="label">New</span>

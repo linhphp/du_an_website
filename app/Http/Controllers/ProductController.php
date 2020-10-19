@@ -63,10 +63,14 @@ class ProductController extends Controller
         $product['quantity'] = 1;
         $product['image'] = $fileName;
         Product::find($id)->update($product);
+        
+        return redirect()->back();
     }
 
     public function destroy($id)
     {
         //
+        Product::destroy($id);
+        return redirect()->back();
     }
 }

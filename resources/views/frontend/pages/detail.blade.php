@@ -2,6 +2,7 @@
 @section('title')
 product | {{ $product->name }}
 @endsection
+@section('eshop', 'active')
 @section('content')
 
 <section class="shop-details">
