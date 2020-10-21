@@ -20,7 +20,7 @@ class CartDetail extends Model
 
     public function scopeAll ($query, $id)
     {
-        return $query->where([['cart_details.cart_id', $id], ['cart_details.status', null]])->get();
+        return $query->where([['cart_details.cart_id', $id], ['cart_details.destroy', null]])->get();
     }
 
     public function cart ()

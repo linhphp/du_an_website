@@ -30,7 +30,7 @@
                     @foreach($products as $product)
                     @if($product['discount'] == 0)
                     <div class="col-lg-4 col-md-6 col-sm-6">
-                        <form action="{{ route('cart.add', $product['id']) }}" method="post">" method="post">
+                        <form action="{{ route('cart.add', $product['id']) }}" method="post">
                             @csrf
                             <input type="hidden" name="qty" value="1">
                             <div class="product__item">

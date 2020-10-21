@@ -76,8 +76,8 @@ h6 {
 p {
 	font-size: 15px;
 	font-family: "Nunito Sans", sans-serif;
-	color: #3d3d3d;
-	font-weight: 400;
+	color: #730c2f;
+	font-weight: 600;
 	line-height: 25px;
 	margin: 0 0 15px 0;
 }
@@ -116,13 +116,14 @@ ol {
 }
 
 .section-title span {
-	color: #e53637;
+	color: #9b1a44;
 	font-size: 14px;
 	font-weight: 700;
 	text-transform: uppercase;
 	letter-spacing: 2px;
 	margin-bottom: 15px;
 	display: block;
+	font-weight: 800;
 }
 
 .section-title h2 {
@@ -320,7 +321,7 @@ ol {
 }
 
 .header__top {
-	background: #111111;
+	background: #460b1e;
 	padding: 10px 0;
 }
 
@@ -420,6 +421,7 @@ ol {
 }
 
 .header__menu ul li {
+	color: wheat;
 	list-style: none;
 	display: inline-block;
 	margin-right: 45px;
@@ -483,7 +485,7 @@ ol {
 
 .header__menu ul li a {
 	font-size: 18px;
-	color: #111111;
+	color: #9a1741;
 	display: block;
 	font-weight: 600;
 	position: relative;
@@ -935,7 +937,7 @@ ol {
 }
 
 .filter__controls li.active {
-	color: #111111;
+	color: #9b1a44;
 }
 
 .product__item {
@@ -1002,7 +1004,7 @@ transition: 0.3s;
 }
 
 .product__item__pic .label {
-	color: #111111;
+	color: #9b1a44;
 	font-size: 11px;
 	font-weight: 700;
 	letter-spacing: 2px;
@@ -1252,7 +1254,7 @@ transition: 0.3s;
 }
 
 .shop__sidebar__accordion .card-heading a {
-	color: #111111;
+	color: #9b1a44;
 	font-size: 16px;
 	font-weight: 700;
 	text-transform: uppercase;
@@ -1274,7 +1276,7 @@ transition: 0.3s;
 .shop__sidebar__categories ul li a,
 .shop__sidebar__price ul li a,
 .shop__sidebar__brand ul li a {
-	color: #b7b7b7;
+	color: #a7556f;
 	font-size: 15px;
 	line-height: 32px;
 	-webkit-transition: all, 0.3s;
@@ -1950,7 +1952,7 @@ transition: 0.3s;
 }
 
 .related-title {
-	color: #111111;
+	color: #9b1a44;
 	font-weight: 700;
 	margin-bottom: 45px;
 	text-align: center;
@@ -1961,7 +1963,7 @@ transition: 0.3s;
 -----------------------*/
 
 .footer {
-	background: #111111;
+	background: #460b1e;
 	padding-top: 70px;
 }
 
@@ -2086,7 +2088,7 @@ transition: 0.3s;
 }
 
 .breadcrumb__text h4 {
-	color: #111111;
+	color: #9b1a44;
 	font-weight: 700;
 	margin-bottom: 8px;
 }
@@ -2567,8 +2569,8 @@ transition: 0.3s;
 }
 
 .checkout__title {
-	color: #111111;
-	font-weight: 700;
+	color: #9f1f4a;
+	font-weight: 800;
 	text-transform: uppercase;
 	border-bottom: 1px solid #e1e1e1;
 	padding-bottom: 25px;

@@ -19,7 +19,7 @@ class EmageTableSeeder extends Seeder
         	Emage::create(
                 [
 		            'product_id' => rand(1, 70),
-		            'emagery' => rand(2, 9).'.png'
+		            'emagery' => rand(1, 21).'.png'
                 ]
         	);
         }

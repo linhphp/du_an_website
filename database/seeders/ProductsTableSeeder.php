@@ -22,7 +22,7 @@ class ProductsTableSeeder extends Seeder
                 [
                     'brand_id' => rand(1, 6),
                     'category_id' => rand(1, 4),
-                    'name' => Str::random(10),
+                    'name' => 'Product ' . $i,
                     'image' => rand(2, 9).'.png',
                     'desc' => 'Coat with quilted lining and an adjustable hood. Featuring long sleeves with adjustable cuff tabs, adjustable asymmetric hem with elastic side tabs and a front zip fastening with placket.',
                     'content' => 'Nam tempus turpis at metus scelerisque placerat
@@ -32,7 +32,7 @@ class ProductsTableSeeder extends Seeder
 
                         As is the case with any new technology product, the cost of a Pocket PC was substantial during it’s early release. For approximately $700.00, consumers could purchase one of top-of-the-line Pocket PCs in 2003. These days, customers are finding that prices have become much more reasonable now that the newness is wearing off. For approximately $350.00, a new Pocket PC can now be purchased.',
                     'price' => rand(100000, 900000),
-                    'discount' => rand(0, 10),
+                    'discount' => rand(0, 5),
                     'quantity' => rand(1,10),
                     'accessories' => Str::random(10)
                 ]

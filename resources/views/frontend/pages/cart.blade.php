@@ -20,8 +20,8 @@
                 <div class="breadcrumb__text">
                     <h4>Shopping Cart</h4>
                     <div class="breadcrumb__links">
-                        <a href="./index.html">Home</a>
-                        <a href="./shop.html">Shop</a>
+                        <a href="{{ route('home') }}">Home</a>
+                        <a href="{{ route('eshop') }}">Shop</a>
                         <span>Shopping Cart</span>
                     </div>
                 </div>
@@ -106,7 +106,7 @@
                     <h6>Tổng giỏ hàng</h6>
                     <ul>
                         <li>Số lượng mặt hàng <span>{{ $totalQty }}</span></li>
-                        <li>Tổng tiền <span>{{ $totalP }} VNĐ</span></li>
+                        <li>Tổng tiền <span>{{ number_format($totalP) }} VNĐ</span></li>
                     </ul>
                     <a href="{{ route('checkout.get', $cart->id) }}" class="primary-btn">Tiến hành thanh toán</a>
                 </div>

@@ -28,6 +28,37 @@
                         
                         <h6 class="checkout__title">Thông tin về khách hàng</h6>
                         <div class="row">
+                            <div class="col-12">
+                                @if ($customer)
+                                <p class="alert-danger">
+                                    Bạn có muốn sử dụng địa chỉ này không?
+                                </p>
+                                <div class="row">
+                                    <div class="col-12 card text-center">
+                                        <div class="card-body">
+                                            <div class="checkout__input__checkbox">
+                                                <label for="address">
+                                                    <h4 class="card-title">{{ $customer->name }}</h4>
+                                                    <p class="card-text">
+                                                        {{ $customer->email }}  
+                                                    </p>
+                                                    <p class="card-text">
+                                                        {{ $customer->phone }}  
+                                                    </p>
+                                                    <p class="card-text">
+                                                        {{ $customer->address }}  
+                                                    </p>
+                                                </label>
+                                                <input type="checkbox" id="address" name="address" value="{{ $customer->id }}">
+                                                <span class="checkmark"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Full Name<span>*</span></p>
@@ -39,7 +70,7 @@
                                 </div>
                                 <div class="checkout__input">
                                     <p>Phone<span>*</span></p>
-                                    <input type="text" name="phone">
+                                    <input type="number" name="phone">
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -97,6 +128,7 @@
                             @endforeach
                             <ul class="checkout__total__all">
                                 <li>Tổng tiền <span>{{ number_format($totalP) }} VNĐ</span></li>
+                                <input type="hidden" name="total_price" value="{{ $totalP }}">
                             </ul>
                             <div class="checkout__input__checkbox">
                                 <label for="payment">
