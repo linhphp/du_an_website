@@ -10,8 +10,14 @@
                         <form action="{{ route('sigin.post') }}" method="post">
                         	@csrf
                             <h6 class="checkout__title text-md-center">Đăng nhập</h6>
+                            @if(Session::has('signUp'))
+                                <p class="alert-success">
+                                    Đăng ký thành công, bạn có muốn đăng nhập ngay?
+                                </p>
+                            @else 
                             <p>vui lòng đăng nhập để có thể mua hàng và nhiều tiện ích khác</p>
                             <p>bạn chưa có tài khoản? hãy <a href="{{ route('signUp') }}" class="btn-link text-danger">đăng ký</a> ngay</p>
+                            @endif
                             <div class="checkout__input">
                                 <p>email<span>*</span></p>
                                 <input type="text" name="email" placeholder="nhap email cua ban">

@@ -18,7 +18,7 @@ class CreateCartDetailsTable extends Migration
             $table->unsignedBigInteger('cart_id');
             $table->unsignedBigInteger('product_id');
             $table->integer('qty');
-            $table->string('status')->nullable();
+            $table->string('status')->default(1);
             $table->timestamps();
         });
     }

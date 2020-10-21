@@ -7,8 +7,15 @@ use App\Models\Product;
 use App\Models\Cart;
 use App\Models\CartDetail;
 use App\Models\Province;
+use App\Models\District;
+use App\Models\Ward;
+use App\Models\Customer;
+use App\Models\Bill;
+use App\Models\BillDetail;
 use Session;
 use Auth;
+use Config;
+use Mail;
 
 class CartController extends Controller
 {
@@ -17,41 +24,51 @@ class CartController extends Controller
         $this->middleware('checkout');
     }
 
-    public function cartAdd ($id)
+    public function cartAdd (Request $request, $id)
     {
         $product = Product::find($id);
-        $cart = Cart::where([['user_id', Auth::id()], ['status', 1]])->first();
-        if ($cart) {
-            $cartDetail = CartDetail::where([['cart_id', $cart->id], ['product_id', $product->id]])
-                ->first();
-            if ($cartDetail) {
-                $cartDetail->qty++;
-                $cartDetail->save();
-                echo 'luu 1';
+        if($product) {
+
+            $cart = Cart::where([['user_id', Auth::id()], ['status', 1]])->first();
+            if ($cart) {
+                $cartDetail = CartDetail::where([['cart_id', $cart->id], ['product_id', $product->id]])
+                    ->first();
+                if ($cartDetail) {
+                    $cartDetail->qty++;
+                    $cartDetail->save();
+                    echo 'luu 1';
+                }
+                else {
+                    $cartDetail = new CartDetail;
+                    $cartDetail->cart_id = $cart->id;
+                    $cartDetail->product_id = $product->id;
+                    if ($request->qty <= 0) {
+                        $cartDetail->qty = 1;
+                    }
+                    else {
+                        $cartDetail->qty = $request->qty;
+                    }
+                    $cartDetail->save();
+                    echo 'luu 2';
+                }
             }
             else {
+                $cart = new Cart;
+                $cart->user_id = Auth::id();
+                $cart->status = 1;
+                $cart->save();
                 $cartDetail = new CartDetail;
                 $cartDetail->cart_id = $cart->id;
                 $cartDetail->product_id = $product->id;
                 $cartDetail->qty =1;
                 $cartDetail->save();
-                echo 'luu 2';
-            }
-        }
-        else {
-            $cart = new Cart;
-            $cart->user_id = Auth::id();
-            $cart->status = 1;
-            $cart->save();
-            $cartDetail = new CartDetail;
-            $cartDetail->cart_id = $cart->id;
-            $cartDetail->product_id = $product->id;
-            $cartDetail->qty =1;
-            $cartDetail->save();
-            echo 'luu 3';
-        }        
+                echo 'luu 3';
+            }        
 
-        return redirect()->route('cart.show'); 
+            return redirect()->route('cart.show'); 
+        }
+
+        return redirect()->route('message');
     }
 
     public function getCartDetail ($cart)
@@ -63,16 +80,38 @@ class CartController extends Controller
 
     public function cartShow ()
     {
-        $cart = Cart::getOne(Auth::id());
-        $cartDetails = $this->getCartDetail($cart->id);
-
-        return view('frontend.pages.cart', compact('cartDetails', 'cart'));
+        $cart = Cart::where([['user_id', Auth::id()], ['status',1]])->first();
+        if ($cart) {
+            $cartDetails = $this->getCartDetail($cart->id);
+            return view('frontend.pages.cart', compact('cartDetails', 'cart'));
+        }
+        return redirect()->back();
     }
     public function cartRemote ($id)
     {
     	$cartDetail = CartDetail::find($id);
-        $cartDetail->status = 1;
-        $cartDetail->save();
+        if ($cartDetail) {
+            $cartDetail->destroy = 1;
+            $cartDetail->save();
+            $cart = Cart::find($cartDetail->cart_id);
+            if ($cart) {
+                $cartDetails = CartDetail::where('cart_id', $cart->id)->get();
+                $cartTts = 0;
+                $del = 0;
+                foreach ($cartDetails as $cartD)
+                {
+                    $del += $cartD->destroy;
+                    $cartTts += $cartD->status;
+                }
+                if($del % $cartTts == 0) {
+                    $cart->status = 3;
+                    $cart->save();
+
+                    return redirect()->route('home');
+                }
+            }
+        }
+
 
     	return redirect()->back();
     }
@@ -89,13 +128,17 @@ class CartController extends Controller
 
     public function getFormCheckout ($id)
     {
+        $customer = Customer::where('user_id', Auth::id())
+            ->orderBy('batch', 'desc')
+            ->limit(1)->first();
         $provinces = Province::all()->pluck('province_code', 'name');
         $cart = Cart::where([['user_id', Auth::id()], ['status', 1], ['id', $id]])->first();
         if ($cart) {
             $cartDetails = $this->getCartDetail($cart->id);
 
-            return view('frontend.pages.checkout',compact('cart', 'cartDetails', 'provinces'));
+            return view('frontend.pages.checkout',compact('cart', 'cartDetails', 'provinces', 'customer'));
         }
+        return redirect()->route('message');
     }
 
     public function getAddress($provinceCode, $districtCode, $wardCode, $house)
@@ -110,6 +153,59 @@ class CartController extends Controller
 
     public function checkout (Request $request, $id)
     {
-        
+        $cart = Cart::where([['user_id', Auth::id()], ['status', 1], ['id', $id]])->first();
+        $cartDetails = $this->getCartDetail($cart->id);
+        if($request->address != null) {
+            $customer = Customer::where([['user_id', Auth::id()], ['id', $request->address]])->first();
+            if ($customer) {
+                $customer->batch++;
+                $customer->save();
+            }
+        }
+        else {
+            $customer = new Customer;
+            $customer->user_id = Auth::id();
+            $customer->name = ucwords($request->name);
+            $customer->email = $request->email;
+            $customer->phone = $request->phone;
+            $customer->address = $this->getAddress($request->city, $request->district, $request->ward, $request->street);
+            $customer->save();
+        }
+
+        $bill = new Bill;
+        $bill->customer_id = $customer->id;
+        $bill->note = $request->note;
+        $bill->status = 1;
+        $bill->payment = $request->payment;
+        $bill->total_price = $request->total_price;
+        $bill->save();
+
+        foreach ($cartDetails as $cartDetail)
+        {
+            $billDetail = new BillDetail;
+            $billDetail->bill_id = $bill->id;
+            $billDetail->product_id = $cartDetail->product_id;
+            $billDetail->price = $cartDetail->price;
+            $billDetail->qty = $cartDetail->qty;
+            $billDetail->save();
+        }
+        $cart->status = 2;
+        $cart->save();
+        //phần gửi email
+        $data['info'] = $request->all();
+        $data['address'] = $customer->address;
+        // duong dan Html, $data: du lieu
+        $data['carts'] = $cartDetails;
+        $data['total_price'] = $request->total_price;
+        $email = $request->email;
+        $name = $request->name;
+        Mail::send('frontend.pages.email', $data, function ($message) use ($email, $name) {
+            $message->from('thuclinh997@gmail.com', 'Cao Thục Linh');
+            $message->to($email, $name);
+            $message->cc('thuclinh854@gmail.com', 'Thục Linh');
+            $message->subject('Xác nhận thông tin mua hàng');
+        });
+
+        return redirect()->route('message')->with(['message' => '']);
     }
 }

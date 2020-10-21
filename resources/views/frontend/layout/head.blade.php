@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="frontend/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="frontend/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="frontend/css/style.css" type="text/css">
+    <link rel="stylesheet" href="frontend/css/modal.css" type="text/css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="icon" href="storage/logo/logo.png" type="image/x-icon" />
 
 </head>
