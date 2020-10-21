@@ -85,7 +85,7 @@ product | {{ $product->name }}
                                 <div class="product__details__cart__option">
                                     <div class="quantity">
                                         <div class="pro-qty">
-                                            <input type="text" value="1">
+                                           <input type="text" min="1" name="qty" value="1">
                                         </div>
                                     </div>
                                     <button class="primary-btn">add to cart</button>
@@ -174,7 +174,7 @@ product | {{ $product->name }}
                 </div>
                 @else
                 <div class="col-lg-3 col-md-6 col-sm-6 col-sm-6">
-                    <form action="" method="post">
+                    <form action="{{ route('cart.add', $product['id']) }}" method="post">
                         @csrf
                         <input type="hidden" name="qty" value="1">
                         <div class="product__item">
@@ -196,7 +196,8 @@ product | {{ $product->name }}
                                     <i class="fa fa-star-o"></i>
                                     <i class="fa fa-star-o"></i>
                                 </div>
-                                <h5>{{ number_format($byBrand['price']) }} VND</h5>
+                                <h5 style="text-decoration: line-through; color: darkred;">{{number_format($product['price'])}} VND</h5>
+                                <h5>{{number_format($product['price'] - (($product['price'] * $product['discount'])/100))}} VND</h5>
                                
                             </div>
                         </div>

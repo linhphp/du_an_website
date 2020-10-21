@@ -16,11 +16,6 @@ class Cart extends Model
         'status',
     ];
 
-    public function scopeGetOne ($query, $user)
-    {
-        return $query->where([['user_id', $user], ['status', 1]])->first();
-    }
-
     public function user ()
     {
     	return $this->belongsTo(User::class, 'user_id', 'id');

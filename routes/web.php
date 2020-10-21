@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AddressController;
+use App\Http\Controllers\BillController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -55,6 +56,7 @@ Route::prefix('index')->group(function ()
         ->name('eshop.category');
     Route::get('districts/{id}', [AddressController::class, 'getDistricts']);
     Route::get('wards/{id}', [AddressController::class, 'getWards']);
+    Route::view('message', 'frontend.pages.message')->name('message');
     Route::prefix('checkout')->group(function ()
     {
         Route::post('cart/{id}', [CartController::class, 'cartAdd'])
@@ -75,9 +77,15 @@ Route::prefix('index')->group(function ()
             ->middleware('checklogout');
         Route::view('sign-up', 'frontend.pages.signup')
             ->name('signUp');
+        Route::post('sign-up', [UserController::class, 'signUp'])->name('signup.post');
         Route::post('sign-in', [UserController::class, 'signIn'])
             ->name('sigin.post');
         Route::post('sign_out', [UserController::class, 'signOut'])
             ->name('signOut.post');
+    });
+    Route::prefix('bills')->group(function ()
+    {
+        Route::get('/', [BillController::class , 'index'])->name('bills.index');
+        Route::get('{id}', [BillController::class , 'show'])->name('bills.show');
     });
 });

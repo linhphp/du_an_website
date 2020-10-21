@@ -8,8 +8,7 @@
         <div class="checkout__form">
             <div class="row">
                 <div class="col-12 col-md-8 m-auto">
-                    <form action="" method="post">
-                        @method('POST')
+                    <form action="{{ route('signup.post') }}" method="post">
                         @csrf
                         <h6 class="checkout__title text-md-center">Đăng ký</h6>
                             <p>bạn đã  có tài khoản? hãy <a href="{{ route('signIn') }}" class="btn-link text-danger">đăng nhập</a> ngay</p>                        
@@ -23,7 +22,7 @@
                         </div>
                         <div class="checkout__input">
                             <p>mật khẩu<span>*</span></p>
-                            <input type="password" name="pass" placeholder="nhap mat khau cua ban">
+                            <input type="password" name="password" placeholder="nhap mat khau cua ban">
                         </div>
                         <div class="checkout__input">
                             <p>nhâp lại mật khẩu<span>*</span></p>

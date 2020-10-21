@@ -42,7 +42,7 @@ class AppServiceProvider extends ServiceProvider
             $totalQty = 0;
             $cart = Cart::where([['user_id', Auth::id()], ['status', 1]])->first();
             if ($cart) {
-                $cartDetails = CartDetail::where([['cart_id', $cart->id], ['status', null]])->get();
+                $cartDetails = CartDetail::where([['cart_id', $cart->id], ['destroy', null]])->get();
                 foreach ($cartDetails as $cartD)
                 {
                     $totalQty += $cartD->qty;

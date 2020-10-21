@@ -15,7 +15,7 @@
                         <h6>danh mục</h6>
                         <ul class="nice-scroll">
                             @foreach($cates as $key => $value)
-                            <li><a href="">{{$key}}</a></li>
+                            <li><a href="{{ route('eshop.category', $value) }}">{{$key}}</a></li>
                             @endforeach
                         </ul>
                     </div>
@@ -25,7 +25,7 @@
                         <h6>thương hiệu</h6>
                         <ul>
                             @foreach($brands as $key => $value)
-                            <li><a href="">{{$key}}</a></li>
+                            <li><a href="{{ route('eshop.brand', $value) }}">{{$key}}</a></li>
                             @endforeach
                         </ul>
                     </div>

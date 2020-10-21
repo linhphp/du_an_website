@@ -57,7 +57,7 @@
                     <span class="search-switch"><img src="frontend/img/icon/search.png" alt=""></span>
                     <a href=""><img src="frontend/img/icon/heart.png" alt=""></a>
                     @if((Auth::check()) && (Auth::user()->jurisdiction == null)) 
-                    <a href="" class="text-dark"><i class="fas fa-luggage-cart"></i></a>
+                    <a href="{{ route('bills.index') }}" class="text-dark"><i class="fas fa-luggage-cart"></i></a>
                     @endif
                     <a href="{{ route('cart.show') }}"><img src="frontend/img/icon/cart.png" alt=""><span class="text-danger">{{ $totalQty }}</span></a>
                     <div class="price"></div>

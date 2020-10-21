@@ -24,37 +24,52 @@ class HomeController extends Controller
     public function show ($id)
     {
     	$product = Product::find($id);
-        $productByBrand = Brand::find($product->brand_id)->products
-            ->except($product->id)
-            ->take(4)
-            ->toArray();
-        $image = Emage::where('product_id', $product->id)
-            ->inRandomOrder()
-            ->limit(3)->get();
-        return view('frontend.pages.detail', compact('product', 'productByBrand', 'image'));
+        if ($product) {
+            $brand = Brand::find($product->brand_id);
+            if ($brand) {
+                $productByBrand = $brand->products
+                    ->except($product->id)
+                    ->take(4)
+                    ->toArray();
+                $image = Emage::where('product_id', $product->id)
+                    ->inRandomOrder()
+                    ->limit(3)->get();
+
+                return view('frontend.pages.detail', compact('product', 'productByBrand', 'image'));
+            }
+
+        }
+        return redirect()->route('message');
     }
 
     public function eshop ()
     {
-    	$products = Product::orderDesc()->paginate(Config::get('paginate.eshop'));
+        $products = Product::orderDesc()->paginate(Config::get('paginate.eshop'));
+
         return view('frontend.pages.eshop', compact('products'));
     }
 
     public function eshopBrand ($id)
     {
         $brand = Brand::find($id);
-        $products = $brand->products->toArray();
+        if ($brand) {
+            $products = $brand->products->toArray();
 
-        return view('frontend.pages.brand_eshop', compact('products', 'brand'));
+            return view('frontend.pages.brand_eshop', compact('products', 'brand'));
+        }
+
+        return redirect()->route('message');
     }
 
     public function eshopCategory ($id)
     {
         $category = Category::find($id);
-        $products = $category->products->toArray();
+        if ($category) {
+            $products = $category->products->toArray();
 
-        return view('frontend.pages.category_eshop', compact('products', 'category'));
+            return view('frontend.pages.category_eshop', compact('products', 'category'));
+        }
+
+        return redirect()->route('message');
     }
-
-    
 }
