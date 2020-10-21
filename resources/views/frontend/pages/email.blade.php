@@ -29,7 +29,6 @@
                     <span class="text-dark">
                         Thanh toán bằng tiền mặt
                     </span>
-
                     @elseif ($payment  == 'ATM')
                     <span class="text-dark">
                         Chuyển khoản
