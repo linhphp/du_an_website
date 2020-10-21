@@ -20,18 +20,27 @@ class BillController extends Controller
     	$bills = Bill::join('customers', 'customers.id', '=', 'bills.customer_id')
     	    ->select('bills.*', 'customers.name', 'customers.email', 'customers.phone', 'customers.address')
     	    ->where('customers.user_id', '=', Auth::id())
+    	    ->orderBy('id', 'desc')
     	    ->get();
+    	if (count($bills) != 0) {
 
-    	return view('frontend.pages.bill', compact('bills'));
+    		return view('frontend.pages.bill', compact('bills'));
+    	}
+
+    	return redirect()->back();
     }
 
     public function show ($id)
     {
-    	$bill = Bill::find($id);
+    	$bill = Bill::join('customers', 'customers.id', '=', 'bills.customer_id')
+    	    ->select('customers.name', 'customers.email', 'customers.phone', 'customers.address', 'bills.id', 'bills.note')
+    	    ->where('bills.id', $id)->first();
     	if ($bill) {
-    		$billDetails = $bill->billDetails->toArray();
-
-    		return view('frontend.pages.billDetail', compact('billDetails'));
+    		$billDetails = BillDetail::join('products', 'products.id', '=', 'bill_details.product_id')
+    		    ->select('bill_details.*', 'products.name')
+    		    ->where('bill_details.bill_id', $bill->id)
+    		    ->get();
+    		return view('frontend.pages.billDetail', compact('bill', 'billDetails'));
     	}
 
     	return redirect()->route('message');

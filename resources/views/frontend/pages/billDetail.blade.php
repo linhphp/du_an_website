@@ -6,10 +6,11 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb__text">
-                    <h4>Thông tin đơn hàng</h4>
+                    <h4>Thông tin chi tiết đơn hàng</h4>
                     <div class="breadcrumb__links">
                         <a href="{{ route('home') }}">Home</a>
-                        <span>Bills</span>
+                        <a href="{{ route('bills.index') }}">bills</a>
+                        <span>Bill Detail</span>
                     </div>
                 </div>
             </div>
@@ -19,35 +20,40 @@
 <div class="container">
     <div class="row">
         <div class="col">
+            <p>Tên Khách Hàng: <span class="text-danger">{{ $bill->name }}</span></p>
+            <p>Email: <span class="text-danger">{{ $bill->email }}</span></p>
+            <p>Số điện thoại: <span class="text-danger">{{ $bill->phone }}</span></p>
+            <p>Địa chỉ: <span class="text-danger">{{ $bill->address }}</span></p>
+            <p>Ghi chú: <span class="text-danger">{{ $bill->note }}</span></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
             <table class="table table-hover table-inverse">
                 <thead>
                     <tr>
-                        <th>Tên KH</th>
-                        <th>Phone</th>
-                        <th>payment</th>
-                        <th>total price</th>
-                        <th>Status</th>
-                        <th colspan="2"></th>
+                        <th>Tên sản phẩm</th>
+                        <th>Đơn giá</th>
+                        <th>Số lượng</th>
+                        <th>Thành tiền</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($bills as $bill)
+                    <?php $totalPrice =0; ?>
+                    @foreach ($billDetails as $billDetail)
                     <tr>
-                        <td>
-                            <p>{{ $bill->name }}</p>
-                            <p>{{ $bill->email }}</p>
-                            <p>{{ $bill->address }}</p>
-                        </td>
-                        <td>{{ $bill->phone }}</td>
-                        <td>{{ $bill->payment }}</td>
-                        <td>{{ $bill->total_price }}</td>
-                        <td>{{ $bill->status }}</td>
-                        <td><a href="{{ route('bills.show', $bill->id) }}" class="btn-info btn"><i class="fas fa-info-circle"></i></a></td>
-                        <td>
-                            <button class="btn-danger btn"><i class="fa fa-close"></i></button>
-                        </td>
+                        <td>{{ $billDetail->name }}</td>
+                        <td>{{ number_format($billDetail->price) }} VNĐ</td>
+                        <td>{{ $billDetail->qty }}</td>
+                        <td>{{ number_format($billDetail->price * $billDetail->qty) }} VNĐ</td>
+                        <?php $totalPrice += ($billDetail->price * $billDetail->qty);?>
                     </tr>
                     @endforeach
+                    <tr>
+                        <td><p class="font-weight-bold">Tổng tiền</p></td>
+                        <td></td><td></td>
+                        <td colspan="3" class=" font-weight-bold text-danger">{{ number_format($totalPrice) }} VNĐ</td>
+                    </tr>
                 </tbody>
             </table>
             

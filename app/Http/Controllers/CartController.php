@@ -191,14 +191,16 @@ class CartController extends Controller
         }
         $cart->status = 2;
         $cart->save();
-        //phần gửi email
-        $data['info'] = $request->all();
+        $data['name'] = $customer->name;
+        $data['email'] = $customer->email; 
+        $data['phone'] = $customer->phone;
+        $data['note'] = $bill->note;
+        $data['payment'] = $bill->payment;
         $data['address'] = $customer->address;
-        // duong dan Html, $data: du lieu
         $data['carts'] = $cartDetails;
         $data['total_price'] = $request->total_price;
-        $email = $request->email;
-        $name = $request->name;
+        $email = $customer->email;
+        $name = $customer->name;
         Mail::send('frontend.pages.email', $data, function ($message) use ($email, $name) {
             $message->from('thuclinh997@gmail.com', 'Cao Thục Linh');
             $message->to($email, $name);

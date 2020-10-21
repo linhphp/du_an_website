@@ -85,7 +85,7 @@ Route::prefix('index')->group(function ()
     });
     Route::prefix('bills')->group(function ()
     {
-        Route::get('index', [BillController::class , 'index'])->name('bills.index');
+        Route::get('/', [BillController::class , 'index'])->name('bills.index');
         Route::get('{id}', [BillController::class , 'show'])->name('bills.show');
     });
 });

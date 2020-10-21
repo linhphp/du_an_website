@@ -12,25 +12,24 @@
             <h2 class="text-success">Thông Tin Khách hàng</h2>
             <div class="col">
                 <p class="text-info font-weight-bold">Khách hàng: <span class="text-dark">
-                    {{ $info['name'] }}
+                    {{ $name }}
                 </span></p>
                 <p class="text-info font-weight-bold">Email: <span class="text-dark">
-                    {{ $info['email'] }}
+                    {{ $email }}
                 </span></p>
                 <p class="text-info font-weight-bold">Số điện thoại: <span class="text-dark">
-                    {{ $info['phone'] }}
+                    {{ $phone }}
                 </span></p>
                 <p class="text-info font-weight-bold">Ghi chú: <span class="text-dark">
-                    {{ $info['note'] }}
+                    {{ $note }}
                 </span></p>
                 <p class="text-info font-weight-bold">Phương thức thanh toán:
 
-                    @if ($info['payment']  == 'COD')
+                    @if ($payment  == 'COD')
                     <span class="text-dark">
                         Thanh toán bằng tiền mặt
                     </span>
-
-                    @elseif ($info['payment']  == 'ATM')
+                    @elseif ($payment  == 'ATM')
                     <span class="text-dark">
                         Chuyển khoản
                     </span>
