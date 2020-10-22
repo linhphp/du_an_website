@@ -1,6 +1,6 @@
 <header class="header fixed-top clearfix">
     <div class="brand">
-        <a href="index.html" class="logo">
+        <a href="{{ route('home.admin') }}" class="logo">
             THUCLINH
         </a>
         <div class="sidebar-toggle-box">

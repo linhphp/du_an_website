@@ -7,6 +7,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Emage;
+use App\Models\Comment;
 use Session;
 use Config;
 
@@ -34,8 +35,13 @@ class HomeController extends Controller
                 $image = Emage::where('product_id', $product->id)
                     ->inRandomOrder()
                     ->limit(3)->get();
-
-                return view('frontend.pages.detail', compact('product', 'productByBrand', 'image'));
+                $comments = Comment::join('users', 'users.id', '=', 'comments.user_id')
+                    ->select('users.name', 'comments.*')
+                    ->where('comments.product_id', $product->id)
+                    ->orderBy('id', 'desc')
+                    ->paginate(15);
+                
+                return view('frontend.pages.detail', compact('product', 'productByBrand', 'image', 'comments'));
             }
 
         }

@@ -60,7 +60,7 @@ class CartController extends Controller
                 $cartDetail = new CartDetail;
                 $cartDetail->cart_id = $cart->id;
                 $cartDetail->product_id = $product->id;
-                $cartDetail->qty =1;
+                $cartDetail->qty = $request->qty;;
                 $cartDetail->save();
                 echo 'luu 3';
             }        

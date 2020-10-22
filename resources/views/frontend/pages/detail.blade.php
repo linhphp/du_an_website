@@ -81,6 +81,7 @@ product | {{ $product->name }}
                                 	<span>{{ number_format($product->price) }} VND</span>
                                 	@endif
                                 </h3>
+                                <input type="file" name="photos[]" multiple class="fo">
                                 <p>{{ $product->desc }}</p>
                                 <div class="product__details__cart__option">
                                     <div class="quantity">
@@ -106,8 +107,7 @@ product | {{ $product->name }}
                                     role="tab">Description</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#tabs-6" role="tab">Customer
-                                    Previews(5)</a>
+                                    <a class="nav-link" data-toggle="tab" href="#tabs-6" role="tab">Comments</a>
                                 </li>
                             </ul>
                             <div class="tab-content">
@@ -119,8 +119,61 @@ product | {{ $product->name }}
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="tabs-6" role="tabpanel">
+                                    <div class="container">
+                                        <div class="row mt-3">
+                                            <div class="col">
+                                                @if(Auth::check())
+                                                <div class="checkout__input">
+                                                    <p>Để lại bình luận của bạn</p>
+                                                    <form action="{{ route('comment.post', $product->id) }}" method="post">
+                                                        @csrf
+                                                        <input type="text" name="content">
+                                                        <button type="submit" class="primary-btn">gửi</button>
+                                                    </form>
+                                                </div>
+                                                @else
+                                                <p>vui lòng <a href="{{ route('signIn') }}" class="alert-link text-danger">Đăng nhập</a> để bình luận</p>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="product__details__tab__content">
-                                       <p></p>
+                                        @foreach ($comments as $comment)
+                                        @if($comment->parent_id == 0)
+                                        <div class="col-12">
+                                            <div class="card-header">{{ $comment->name }}</div>
+                                            <div class="card-body">
+                                            <p class="card-text">{{ $comment->content }}</p>
+                                            </div>
+                                            @foreach($comments as $childen)
+                                            @if($childen->parent_id == $comment->id)
+                                            <div class="ml-3">
+                                                <div class="card-header bg-light text-danger ">{{ $childen->name }}</div>
+                                                <div class="card-body">
+                                                    <p class="card-text text-info">{{ $childen->content }}</p>
+                                                </div>
+                                            </div>
+                                            @endif
+                                            @endforeach
+                                            <div class="col">
+                                                @if(Auth::check())
+                                                <div class="checkout__input">
+                                                    <form action="{{ route('childen.post', $comment->id) }}" method="post">
+                                                        @csrf
+                                                        <input type="text" name="content">
+                                                        <button type="submit" class="primary-btn">
+                                                            Trả lời bình luận
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        @endif
+                                        @endforeach
+                                    </div>
+                                    <div class="row">
+                                        {{ $comments->links() }}
                                     </div>
                                 </div>
                             </div>
