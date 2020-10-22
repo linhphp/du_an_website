@@ -13,7 +13,7 @@ use Config;
 class CartAdminController extends Controller
 {
     //
-    public function cartshow ()
+    public function cartshows ()
     {
         $carts = Cart::join('users', 'users.id', '=', 'carts.user_id')
             ->select('users.name', 'users.email', 'carts.*')
