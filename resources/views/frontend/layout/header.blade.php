@@ -37,7 +37,8 @@
         <div class="row">
             <div class="col-lg-3 col-md-3">
                 <div class="header__logo">
-                    <a href="{{ route('home') }}"><img width="120" src="storage/logo/logo.png"></a>
+                    <a href="{{ route('home') }}"><div class="product__item__pic set-bg logo" data-setbg="storage/logo/logo.png"></div>
+                    </a>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6">
