@@ -15,7 +15,7 @@
                 <p>bạn đã đặt thành công</p>
                 <p>Đơn hàng đã gửi tới email của bạn </p>
                 <a href="{{ route('eshop') }}" class="btn btn-success" data-dismiss="modal"><span>Tiếp tục mua sắm </span> <i class="fas fa-cart-plus"></i></a>
-                <button class="btn btn-danger" data-dismiss="modal"><span>Theo dõi đơn hàng </span> <i class="fas fa-eye"></i></button>
+                <a href="{{ route('bills.index') }}" class="btn btn-danger" data-dismiss="modal"><span>Theo dõi đơn hàng </span> <i class="fas fa-eye"></i></a>
             </div>
         </div>
     </div>
