@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AdminController;
 
 use Illuminate\Http\Request;
 use App\Models\Brand;

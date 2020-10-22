@@ -29,7 +29,7 @@
                         </div>
                         
                         <div class="form-group">
-                            <label for="">Giá khuyến mãi</label>
+                            <label for="">khuyến mãi</label>
                             <select name="discount" class="form-control input-sm m-bot15">
                                 <option value="0">0%</option>
                                 <option value="10">10%</option>
@@ -41,6 +41,11 @@
                             <label for="">Hình ảnh sản phẩm</label>
                             <input type="file" name='image' class="form-control" >
                         </div>
+                        <div class="form-group">
+                            <label for="">Hình ảnh chi tiết</label>
+                            <input type="file" name='imageDetails[]' multiple class="form-control" >
+                        </div>
+                        
                         <div class="form-group">
                             <label for="">mô tả sản phẩm</label>
                             <textarea name="desc" rows="5" style="resize: none;" class="form-control"  placeholder="mô tả thương hiệu sản phẩm"></textarea>

@@ -12,6 +12,7 @@ class Emage extends Model
     protected $table = 'emages';
 
     protected $fillable = [
+    	'product_id',
         'emagery',
     ];
 
