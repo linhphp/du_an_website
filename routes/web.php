@@ -6,11 +6,13 @@ use App\Http\Controllers\AdminController\BrandController;
 use App\Http\Controllers\AdminController\CategoryController;
 use App\Http\Controllers\AdminController\ProductController;
 use App\Http\Controllers\AdminController\CartAdminController;
+use App\Http\Controllers\AdminController\BillAdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\BillController;
 use App\Http\Controllers\CommentController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,8 +25,8 @@ use App\Http\Controllers\CommentController;
 */
 
 // 
-Route::middleware(['checklogin'])->group( function ()
-{
+// Route::middleware(['checklogin'])->group( function ()
+// {
     Route::get('/', [UserController::class, 'index'])
         ->name('home.admin');
     Route::resource('brands', BrandController::class)
@@ -34,9 +36,10 @@ Route::middleware(['checklogin'])->group( function ()
     Route::resource('products', ProductController::class);
     Route::prefix('cart')->group( function ()
     {
-       Route::get('/', [CartController::class, 'AdminCartShow'])->name('adminCart.show'); 
+       Route::get('/', [CartAdminController::class, 'cartShow'])->name('adminCart.show'); 
+       Route::get('cart/{id}', [CartAdminController::class, 'cartDetail'])->name('adminCart.detail'); 
     });
-});
+// });
 Route::view('login', 'backend.login')
     ->name('login.admin')
     ->middleware(['checklogout']);
@@ -82,7 +85,7 @@ Route::prefix('index')->group( function ()
     {
         Route::view('sign-in', 'frontend.pages.signin')
             ->name('signIn')
-            ->middleware('checklogout');
+            ->middleware('checkoutUser');
         Route::view('sign-up', 'frontend.pages.signup')
             ->name('signUp');
         Route::post('sign-up', [UserController::class, 'signUp'])->name('signup.post');

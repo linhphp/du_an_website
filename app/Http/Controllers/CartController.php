@@ -129,7 +129,7 @@ class CartController extends Controller
     public function getFormCheckout ($id)
     {
         $customer = Customer::where('user_id', Auth::id())
-            ->orderBy('batch', 'desc')
+            ->orderBy('created_at', 'desc')
             ->limit(1)->first();
         $provinces = Province::all()->pluck('province_code', 'name');
         $cart = Cart::where([['user_id', Auth::id()], ['status', 1], ['id', $id]])->first();
