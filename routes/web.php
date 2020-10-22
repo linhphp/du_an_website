@@ -2,9 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\BrandController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AdminController\BrandController;
+use App\Http\Controllers\AdminController\CategoryController;
+use App\Http\Controllers\AdminController\ProductController;
+use App\Http\Controllers\AdminController\CartAdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AddressController;
@@ -22,7 +23,7 @@ use App\Http\Controllers\CommentController;
 */
 
 // 
-Route::middleware(['checklogin'])->group(function ()
+Route::middleware(['checklogin'])->group( function ()
 {
     Route::get('/', [UserController::class, 'index'])
         ->name('home.admin');
@@ -31,6 +32,10 @@ Route::middleware(['checklogin'])->group(function ()
     Route::resource('categories', CategoryController::class)
         ->except(['create', 'edit', 'show']);
     Route::resource('products', ProductController::class);
+    Route::prefix('cart')->group( function ()
+    {
+       Route::get('/', [CartController::class, 'AdminCartShow'])->name('adminCart.show'); 
+    });
 });
 Route::view('login', 'backend.login')
     ->name('login.admin')
@@ -43,7 +48,7 @@ Route::get('error', function(){ echo 'ahihi đồ ngốc!'; })
     ->name('error');
 
 //-------------end backend----------------------
-Route::prefix('index')->group(function ()
+Route::prefix('index')->group( function ()
 {
     Route::get('/', [HomeController::class, 'index'])
         ->name('home');
@@ -60,7 +65,7 @@ Route::prefix('index')->group(function ()
     Route::view('message', 'frontend.pages.message')->name('message');
     Route::post('comment/{id}', [CommentController::class, 'store'])->name('comment.post');
     Route::post('childen/{id}', [CommentController::class, 'addChildenComment'])->name('childen.post');
-    Route::prefix('checkout')->group(function ()
+    Route::prefix('checkout')->group( function ()
     {
         Route::post('cart/{id}', [CartController::class, 'cartAdd'])
             ->name('cart.add');
@@ -73,7 +78,7 @@ Route::prefix('index')->group(function ()
         Route::get('cart/{id}/checkout', [CartController::class, 'getFormCheckout'])->name('checkout.get');
         Route::post('cart/{id}/checkout', [CartController::class, 'checkout'])->name('checkout.post');
     });
-    Route::prefix('user')->group(function ()
+    Route::prefix('user')->group( function ()
     {
         Route::view('sign-in', 'frontend.pages.signin')
             ->name('signIn')
@@ -86,7 +91,7 @@ Route::prefix('index')->group(function ()
         Route::post('sign_out', [UserController::class, 'signOut'])
             ->name('signOut.post');
     });
-    Route::prefix('bills')->group(function ()
+    Route::prefix('bills')->group( function ()
     {
         Route::get('/', [BillController::class , 'index'])->name('bills.index');
         Route::get('{id}', [BillController::class , 'show'])->name('bills.show');

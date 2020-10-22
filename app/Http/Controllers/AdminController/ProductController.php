@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AdminController;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Emage;
 use Config;
 
 class ProductController extends Controller
@@ -32,10 +33,29 @@ class ProductController extends Controller
         $file = $request->file('image');
         $fileName = $file->getClientOriginalName('image');
         $file->move('storage/image',$fileName);
-        $product = $request->all();
-        $product['quantity'] = 1;
-        $product['image'] = $fileName;
-        Product::create($product);
+        $product = new Product;
+        $product->brand_id = $request->brand_id;
+        $product->category_id = $request->category_id;
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->discount = $request->discount;
+        $product->image = $fileName;
+        $product->accessories = $request->accessories;
+        $product->desc = $request->desc;
+        $product->content = $request->content;
+        $product->quantity = 1;
+        $product->save();
+        foreach($request->imageDetails as $img)
+        {
+            $fileNameImage = $img->getClientOriginalName($img);
+            $img->move('storage/image', $fileNameImage);
+            Emage::create(
+                [
+                    'product_id' => $product->id,
+                    'emagery' => $fileNameImage
+                ]
+            );
+        }
 
         return redirect()->route('products.index');    
     }

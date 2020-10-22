@@ -6,13 +6,13 @@
                 <li class="sub-menu">
                     <a href="{{ route('brands.index') }}">
                         <i class="fa fa-book"></i>
-                        <span>Brands</a></span>
+                        <span>Brands</span>
                     </a>
                 </li>
                 <li class="sub-menu">
                     <a href="{{ route('categories.index') }}">
                         <i class="fa fa-book"></i>
-                        <span>Categories</a></span>
+                        <span>Categories</span>
                     </a>
                 </li>
                 
@@ -25,6 +25,12 @@
                         <li><a href="{{ route('products.index') }}">index</a></li>
                         <li><a href="{{ route('products.create') }}">create</a></li>
                     </ul>
+                </li>
+                <li class="sub-menu">
+                    <a href="{{ route('adminCart.show') }}">
+                        <i class="fa fa-book"></i>
+                        <span>Carts</span>
+                    </a>
                 </li>
                 
 <!-- ----------------------------------------------------------- -->
