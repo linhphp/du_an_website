@@ -32,6 +32,12 @@
                         <span>Carts</span>
                     </a>
                 </li>
+                <li class="sub-menu">
+                    <a href="{{ route('billAdmin.show') }}">
+                        <i class="fa fa-book"></i>
+                        <span>Bills</span>
+                    </a>
+                </li>
                 
 <!-- ----------------------------------------------------------- -->
                 <li>

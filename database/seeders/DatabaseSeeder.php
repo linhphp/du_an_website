@@ -21,6 +21,10 @@ class DatabaseSeeder extends Seeder
 	        ProductsTableSeeder::class,
 	        EmageTableSeeder::class,
             CommentsTableSeeder::class,
+            StatusTableSeeder::class,
+            // ProvincesTableSeeder::class,
+            // DistrictsTableSeeder::class,
+            // WardsTableSeeder::class,
 	    ]);
     }
 }

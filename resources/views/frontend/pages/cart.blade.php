@@ -2,16 +2,16 @@
 @section('title', 'cart')
 @section('content')
 <script type="text/javascript">
-	function updateCart (qty, id)
-	{
+    function updateCart (qty, id)
+    {
         $.get(
             '{{ asset("index/checkout/cart/update") }}',
             {qty:qty, id:id},
             function(){
-            	location.reload();
+                location.reload();
             }
-        	);
-	}
+            );
+    }
 </script>
 <section class="breadcrumb-option">
     <div class="container">

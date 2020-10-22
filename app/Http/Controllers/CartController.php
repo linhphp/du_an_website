@@ -175,7 +175,7 @@ class CartController extends Controller
         $bill = new Bill;
         $bill->customer_id = $customer->id;
         $bill->note = $request->note;
-        $bill->status = 1;
+        $bill->status_id = 1;
         $bill->payment = $request->payment;
         $bill->total_price = $request->total_price;
         $bill->save();

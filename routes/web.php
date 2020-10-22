@@ -34,10 +34,16 @@ use App\Http\Controllers\CommentController;
     Route::resource('categories', CategoryController::class)
         ->except(['create', 'edit', 'show']);
     Route::resource('products', ProductController::class);
-    Route::prefix('cart')->group( function ()
+    Route::prefix('carts')->group( function ()
     {
-       Route::get('/', [CartAdminController::class, 'cartShow'])->name('adminCart.show'); 
+       Route::get('/', [CartAdminController::class, 'cartShows'])->name('adminCart.show'); 
        Route::get('cart/{id}', [CartAdminController::class, 'cartDetail'])->name('adminCart.detail'); 
+    });
+    Route::prefix('bills-admin')->group( function ()
+    {
+        route::get('/', [BillAdminController::class, 'billShows'])->name('billAdmin.show');
+        route::get('update', [BillAdminController::class, 'billUpdate'])->name('billAdmin.update');
+        route::get('{id}/detail', [BillAdminController::class, 'billDetail'])->name('billAdmin.detail');
     });
 // });
 Route::view('login', 'backend.login')
