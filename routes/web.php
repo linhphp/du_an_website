@@ -7,7 +7,8 @@ use App\Http\Controllers\AdminController\CategoryController;
 use App\Http\Controllers\AdminController\ProductController;
 use App\Http\Controllers\AdminController\CartAdminController;
 use App\Http\Controllers\AdminController\BillAdminController;
-use App\Http\Controllers\AdminController\NewController;
+use App\Http\Controllers\AdminController\NewCategoryController;
+use App\Http\Controllers\AdminController\KindOfNewController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AddressController;
@@ -46,7 +47,9 @@ Route::middleware(['checklogin'])->group( function ()
         route::get('update', [BillAdminController::class, 'billUpdate'])->name('billAdmin.update');
         route::get('{id}/detail', [BillAdminController::class, 'billDetail'])->name('billAdmin.detail');
     });
-    Route::resource('new-categories', NewController::class)
+    Route::resource('new-categories', NewCategoryController::class)
+        ->except(['create', 'edit', 'show']);
+    Route::resource('kind-of-news', KindOfNewController::class)
         ->except(['create', 'edit', 'show']);
 });
 

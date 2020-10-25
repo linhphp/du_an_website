@@ -3,32 +3,32 @@
 namespace App\Http\Controllers\AdminController;
 
 use Illuminate\Http\Request;
-use App\Models\New_category;
-use App\Kind_of_new;
-use App\News;
+use App\Models\NewCategory;
+use App\Models\KindOfNew;
+use App\Models\News;
 use Config;
 
-class NewController extends Controller
+class NewCategoryController extends Controller
 {
     public function index()
     {
-        $newCategories = New_category::paginate(Config::get('paginate.pro'));
-        return view('backend.pages.news_categories.create',compact('newCategories'));
+        $newCategories = NewCategory::paginate(Config::get('paginate.pro'));
+        return view('backend.pages.news_categories.create',compact('newCategories'));    
     }
     public function store(Request $request)
     {
-        New_category::create(
+        NewCategory::create(
             [
                 'name' => $request->name,
                 'status' => rand(1, 2)
             ]
         );
-
+        
         return redirect()->back();
     }
     public function update(Request $request, $id)
     {
-        New_category::find($id)->update(
+        NewCategory::find($id)->update(
             [
                 'name' => $request->name,
                 'status' => rand(1, 2)
@@ -39,7 +39,7 @@ class NewController extends Controller
     }
     public function destroy($id)
     {
-        New_category::find($id)->delete();    
+        NewCategory::find($id)->delete(); 
         return redirect()->back();
     }
     
