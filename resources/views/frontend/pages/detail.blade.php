@@ -1,6 +1,6 @@
 @extends('frontend.layout.master')
 @section('title')
-product | {{ $product->name }}
+@lang('language.product') | {{ $product->name }}
 @endsection
 @section('eshop', 'active')
 @section('content')
@@ -11,8 +11,8 @@ product | {{ $product->name }}
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="product__details__breadcrumb">
-                            <a href="{{ route('home') }}">Home</a>
-                            <a href="{{ route('eshop') }}">Shop</a>
+                            <a href="{{ route('home') }}">@lang('language.home') </a>
+                            <a href="{{ route('eshop') }}">@lang('language.shopping') </a>
                             <span>{{ $product->name }}</span>
                         </div>
                     </div>
@@ -74,7 +74,7 @@ product | {{ $product->name }}
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star-o"></i>
-                                    <span> - 5 Reviews</span>
+                                    <span> - 5 @lang('language.reviews') </span>
                                 </div>
                                 <h3>{{ number_format($product->price-(($product->price * $product->discount)/100)) }} VND
                                 	@if($product->discount != 0)
@@ -88,10 +88,10 @@ product | {{ $product->name }}
                                            <input type="text" min="1" name="qty" value="1">
                                         </div>
                                     </div>
-                                    <button class="primary-btn">add to cart</button>
+                                    <button class="primary-btn">@lang('language.add_to_cart') </button>
                                 </div>
                                 <div class="product__details__btns__option">
-                                    <a href="#"><i class="fa fa-heart"></i> add to wishlist</a>
+                                    <a href="#"><i class="fa fa-heart"></i>@lang('language.add_to_wishlist') </a>
                                 </div>
                             </div>
                         </form>
@@ -103,10 +103,10 @@ product | {{ $product->name }}
                             <ul class="nav nav-tabs" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link active" data-toggle="tab" href="#tabs-5"
-                                    role="tab">Description</a>
+                                    role="tab">@lang('language.desc') </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#tabs-6" role="tab">Comments</a>
+                                    <a class="nav-link" data-toggle="tab" href="#tabs-6" role="tab">@lang('language.comments') </a>
                                 </li>
                             </ul>
                             <div class="tab-content">
@@ -123,15 +123,15 @@ product | {{ $product->name }}
                                             <div class="col">
                                                 @if(Auth::check())
                                                 <div class="checkout__input">
-                                                    <p>Để lại bình luận của bạn</p>
+                                                    <p>@lang('language.leave_your_comment')</p>
                                                     <form action="{{ route('comment.post', $product->id) }}" method="post">
                                                         @csrf
                                                         <input type="text" name="content">
-                                                        <button type="submit" class="primary-btn">gửi</button>
+                                                        <button type="submit" class="primary-btn">@lang('language.send') </button>
                                                     </form>
                                                 </div>
                                                 @else
-                                                <p>vui lòng <a href="{{ route('signIn') }}" class="alert-link text-danger">Đăng nhập</a> để bình luận</p>
+                                                <p>@lang('language.please') <a href="{{ route('signIn') }}" class="alert-link text-danger"> @lang('language.sign_in')</a> @lang('language.to_comment') </p>
                                                 @endif
                                             </div>
                                         </div>
@@ -161,7 +161,7 @@ product | {{ $product->name }}
                                                         @csrf
                                                         <input type="text" name="content">
                                                         <button type="submit" class="primary-btn">
-                                                            Trả lời bình luận
+                                                            @lang('language.reply_to_comments')
                                                         </button>
                                                     </form>
                                                 </div>
@@ -189,7 +189,7 @@ product | {{ $product->name }}
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h3 class="related-title">Related Product</h3>
+                    <h3 class="related-title">@lang('language.related_products') </h3>
                 </div>
             </div>
             <div class="row">
@@ -201,16 +201,16 @@ product | {{ $product->name }}
                     <input type="hidden" name="qty" value="1">
                     <div class="product__item">
                         <div class="product__item__pic set-bg" data-setbg="storage/image/{{ $byBrand['image'] }}">
-                            <span class="label">New</span>
+                            <span class="label">@lang('language.new') </span>
                             <ul class="product__hover">
                                 <li><a href="#"><img src="frontend/img/icon/heart.png" alt=""></a></li>
-                                <li><a class="detail" href="{{ route('product.detail', $byBrand['id']) }}"><i class="fa fa-info"></i> chi tiết</a></li>
+                                <li><a class="detail" href="{{ route('product.detail', $byBrand['id']) }}"><i class="fa fa-info"></i> @lang('language.detail') </a></li>
                                 
                             </ul>
                         </div>
                         <div class="product__item__text">
                             <h6>{{ $byBrand['name'] }}</h6>
-                            <button class="add-cart">thêm vào giỏ hàng</button>
+                            <button class="add-cart">@lang('language.add_to_cart') </button>
                             <div class="rating">
                                 <i class="fa fa-star-o"></i>
                                 <i class="fa fa-star-o"></i>
@@ -231,16 +231,16 @@ product | {{ $product->name }}
                         <input type="hidden" name="qty" value="1">
                         <div class="product__item">
                             <div class="product__item__pic set-bg" data-setbg="storage/image/{{ $byBrand['image'] }}">
-                                <span class="label">sale</span>
+                                <span class="label">@lang('language.sale') </span>
                                 <ul class="product__hover">
                                     <li><a href="#"><img src="frontend/img/icon/heart.png" alt=""></a></li>
-                                    <li><a class="detail" href="{{ route('product.detail', $byBrand['id']) }}"><i class="fa fa-info"></i> chi tiết</a></li>
+                                    <li><a class="detail" href="{{ route('product.detail', $byBrand['id']) }}"><i class="fa fa-info"></i> @lang('language.detail') </a></li>
                                     
                                 </ul>
                             </div>
                             <div class="product__item__text">
                                 <h6>{{ $byBrand['name'] }}</h6>
-                                <button class="add-cart">thêm vào giỏ hàng</button>
+                                <button class="add-cart">@lang('language.add_to_cart') </button>
                                 <div class="rating">
                                     <i class="fa fa-star-o"></i>
                                     <i class="fa fa-star-o"></i>

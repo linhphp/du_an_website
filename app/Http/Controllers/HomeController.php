@@ -78,4 +78,11 @@ class HomeController extends Controller
 
         return redirect()->route('message');
     }
+
+    public function changeLanguage ($language)
+    {
+        Session::put('lang', $language);
+
+        return redirect()->back();
+    }
 }
