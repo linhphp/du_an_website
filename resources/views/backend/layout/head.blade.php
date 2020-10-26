@@ -17,5 +17,6 @@
     <script src="backend/js/jquery2.0.3.min.js"></script>
     <script src="backend/js/raphael-min.js"></script>
     <script src="backend/js/morris.js"></script>
+    <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/balloon-block/ckeditor.js"></script>
 </head>

@@ -24,8 +24,8 @@
 
                             <select name="new_categories_id" class="form-control input-sm m-bot15">
                                 {{-- <option>Chọn danh mục</option> --}}
-                                @foreach($newCategories as $newCategory)
-                                <option value="{{ $newCategory->id }}">{{ $newCategory->name }}</option>
+                                @foreach($newsCategories as $newsCategory)
+                                <option value="{{ $newsCategory->id }}">{{ $newsCategory->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -39,6 +39,7 @@
                         <thead>
                             <tr>
                                 <th colspan="2">Name</th>
+                                <th>News-categories</th>
                                 <th>Status</th>
                                 <th>Query</th>
                             </tr>
@@ -53,7 +54,8 @@
 	                                <td>
 	                                    <button class="btn btn-warning"><i class="fa fa-check text-success text-active"></i></button>
 	                                </td>
-                                </form>
+                                </form>    
+                                    <td>{{$kindOfNew->cate_name}}</td>  
                                 <td>
                                     @if($kindOfNew->status == 1)
                                     <a href="" style="color: darkred; font-size: 30px;" class="fa fa-thumbs-up"></a>

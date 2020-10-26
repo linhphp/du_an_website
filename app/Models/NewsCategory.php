@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class NewCategory extends Model
+class NewsCategory extends Model
 {
     use HasFactory;
     protected $table = "news_categories";
@@ -13,6 +13,6 @@ class NewCategory extends Model
 
     public function Kind_of_new()
     {
-        return $this->hasMany('App\KindOfNew','news_categories_id');
+        return $this->hasMany('App\KindOfNews','news_categories_id');
     } 
 }
