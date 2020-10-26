@@ -405,7 +405,7 @@ ol {
 }
 
 .header__logo {
-	padding: 30px 0;
+	padding: 0;
 }
 
 .header__logo a {
@@ -1001,6 +1001,11 @@ transition: 0.3s;
 	height: 260px;
 	position: relative;
 	background-position: center center;
+}
+.logo{
+	width: 150px!important;
+	height:150px;
+
 }
 
 .product__item__pic .label {

@@ -81,7 +81,6 @@ product | {{ $product->name }}
                                 	<span>{{ number_format($product->price) }} VND</span>
                                 	@endif
                                 </h3>
-                                <input type="file" name="photos[]" multiple class="fo">
                                 <p>{{ $product->desc }}</p>
                                 <div class="product__details__cart__option">
                                     <div class="quantity">

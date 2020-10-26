@@ -19,6 +19,9 @@ class CreateBillDetailsTable extends Migration
             $table->unsignedBigInteger('product_id');
             $table->float('price', 30, 5);
             $table->integer('qty');
+            $table->foreign('bill_id')->references('id')->on('bills');
+            $table->foreign('product_id')->references('id')->on('products');
+
             $table->timestamps();
         });
     }
