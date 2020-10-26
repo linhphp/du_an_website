@@ -23,8 +23,8 @@
                             <div class="header__top__hover">
                                 <span>@lang('language.language') <i class="arrow_carrot-down"></i></span>
                                 <ul>
-                                    <li>EN</li>
-                                    <li>VI</li>
+                                    <li><a href="{{ route('change_language', ['en']) }}">EN</a></li>
+                                    <li><a href="{{ route('change_language', ['vi']) }}">VI</a></li>
                                 </ul>
                             </div>
                         </form>

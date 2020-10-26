@@ -404,6 +404,15 @@ ol {
 	cursor: pointer;
 }
 
+.header__top__hover ul li a{
+    color: black!important;
+    position: 0.4s;
+}
+
+.header__top__hover ul li a:hover{
+    color: darkred!important;
+}
+
 .header__logo {
 	padding: 0;
 }

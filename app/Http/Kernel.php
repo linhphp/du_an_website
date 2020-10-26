@@ -37,6 +37,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \App\Http\Middleware\Locale::class,
         ],
 
         'api' => [
@@ -66,6 +67,7 @@ class Kernel extends HttpKernel
         'checklogout' => \App\Http\Middleware\checklogout::class,
         'checkout' => \App\Http\Middleware\Checkout::class,
         'checkoutUser' => \App\Http\Middleware\checkoutUser::class,
-
+        'locale' => \App\Http\Middleware\Locale::class,
+        
     ];
 }
