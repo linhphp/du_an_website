@@ -22,9 +22,9 @@ class DatabaseSeeder extends Seeder
 	        EmageTableSeeder::class,
             CommentsTableSeeder::class,
             StatusTableSeeder::class,
-            // ProvincesTableSeeder::class,
-            // DistrictsTableSeeder::class,
-            // WardsTableSeeder::class,
+            ProvincesTableSeeder::class,
+            DistrictsTableSeeder::class,
+            WardsTableSeeder::class,
 	    ]);
     }
 }

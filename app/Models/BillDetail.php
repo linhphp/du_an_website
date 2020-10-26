@@ -18,6 +18,13 @@ class BillDetail extends Model
         'qty',
     ];
 
+    public function scopeJoinProduct ($query)
+    {
+        return $query->join('products', 'products.id', '=', 'bill_details.product_id')
+            ->join('bills', 'bills.id', '=', 'bill_details.bill_id')
+            ->select('bill_details.*', 'products.name', 'bills.total_price');
+    }
+
     public function bills ()
     {
     	return $this->hasMany(Bill::class, 'bill_id', 'id');

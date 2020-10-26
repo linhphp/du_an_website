@@ -20,6 +20,7 @@ class CreateBillsTable extends Migration
             $table->string('payment');
             $table->integer('status_id')->nullable();
             $table->float('total_price', 30, 5);
+            $table->foreign('customer_id')->references('id')->on('customers');
             $table->timestamps();
         });
     }
