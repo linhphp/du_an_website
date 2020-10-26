@@ -25,6 +25,8 @@ class CreateProductsTable extends Migration
             $table->integer('discount');
             $table->string('accessories');
             $table->integer('quantity');
+            $table->foreign('brand_id')->references('id')->on('brands');
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->softDeletes();
             $table->timestamps();
         });
