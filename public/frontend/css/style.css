@@ -518,7 +518,9 @@ ol {
 	margin-right: 26px;
 	position: relative;
 }
-
+.search-switch img {
+	cursor: pointer;
+}
 .header__nav__option a span {
 	color: #0d0d0d;
 	font-size: 11px;

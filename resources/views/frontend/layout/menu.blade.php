@@ -4,15 +4,15 @@
             @csrf
                 <div class="offcanvas__links">
                      @if ((Auth::check()) && (Auth::user()->jurisdiction == null))
-                        <span style="color: #e63334; text-transform: uppercase;" >Chào bạn - {{ Auth::user()->name }}</span>
-                        <button type="submit" class="btn text-white" >Sign out</button>
+                        <span style="color: #e63334; text-transform: uppercase;" >@lang('language.welcome') - {{ Auth::user()->name }}</span>
+                        <button type="submit" class="btn text-white" >@lang('language.sign_out') </button>
                     @else
-                        <a href="{{ route('signIn') }}">Sign in</a>
-                        <a href="{{ route('signUp') }}">Sign up</a>
+                        <a href="{{ route('signIn') }}">@lang('language.sign_in') </a>
+                        <a href="{{ route('signUp') }}">@lang('language.sign_up') /a>
                     @endif
                 </div>
                 <div class="header__top__hover ">
-                    <span class="text-dark">EN <i class="arrow_carrot-down"></i></span>
+                    <span class="text-dark">@lang('language.language') <i class="arrow_carrot-down"></i></span>
                     <ul>
                         <li>EN</li>
                         <li>VI</li>
@@ -28,6 +28,6 @@
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__text">
-            <p>miễn phí vận chuyển, hoàn trả lại trong 7 ngày với bất kỳ lý do.</p>
+            <p>@lang('language.free_shipping') </p>
         </div>
     </div>
