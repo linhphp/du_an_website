@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-7">
                     <div class="header__top__left">
-                        <p>miễn phí vận chuyển, hoàn trả lại trong 7 ngày với bất kỳ lý do.</p>
+                        <p>@lang('language.free_shipping') </p>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-5">
@@ -13,15 +13,15 @@
                             @csrf
                             <div class="header__top__links">
                                 @if ((Auth::check()) && (Auth::user()->jurisdiction == null))
-                                    <span style="color: #e63334; text-transform: uppercase;" >Chào bạn - {{ Auth::user()->name }}</span>
-                                    <button type="submit" class="btn text-white" >Sign out</button>
+                                    <span style="color: #e63334; text-transform: uppercase;" >@lang('language.welcome') - {{ Auth::user()->name }}</span>
+                                    <button type="submit" class="btn text-white" >@lang('language.sign_out') </button>
                                 @else
-                                    <a href="{{ route('signIn') }}">Sign in</a>
-                                    <a href="{{ route('signUp') }}">Sign up</a>
+                                    <a href="{{ route('signIn') }}">@lang('language.sign_in') </a>
+                                    <a href="{{ route('signUp') }}">@lang('language.sign_up') </a>
                                 @endif
                             </div>
                             <div class="header__top__hover">
-                                <span>EN <i class="arrow_carrot-down"></i></span>
+                                <span>@lang('language.language') <i class="arrow_carrot-down"></i></span>
                                 <ul>
                                     <li>EN</li>
                                     <li>VI</li>
@@ -43,11 +43,11 @@
             <div class="col-lg-6 col-md-6">
                 <nav class="header__menu mobile-menu">
                     <ul>
-                        <li class="@yield('home')"><a href="{{ route('home') }}">trang chủ</a></li>
-                        <li class="@yield('eshop')"><a href="{{ route('eshop') }}">gian hàng</a></li>
-                        <li class="@yield('new')"><a href="">tin tức</a></li>
+                        <li class="@yield('home')"><a href="{{ route('home') }}">@lang('language.home') </a></li>
+                        <li class="@yield('eshop')"><a href="{{ route('eshop') }}">@lang('language.shopping') </a></li>
+                        <li class="@yield('new')"><a href="">@lang('language.news') </a></li>
 
-                        <li class="@yield('contact')"><a href="./contact.html">liên hệ</a></li>
+                        <li class="@yield('contact')"><a href="./contact.html">@lang('language.contact') </a></li>
 
                     </ul>
                 </nav>
