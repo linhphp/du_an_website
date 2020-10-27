@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Auth;
+use Session;
 
 class checklogin
 {
@@ -17,16 +17,15 @@ class checklogin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check()) {
-            $user = Auth::user();
-            if ($user->jurisdiction == 2) {
-                return $next($request);
-            }
-            else {
-                Auth::logout();
+        if (Session::has('user')) {
 
-                return redirect()->route('login.admin');
-            }
+            return $next($request);
+        }
+        else {
+
+            Session::forget('user');
+
+            return redirect()->route('login.admin');
         }
 
         return redirect()->route('login.admin');
