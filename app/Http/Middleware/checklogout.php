@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Auth;
+use Session;
 
 class checklogout
 {
@@ -17,7 +17,7 @@ class checklogout
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check()) {
+        if (Session::has('user')) {
 
                 return redirect()->back();
             }
