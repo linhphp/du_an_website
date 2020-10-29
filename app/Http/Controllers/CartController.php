@@ -202,7 +202,7 @@ class CartController extends Controller
         $email = $customer->email;
         $name = $customer->name;
         Mail::send('frontend.pages.email', $data, function ($message) use ($email, $name) {
-            $message->from('nvtbdn.hplong@gmail.com', 'Long');
+            $message->from('thuclinh997@gmail.com', 'Cao Thục Linh');
             $message->to($email, $name);
             $message->cc('thuclinh854@gmail.com', 'Thục Linh');
             $message->subject('Xác nhận thông tin mua hàng');

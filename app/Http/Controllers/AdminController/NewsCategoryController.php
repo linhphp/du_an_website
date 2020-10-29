@@ -13,7 +13,7 @@ class NewsCategoryController extends Controller
     public function index()
     {
         $newCategories = NewsCategory::paginate(Config::get('paginate.pro'));
-        return view('backend.pages.news_categories.create',compact('newCategories'));    
+        return view('backend.pages.news_categories.create', compact('newCategories'));    
     }
     public function store(Request $request)
     {

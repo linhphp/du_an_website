@@ -13,10 +13,10 @@ class KindOfNewsController extends Controller
     public function index()
     {
        $newsCategories = NewsCategory::all(); 
-       $kindOfNews = KindOfNews::join('news_categories','news_categories.id','=','kind_of_news.new_categories_id')
-            ->select('kind_of_news.*','news_categories.name as cate_name')
+       $kindOfNews = KindOfNews::join('news_categories', 'news_categories.id','=', 'kind_of_news.new_categories_id')
+            ->select('kind_of_news.*', 'news_categories.name as cate_name')
             ->paginate(Config::get('paginate.pro'));
-        return view('backend.pages.kind-of-news.create',compact('kindOfNews','newsCategories'));    
+        return view('backend.pages.kind-of-news.create', compact('kindOfNews', 'newsCategories'));    
     }
     public function create()
     {
@@ -26,9 +26,9 @@ class KindOfNewsController extends Controller
     public function store(Request $request)
     {
         $kindOfNews = New KindOfNews;
-        $kindOfNews ->name = $request->name;
-        $kindOfNews ->new_categories_id = $request->new_categories_id;
-        $kindOfNews ->save();
+        $kindOfNews -> name = $request->name;
+        $kindOfNews -> new_categories_id = $request->new_categories_id;
+        $kindOfNews -> save();
         
         return redirect()->back();
     }
@@ -59,6 +59,5 @@ class KindOfNewsController extends Controller
                 $output.= '<option value="'.$kind_of_new->id.'">'.$kind_of_new->name.'</option>';
             }         
         }  
-        echo $output;  
     }
 }

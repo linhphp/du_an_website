@@ -45,7 +45,7 @@
                     <ul>
                         <li class="@yield('home')"><a href="{{ route('home') }}">trang chủ</a></li>
                         <li class="@yield('eshop')"><a href="{{ route('eshop') }}">gian hàng</a></li>
-                        <li class="@yield('new')"><a href="">tin tức</a></li>
+                        <li class="@yield('new')"><a href="{{ route('news')}}">tin tức</a></li>
 
                         <li class="@yield('contact')"><a href="./contact.html">liên hệ</a></li>
 

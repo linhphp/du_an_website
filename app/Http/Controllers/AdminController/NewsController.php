@@ -14,9 +14,9 @@ class NewsController extends Controller
 {
     public function index()
     {
-        $news = News::join('kind_of_news','kind_of_news.id','=','news.kind_of_news_id')
-            ->join('news_categories','news_categories.id','=','news.new_categories_id')
-            ->select('news.*','kind_of_news.name as kind_name','news_categories.name as cate_name')
+        $news = News::join('kind_of_news', 'kind_of_news.id', '=', 'news.kind_of_news_id')
+            ->join('news_categories', 'news_categories.id', '=', 'news.new_categories_id')
+            ->select('news.*', 'kind_of_news.name as kind_name', 'news_categories.name as cate_name')
             ->orderDesc()->paginate(Config::get('paginate.pro'));
         
         return view('backend.pages.news.index', compact('news'));   
@@ -26,7 +26,7 @@ class NewsController extends Controller
         $newCategorys =  NewsCategory::all()->pluck('id', 'name');
         $kindOfNews =  KindOfNews::all()->pluck('id', 'name');   
         
-        return view('backend.pages.news.create', compact('newCategorys','kindOfNews'));
+        return view('backend.pages.news.create', compact('newCategorys', 'kindOfNews'));
     } 
     public function store(Request $request)
     {
@@ -44,14 +44,14 @@ class NewsController extends Controller
        $post_image = $request->post_image;
         if($post_image){
             $post_image_name = $post_image->getClientOriginalName();
-            $name_image = current(explode('.',$post_image_name));
+            $name_image = current(explode('.', $post_image_name));
             $new_image = $name_image.rand(0,99).'.'.$post_image->getClientOriginalExtension();
-            $post_image ->move('storage/image',$new_image);
+            $post_image ->move('storage/image', $new_image);
             $news->post_image = $new_image;
         }
         $news->save();
         $post_image == '';
-        Session::put('thongbao','Thêm bài viết thành công');
+        Session::put('thongbao', 'Thêm bài viết thành công');
         return redirect()->route('news.index');    
     }
     public function edit($id)
@@ -73,11 +73,12 @@ class NewsController extends Controller
         $news['post_image'] = $fileName;
         News::find($id)->update($news);
         
-        return redirect()->back()->with('thongbao','Sữa bài viết thành công');
+        return redirect()->back()->with('thongbao', 'Sữa bài viết thành công');
     }
     public function destroy($id)
     {
-        
+        $news = News::find($id)->delete();
+        return redirect()->back();
     }
     
 }

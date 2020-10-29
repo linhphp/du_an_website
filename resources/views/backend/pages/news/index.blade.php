@@ -29,7 +29,7 @@
                                 <td><a href="">{{ $new->title }}</a></td>
                                 <td><a href="">{{ $new->slug }}</a></td>
                                 <td><a href="">{{ $new->description }}</a></td>
-                                <td><a href="">{{ $new->content }}</a></td>
+                                <td><a href="">{!! $new->content !!}</a></td>
                                 <td><img width="80" src="storage/image/{{ $new->post_image }}" alt=""></td>
                                 <td><a href="">{{ $new->kind_name }}</a></td>
                                 <td><a href="">{{ $new->cate_name }}</a></td>

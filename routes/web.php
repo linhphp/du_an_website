@@ -79,6 +79,10 @@ Route::prefix('index')->group( function ()
         ->name('eshop.brand');
     Route::get('eshop/{id}/category', [HomeController::class, 'eshopCategory'])
         ->name('eshop.category');
+    Route::get('news', [HomeController::class, 'news'])
+        ->name('news');
+    Route::get('post/{slug}', [HomeController::class, 'post'])
+        ->name('post');
     Route::get('districts/{id}', [AddressController::class, 'getDistricts']);
     Route::get('wards/{id}', [AddressController::class, 'getWards']);
     Route::view('message', 'frontend.pages.message')->name('message');
@@ -115,4 +119,5 @@ Route::prefix('index')->group( function ()
         Route::get('/', [BillController::class , 'index'])->name('bills.index');
         Route::get('{id}', [BillController::class , 'show'])->name('bills.show');
     });
+
 });
