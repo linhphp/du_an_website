@@ -21,6 +21,7 @@ class NewsController extends Controller
         
         return view('backend.pages.news.index', compact('news'));   
     }
+
     public function create()
     {
         $newCategorys =  NewsCategory::all()->pluck('id', 'name');
@@ -28,6 +29,7 @@ class NewsController extends Controller
         
         return view('backend.pages.news.create', compact('newCategorys', 'kindOfNews'));
     } 
+
     public function store(Request $request)
     {
         
@@ -54,6 +56,7 @@ class NewsController extends Controller
         Session::put('thongbao', 'Thêm bài viết thành công');
         return redirect()->route('news.index');    
     }
+
     public function edit($id)
     {
         $newCategorys =  NewsCategory::all();
@@ -75,9 +78,11 @@ class NewsController extends Controller
         
         return redirect()->back()->with('thongbao', 'Sữa bài viết thành công');
     }
+
     public function destroy($id)
     {
         $news = News::find($id)->delete();
+        
         return redirect()->back();
     }
     

@@ -18,11 +18,13 @@ class KindOfNewsController extends Controller
             ->paginate(Config::get('paginate.pro'));
         return view('backend.pages.kind-of-news.create', compact('kindOfNews', 'newsCategories'));    
     }
+
     public function create()
     {
         $newCategories = NewsCategory::all()->pluck('id', 'name');
         return view('backend.pages.kind-of-news.create', compact('categories'));
     }
+
     public function store(Request $request)
     {
         $kindOfNews = New KindOfNews;
@@ -32,6 +34,7 @@ class KindOfNewsController extends Controller
         
         return redirect()->back();
     }
+
     public function update(Request $request, $id)
     {
         KindOfNews::find($id)->update(
@@ -43,11 +46,13 @@ class KindOfNewsController extends Controller
 
         return redirect()->back();
     }
+
     public function destroy($id)
     {
         KindOfNews::find($id)->delete(); 
         return redirect()->back();
     }
+    
     public function ajax_add(request $request)
     {   
         $data = $request->all();
