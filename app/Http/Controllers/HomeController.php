@@ -80,7 +80,7 @@ class HomeController extends Controller
 
         return redirect()->route('message');
     }
-
+  
     public function news ()
     {
         $news = News::join('kind_of_news', 'kind_of_news.id', '=', 'news.kind_of_news_id')
@@ -99,7 +99,6 @@ class HomeController extends Controller
     }
 
     public function changeLanguage ($language)
-    
     {
         Session::put('lang', $language);
 

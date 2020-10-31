@@ -27,45 +27,30 @@ use App\Http\Controllers\CommentController;
 |
 */
 
-// 
-Route::middleware(['checklogin'])->group( function ()
-{
-    Route::get('/', [UserController::class, 'index'])
-        ->name('home.admin');
-    Route::resource('brands', BrandController::class)
-        ->except(['create', 'edit', 'show']);
-    Route::resource('categories', CategoryController::class)
-        ->except(['create', 'edit', 'show']);
-    Route::resource('products', ProductController::class);
-    Route::prefix('carts')->group( function ()
+//
+Route::group(['middleware' => 'locale'], function() { 
+    Route::middleware(['checklogin'])->group( function ()
     {
-       Route::get('/', [CartAdminController::class, 'cartShows'])->name('adminCart.show'); 
-       Route::get('cart/{id}', [CartAdminController::class, 'cartDetail'])->name('adminCart.detail'); 
-    });
-    Route::group(['middleware' => 'locale'], function() { 
-        Route::middleware(['checklogin'])->group( function ()
+        Route::get('/', [UserController::class, 'index'])
+            ->name('home.admin');
+        Route::resource('brands', BrandController::class)
+            ->except(['create', 'edit', 'show']);
+        Route::resource('categories', CategoryController::class)
+            ->except(['create', 'edit', 'show']);
+        Route::resource('products', ProductController::class);
+        Route::prefix('carts')->group( function ()
         {
-            Route::get('/', [UserController::class, 'index'])
-                ->name('home.admin');
-            Route::resource('brands', BrandController::class)
-                ->except(['create', 'edit', 'show']);
-            Route::resource('categories', CategoryController::class)
-                ->except(['create', 'edit', 'show']);
-            Route::resource('products', ProductController::class);
-            Route::prefix('carts')->group( function ()
-            {
-               Route::get('/', [CartAdminController::class, 'cartShows'])->name('adminCart.show'); 
-               Route::get('cart/{id}', [CartAdminController::class, 'cartDetail'])->name('adminCart.detail'); 
-            });
-            Route::prefix('bills-admin')->group( function ()
-            {
-                route::get('/', [BillAdminController::class, 'billShows'])->name('billAdmin.show');
-                route::get('update', [BillAdminController::class, 'billUpdate'])->name('billAdmin.update');
-                route::get('{id}/detail', [BillAdminController::class, 'billDetail'])->name('billAdmin.detail');
-            });
+           Route::get('/', [CartAdminController::class, 'cartShows'])->name('adminCart.show'); 
+           Route::get('cart/{id}', [CartAdminController::class, 'cartDetail'])->name('adminCart.detail'); 
         });
-
-Route::view('login', 'backend.login')
+        Route::prefix('bills-admin')->group( function ()
+        {
+            route::get('/', [BillAdminController::class, 'billShows'])->name('billAdmin.show');
+            route::get('update', [BillAdminController::class, 'billUpdate'])->name('billAdmin.update');
+            route::get('{id}/detail', [BillAdminController::class, 'billDetail'])->name('billAdmin.detail');
+        });
+    });
+    Route::view('login', 'backend.login')
         ->name('login.admin')
         ->middleware(['checklogout']);
     Route::post('login', [UserController::class, 'loginAdmin'])
@@ -77,8 +62,8 @@ Route::view('login', 'backend.login')
 
     //-------------end backend----------------------
     Route::prefix('index')->group( function ()
-{
-    Route::get('/', [HomeController::class, 'index'])
+    {
+        Route::get('/', [HomeController::class, 'index'])
             ->name('home');
         Route::get('products/{id}', [HomeController::class, 'show'])
             ->name('product.detail');
@@ -125,6 +110,5 @@ Route::view('login', 'backend.login')
             Route::get('{id}', [BillController::class , 'show'])->name('bills.show');
         });
         Route::get('change-language/{language}', [HomeController::class, 'changeLanguage'])->name('change_language');
-    });
     });
 });
