@@ -7,7 +7,6 @@
                             <a href="{{route('home')}}"><img width="120" src="storage/logo/logo.png"></a>
                         </div>
                         <p>@lang('language.customer_design') </p>
-                        <a href="#"><img src="img/payment.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">

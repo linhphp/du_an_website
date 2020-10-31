@@ -76,7 +76,7 @@ Route::group(['middleware' => 'locale'], function() {
         Route::get('districts/{id}', [AddressController::class, 'getDistricts']);
         Route::get('wards/{id}', [AddressController::class, 'getWards']);
         Route::view('message', 'frontend.pages.message')->name('message');
-        Route::post('comment/{id}', [CommentController::class, 'store'])->name('comment.post');
+        Route::post('comment', [CommentController::class, 'store'])->name('comment.post');
         Route::post('childen/{id}', [CommentController::class, 'addChildenComment'])->name('childen.post');
         Route::prefix('checkout')->group( function ()
         {
