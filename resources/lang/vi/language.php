@@ -72,5 +72,6 @@ return [
     'quantity' => 'Số lựơng',
     'into_money' => 'Thành tiền',
     'total_price' => 'Tổng tiền',
-    'note' => 'Ghi chú'
+    'note' => 'Ghi chú',
+    'customer' => 'Khách hàng',
 ];
