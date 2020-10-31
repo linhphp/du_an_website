@@ -24,8 +24,8 @@
 
                             <select name="new_categories_id" class="form-control input-sm m-bot15">
                                 {{-- <option>Chọn danh mục</option> --}}
-                                @foreach($newsCategories as $newsCategory)
-                                <option value="{{ $newsCategory->id }}">{{ $newsCategory->name }}</option>
+                                @foreach($newsCategories as $key => $value)
+                                <option value="{{ $value }}">{{ $key }}</option>
                                 @endforeach
                             </select>
                         </div>

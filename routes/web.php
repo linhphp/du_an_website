@@ -37,6 +37,12 @@ Route::group(['middleware' => 'locale'], function() {
             ->except(['create', 'edit', 'show']);
         Route::resource('categories', CategoryController::class)
             ->except(['create', 'edit', 'show']);
+        Route::resource('news', NewsController::class)
+            ->except(['show']);
+        Route::resource('new-categories', NewsCategoryController::class)
+            ->except(['create', 'edit', 'show']);
+        Route::resource('kind-of-news', KindOfNewsController::class)
+            ->except(['edit', 'show']);
         Route::resource('products', ProductController::class);
         Route::prefix('carts')->group( function ()
         {
@@ -78,6 +84,7 @@ Route::group(['middleware' => 'locale'], function() {
         Route::view('message', 'frontend.pages.message')->name('message');
         Route::post('comment', [CommentController::class, 'store'])->name('comment.post');
         Route::post('childen/{id}', [CommentController::class, 'addChildenComment'])->name('childen.post');
+        
         Route::prefix('checkout')->group( function ()
         {
             Route::post('cart/{id}', [CartController::class, 'cartAdd'])
@@ -91,6 +98,7 @@ Route::group(['middleware' => 'locale'], function() {
             Route::get('cart/{id}/checkout', [CartController::class, 'getFormCheckout'])->name('checkout.get');
             Route::post('cart/{id}/checkout', [CartController::class, 'checkout'])->name('checkout.post');
         });
+        
         Route::prefix('user')->group( function ()
         {
             Route::view('sign-in', 'frontend.pages.signin')
@@ -104,11 +112,18 @@ Route::group(['middleware' => 'locale'], function() {
             Route::post('sign_out', [UserController::class, 'signOut'])
                 ->name('signOut.post');
         });
+
         Route::prefix('bills')->group( function ()
         {
             Route::get('/', [BillController::class , 'index'])->name('bills.index');
             Route::get('{id}', [BillController::class , 'show'])->name('bills.show');
         });
         Route::get('change-language/{language}', [HomeController::class, 'changeLanguage'])->name('change_language');
+        
+        Route::prefix('news')->group(function ()
+        {
+            Route::get('/', [HomeController::class, 'getNews'])->name('news');
+            Route::get('/{slug}', [HomeController::class, 'getPost'])->name('post');
+        });
     });
 });
