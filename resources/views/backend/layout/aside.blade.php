@@ -38,6 +38,18 @@
                         <span>Bills</span>
                     </a>
                 </li>
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-book"></i>
+                        <span>News</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="{{ route('new-categories.index') }}">Create News-categories</a></li>
+                        <li><a href="{{ route('kind-of-news.index') }}">Create Kind-of-news</a></li>
+                        <li><a href="{{ route('news.create') }}">Create News</a></li>
+                        <li><a href="{{ route('news.index') }}">index</a></li>      
+                    </ul>
+                </li>
                 
 <!-- ----------------------------------------------------------- -->
                 <li>

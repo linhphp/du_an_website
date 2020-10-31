@@ -46,9 +46,7 @@
                         <li class="@yield('home')"><a href="{{ route('home') }}">@lang('language.home') </a></li>
                         <li class="@yield('eshop')"><a href="{{ route('eshop') }}">@lang('language.shopping') </a></li>
                         <li class="@yield('new')"><a href="">@lang('language.news') </a></li>
-
                         <li class="@yield('contact')"><a href="./contact.html">@lang('language.contact') </a></li>
-
                     </ul>
                 </nav>
             </div>

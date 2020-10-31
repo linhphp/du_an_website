@@ -31,3 +31,4 @@
             <p>@lang('language.free_shipping') </p>
         </div>
     </div>
+   
