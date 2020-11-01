@@ -86,6 +86,7 @@ class HomeController extends Controller
             ->join('news_categories', 'news_categories.id', '=', 'news.new_categories_id')
             ->select('news.*', 'kind_of_news.name as kind_name', 'news_categories.name as cate_name')
             ->orderDesc()->paginate(Config::get('paginate.pro'));
+            
         return view('frontend.pages.news', compact('news'));
     }
 

@@ -9,12 +9,12 @@ Post |
         <div class="col-lg-12">
             <section class="panel mt-3">
                 @foreach( $posts as $post )
-                    <div class="col-md-6 mx-auto">
+                    <div class="col-md-8 mx-auto">
                         <div class="mt-3">
                             <h2>{{ $post->title}}</h2> 
                         </div>               
                         <div class=" mt-3 ">
-                            <img src="/storage/image/{{ $post->post_image}}"height="400" width="450">
+                            <img src="/storage/image/{{ $post->post_image}}"height="400" width="750">
                         </div>
                         <div class="div mt-5">
                             <h4>{{ $post->description}}</h4>

@@ -13,8 +13,10 @@ class NewsCategoryController extends Controller
     public function index()
     {
         $newCategories = NewsCategory::paginate(Config::get('paginate.pro'));
+
         return view('backend.pages.news_categories.create', compact('newCategories'));    
     }
+
     public function store(Request $request)
     {
         NewsCategory::create(
@@ -26,6 +28,7 @@ class NewsCategoryController extends Controller
         
         return redirect()->back();
     }
+
     public function update(Request $request, $id)
     {
         NewsCategory::find($id)->update(
@@ -37,9 +40,11 @@ class NewsCategoryController extends Controller
 
         return redirect()->back();
     }
+    
     public function destroy($id)
     {
         NewsCategory::find($id)->delete(); 
+        
         return redirect()->back();
     }
     
