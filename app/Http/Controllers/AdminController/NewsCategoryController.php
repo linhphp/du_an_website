@@ -4,8 +4,6 @@ namespace App\Http\Controllers\AdminController;
 
 use Illuminate\Http\Request;
 use App\Models\NewsCategory;
-use App\Models\KindOfNews;
-use App\Models\News;
 use Config;
 
 class NewsCategoryController extends Controller
@@ -13,6 +11,7 @@ class NewsCategoryController extends Controller
     public function index()
     {
         $newCategories = NewsCategory::paginate(Config::get('paginate.pro'));
+
         return view('backend.pages.news_categories.create', compact('newCategories'));    
     }
 
@@ -42,7 +41,8 @@ class NewsCategoryController extends Controller
     
     public function destroy($id)
     {
-        NewsCategory::find($id)->delete(); 
+        NewsCategory::find($id)->delete();
+
         return redirect()->back();
     }
     

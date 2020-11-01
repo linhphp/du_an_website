@@ -17,26 +17,22 @@
     </div>   
 </section>
 <section class="shop spad">
-        <div class="container">
-            <div class="row">
-            @include('frontend.layout.aside')
-                <div class="col-lg-9">   
-                    <div class="row">
-                        @foreach( $news as $new )
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic set-bg" data-setbg="storage/image/{{ $new->post_image }}"height="200" width="200"></div>
-                                <div class="blog__item__text">
-                                    <h5><a href="{{ route('post', $new->slug) }}">{{ $new->title }}</a></h5>
-                                    <a href="{{ route('post', $new->slug) }}">Read More</a>
-                                </div>
-                            </div>
-                        </div>       
-                        @endforeach 
-                    </div>      
+    <div class="container">
+        <div class="row">
+            @foreach ($getNews as $news)
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="blog__item">
+                    <div class="blog__item__pic set-bg" data-setbg="storage/image/{{ $news->post_image }}"></div>
+                    <div class="blog__item__text">
+                        <span><img src="frontend/img/icon/calendar.png" alt=""> 16 February 2020</span>
+                        <h5>{{ $news->title }}</h5>
+                        <a href="{{ route('post', $news->slug) }}">Read More</a>
+                    </div>
                 </div>
-            </div>
+            </div>       
+            @endforeach 
         </div>
-    </section>
+    </div>
+</section>
 @endsection
 

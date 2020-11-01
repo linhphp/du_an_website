@@ -81,21 +81,23 @@ class HomeController extends Controller
         return redirect()->route('message');
     }
   
-    public function news ()
+    public function getNews ()
     {
-        $news = News::join('kind_of_news', 'kind_of_news.id', '=', 'news.kind_of_news_id')
+        $getNews = News::join('kind_of_news', 'kind_of_news.id', '=', 'news.kind_of_news_id')
             ->join('news_categories', 'news_categories.id', '=', 'news.new_categories_id')
             ->select('news.*', 'kind_of_news.name as kind_name', 'news_categories.name as cate_name')
-            ->orderDesc()->paginate(Config::get('paginate.pro'));
+            ->orderDesc()
+            ->paginate(Config::get('paginate.pro'));
 
-        return view('frontend.pages.news', compact('news'));
+        return view('frontend.pages.news', compact('getNews'));
     }
 
-    public function post (Request $request, $slug)
+    public function getPost (Request $request, $slug)
     {
-        $posts = news::where('slug',$slug)->take(1)->get();
+        $getPost = news::where('slug',$slug)
+            ->first();
 
-        return view('frontend.pages.post', compact('posts'));
+        return view('frontend.pages.post', compact('getPost'));
     }
 
     public function changeLanguage ($language)
