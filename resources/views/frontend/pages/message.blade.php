@@ -22,6 +22,29 @@
         </div>
     </div>
 </div>
+
+@elseif(Session::has('successSendEMail'))
+@section('title')
+@lang('language.success')
+@endsection
+<div class="bg-light mt-3 mb-3 show fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header justify-content-center">
+                <div class="icon-box">
+                    <i class="fas fa-envelope-open-text"></i>
+                </div>
+            </div>
+            <div class="modal-body text-center">
+                <h4>@lang('language.successfully')! </h4>    
+                <p>@lang('language.has_been_sent') </p>
+                <p>@lang('language.we_will_get_back') </p>
+                <a href="{{ url()->previous() }}" class="btn btn-success" data-dismiss="modal"><span>@lang('language.back') </span> <i class="fas fa-step-backward"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
 @else
 @section('title')
 @lang('language.error')

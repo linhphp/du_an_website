@@ -18,15 +18,12 @@ class checklogin
     public function handle(Request $request, Closure $next)
     {
         if (Session::has('user')) {
+            if (Session::get('user')->jurisdiction == 2) {
 
-            return $next($request);
+                return $next($request);
+            }
         }
-        else {
-
-            Session::forget('user');
-
-            return redirect()->route('login.admin');
-        }
+        Session::forget('user');
 
         return redirect()->route('login.admin');
     }
