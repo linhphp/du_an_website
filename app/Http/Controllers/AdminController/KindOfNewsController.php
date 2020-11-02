@@ -42,6 +42,7 @@ class KindOfNewsController extends Controller
         KindOfNews::find($id)->update(
             [
                 'name' => $request->name,
+                'new_categories_id' => $request->new_categories_id,
                 'status' => rand(1, 2)
             ]
         );
@@ -60,11 +61,12 @@ class KindOfNewsController extends Controller
     {   
         $data = $request->all();
         $output = '';
-        if($data['action']== "new_categories"){
+        if ($data['action']== "new_categories") {
             $kind_of_news = KindOfNews::where('new_categories_id',$data['new_categories_id'])->get();
                 $output.=' <option>--Chọn loại tin--</option>';
+
             foreach($kind_of_news as $kind_of_new){
-                $output.= '<option value="'.$kind_of_new->id.'">'.$kind_of_new->name.'</option>';
+                $output.= '<option value="' . $kind_of_new->id . '">' . $kind_of_new->name . '</option>';
             }         
         }  
     }

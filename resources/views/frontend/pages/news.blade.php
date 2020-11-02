@@ -16,7 +16,7 @@
         </div>
     </div>
 </section>
-<section class="blog spad">
+<section class="shop spad">
         <div class="container">
             <div class="row">
                 @foreach($news as $new)
