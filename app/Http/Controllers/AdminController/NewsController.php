@@ -53,9 +53,8 @@ class NewsController extends Controller
         }
         $news->save();
         $post_image == '';
-        Session::put('thongbao', 'Thêm bài viết thành công');
 
-        return redirect()->route('news.index');    
+        return redirect()->route('news.index')->with(['newsSuccess' => '']);    
     }
 
     public function edit($id)
@@ -82,7 +81,9 @@ class NewsController extends Controller
 
     public function destroy($id)
     {
-        $news = News::find($id)->delete();
+        if ($news = News::find($id)) {
+            $news->delete();
+        }
 
         return redirect()->back();
     }

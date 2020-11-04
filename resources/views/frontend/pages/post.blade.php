@@ -4,16 +4,15 @@ Post |
 @endsection
 @section('content')
 
-@foreach( $posts as $post)
 <section class="blog-hero spad">
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-lg-9 text-center">
                 <div class="blog__hero__text">
-                    <h2>{{ $post->title }}</h2>
+                    <h2>{{ $getPost->title }}</h2>
                     <ul>
                         <li>By Deercreative</li>
-                        <li>{{ $post->created_at }}</li>
+                        <li>{{ $getPost->created_at }}</li>
                         <li>8 Comments</li>
                     </ul>
                 </div>
@@ -26,7 +25,7 @@ Post |
         <div class="row d-flex justify-content-center">
             <div class="col-lg-12">
                 <div class="blog__details__pic">
-                    <img src="storage/image/{{ $post->post_image }}" alt="">
+                    <img src="storage/image/{{ $getPost->post_image }}" alt="">
                 </div>
             </div>
             <div class="col-lg-8">
@@ -41,7 +40,7 @@ Post |
                         </ul>
                     </div>
                     <div class="blog__details__text">
-                        {!! $post->content !!}
+                        {!! $getPost->content !!}
                     </div>
                     
                     <div class="blog__details__option">
@@ -87,4 +86,3 @@ Post |
     </div>
 </section>
 @endsection
-@endforeach

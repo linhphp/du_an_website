@@ -20,19 +20,12 @@ class KindOfNewsController extends Controller
         return view('backend.pages.kind-of-news.create', compact('kindOfNews', 'newsCategories'));    
     }
 
-    public function create()
-    {
-        $newCategories = NewsCategory::all()->pluck('id', 'name');
-
-        return view('backend.pages.kind-of-news.create', compact('categories'));
-    }
-
     public function store(Request $request)
     {
         $kindOfNews = New KindOfNews;
-        $kindOfNews -> name = $request->name;
-        $kindOfNews -> new_categories_id = $request->new_categories_id;
-        $kindOfNews -> save();
+        $kindOfNews ->name = $request->name;
+        $kindOfNews ->new_categories_id = $request->new_categories_id;
+        $kindOfNews ->save();
         
         return redirect()->back();
     }
@@ -71,3 +64,4 @@ class KindOfNewsController extends Controller
         }  
     }
 }
+

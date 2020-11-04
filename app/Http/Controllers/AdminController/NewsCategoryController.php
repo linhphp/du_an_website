@@ -10,7 +10,7 @@ use Config;
 
 class NewsCategoryController extends Controller
 {
-    public function index()
+    public function index()    
     {
         $newCategories = NewsCategory::paginate(Config::get('paginate.pro'));
 
