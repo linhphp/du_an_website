@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Product;
 use Auth;
 use Cart;
+use Session;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -22,8 +23,11 @@ class UserController extends Controller
 
     public function loginAdmin (Request $request)
     {
-        $result = array('jurisdiction' => 2, 'email' => $request->email, 'password' => $request->password);
-        if (Auth::attempt($result)) {
+        $user = User::where([['email', '=', $request->email], ['jurisdiction', 2]])
+            ->first();
+        if (Hash::check($request->password, $user->password)) {
+            Session::put('user', $user);
+
             return redirect()->route('home.admin');
         }
 
@@ -33,7 +37,7 @@ class UserController extends Controller
     public function logoutAdmin ()
     {
 
-        Auth::logout();
+        Session::forget('user');
 
         return redirect()->route('login.admin');
     }
@@ -64,6 +68,7 @@ class UserController extends Controller
     public function signOut ()
     {
         Auth::logout();
+
         return redirect()->route('home');
     }
 }

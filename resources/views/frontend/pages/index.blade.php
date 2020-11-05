@@ -1,5 +1,7 @@
 @extends('frontend.layout.master')
-@section('title','trang chu')
+@section('title')
+@lang('language.home')
+@endsection
 @section('home', 'active')
 @section('content')
     @if(Session::has('note'))
@@ -21,9 +23,9 @@
         <div class="row">
             <div class="col-lg-12">
                 <ul class="filter__controls">
-                    <li class="active" data-filter="*">Tất cả sản phẩm</li>
-                    <li data-filter=".new-arrivals">Sản phẩm mới</li>
-                    <li data-filter=".hot-sales">giảm giá</li>
+                    <li class="active" data-filter="*">@lang('language.all_product') </li>
+                    <li data-filter=".new-arrivals">@lang('language.new_product') </li>
+                    <li data-filter=".hot-sales">@lang('language.discount') </li>
                 </ul>
             </div>
         </div>
@@ -36,16 +38,16 @@
                     <input type="hidden" name="qty" value="1">
                     <div class="product__item">
                         <div class="product__item__pic set-bg" data-setbg="storage/image/{{$product->image}}">
-                            <span class="label">New</span>
+                            <span class="label">@lang('language.new') </span>
                             <ul class="product__hover">
                                 <li><a href="#"><img src="frontend/img/icon/heart.png" alt=""></a></li>
-                                <li><a class="detail" href="{{ route('product.detail', $product->id) }}"><i class="fa fa-info"></i> chi tiết</a></li>
+                                <li><a class="detail" href="{{ route('product.detail', $product->id) }}"><i class="fa fa-info"></i>@lang('language.detail') </a></li>
                                 
                             </ul>
                         </div>
                         <div class="product__item__text">
                             <h6>{{$product->name}}</h6>
-                            <button class="add-cart">thêm vào giỏ hàng</button>
+                            <button class="add-cart">@lang('language.add_to_cart')</button>
                             <div class="rating">
                                 <i class="fa fa-star-o"></i>
                                 <i class="fa fa-star-o"></i>
@@ -66,17 +68,17 @@
                     @csrf
                     <div class="product__item">
                         <div class="product__item__pic set-bg" data-setbg="storage/image/{{$product->image}}">
-                            <span class="label">Sale</span>
+                            <span class="label">@lang('language.sale')</span>
                              <input type="hidden" name="qty" value="1">
                             <ul class="product__hover">
                                 <li><a href="#"><img src="frontend/img/icon/heart.png" alt=""></a></li>
-                                <li><a class="detail" href="{{ route('product.detail', $product->id) }}"><i class="fa fa-info"></i> chi tiết</a></li>
+                                <li><a class="detail" href="{{ route('product.detail', $product->id) }}"><i class="fa fa-info"> </i> @lang('language.detail')</a></li>
                                 
                             </ul>
                         </div>
                         <div class="product__item__text">
                         <h6>{{$product->name}}</h6>
-                        <button class="add-cart">thêm vào giỏ hàng</button>
+                        <button class="add-cart">@lang('language.add_to_cart')</button>
                         <div class="rating">
                             <i class="fa fa-star-o"></i>
                             <i class="fa fa-star-o"></i>
@@ -103,7 +105,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title">
-                    <span>Tin mới nhất</span>
+                    <span>@lang('language.latest_news') </span>
                 </div>
             </div>
             <!-- end col -->
@@ -115,7 +117,7 @@
                     <div class="blog__item__text">
                         <span><img src="frontend/img/icon/calendar.png" alt=""></span>
                         <h5></h5>
-                        <a href="">Xem Thêm</a>
+                        <a href="">@lang('language.load_more') </a>
                     </div>
                 </div>
             </div>

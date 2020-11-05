@@ -404,8 +404,17 @@ ol {
 	cursor: pointer;
 }
 
+.header__top__hover ul li a{
+    color: black!important;
+    position: 0.4s;
+}
+
+.header__top__hover ul li a:hover{
+    color: darkred!important;
+}
+
 .header__logo {
-	padding: 30px 0;
+	padding: 0;
 }
 
 .header__logo a {
@@ -518,7 +527,9 @@ ol {
 	margin-right: 26px;
 	position: relative;
 }
-
+.search-switch img {
+	cursor: pointer;
+}
 .header__nav__option a span {
 	color: #0d0d0d;
 	font-size: 11px;
@@ -1001,6 +1012,11 @@ transition: 0.3s;
 	height: 260px;
 	position: relative;
 	background-position: center center;
+}
+.logo{
+	width: 150px!important;
+	height:150px;
+
 }
 
 .product__item__pic .label {

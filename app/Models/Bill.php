@@ -24,6 +24,12 @@ class Bill extends Model
     	return $this->belongsTo(Customer::class, 'customer_id', 'id');
     }
 
+    public function scopeJoinCustomer ($query)
+    {
+        return $query->join('customers', 'customers.id', '=', 'bills.customer_id')
+            ->select('customers.name', 'customers.email', 'customers.phone', 'customers.address', 'bills.*');
+    }
+
     public function billDetails ()
     {
     	return $this->hasMany(BillDetail::class, 'bill_id', 'id');

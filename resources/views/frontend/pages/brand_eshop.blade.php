@@ -1,5 +1,7 @@
 @extends('frontend.layout.master')
-@section('title','brand')
+@section('title')
+@lang('language.brand')
+@endsection
 @section('eshop', 'active')
 @section('content')
 
@@ -8,13 +10,13 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb__text">
-                    <h4>Shop</h4>
+                    <h4>@lang('language.shopping')</h4>
                     <div class="breadcrumb__links">
-                        <a href="{{ route('home') }}">Home</a>
-                        <a href="{{ route('eshop') }}">Shop</a>
-                        <span>Brand</span>
+                        <a href="{{ route('home') }}">@lang('language.home') </a>
+                        <a href="{{ route('eshop') }}">@lang('language.shopping') </a>
+                        <span>@lang('language.brand') </span>
                         <span class="text-danger"> > </span>
-                        <span>{{ $brand->name }}</span>
+                        <span>{{ $brand->name }} </span>
                     </div>
                 </div>
             </div>
@@ -35,16 +37,16 @@
                             <input type="hidden" name="qty" value="1">
                             <div class="product__item">
                                 <div class="product__item__pic set-bg" data-setbg="storage/image/{{ $product['image'] }}">
-                                    <span class="label">New</span>
+                                    <span class="label">@lang('language.new') </span>
                                     <ul class="product__hover">
                                         <li><a href="#"><img src="frontend/img/icon/heart.png" alt=""></a></li>
-                                        <li><a class="detail" href="{{ route('product.detail', $product['id']) }}"><i class="fa fa-info"></i> chi tiết</a></li>
+                                        <li><a class="detail" href="{{ route('product.detail', $product['id']) }}"><i class="fa fa-info"> </i> @lang('language.detail') </a></li>
                                         
                                     </ul>
                                 </div>
                                 <div class="product__item__text">
                                     <h6>{{ $product['name'] }}</h6>
-                                    <button class="add-cart">thêm vào giỏ hàng</button>
+                                    <button class="add-cart">@lang('language.add_to_cart') </button>
                                     <div class="rating">
                                         <i class="fa fa-star-o"></i>
                                         <i class="fa fa-star-o"></i>
@@ -64,17 +66,17 @@
                             @csrf
                             <div class="product__item">
                                 <div class="product__item__pic set-bg" data-setbg="storage/image/{{ $product['image'] }}">
-                                    <span class="label">Sale</span>
+                                    <span class="label">@lang('language.sale') </span>
                                      <input type="hidden" name="qty" value="1">
                                     <ul class="product__hover">
                                         <li><a href="#"><img src="frontend/img/icon/heart.png" alt=""></a></li>
-                                        <li><a class="detail" href="{{ route('product.detail', $product['id']) }}"><i class="fa fa-info"></i> chi tiết</a></li>
+                                        <li><a class="detail" href="{{ route('product.detail', $product['id']) }}"><i class="fa fa-info"></i> @lang('language.detail') </a></li>
                                         
                                     </ul>
                                 </div>
                                 <div class="product__item__text">
                                 <h6>{{$product['name']}}</h6>
-                                <button class="add-cart">thêm vào giỏ hàng</button>
+                                <button class="add-cart">@lang('language.add_to_cart') </button>
                                 <div class="rating">
                                     <i class="fa fa-star-o"></i>
                                     <i class="fa fa-star-o"></i>

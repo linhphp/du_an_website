@@ -1,5 +1,7 @@
 @extends('frontend/layout.master')
-@section('title', 'cart')
+@section('title')
+@lang('language.cart')
+@endsection
 @section('content')
 
 <section class="breadcrumb-option">
@@ -7,11 +9,11 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb__text">
-                    <h4>Check Out</h4>
+                    <h4>@lang('language.check_out') </h4>
                     <div class="breadcrumb__links">
-                        <a href="./index.html">Home</a>
-                        <a href="./shop.html">Shop</a>
-                        <span>Check Out</span>
+                        <a href="./index.html">@lang('language.home') </a>
+                        <a href="./shop.html">@lang('language.shopping') </a>
+                        <span>@lang('language.check_out') </span>
                     </div>
                 </div>
             </div>
@@ -26,12 +28,12 @@
                 <div class="row">
                     <div class="col-lg-8 col-md-6">
                         
-                        <h6 class="checkout__title">Thông tin về khách hàng</h6>
+                        <h6 class="checkout__title">@lang('language.customer_information') </h6>
                         <div class="row">
                             <div class="col-12">
                                 @if ($customer)
                                 <p class="alert-danger">
-                                    Bạn có muốn sử dụng địa chỉ này không?
+                                    @lang('language.like_address')
                                 </p>
                                 <div class="row">
                                     <div class="col-12 card text-center">
@@ -61,7 +63,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="checkout__input">
-                                    <p>Full Name<span>*</span></p>
+                                    <p>@lang('language.full_name') <span>*</span></p>
                                     <input type="text" name="name">
                                 </div>
                                 <div class="checkout__input">
@@ -69,49 +71,49 @@
                                     <input type="text" name="email">
                                 </div>
                                 <div class="checkout__input">
-                                    <p>Phone<span>*</span></p>
+                                    <p>@lang('language.telephone_number') <span>*</span></p>
                                     <input type="number" name="phone">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <p>Tỉnh thành<span>*</span></p>
+                                    <p>@lang('language.province') <span>*</span></p>
                                     <select class="form-control w-100" name="city" id="">
-                                        <option value="">Chọn tỉnh thành</option>
+                                        <option value="">@lang('language.select_a_province') </option>
                                         @foreach($provinces as $key => $value)
                                         <option value="{{ $value }}">{{ $key }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="checkout__input">
-                                    <p>Quận huyện<span>*</span></p>
+                                    <p>@lang('language.distrist') <span>*</span></p>
                                     <select class="form-control w-100" name="district" id="">
-                                       <option value="">chưa chọn tỉnh thành</option>
+                                       <option value="">@lang('language.not_selected_province') </option>
                                     </select>
                                 </div>
                                 <div class="checkout__input">
-                                    <p>Phường xã<span>*</span></p>
+                                    <p>@lang('language.wards') <span>*</span></p>
                                     <select class="form-control w-100" name="ward" id="">
-                                       <option value="">Chưa chọn quận huyện</option>
+                                       <option value="">@lang('language.no_district_selected') </option>
                                     </select>
                                 </div>
                                 <div class="checkout__input">
-                                    <p>Tên đường / Số nhà<span>*</span></p>
+                                    <p>@lang('language.street_hose') <span>*</span></p>
                                     <input type="text" name="street">
                                 </div>                                 
                             </div>
                             
                         </div>
                         <div class="checkout__input">
-                            <p>Order notes</p>
+                            <p>@lang('language.order_notes') </p>
                             <input type="text"
                             placeholder="Notes about your order, e.g. special notes for delivery." name="note">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="checkout__order">
-                            <h4 class="order__title">Đơn hàng của bạn</h4>
-                            <div class="checkout__order__products">Sản phẩm <span>số lượng</span></div>
+                            <h4 class="order__title">@lang('language.your_order') </h4>
+                            <div class="checkout__order__products">@lang('language.product') <span>@lang('language.quantity') </span></div>
                             <?php
                                 $totalP = 0; 
                             ?>
@@ -127,24 +129,24 @@
                             </ul>
                             @endforeach
                             <ul class="checkout__total__all">
-                                <li>Tổng tiền <span>{{ number_format($totalP) }} VNĐ</span></li>
+                                <li>@lang('language.total_price') <span>{{ number_format($totalP) }} VNĐ</span></li>
                                 <input type="hidden" name="total_price" value="{{ $totalP }}">
                             </ul>
                             <div class="checkout__input__checkbox">
                                 <label for="payment">
-                                    Thanh toán tiền mặt
+                                    @lang('language.payment_in_cash')
                                     <input type="checkbox" id="payment" name="payment" value="COD">
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
                             <div class="checkout__input__checkbox">
                                 <label for="paypal">
-                                    Chuyển khoản
+                                    @lang('language.transfer')
                                     <input type="checkbox" id="paypal" name="payment" value="ATM">
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
-                            <button type="submit" class="site-btn">PLACE ORDER</button>
+                            <button type="submit" class="site-btn">@lang('language.place_order') </button>
                         </div>
                     </div>
                 </div>
