@@ -8,7 +8,7 @@ use Config;
 
 class NewsCategoryController extends Controller
 {
-    public function index()
+    public function index()    
     {
         $newCategories = NewsCategory::paginate(Config::get('paginate.pro'));
 
@@ -26,7 +26,6 @@ class NewsCategoryController extends Controller
         
         return redirect()->back();
     }
-    
     public function update(Request $request, $id)
     {
         NewsCategory::find($id)->update(
@@ -41,8 +40,8 @@ class NewsCategoryController extends Controller
     
     public function destroy($id)
     {
-        NewsCategory::find($id)->delete();
-
+        NewsCategory::find($id)->delete(); 
+        
         return redirect()->back();
     }
     

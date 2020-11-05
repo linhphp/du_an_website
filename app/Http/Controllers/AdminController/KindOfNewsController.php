@@ -45,9 +45,9 @@ class KindOfNewsController extends Controller
     public function destroy($id)
     {
         KindOfNews::find($id)->delete(); 
+        
         return redirect()->back();
     }
-    
     public function ajax_add(request $request)
     {   
         $data = $request->all();
@@ -62,3 +62,4 @@ class KindOfNewsController extends Controller
         }  
     }
 }
+

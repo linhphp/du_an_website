@@ -21,7 +21,6 @@ class NewsController extends Controller
         
         return view('backend.pages.news.index', compact('news'));   
     }
-
     public function create()
     {
         $newCategorys =  NewsCategory::all()->pluck('id', 'name');

@@ -17,7 +17,7 @@
     </div>   
 </section>
 <section class="shop spad">
-    <div class="container">
+<div class="container">
         <div class="row">
             @foreach ($getNews as $news)
             <div class="col-lg-4 col-md-6 col-sm-6">
@@ -35,4 +35,3 @@
     </div>
 </section>
 @endsection
-
