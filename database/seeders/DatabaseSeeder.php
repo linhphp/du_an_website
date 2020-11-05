@@ -25,9 +25,9 @@ class DatabaseSeeder extends Seeder
             ProvincesTableSeeder::class,
             DistrictsTableSeeder::class,
             WardsTableSeeder::class,
-            KindOfNewsTableSeeder::class,
-            NewsCategoriesTableSeeder::class,
-            NewsTableSeeder::class,
+            // KindOfNewsTableSeeder::class,
+            // NewsCategoriesTableSeeder::class,
+            // NewsTableSeeder::class,
 	    ]);
     }
 }
