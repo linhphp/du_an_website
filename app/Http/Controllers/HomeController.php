@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\Emage;
 use App\Models\Comment;
 use App\Models\News;
+use App\Models\User;
 use Session;
 use Config;
 use Illuminate\Support\Facades\Auth;
@@ -82,12 +83,12 @@ class HomeController extends Controller
 
         return redirect()->route('message');
     }
+  
     public function getNews ()
     {
         $getNews = News::join('kind_of_news', 'kind_of_news.id', '=', 'news.kind_of_news_id')
             ->join('news_categories', 'news_categories.id', '=', 'news.new_categories_id')
             ->select('news.*', 'kind_of_news.name as kind_name', 'news_categories.name as cate_name')
-
             ->orderDesc()
             ->paginate(Config::get('paginate.pro'));
 
