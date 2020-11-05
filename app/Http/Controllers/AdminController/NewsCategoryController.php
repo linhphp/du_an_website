@@ -4,8 +4,6 @@ namespace App\Http\Controllers\AdminController;
 
 use Illuminate\Http\Request;
 use App\Models\NewsCategory;
-use App\Models\KindOfNews;
-use App\Models\News;
 use Config;
 
 class NewsCategoryController extends Controller
@@ -28,7 +26,6 @@ class NewsCategoryController extends Controller
         
         return redirect()->back();
     }
-
     public function update(Request $request, $id)
     {
         NewsCategory::find($id)->update(

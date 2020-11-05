@@ -5,15 +5,14 @@ namespace App\Http\Controllers\AdminController;
 use Illuminate\Http\Request;
 use App\Models\NewsCategory;
 use App\Models\KindOfNews;
-use App\Models\News;
 use Config;
 
 class KindOfNewsController extends Controller
 {
     public function index()
     {
-       $newsCategories = NewsCategory::all(); 
-       $kindOfNews = KindOfNews::join('news_categories', 'news_categories.id','=', 'kind_of_news.new_categories_id')
+        $newsCategories = NewsCategory::all()->pluck('id', 'name');
+        $kindOfNews = KindOfNews::join('news_categories', 'news_categories.id','=', 'kind_of_news.new_categories_id')
             ->select('kind_of_news.*', 'news_categories.name as cate_name')
             ->paginate(Config::get('paginate.pro'));
 
@@ -49,7 +48,6 @@ class KindOfNewsController extends Controller
         
         return redirect()->back();
     }
-
     public function ajax_add(request $request)
     {   
         $data = $request->all();

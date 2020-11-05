@@ -11,6 +11,8 @@ use App\Models\Comment;
 use App\Models\News;
 use Session;
 use Config;
+use Illuminate\Support\Facades\Auth;
+use Mail;
 
 class HomeController extends Controller
 {
@@ -46,6 +48,7 @@ class HomeController extends Controller
             }
 
         }
+
         return redirect()->route('message');
     }
 
@@ -79,7 +82,6 @@ class HomeController extends Controller
 
         return redirect()->route('message');
     }
-
     public function getNews ()
     {
         $getNews = News::join('kind_of_news', 'kind_of_news.id', '=', 'news.kind_of_news_id')
@@ -105,5 +107,37 @@ class HomeController extends Controller
         Session::put('lang', $language);
 
         return redirect()->back();
-    }    
+    }
+
+    public function aboutUs()
+    {
+        $admins = User::where('jurisdiction', '>' , Config::get('auth.administrators'))->get();
+
+        return view('frontend/pages.aboutUs', compact('admins'));
+    }
+
+    public function sendEmail(Request $request)
+    {
+        $name = $request->name;
+        $subject = $request->subject;
+        $data['note'] = $request->message;
+        $email = $request->email;
+        Mail::send('frontend.pages.sendMail', $data, function ($message) use ($email, $name, $subject) {
+            $message->from($email, $name);
+            $message->to('thuclinh997@gmail.com', 'Cao Thục Linh');
+            $message->subject($subject);
+        });
+        return redirect()->route('message')->with(['successSendEMail' => '']);
+    }
+
+    public function getProfile()
+    {
+        if (Auth::check()) {
+            $user = USer::find(Auth::id());
+
+            return view('frontend.pages.profile', compact('user'));
+        }
+
+        return redirect()->route('message');
+    }
 }

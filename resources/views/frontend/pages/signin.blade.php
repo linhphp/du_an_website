@@ -9,24 +9,23 @@
                     <div class="col-8 m-auto">
                         <form action="{{ route('sigin.post') }}" method="post">
                         	@csrf
-                            <h6 class="checkout__title text-md-center">Đăng nhập</h6>
+                            <h6 class="checkout__title text-md-center">@lang('language.sign_in') </h6>
                             @if(Session::has('signUp'))
-                                <p class="alert-success">
-                                    Đăng ký thành công, bạn có muốn đăng nhập ngay?
+                                <p class="alert-success">@lang('language.successful_sign_up')
                                 </p>
                             @else 
-                            <p>vui lòng đăng nhập để có thể mua hàng và nhiều tiện ích khác</p>
-                            <p>bạn chưa có tài khoản? hãy <a href="{{ route('signUp') }}" class="btn-link text-danger">đăng ký</a> ngay</p>
+                            <p>@lang('language.please_log_in') </p>
+                            <p>@lang('language.not_account') <a href="{{ route('signUp') }}" class="btn-link text-danger">@lang('language.sign_up') </a> @lang('language.now') </p>
                             @endif
                             <div class="checkout__input">
-                                <p>email<span>*</span></p>
-                                <input type="text" name="email" placeholder="nhap email cua ban">
+                                <p>Email<span>*</span></p>
+                                <input type="text" name="email" placeholder="email">
                             </div>
                             <div class="checkout__input">
-                                <p>mật khẩu<span>*</span></p>
-                                <input type="password" name="password" placeholder="nhap mat khau cua ban">
+                                <p>@lang('language.password') <span>*</span></p>
+                                <input type="password" name="password" placeholder="@lang('language.password')">
                             </div>
-                              <button type="submit" class="site-btn">Đăng nhập</button>
+                              <button type="submit" class="site-btn">@lang('language.sign_in') </button>
                           </form>
                     </div>
                     

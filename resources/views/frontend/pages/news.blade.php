@@ -14,7 +14,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>   
 </section>
 <section class="shop spad">
 <div class="container">

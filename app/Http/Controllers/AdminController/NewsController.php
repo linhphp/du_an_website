@@ -21,7 +21,6 @@ class NewsController extends Controller
         
         return view('backend.pages.news.index', compact('news'));   
     }
-    
     public function create()
     {
         $newCategorys =  NewsCategory::all()->pluck('id', 'name');
@@ -44,7 +43,7 @@ class NewsController extends Controller
         $news->save();
 
        $post_image = $request->post_image;
-        if($post_image){
+        if ($post_image) {
             $post_image_name = $post_image->getClientOriginalName();
             $name_image = current(explode('.', $post_image_name));
             $new_image = $name_image.rand(0,99).'.'.$post_image->getClientOriginalExtension();
@@ -84,7 +83,7 @@ class NewsController extends Controller
         if ($news = News::find($id)) {
             $news->delete();
         }
-
+        
         return redirect()->back();
     }
     

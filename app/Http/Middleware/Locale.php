@@ -3,10 +3,11 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\App;
 use Illuminate\Http\Request;
 use Session;
 
-class checklogout
+class Locale
 {
     /**
      * Handle an incoming request.
@@ -15,13 +16,13 @@ class checklogout
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next)
+    public function handle($request, Closure $next)
     {
-        if (Session::has('user')) {
-
-                return redirect()->back();
-            }
-
+        $language = $request->session()->get('lang');
+        if($language)
+        {
+            App::setLocale($language);
+        }
         return $next($request);
     }
 }
