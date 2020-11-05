@@ -28,7 +28,8 @@ use App\Http\Controllers\CommentController;
 */
 
 //
-Route::group(['middleware' => 'locale'], function() { 
+Route::group(['middleware' => 'locale'], function ()
+{ 
     Route::middleware(['checklogin'])->group( function ()
     {
         Route::get('/', [UserController::class, 'index'])
@@ -84,7 +85,9 @@ Route::group(['middleware' => 'locale'], function() {
         Route::view('message', 'frontend.pages.message')->name('message');
         Route::post('comment', [CommentController::class, 'store'])->name('comment.post');
         Route::post('childen/{id}', [CommentController::class, 'addChildenComment'])->name('childen.post');
-        
+        Route::get('about-us', [HomeController::class, 'aboutUs'])->name('aboutUs');
+        Route::post('send-email', [Homecontroller::class, 'sendEmail'])->name('sendEmail');
+
         Route::prefix('checkout')->group( function ()
         {
             Route::post('cart/{id}', [CartController::class, 'cartAdd'])
@@ -98,7 +101,7 @@ Route::group(['middleware' => 'locale'], function() {
             Route::get('cart/{id}/checkout', [CartController::class, 'getFormCheckout'])->name('checkout.get');
             Route::post('cart/{id}/checkout', [CartController::class, 'checkout'])->name('checkout.post');
         });
-        
+
         Route::prefix('user')->group( function ()
         {
             Route::view('sign-in', 'frontend.pages.signin')
@@ -120,7 +123,7 @@ Route::group(['middleware' => 'locale'], function() {
         });
         Route::get('change-language/{language}', [HomeController::class, 'changeLanguage'])->name('change_language');
         
-        Route::prefix('news')->group(function ()
+        Route::prefix('news')->group( function ()
         {
             Route::get('/', [HomeController::class, 'getNews'])->name('news');
             Route::get('/{slug}', [HomeController::class, 'getPost'])->name('post');

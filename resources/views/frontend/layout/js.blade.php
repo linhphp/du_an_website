@@ -9,3 +9,12 @@
     <script src="frontend/js/owl.carousel.min.js"></script>
     <script src="frontend/js/main.js"></script>
     <script src="frontend/js/ajax.js"></script>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/venobox/venobox.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+  
