@@ -43,7 +43,7 @@ class HomeController extends Controller
                     ->where('comments.product_id', $product->id)
                     ->orderBy('id', 'desc')
                     ->paginate(15);
-                
+
                 return view('frontend.pages.detail', compact('product', 'productByBrand', 'image', 'comments'));
             }
 
@@ -90,7 +90,7 @@ class HomeController extends Controller
 
             ->orderDesc()
             ->paginate(Config::get('paginate.pro'));
-            
+
         return view('frontend.pages.news', compact('getNews'));
     }
 
