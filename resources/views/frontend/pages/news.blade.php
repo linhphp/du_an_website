@@ -22,7 +22,7 @@
             @foreach ($getNews as $news)
             <div class="col-lg-4 col-md-6 col-sm-6">
                 <div class="blog__item">
-                    <div class="blog__item__pic set-bg" data-setbg="storage/image/{{ $news->post_image }}"></div>
+                    <div class="blog__item__pic set-bg" data-setbg="{{ $news->post_image }}"></div>
                     <div class="blog__item__text">
                         <span><img src="frontend/img/icon/calendar.png" alt=""> 16 February 2020</span>
                         <h5>{{ $news->title }}</h5>
