@@ -87,6 +87,9 @@ Route::group(['middleware' => 'locale'], function ()
         Route::post('childen/{id}', [CommentController::class, 'addChildenComment'])->name('childen.post');
         Route::get('about-us', [HomeController::class, 'aboutUs'])->name('aboutUs');
         Route::post('send-email', [Homecontroller::class, 'sendEmail'])->name('sendEmail');
+        Route::get('profile', [HomeController::class, 'getProfile'])
+            ->name('profile')
+            ->middleware('checkout');
 
         Route::prefix('checkout')->group( function ()
         {

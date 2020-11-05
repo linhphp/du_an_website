@@ -12,8 +12,8 @@
                         <form action="{{ route('signOut.post') }}" method="post">
                             @csrf
                             <div class="header__top__links">
-                                @if ((Auth::check()) && (Auth::user()->jurisdiction == null))
-                                    <span style="color: #e63334; text-transform: uppercase;" >@lang('language.welcome') - {{ Auth::user()->name }}</span>
+                                @if (Auth::check())
+                                    <span text-transform: uppercase;" ><a href="{{ route('profile') }}">@lang('language.welcome') - {{ Auth::user()->name }}</a></span>
                                     <button type="submit" class="btn text-white" >@lang('language.sign_out') </button>
                                 @else
                                     <a href="{{ route('signIn') }}">@lang('language.sign_in') </a>
@@ -54,7 +54,7 @@
                 <div class="header__nav__option">
                     <span class="search-switch"><img src="frontend/img/icon/search.png" alt=""></span>
                     <a href=""><img src="frontend/img/icon/heart.png" alt=""></a>
-                    @if((Auth::check()) && (Auth::user()->jurisdiction == null)) 
+                    @if(Auth::check()) 
                     <a href="{{ route('bills.index') }}" class="text-dark"><i class="fas fa-luggage-cart"></i></a>
                     @endif
                     <a href="{{ route('cart.show') }}"><img src="frontend/img/icon/cart.png" alt=""><span class="text-danger">{{ $totalQty }}</span></a>

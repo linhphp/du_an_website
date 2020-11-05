@@ -12,6 +12,7 @@ use App\Models\News;
 use App\Models\User;
 use Session;
 use Config;
+use Illuminate\Support\Facades\Auth;
 use Mail;
 
 class HomeController extends Controller
@@ -128,5 +129,16 @@ class HomeController extends Controller
             $message->subject($subject);
         });
         return redirect()->route('message')->with(['successSendEMail' => '']);
+    }
+
+    public function getProfile()
+    {
+        if (Auth::check()) {
+            $user = USer::find(Auth::id());
+
+            return view('frontend.pages.profile', compact('user'));
+        }
+
+        return redirect()->route('message');
     }
 }
