@@ -19,11 +19,14 @@ class HomeController extends Controller
 {
     public function index ()
     {
+        $getNews = News::inRandomOrder()
+            ->limit(Config::get('paginate.news'))
+            ->get();
         $products = Product::inRandomOrder()
             ->limit(Config::get('paginate.product'))
             ->get();
 
-        return view('frontend.pages.index',compact('products'));
+        return view('frontend.pages.index',compact('products', 'getNews'));
     }
 
     public function show ($id)

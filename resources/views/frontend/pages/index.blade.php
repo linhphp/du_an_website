@@ -111,16 +111,18 @@
             <!-- end col -->
         </div>
         <div class="row">
+            @foreach($getNews as $news)
             <div class="col-lg-4 col-md-6 col-sm-6">
                 <div class="blog__item">
-                    <div class="blog__item__pic set-bg" data-setbg="upload/"></div>
+                    <div class="blog__item__pic set-bg" data-setbg="{{ $news->post_image }}"></div>
                     <div class="blog__item__text">
-                        <span><img src="frontend/img/icon/calendar.png" alt=""></span>
-                        <h5></h5>
-                        <a href="">@lang('language.load_more') </a>
+                        <span><img src="frontend/img/icon/calendar.png" alt="">{{ $news->created_at }}</span>
+                        <h5>{{ $news->title }}</h5>
+                        <a href="{{ route('post', $news->slug) }}">@lang('language.load_more') </a>
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
     </div>
 </section>
