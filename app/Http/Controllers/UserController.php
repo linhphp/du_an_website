@@ -71,4 +71,28 @@ class UserController extends Controller
 
         return redirect()->route('home');
     }
+
+    public function avatar(Request $request)
+    {
+        $user = User::find(Auth::id());
+        $file = $request->file('avatar');
+        $fileName = $request->file('avatar')->getClientOriginalName();
+        $user->avatar = $fileName;
+        $file->move('storage/image',$fileName);
+        $user->save();
+        
+        return redirect()->back();
+    }
+
+    public function update(Request $request)
+    {
+        $user = User::find(Auth::id());
+        $user->name = $request->name;
+        $user->birth_date = date($request->birth_date);
+        $user->gender = $request->gender;
+        $user->link_facebook = $request->link_facebook;
+        $user->save();
+
+        return redirect()->back();
+    }
 }
