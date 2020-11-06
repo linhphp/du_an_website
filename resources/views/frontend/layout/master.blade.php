@@ -16,7 +16,7 @@
     <div class="search-model">
         <div class="h-100 d-flex align-items-center justify-content-center">
             <div class="search-close-switch">+</div>
-            <form class="search-model-form" action="" method="get">
+            <form class="search-model-form" action="{{ route('search') }}" method="get">
                 <input type="text" id="search-input" name="key" placeholder="Search here.....">
             </form>
         </div>

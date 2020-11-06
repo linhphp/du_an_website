@@ -41,7 +41,7 @@
                         <td>{{ $bill->phone }}</td>
                         <td>{{ $bill->payment }}</td>
                         <td>{{ number_format($bill->total_price) }} VNĐ</td>
-                        <td>{{ $bill->status }}</td>
+                        <td>{{ $bill->status_name }}</td>
                         <td><a href="{{ route('bills.show', $bill->id) }}" class="btn-info btn"><i class="fas fa-info-circle"></i></a></td>
                         <td>
                             <button class="btn-danger btn"><i class="fa fa-close"></i></button>

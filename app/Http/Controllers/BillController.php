@@ -17,7 +17,7 @@ class BillController extends Controller
 
     public function index ()
     {
-    	$bills = Bill::joinCustomer()
+		$bills = Bill::joinCustomer()
     	    ->where('customers.user_id', '=', Auth::id())
     	    ->orderBy('id', 'desc')
     	    ->get();
