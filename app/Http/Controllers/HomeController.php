@@ -18,6 +18,14 @@ use Mail;
 
 class HomeController extends Controller
 {
+    public function message(Request $request)
+    {
+        $meta_desc = "Chuyên sản phẩm, phụ kiện chính hãng";
+        $meta_keywords = "Sản phẩm, phụ kiện điện tử";
+        $meta_title ="ThucLinh.shop";
+        $url_canonical = $request->url();
+        return view('frontend.pages.message', compact('meta_desc', 'meta_keywords', 'meta_title', 'url_canonical'));
+    }
     public function index (Request $request)
     {
         $slides = Slide::orderBy('id', 'desc')
@@ -32,10 +40,10 @@ class HomeController extends Controller
         $meta_keywords = "Sản phẩm, phụ kiện điện tử";
         $meta_title ="ThucLinh.shop";
         $url_canonical = $request->url();
-        return view('frontend.pages.index',compact('products', 'meta_desc', 'meta_keywords', 'meta_title', 'url_canonical'));
+        return view('frontend.pages.index',compact('products', 'meta_desc', 'meta_keywords', 'meta_title', 'url_canonical', 'slides', 'getNews'));
     }
 
-    public function show ($id)
+    public function show (Request $request, $id)
     {
     	$product = Product::find($id);
         if ($product) {
@@ -53,8 +61,11 @@ class HomeController extends Controller
                     ->where('comments.product_id', $product->id)
                     ->orderBy('id', 'desc')
                     ->paginate(15);
-
-                return view('frontend.pages.detail', compact('product', 'productByBrand', 'image', 'comments'));
+                    $meta_desc = "Chuyên sản phẩm, phụ kiện chính hãng";
+                    $meta_keywords = "Sản phẩm, phụ kiện điện tử";
+                    $meta_title ="ThucLinh.shop";
+                    $url_canonical = $request->url();
+                return view('frontend.pages.detail', compact('product', 'productByBrand', 'image', 'comments', 'meta_desc', 'meta_keywords', 'meta_title', 'url_canonical'));
             }
 
         }
