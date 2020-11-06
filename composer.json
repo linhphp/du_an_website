@@ -9,15 +9,15 @@
     "license": "MIT",
     "require": {
         "php": "^7.3",
-        "bumbummen99/shoppingcart": "^2.10",
+        "aws/aws-sdk-php": "~3.0",
+        "bumbummen99/shoppingcart": "^3.0",
         "doctrine/dbal": "^2.11",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
-        "wildbit/swiftmailer-postmark": "^3.3",
-        "aws/aws-sdk-php": "~3.0"
+        "wildbit/swiftmailer-postmark": "^3.3"
     },
     "require-dev": {
         "facade/ignition": "^2.3.6",

@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\NewsCategory::factory(10)->create();
         \App\Models\KindOfNews::factory(20)->create();
         \App\Models\News::factory(50)->create();
+
          $this->call([
 	        BrandsTableSeeder::class,
             UsersTableSeeder::class,
@@ -28,6 +29,7 @@ class DatabaseSeeder extends Seeder
             ProvincesTableSeeder::class,
             DistrictsTableSeeder::class,
             WardsTableSeeder::class,
-	    ]);
+        ]);
+        \App\Models\Slide::factory(2)->create();
     }
 }
