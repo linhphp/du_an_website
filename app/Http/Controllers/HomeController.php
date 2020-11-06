@@ -32,7 +32,7 @@ class HomeController extends Controller
         $meta_keywords = "Sản phẩm, phụ kiện điện tử";
         $meta_title ="ThucLinh.shop";
         $url_canonical = $request->url();
-        return view('frontend.pages.index',compact('products', 'meta_desc', 'meta_keywords', 'meta_title', 'url_canonical'));
+        return view('frontend.pages.index',compact('products', 'meta_desc', 'meta_keywords', 'meta_title', 'url_canonical', 'slides', 'getNews'));
     }
 
     public function show ($id)
