@@ -10,12 +10,12 @@
                     <div class="card-title mb-4">
                         <div class="d-flex justify-content-start">
                             <div class="image-container">
-                                <form action="" method="post">
+                                <form action="{{ route('user.upAvatar') }}" method="post" enctype="multipart/form-data">
                                     @csrf
-                                    <img src="http://placehold.it/150x150" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />
+                                    <img src="storage/image/{{ $user->avatar }}" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />
                                     <div class="middle">
                                         <input type="button" class="btn btn-secondary" id="btnChangePicture" value="@lang('language.change')" />
-                                        <input type="file" style="display: none;" id="profilePicture" name="file" />
+                                        <input type="file" style="display: none;" id="profilePicture" name="avatar" />
                                     </div>
                                 </form>
                             </div>
@@ -57,7 +57,7 @@
                                             <label style="font-weight:bold;">Birth Date</label>
                                         </div>
                                         <div class="col-md-8 col-6">
-                                            {{ $user->bith_date }}
+                                            {{ $user->birth_date }}
                                         </div>
                                     </div>
                                     <hr />
@@ -87,17 +87,17 @@
                                     <hr />
                                 </div>
                                 <div class="tab-pane fade" id="connectedServices" role="tabpanel" aria-labelledby="ConnectedServices-tab">
-                                    <form action="" method="post">
+                                    <form action="{{ route('user.update') }}" method="post">
                                         <div class="row">
                                             @csrf
                                             <div class="col-lg-6">
                                                 <div class="checkout__input">
                                                     <p>@lang('language.full_name') <span>*</span></p>
-                                                    <input type="text" name="name">
+                                                    <input type="text" name="name" placeholder="{{ $user->name }}">
                                                 </div>
                                                 <div class="checkout__input">
                                                     <p>Birth Date<span>*</span></p>
-                                                    <input type="date" name="birth_date">
+                                                    <input type="date" name="birth_date" value="{{ $user->bith_date }}">
                                                 </div>
                                                 <div class="checkout__input">
                                                     <p>gender <span>*</span></p>
@@ -105,6 +105,10 @@
                                                         <option value="mr">@lang('language.male')  </option>
                                                         <option value="ms">@lang('language.female') </option>
                                                     </select>
+                                                </div>
+                                                <div class="checkout__input">
+                                                    <p>Link facebook <span>*</span></p>
+                                                    <input type="text" name="link_facebook" placeholder="{{ $user->link_facebook }}">
                                                 </div>
                                                 <button type="submit" class="site-btn">@lang('language.update') </button>
                                             </div>

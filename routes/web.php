@@ -90,7 +90,12 @@ Route::group(['middleware' => 'locale'], function ()
         Route::get('profile', [HomeController::class, 'getProfile'])
             ->name('profile')
             ->middleware('checkout');
-
+        Route::group(['middleware' => ['checkout']], function () {
+            Route::post('profile/avatar', [UserController::class, 'avatar'])
+                ->name('user.upAvatar');
+            Route::post('user/update', [UserController::class, 'update'])
+                ->name('user.update');
+        });
         Route::prefix('checkout')->group( function ()
         {
             Route::post('cart/{id}', [CartController::class, 'cartAdd'])
