@@ -32,7 +32,7 @@ class NewsFactory extends Factory
             'new_categories_id' => $new_categories->id,
             'title' => $title,
             'slug' => Str::slug($title, '-'),
-            'description' => $this->faker->text($maxNbChars = 200) ,
+            'description' => $this->faker->text($maxNbChars = 200),
             'content' => $this->faker->text($maxNbChars = rand(1000,2000)),
             'post_image' => $this->faker->imageUrl($width = 640, $height = 480, 'cats', true, 'Faker')
         ];
