@@ -10,6 +10,7 @@ use App\Models\Emage;
 use App\Models\Comment;
 use App\Models\News;
 use App\Models\User;
+use App\Models\Slide;
 use Session;
 use Config;
 use Illuminate\Support\Facades\Auth;
@@ -19,6 +20,8 @@ class HomeController extends Controller
 {
     public function index ()
     {
+        $slides = Slide::orderBy('id', 'desc')
+        ->limit(Config::get('paginate.slide'))->get();
         $getNews = News::inRandomOrder()
             ->limit(Config::get('paginate.news'))
             ->get();
@@ -26,7 +29,7 @@ class HomeController extends Controller
             ->limit(Config::get('paginate.product'))
             ->get();
 
-        return view('frontend.pages.index',compact('products', 'getNews'));
+        return view('frontend.pages.index',compact('products', 'getNews', 'slides'));
     }
 
     public function show ($id)
