@@ -18,6 +18,8 @@ Post |
                 </div>
             </div>
         </div>
+        <div class="fb-like mt-3 mx-2" data-href="{{$url_canonical}}" data-width="" data-layout="button_count" data-action="like" data-size="large" data-share="false"></div>
+            <div class="fb-share-button mt-3" data-href="http://127.0.0.1:8000/index" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{$url_canonical}}&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
     </div>
 </section>
 <section class="blog-details spad">
@@ -42,7 +44,7 @@ Post |
                     <div class="blog__details__text">
                         {!! $getPost->content !!}
                     </div>
-                    
+                    <div class="fb-comments" data-href="{{$url_canonical}}" data-numposts="10" data-width=""></div>
                     <div class="blog__details__option">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6">

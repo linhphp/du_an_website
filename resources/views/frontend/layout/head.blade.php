@@ -1,9 +1,17 @@
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Male_Fashion Template">
-    <meta name="keywords" content="Male_Fashion, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="{{$meta_desc}}">
+    <meta name="keywords" content="{{$meta_keywords}}"/>
+    <meta name="robots" content="INDEX,FOLLOW"/>
+    <link  rel="canonical" href="http://127.0.0.1:8000/index" />
+    <meta name="author" content="">
+    {{-- <link  rel="icon" type="image/x-icon" href="" /> --}}
+
+    <meta property="og:description" content="{{$meta_desc}}" />
+    <meta property="og:title" content="{{$meta_title}}" />
+    <meta property="og:url" content="{{$url_canonical}}" />
+    <meta property="og:type" content="website" />
     <title>@yield('title')</title>
     <base href="{{asset('frontend/')}}">
 
@@ -34,6 +42,6 @@
   <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/css/style.css" rel="stylesheet">
-  
+
 
 </head>

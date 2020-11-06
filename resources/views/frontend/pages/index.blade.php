@@ -18,11 +18,16 @@
 
     @endif
     @include('frontend/layout/slide')
+
 <section class="product spad mt-5">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <ul class="filter__controls">
+                    <li>
+                        <div class="fb-like" data-href="{{$url_canonical}}" data-width="" data-layout="button_count" data-action="like" data-size="large" data-share="false"></div>
+                        <div class="fb-share-button" data-href="http://127.0.0.1:8000/index" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{$url_canonical}}&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
+                    </li>
                     <li class="active" data-filter="*">@lang('language.all_product') </li>
                     <li data-filter=".new-arrivals">@lang('language.new_product') </li>
                     <li data-filter=".hot-sales">@lang('language.discount') </li>
@@ -42,7 +47,7 @@
                             <ul class="product__hover">
                                 <li><a href="#"><img src="frontend/img/icon/heart.png" alt=""></a></li>
                                 <li><a class="detail" href="{{ route('product.detail', $product->id) }}"><i class="fa fa-info"></i>@lang('language.detail') </a></li>
-                                
+
                             </ul>
                         </div>
                         <div class="product__item__text">
@@ -56,7 +61,7 @@
                                 <i class="fa fa-star-o"></i>
                             </div>
                             <h5>{{number_format($product->price)}} VND</h5>
-                           
+
                         </div>
                     </div>
                 </form>
@@ -73,7 +78,7 @@
                             <ul class="product__hover">
                                 <li><a href="#"><img src="frontend/img/icon/heart.png" alt=""></a></li>
                                 <li><a class="detail" href="{{ route('product.detail', $product->id) }}"><i class="fa fa-info"> </i> @lang('language.detail')</a></li>
-                                
+
                             </ul>
                         </div>
                         <div class="product__item__text">
@@ -95,8 +100,8 @@
             <!-- end col -->
             @endif
             @endforeach
-           
         </div>
+        <div class="fb-comments" data-href="{{$url_canonical}}" data-numposts="10" data-width=""></div>
     </div>
 </section>
 <!-- blog -->

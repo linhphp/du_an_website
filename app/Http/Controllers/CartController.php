@@ -63,9 +63,9 @@ class CartController extends Controller
                 $cartDetail->qty = $request->qty;;
                 $cartDetail->save();
                 echo 'luu 3';
-            }        
+            }
 
-            return redirect()->route('cart.show'); 
+            return redirect()->route('cart.show');
         }
 
         return redirect()->route('message');
@@ -192,7 +192,7 @@ class CartController extends Controller
         $cart->status = 2;
         $cart->save();
         $data['name'] = $customer->name;
-        $data['email'] = $customer->email; 
+        $data['email'] = $customer->email;
         $data['phone'] = $customer->phone;
         $data['note'] = $bill->note;
         $data['payment'] = $bill->payment;
@@ -202,7 +202,7 @@ class CartController extends Controller
         $email = $customer->email;
         $name = $customer->name;
         Mail::send('frontend.pages.email', $data, function ($message) use ($email, $name) {
-            $message->from('thuclinh997@gmail.com', 'Cao Thục Linh');
+            $message->from('nvtbdn.hplong@gmail.com', 'Long');
             $message->to($email, $name);
             $message->cc('thuclinh854@gmail.com', 'Thục Linh');
             $message->subject('Xác nhận thông tin mua hàng');

@@ -17,13 +17,16 @@ use Mail;
 
 class HomeController extends Controller
 {
-    public function index ()
+    public function index (Request $request)
     {
         $products = Product::inRandomOrder()
             ->limit(Config::get('paginate.product'))
             ->get();
-
-        return view('frontend.pages.index',compact('products'));
+        $meta_desc = "Chuyên sản phẩm, phụ kiện chính hãng";
+        $meta_keywords = "Sản phẩm, phụ kiện điện tử";
+        $meta_title ="ThucLinh.shop";
+        $url_canonical = $request->url();
+        return view('frontend.pages.index',compact('products', 'meta_desc', 'meta_keywords', 'meta_title', 'url_canonical'));
     }
 
     public function show ($id)
@@ -53,11 +56,15 @@ class HomeController extends Controller
         return redirect()->route('message');
     }
 
-    public function eshop ()
+    public function eshop (Request $request)
     {
         $products = Product::orderDesc()->paginate(Config::get('paginate.eshop'));
+        $meta_desc = "Chuyên sản phẩm, phụ kiện chính hãng";
+        $meta_keywords = "Sản phẩm, phụ kiện điện tử";
+        $meta_title ="ThucLinh.shop";
+        $url_canonical = $request->url();
 
-        return view('frontend.pages.eshop', compact('products'));
+        return view('frontend.pages.eshop', compact('products', 'meta_desc', 'meta_keywords', 'meta_title', 'url_canonical'));
     }
 
     public function eshopBrand ($id)
@@ -83,24 +90,31 @@ class HomeController extends Controller
 
         return redirect()->route('message');
     }
-  
-    public function getNews ()
+
+    public function getNews (Request $request)
     {
         $getNews = News::join('kind_of_news', 'kind_of_news.id', '=', 'news.kind_of_news_id')
             ->join('news_categories', 'news_categories.id', '=', 'news.new_categories_id')
             ->select('news.*', 'kind_of_news.name as kind_name', 'news_categories.name as cate_name')
             ->orderDesc()
-            ->paginate(Config::get('paginate.pro'));
+            ->simplePaginate(Config::get('paginate.news'));
+        $meta_desc = "Chuyên sản phẩm, phụ kiện chính hãng";
+        $meta_keywords = "Sản phẩm, phụ kiện điện tử";
+        $meta_title ="ThucLinh.shop";
+        $url_canonical = $request->url();
 
-        return view('frontend.pages.news', compact('getNews'));
+        return view('frontend.pages.news', compact('getNews', 'meta_desc', 'meta_keywords', 'meta_title', 'url_canonical'));
     }
 
     public function getPost (Request $request, $slug)
     {
         $getPost = news::where('slug',$slug)
             ->first();
-
-        return view('frontend.pages.post', compact('getPost'));
+        $meta_desc = "Chuyên sản phẩm, phụ kiện chính hãng";
+        $meta_keywords = "Sản phẩm, phụ kiện điện tử";
+        $meta_title ="ThucLinh.shop";
+        $url_canonical = $request->url();
+        return view('frontend.pages.post', compact('getPost', 'meta_desc', 'meta_keywords', 'meta_title', 'url_canonical'));
     }
 
     public function changeLanguage ($language)
@@ -110,14 +124,18 @@ class HomeController extends Controller
         return redirect()->back();
     }
 
-    public function aboutUs()
+    public function aboutUs (Request $request)
     {
         $admins = User::where('jurisdiction', '>' , Config::get('auth.administrators'))->get();
+        $meta_desc = "Chuyên sản phẩm, phụ kiện chính hãng";
+        $meta_keywords = "Sản phẩm, phụ kiện điện tử";
+        $meta_title ="ThucLinh.shop";
+        $url_canonical = $request->url();
 
-        return view('frontend/pages.aboutUs', compact('admins'));
+        return view('frontend/pages.aboutUs', compact('admins', 'meta_desc', 'meta_keywords', 'meta_title', 'url_canonical'));
     }
 
-    public function sendEmail(Request $request)
+    public function sendEmail (Request $request)
     {
         $name = $request->name;
         $subject = $request->subject;
@@ -131,14 +149,19 @@ class HomeController extends Controller
         return redirect()->route('message')->with(['successSendEMail' => '']);
     }
 
-    public function getProfile()
+    public function getProfile ()
     {
+
         if (Auth::check()) {
             $user = USer::find(Auth::id());
 
             return view('frontend.pages.profile', compact('user'));
         }
-
         return redirect()->route('message');
+
+
+
+        return view('frontend.pages.profile', compact('user'));
+
     }
 }

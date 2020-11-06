@@ -18,3 +18,7 @@
     <script src="assets/vendor/aos/aos.js"></script>
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
+
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v8.0" nonce="xnxwtYNs"></script>
+
