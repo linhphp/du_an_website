@@ -147,4 +147,13 @@ class HomeController extends Controller
 
         return redirect()->route('message');
     }
+
+    public function search(Request $request)
+    {
+        $key = $request->key;
+        $products = Product::where('name', 'like', '%'.$key.'%')
+            ->orWhere('price', 'like', $key)
+            ->paginate(Config::get('paginate.eshop'));
+        return view('frontend.pages.search', compact('products', 'key'));
+    }
 }

@@ -96,6 +96,7 @@ Route::group(['middleware' => 'locale'], function ()
             Route::post('user/update', [UserController::class, 'update'])
                 ->name('user.update');
         });
+        Route::get('product/search', [HomeController::class, 'search'])->name('search');
         Route::prefix('checkout')->group( function ()
         {
             Route::post('cart/{id}', [CartController::class, 'cartAdd'])
