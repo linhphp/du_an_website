@@ -31,6 +31,7 @@ class BillController extends Controller
 
     public function show ($id)
     {
+
     	$bill = Bill::joinCustomer()
     	    ->where('bills.id', $id)->first();
     	if ($bill) {
