@@ -18,28 +18,37 @@ class BrandsTableSeeder extends Seeder
         DB::table('brands')->insert(
             [
                 [
-                    'name' => 'samsung',
-                    'status' => 2
+                    'name' => 'Samsung',
+                    'image' => 'Samsung42-b_25.jpg'
                 ],
                 [
-                    'name' => 'apple',
-                    'status' => 1
+                    'name' => 'Iphone',
+                    'image' => 'iPhone-(Apple)42-b_52.jpg'
                 ],
                 [
-                    'name' => 'lenovo',
-                    'status' => 2
+                    'name' => 'Ipad',
+                    'image' => 'iPad-(Apple)522-b_28.jpg'
+                ],
+                
+                [
+                    'name' => 'Lenovo',
+                    'image' => 'Lenovo522-b_29.jpg'
                 ],
                 [
-                    'name' => 'dell',
-                    'status' => 1
+                    'name' => 'Dell',
+                    'image' => 'Dell44-b_2.jpg'
                 ],
                 [
-                    'name' => 'asus',
-                    'status' => 2
+                    'name' => 'Asus',
+                    'image' => 'asus.png'
                 ],
                 [
-                    'name' => 'vinsmart',
-                    'status' => 1
+                    'name' => 'Vsmart',
+                    'image' => 'Vsmart42-b_40.png'
+                ],
+                [
+                    'name' => 'Oppo',
+                    'image' => 'OPPO42-b_27.png'
                 ]
             ]
         );

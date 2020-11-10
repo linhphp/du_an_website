@@ -72,7 +72,7 @@ Route::group(['middleware' => 'locale'], function ()
     {
         Route::get('/', [HomeController::class, 'index'])
             ->name('home');
-        Route::get('products/{id}', [HomeController::class, 'show'])
+        Route::get('product/{id}', [HomeController::class, 'show'])
             ->name('product.detail');
         Route::get('eshop', [HomeController::class, 'eshop'])
             ->name('eshop');

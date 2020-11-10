@@ -3,8 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-
+use App\Models\Category;
 class CategoriesTableSeeder extends Seeder
 {
     /**
@@ -15,25 +14,22 @@ class CategoriesTableSeeder extends Seeder
     public function run()
     {
         //
-        DB::table('categories')->insert(
+        Category::upsert(
             [
                 [
-                    'name' => 'Điện thoại',
-                    'status' => 2
-                ],
-                [
                     'name' => 'Laptop',
-                    'status' => 1
+                    'image' => 'laptop.png'
                 ],
                 [
                     'name' => 'Tablet',
-                    'status' => 2
+                    'image' => 'tablet.png'
                 ],
                 [
-                    'name' => 'Sạc điện thoại',
-                    'status' => 1
+                    'name' => 'Mobile',
+                    'image' => 'mobile.png'
                 ]
-            ]
-        );
+            ],
+            ['name', 'image']
+    );
     }
 }
