@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Brand;
 use App\Models\Category;
-use App\Models\Emage;
+use App\Models\Image;
 use Config;
 
 class ProductController extends Controller
@@ -49,10 +49,10 @@ class ProductController extends Controller
         {
             $fileNameImage = $img->getClientOriginalName($img);
             $img->move('storage/image', $fileNameImage);
-            Emage::create(
+            Image::create(
                 [
                     'product_id' => $product->id,
-                    'emagery' => $fileNameImage
+                    'image' => $fileNameImage
                 ]
             );
         }

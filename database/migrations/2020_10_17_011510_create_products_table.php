@@ -19,8 +19,8 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('category_id');
             $table->string('name');
             $table->text('desc');
-            $table->text('content');
-            $table->string('image');
+            $table->string('image1');
+            $table->string('image2');
             $table->float('price', 30, 2);
             $table->integer('discount');
             $table->string('accessories');

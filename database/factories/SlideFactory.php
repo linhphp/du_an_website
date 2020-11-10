@@ -22,13 +22,13 @@ class SlideFactory extends Factory
      */
     public function definition()
     {
-        $product = Product::inRandomOrder()->first();
+        // $product = Product::inRandomOrder()->first();
 
         return [
             'sub_title' => $this->faker->name,
             'title' => $this->faker->name,
             'desc' => $this->faker->text($maxNbChars = 150),
-            'link' => $product->id,
+            'link' => 1,
             'image' => $this->faker->imageUrl($width = 1920, $height = 800),
         ];
     }
