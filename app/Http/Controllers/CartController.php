@@ -27,10 +27,6 @@ class CartController extends Controller
     public function cartAdd (Request $request, $id)
     {
         $product = Product::find($id);
-        $meta_desc = "Chuyên sản phẩm, phụ kiện chính hãng";
-        $meta_keywords = "Sản phẩm, phụ kiện điện tử";
-        $meta_title ="ThucLinh.shop";
-        $url_canonical = $request->url();
         if($product) {
 
             $cart = Cart::where([['user_id', Auth::id()], ['status', 1]])->first();
@@ -91,11 +87,10 @@ class CartController extends Controller
         $cart = Cart::where([['user_id', Auth::id()], ['status',1]])->first();
         if ($cart) {
             $cartDetails = $this->getCartDetail($cart->id);
-            return view('frontend.pages.cart', compact('meta_desc', 'meta_keywords', 'meta_title', 'url_canonical', 'cartDetails', 'cart'));
+            return view('frontend.pages.cart', compact('cartDetails', 'cart', 'meta_desc', 'meta_keywords', 'meta_title', 'url_canonical'));
         }
         return redirect()->back();
     }
-
     public function cartRemote ($id)
     {
     	$cartDetail = CartDetail::find($id);
@@ -135,12 +130,8 @@ class CartController extends Controller
         $cartDetail->save();
     }
 
-    public function getFormCheckout (Request $request, $id)
+    public function getFormCheckout ($id)
     {
-        $meta_desc = "Chuyên sản phẩm, phụ kiện chính hãng";
-        $meta_keywords = "Sản phẩm, phụ kiện điện tử";
-        $meta_title ="ThucLinh.shop";
-        $url_canonical = $request->url();
         $customer = Customer::where('user_id', Auth::id())
             ->orderBy('created_at', 'desc')
             ->limit(1)->first();
@@ -149,9 +140,9 @@ class CartController extends Controller
         if ($cart) {
             $cartDetails = $this->getCartDetail($cart->id);
 
-            return view('frontend.pages.checkout',compact('meta_desc', 'meta_keywords', 'meta_title', 'url_canonical', 'cart', 'cartDetails', 'provinces', 'customer'));
+            return view('frontend.pages.checkout',compact('cart', 'cartDetails', 'provinces', 'customer'));
         }
-        return redirect()->route('message', compact('meta_desc', 'meta_keywords', 'meta_title', 'url_canonical'));
+        return redirect()->route('message');
     }
 
     public function getAddress($provinceCode, $districtCode, $wardCode, $house)
