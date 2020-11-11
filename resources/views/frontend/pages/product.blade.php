@@ -85,5 +85,4 @@
     </div>
     <div class="lg-margin2x"></div>
 </section>
-
 @endsection

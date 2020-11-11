@@ -15,7 +15,6 @@
 
     <link rel="stylesheet" href="frontend/css/animate.css">
     <link rel="stylesheet" href="frontend/css/prettyPhoto.css">
-
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js
 "></script>
 <script type="text/javascript" src="frontend/angular/app.js"></script>
