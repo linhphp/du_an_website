@@ -12,24 +12,15 @@ class Comment extends Model
     protected $table = 'comments';
 
     protected $fillable = [
-        'user_id',
+        'user_name',
         'product_id',
         'parent_id',
         'content',
     ];
 
-    public function user ()
-    {
-    	return $this->belongsTo(User::class, 'user_id', 'id');
-    }
 
     public function product ()
     {
     	return $this->belongsTo(Product::class, 'product_id', 'id');
-    }
-
-    public function childen ()
-    {
-    	return $this->hasMany(Comment::class, 'parent_id', 'id');
     }
 }

@@ -44,7 +44,7 @@ class UserController extends Controller
 
     public function signIn (Request $request)
     {
-        $result = array('jurisdiction' => null, 'email' => $request->email, 'password' => $request->password);
+        $result = array('email' => $request->email, 'password' => $request->password);
         if (Auth::attempt($result)) {
             return redirect()->route('home');
         }
@@ -54,7 +54,7 @@ class UserController extends Controller
 
     public function signUp (Request $request)
     {
-        User::create(
+        $user = User::create(
             [
                'name' => $request->name,
                'email' => $request->email,
@@ -62,7 +62,13 @@ class UserController extends Controller
             ]
         );
 
-        return redirect()->route('signIn')->with(['signUp' => '']);
+        $result = array('email' => $request->email, 'password' => $request->password);
+        if (Auth::attempt($result)) {
+
+            return redirect()->route('home');
+        }
+
+        return redirect()->back();
     }
 
     public function signOut ()

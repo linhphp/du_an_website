@@ -4,23 +4,38 @@
             <div class="left-side">
                 <ul class="header-links">
                     <li>
-                        <a href="checkout.html">
-                            <span class="header-links-icon icon-checkout"></span><span>@lang('language.check_out') </span>
-                        </a>
-                    </li>
-                    <li>
                         <a href="#"><span class="header-links-icon icon-wishlist"></span><span>My Wishlist</span>
                         </a>
                     </li>
+                    @if(Auth::check())
                     <li>
-                        <a href="#">
-                            <span class="header-links-icon icon-account"></span><span>@lang('language.sign_up') </span>
+                        <a href="">
+                            <span class="header-links-icon icon-account"></span>
+                            <span> @lang('language.welcome') {{ Auth::user()->name }}</span>
                         </a>
                     </li>
                     <li>
-                        <a href="login.html"><span class="header-links-icon icon-login"></span><span>@lang('language.sign_in') </span>
+                        <a href="{{ route('signOut.get') }}">
+                        <span class="header-links-icon icon-login"></span>
+                        <span> @lang('language.sign_out')</span>
+                    </a>
+                    </li>
+
+                    @else
+                    <li>
+                        <a href="{{ route('signUp') }}">
+                            <span class="header-links-icon icon-login"></span>
+                            <span>@lang('language.sign_up') </span>
                         </a>
                     </li>
+                    <li>
+                    <a href="{{ route('signIn') }}">
+                        <span class="header-links-icon icon-login"></span>
+                        <span>@lang('language.sign_in') </span>
+                    </a>
+                    </li>
+                    @endif
+
                 </ul>
                 <div class="user-dropdown dropdown visible-sm visible-xs">
                     <a title="My Account" class="dropdown-toggle" data-toggle="dropdown">
@@ -64,44 +79,50 @@
                     <a title="Shopping Cart" class="dropdown-toggle" data-toggle="dropdown">
                         <span class="dropdown-icon"></span>
                         <span class="badge">2</span>
-                        <span class="hidden-sm hidden-xs">2 item(s)</span>
+                        <span class="hidden-sm hidden-xs">{{ $totalQty }} item(s)</span>
                     </a>
                     <div class="dropdown-menu">
                         <div class="cart-dropdown-header">
-                            <span class="dropdown-icon"></span>2 item(s) - $665.00
+                            <span class="dropdown-icon"></span>{{ count($cartDetails) }} item(s) - {{ number_format($totalPrice) }} VNĐ
                         </div>
-                        <p class="cart-desc">2 item(s) in your cart - $658.00</p>
+                        <p class="cart-desc">{{ count($cartDetails) }} in your cart</p>
+                        @if($totalQty)
+
+                        @foreach($cartDetails as $cartDetail)
                         <div class="product clearfix">
-                            <a href="#" class="delete-btn" title="Delete Product"></a>
                             <figure class="product-image-container">
                                 <a href="product.html" title="Navy Blue Silk Pleated Shift Dress">
-                                    <img src="frontend/images/products/product2.jpg" alt="Product image" class="product-image">
+                                    <img src="storage/image/{{ $cartDetail->image1 }}" alt="Product image" class="product-image">
                                 </a>
                             </figure>
                             <div class="product-content">
                                 <h3 class="product-name">
-                                    <a href="product.html" title="Navy Blue Silk Pleated Shift Dress">Navy Blue Silk Pleated Shift Dress</a>
+                                    <a href="product.html" title="Navy Blue Silk Pleated Shift Dress">{{ $cartDetail->name }}</a>
                                 </h3>
                                 <div class="product-price-container">
                                     <span class="product-old-price">$250.00</span> <span class="product-price">$180.00</span>
                                 </div>
                             </div>
                         </div>
+                        @endforeach
+
                         <div class="clearfix">
                             <ul class="pull-left action-info-container">
-                                <li>Shipping: <span class="first-color">$7.00</span></li>
+                                <li>Shipping: <span class="first-color">free</span></li>
                                 <li>Tax: <span class="text-lowercase">free</span></li>
-                                <li>Total: <span class="first-color">$665.00</span></li>
+                                <li>Total: <span class="first-color">{{ number_format($totalPrice) }} VNĐ</span></li>
                             </ul>
                             <ul class="pull-right action-btn-container">
                                 <li>
-                                    <a href="cart.html" class="btn btn-custom-5">Cart</a>
+                                    <a href="{{ route('cart.show') }}" class="btn btn-custom-5">@lang('language.cart') </a>
                                 </li>
                                 <li>
-                                    <a href="cart.html" class="btn btn-custom">Checkout</a>
+                                    <a href="{{ route('checkout.get', $cart->id) }}" class="btn btn-custom">@lang('language.check_out') </a>
                                 </li>
                             </ul>
                         </div>
+                        @endif
+
                     </div>
                 </div>
                 <div class="language-dropdown dropdown">
@@ -135,7 +156,7 @@
         <div class="row">
             <div class="col-md-5">
                 <ul class="menu left-menu clearfix">
-                    <li><a href="index-2.html">@lang('language.home') </a>
+                    <li><a href="{{ route('home') }}">@lang('language.home') </a>
                     </li>
                     <li><a href="category.html">@lang('language.shopping') </a>
                     <li><a href="category.html">@lang('language.news') </a>
