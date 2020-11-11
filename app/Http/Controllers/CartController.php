@@ -34,9 +34,14 @@ class CartController extends Controller
                 $cartDetail = CartDetail::where([['cart_id', $cart->id], ['product_id', $product->id]])
                     ->first();
                 if ($cartDetail) {
-                    $cartDetail->qty++;
+                    if ($cartDetail->destroy !=null) {
+                        $cartDetail->qty = 1;
+                        $cartDetail->destroy = null;
+                    }
+                    else {
+                        $cartDetail->qty++;
+                    }
                     $cartDetail->save();
-                    echo 'luu 1';
                 }
                 else {
                     $cartDetail = new CartDetail;
@@ -85,7 +90,7 @@ class CartController extends Controller
             $cartDetails = $this->getCartDetail($cart->id);
             return view('frontend.pages.checkout.cart', compact('cartDetails', 'cart'));
         }
-        return redirect()->back();
+        return redirect()->route('home');
     }
 
     public function cartRemove ($id)

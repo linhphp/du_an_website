@@ -38,31 +38,42 @@
                             $i +=100;
                         @endphp
                     <li class="col-xs-12 col-sm-4 portfolio-item animate-item {{ $product->category_name }}" data-animate-time="{{ $i }}">
-                        @if($product->price * $product->discount !=0)
-                        <span class="discount-box top-left bg-danger">-{{ $product->discount }}%</span>
-                        @endif
-                        <figure><img src="storage/image/{{ $product->image1 }}" alt="item 1">
-                            <figcaption class="portfolio-overlay">
-                                <a href="#" title="Like" class="like-btn btn btn-danger" role="button"></a>
-                            </figcaption>
-                        </figure>
-                        <div class="portfolio-meta">
-                            <h2><a href="{{ route('product.detail', $product->id) }}" title="@lang('language.detail') ">{{ $product->name }}</a></h2>
-                            <p class="portfolio-tags">
+                        <form action="{{ route('cart.add', $product->id) }}" method="post">
+                        @csrf
+                        <div class="product product2">
+                            <div class="product-top">
+                                @if($product->price * $product->discount !=0)
+                                <span class="discount-box top-left bg-danger">-{{ $product->discount }}%</span>
+                                @endif
+                                <figure class="product-image-container">
+                                    <a href="{{ route('product.detail', $product->id) }}" title="White linen sheer dress"><img src="storage/image/{{ $product->image1 }}" alt="Product image" class="product-image"> <img src="storage/image/{{ $product->image2 }}" alt="Product image hover" class="product-image-hover"></a>
+                                </figure>
+                            </div>
+                            <input type="hidden" value="1" name="qty">
+                            <div class="product-price-container text-left">
                                 @if($product->price * $product->discount == 0)
                                 <span class="product-price">
                                     {{ number_format($product->price) }} VNĐ
                                 </span>
                                 @else
-                                <strike class="product-price" style="color:gray;">
+                                <span class="product-old-price">
                                     {{ number_format($product->price) }} VNĐ
-                                </strike>
+                                </span>
                                 <span class="product-price">
                                     {{ number_format($product->price - (($product->price * $product->discount)/100)) }} VNĐ
                                 </span>
                                 @endif
-                            </p>
+                            </div>
+                            <h3 class="product-name text-left"><a href="{{ route('product.detail', $product->id) }}" title="White linen sheer dress">{{ $product->name }}</a></h3>
+                            <div class="product-action-container clearfix">
+                                <button type="submit" title="Add to Cart" class="product-add-btn"><span class="add-btn-text">@lang('language.add_to_cart') </span> <span class="product-btn product-cart">Cart</span>
+                                </button>
+                                <div class="product-action-inner">
+                                    <a href="#" title="Favorite" class="product-btn product-favorite">Favorite</a>
+                                </div>
+                            </div>
                         </div>
+                    </form>
                     </li>
                     @endforeach
                 </ul>

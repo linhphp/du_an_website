@@ -84,9 +84,9 @@ class HomeController extends Controller
     {
         $brand = Brand::find($id);
         if ($brand) {
-            $products = $brand->products->toArray();
+            $products = Product::where('brand_id', $brand->id)->get();
 
-            return view('frontend.pages.brand_eshop', compact('products', 'brand'));
+            return view('frontend.pages.brandProduct', compact('products', 'brand'));
         }
 
         return redirect()->route('message');

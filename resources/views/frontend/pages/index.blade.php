@@ -190,7 +190,7 @@
                 <div class="owl-carousel brands-carousel">
                     @foreach($brands as $brand)
                     <div class="brand">
-                        <a href="#"><img width="200" height="200" src="storage/image/{{$brand->image}}" alt="Brand name"></a>
+                        <a href="{{ route('eshop.brand', $brand->id) }}"><img width="200" height="200" src="storage/image/{{$brand->image}}" alt="Brand name"></a>
                     </div>
                     @endforeach
                 </div>

@@ -67,7 +67,7 @@
                             </td>
                             <td class="product-total-col"><span class="product-price-special">{{ number_format($cartDetail->price * $cartDetail->qty) }}</span></td>
                             <td>
-                                <a ng-click="remove()" class="close-button"></a>
+                                <a ng-click="remove({{ $cartDetail->id }})" class="close-button"></a>
                             </td>
                         </tr>
                         @endforeach
@@ -93,7 +93,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="md-margin"></div><a href="#" class="btn btn-custom-5 btn-lger min-width-lg">Continue Shopping</a></div>
+                        <div class="md-margin"></div>
+                        <a href="{{ route('eshop') }}" class="btn btn-custom-5 btn-lger min-width-lg">Continue Shopping</a>
+                    </div>
                     <div class="md-margin visible-sm visible-xs clearfix"></div>
                     <div class="col-md-4">
                         <table class="table total-table">
@@ -119,7 +121,7 @@
                             </tfoot>
                         </table>
                         <div class="md-margin"></div>
-                        <div class="text-right"><a href="{{ route('checkout.get', $cart->id) }}" class="btn btn-custom-6 btn-lger min-width-sm">Checkout</a></div>
+                        <div class="text-right"><a href="{{ route('checkout.get', $cart->id) }}" class="btn btn-custom-6 btn-lger min-width-sm">@lang('language.check_out') </a></div>
                     </div>
                 </div>
             </div>
@@ -128,12 +130,11 @@
     <div class="lg-margin2x"></div>
 </section>
 <script type="text/javascript" >
-    var cart_id = "{{ $cartDetail->id }}";
     app.controller('CartController', function($scope,$http){
-        $scope.remove = function() {
+        $scope.remove = function(id) {
             $http({
                     method: 'POST',
-                    url: 'index/checkout/cart/'+cart_id+'/remove',
+                    url: 'index/checkout/cart/'+id+'/remove',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                 }).success(function(reponsse) {
                     console.log(reponsse);
