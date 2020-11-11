@@ -100,7 +100,24 @@
                                     <a href="product.html" title="Navy Blue Silk Pleated Shift Dress">{{ $cartDetail->name }}</a>
                                 </h3>
                                 <div class="product-price-container">
-                                    <span class="product-old-price">$250.00</span> <span class="product-price">$180.00</span>
+                                    @if($cartDetail->price * $cartDetail->discount == 0)
+                                    <p>
+                                        <span class="product-price">
+                                            {{ number_format($cartDetail->price) }} VNĐ
+                                        </span>
+                                    </p>
+                                    @else
+                                    <p>
+                                        <span class="product-old-price">
+                                            {{ number_format($cartDetail->price) }} VNĐ
+                                        </span>
+                                    </p>
+                                    <p>
+                                        <span class="product-price">
+                                            {{ number_format($cartDetail->price - (($cartDetail->price * $cartDetail->discount)/100)) }} VNĐ
+                                        </span>
+                                    </p>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -158,13 +175,13 @@
                 <ul class="menu left-menu clearfix">
                     <li><a href="{{ route('home') }}">@lang('language.home') </a>
                     </li>
-                    <li><a href="category.html">@lang('language.shopping') </a>
+                    <li><a href="{{ route('eshop') }}">@lang('language.shopping') </a>
                     <li><a href="category.html">@lang('language.news') </a>
                     </li>
                 </ul>
             </div>
             <div class="col-md-2 logo-container">
-                <h1 class="logo clearfix"><a href="index-2.html" title="Granada - Premium Bootstrap eCommerce Template">Eshop</a></h1>
+                <h1 class="logo clearfix"><a href="{{ route('home') }}" title="Granada - Premium Bootstrap eCommerce Template">Eshop</a></h1>
             </div>
             <div class="col-md-5 clearfix">
                 <nav>

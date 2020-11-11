@@ -52,7 +52,7 @@ class AppServiceProvider extends ServiceProvider
                     $totalPrice += $cartD->price * $cartD->qty;
                 }
             }
-            $view->with(['cates' => $cates, 'brands' =>$brands, 'totalQty' => $totalQty, 'totalPrice' => $totalPrice, 'cartDetails' => $cartDetails]);
+            $view->with(['cates' => $cates, 'brands' =>$brands, 'totalQty' => $totalQty, 'totalPrice' => $totalPrice, 'cartDetails' => $cartDetails, 'cart' => $cart]);
         });
     }
 }

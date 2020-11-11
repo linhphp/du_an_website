@@ -71,9 +71,13 @@ class HomeController extends Controller
 
     public function eshop (Request $request)
     {
-        $products = Product::orderDesc()->paginate(Config::get('paginate.eshop'));
+        $categories =Category::all()->pluck('name', 'id');
+        $products = Product::join('categories', 'categories.id', 'products.category_id')
+            ->select('products.*', 'categories.name as category_name')
+            ->orderDesc()
+            ->paginate(Config::get('paginate.eshop'));
 
-        return view('frontend.pages.eshop', compact('products'));
+        return view('frontend.pages.product', compact('products', 'categories'));
     }
 
     public function eshopBrand ($id)
