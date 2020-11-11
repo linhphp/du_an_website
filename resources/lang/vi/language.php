@@ -122,4 +122,10 @@ return [
     'basic_info' => 'Thông tin cơ bản',
     'edit' => 'Chỉnh sửa',
     'change_password' => 'Thay đổi mật khẩu',
+    'about_us' => 'Về chúng tôi',
+    'search' => 'Tìm kiếm',
+    'free_delivery' => 'Miễn phí vận chuyển',
+    'customer_service' => 'hỗ trợ 24/h',
+    'payment_secured' => 'Bảo mật thanh toán',
+    'our_brands' => 'Thương hiệu của chúng tôi',
 ];

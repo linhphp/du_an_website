@@ -10,6 +10,7 @@ class AddNewsTable extends Migration
     public function up()
     {
         Schema::table('news', function (Blueprint $table) {
+            $table->string('date');
             $table->softDeletes();
         });
     }
@@ -17,6 +18,7 @@ class AddNewsTable extends Migration
     public function down()
     {
         Schema::table('news', function (Blueprint $table) {
+            $table->dropColumn('date');
             $table->softDeletes();
         });
     }

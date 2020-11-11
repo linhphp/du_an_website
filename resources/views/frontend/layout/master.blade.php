@@ -1,28 +1,19 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html>
 
 @include('frontend/layout/head')
 
 <body>
-    <div class="offcanvas-menu-overlay"></div>
-    @include('frontend/layout/menu')
-    @include('frontend/layout/header')
-
+    <div id="wrapper">
+        <div id="sticky-header" class="fullwidth-menu header2" data-fixed="fixed"></div>
+        @include('frontend/layout/header')
+        
         @section('content')
         @show
-   
-   @include('frontend/layout/footer')
 
-    <div class="search-model">
-        <div class="h-100 d-flex align-items-center justify-content-center">
-            <div class="search-close-switch">+</div>
-            <form class="search-model-form" action="{{ route('search') }}" method="get">
-                <input type="text" id="search-input" name="key" placeholder="Search here.....">
-            </form>
-        </div>
-    </div>
-
-    @include('frontend/layout/js')
+        @include('frontend/layout/footer')
+    </div><a href="#header" id="scroll-top" title="Go to top">Top</a>
+@include('frontend.layout.js')
 </body>
 
 </html>

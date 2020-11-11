@@ -1,47 +1,19 @@
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{{$meta_desc}}">
-    <meta name="keywords" content="{{$meta_keywords}}"/>
-    <meta name="robots" content="INDEX,FOLLOW"/>
-    <link  rel="canonical" href="http://127.0.0.1:8000/index" />
-    <meta name="author" content="">
-    {{-- <link  rel="icon" type="image/x-icon" href="" /> --}}
-
-    <meta property="og:description" content="{{$meta_desc}}" />
-    <meta property="og:title" content="{{$meta_title}}" />
-    <meta property="og:url" content="{{$url_canonical}}" />
-    <meta property="og:type" content="website" />
-    <title>@yield('title')</title>
-    <base href="{{asset('frontend/')}}">
-
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
-    rel="stylesheet">
-
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="frontend/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="frontend/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="frontend/css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="frontend/css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="frontend/css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="frontend/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="frontend/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="frontend/css/style.css" type="text/css">
-    <link rel="stylesheet" href="frontend/css/modal.css" type="text/css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-    <link rel="icon" href="storage/logo/logo.png" type="image/x-icon" />
-
-      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/css/style.css" rel="stylesheet">
-
-
+    <meta charset="utf-8">
+    <title>@yield('title') </title>
+    <meta name="description" content="Granada is premium, bootstrap based and responsive ecommerce template">
+    <base href="{{asset('')}}">
+    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="frontend/css/bootstrap.min.css">
+    <link rel="stylesheet" href="frontend/css/revslider2.css">
+    <link rel="stylesheet" href="frontend/css/style.css">
+    <link rel="stylesheet" href="frontend/css/responsive.css">
+    <link rel="icon" type="image/png" href="images/icons/icon.html">
+    <link rel="apple-touch-icon" sizes="57x57" href="frontend/images/icons/apple-icon-57x57.html">
+    <link rel="apple-touch-icon" sizes="72x72" href="frontend/images/icons/apple-icon-72x72.html">
+    <script src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        window.jQuery || document.write('<script src="frontend/js/jquery-2.1.1.min.js"><\/script>');
+    </script>
 </head>
