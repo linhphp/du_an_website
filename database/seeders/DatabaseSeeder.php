@@ -16,14 +16,15 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory(10)->create();
         \App\Models\NewsCategory::factory(10)->create();
         \App\Models\KindOfNews::factory(20)->create();
-        \App\Models\News::factory(50)->create();
+        // \App\Models\News::factory(50)->create();
 
          $this->call([
 	        BrandsTableSeeder::class,
             UsersTableSeeder::class,
 	        CategoriesTableSeeder::class,
 	        ProductsTableSeeder::class,
-	        EmageTableSeeder::class,
+	        ImageTableSeeder::class,
+            NewsTableSeeder::class,
             CommentsTableSeeder::class,
             StatusTableSeeder::class,
             ProvincesTableSeeder::class,

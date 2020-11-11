@@ -2,8 +2,8 @@
 
 return [
     'pro' => 5,
-    'product' => 9,
+    'product' => 6,
     'eshop' => 12,
-    'news' => 3,
+    'news' => 4,
     'slide' => 2,
 ];

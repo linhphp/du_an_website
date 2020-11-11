@@ -15,65 +15,114 @@ class NewsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
         DB::table('news')->insert(
             [
                 [
                     'kind_of_news_id' => 2,
-                    'new_categories_id' => 4,
-                    'title' => 'Rap Việt tập 15',
-                    'slug' => Str::slug('Rap Việt tập 15', '-'),
-                    'description' => 'Team karit vào chung kết',
-                    'content' => 'Trước quyết định này của JustaTee, Suboi đã gửi lời cảm ơn chân thành vì đã chọn TLinh – nữ thí sinh mà Suboi đánh giá chính là tương lai của thế hệ rap Việt Nam. JustaTee cho biết thêm: “Nếu không cứu bạn ấy bây giờ thì sẽ rất khó, vì có thể sẽ còn rất lâu mới có thể tìm được một bạn có tài năng, tố chất như TLinh. Người con gái ấy đại diện cho "Rap Việt" và chứng tỏ được phụ nữ vẫn luôn là số 1” .
+                    'new_categories_id' => 3,
+                    'title' => 'rò rỉ Nokia 10 PureView',
+                    'slug' => 'ro-ri-nokia-10-pureview',
+                    'description' => 'Tổng hợp rò rỉ Nokia 10 PureView: Chiếc flagship mới từ hãng Nokia huyền thoại với nhiều điểm mạnh vô cùng hấp dẫn',
+                    'content' => 'Nokia 10 PureView là một trong những sản phẩm mà người dùng đang kỳ vọng nhất ở HMD Global. Chiếc flagship mới mang thương hiệu huyền thoại Nokia hứa hẹn sẽ đem đến rất nhiều cải tiến đáng giá và khẳng định sự khác biệt của mình trong một thị trường smartphone Android đang dẫn bão hòa. Vậy những thay đổi đó là gì? Liệu nó có thể giúp vực dậy thương hiệu Nokia? Chúng ta hãy cùng điểm qua những rò rỉ Nokia 10 PureView trong bài viết này nhé.
 
-                        Về phần Rhymastic, anh đã quyết định trao nón vàng của mình cho Lăng LD – đội Wowy. Anh chia sẻ: “Với chiếc mũ này, anh muốn dùng nó thật hữu ích và anh sẽ dùng nó cho người duy nhất làm anh rơi nước mắt trong chương trình này”.
-                        
-                        Sau 4 tập đầy kịch tính của vòng Bứt phá, 8 gương mặt sẽ xuất hiện trong chung kết "Rap Việt" 2020 chính thức được gọi tên là: GDucky, Ricky Star, RPT MCK của đội Karik; Thành Draw, RPT Gonzo thuộc đội Binz; đội Wowy với Lăng LD, Dế Choắt và cuối cùng chính là TLinh đội Suboi.
-                        
-                        Tập 15 - tập đầu tiên của vòng Chung kết "Rap Việt" sẽ lên sóng lúc 20h Thứ 7 – 7.11 trên kênh truyền hình HTV2.',
-                    'post_image' => 'Rap-Viet-1.jpg'
+Nokia 10 PureView mang một thiết kế mới mẻ và quan trọng là rất chắc chắn
+Theo NokiaPowerUser, Nokia 10 PureView sẽ có thiết kế màn hình không khiếm khuyết, đồng nghĩa với việc không có nốt ruồi, tai thỏ, hay giọt nước phiền toái, đem lại cho người dùng một trải nghiệm màn hình đầy đủ. Phần viền màn hình được làm mỏng đúng như kỳ vọng ở một chiếc flagship ở thời điểm hiện tại. Phần khung máy được làm theo hướng vuông vức, giúp chiếc điện thoại mang vẻ ngoài nam tính và mạnh mẽ hơn.
+
+Nokia 10 PureView
+Nokia 10 PureView. Nguồn: Kultejas
+Thật sự phần thiết kế đã có sự đột phá, nhưng ta cũng cần phải xét đến khía cạnh độ bền của máy. Phần khung máy sẽ được làm bằng thép không gỉ và màn hình sẽ được làm bằng lớp kính Sapphire, đem lại độ bền cũng như khả năng chống xước rất cao.
+
+Nokia 10 PureView
+Màn hình Nokia 10 PureView. Nguồn: Concept Creator
+Cấu hình Nokia 10 PureView sẽ có gì?
+Lại nhắc về màn hình, ta sẽ có một chiếc màn hình PureDisplay V4 với kích thước 6.4 inch, pOLED, tần số quét 120 Hz, độ phân giải 2K HD, có tích hợp mở khóa vân tay dưới màn hình. Tỉ lệ màn hình khả năng cao sẽ đi theo xu hướng 20:9 của hai mẫu smartphone Nokia mới nhất đến thời điểm hiện tại là Nokia 2.4 và Nokia 8.3 5G. Tỉ lệ màn hình này sẽ khiến chiếc điện thoại dài hơn nhưng vẫn dễ dàng cầm nắm. Đồng thời 20:9 là một tỉ lệ lý tưởng để bạn cày ải Netflix đấy. Kết hợp với lớp kính Sapphire bảo vệ, Nokia 10 PureView sẽ sở hữu một màn hình toàn diện, vừa đẹp lại vừa bền nữa.
+
+Nokia 10 PureView
+Nokia 10 PureView. Nguồn: Concept Creator
+Nokia 10 PureView sở hữu bộ camera đa ống kính với ống kính đến từ Zeiss, có khả năng quay video lên đến 8K 30 fps. Rất tiếc là chúng ta vẫn chưa có thông tin chi tiết về các ống kính, nhưng khả năng cao bộ camera sẽ chứa đến 6 ống kính, nhiều hơn 1 ống kính so với tiền nhiệm là Nokia 9 PureView. Ở mặt trước, camera selfie 48 MP sẽ được làm ẩn dưới màn hình và điện thoại sẽ dùng màn hình làm đèn flash mặt trước.
+
+Camera
+Cụm camera của Nokia 10 PureView. Nguồn: Concept Creator
+Nokia 10 PureView sẽ được trang bị con chip mạnh mẽ nhất từ Qualcomm là Snapdragon 875. Hiệu năng mà con chip này đem lại vẫn được xem là dẫn đầu các CPU điện thoại hiện nay. Về bộ nhớ, chúng ta sẽ có ba tùy chọn RAM là 6 GB, 8 GB và 12 GB. Bộ nhớ sẽ có 2 tùy chọn dung lượng là 128 GB và 256 GB. 
+
+Nokia 10 PureView sẽ sở hữu viên pin khá lớn có dung lượng 5.000 mAh, ngoài ra còn có hỗ trợ sạc không dây chuẩn Qi Wireless.
+
+Giá bán và ngày ra mắt của Nokia 10 PureView
+Theo thông tin rò rỉ đến hiện tại, Nokia 10 PureView sẽ được ra mắt vào nửa sau của năm 2021, khá trễ so với thế hệ tiền nhiệm bởi Nokia 9 PureView được ra mắt vào ngày 25 tháng 2 năm 2019. Điều này có nghĩa là Nokia 10 PureView sẽ ra mắt sau thế hệ tiền nhiệm gần 2 năm rưỡi. Ngoài ra, theo Twitter chính thức của Nokia, hãng sẽ tổ chức một sự kiện ra mắt đặc biệt vào ngày 09 tháng 11. Liệu đây có phải là ngày ra mắt của Nokia 10? Chúng ta sẽ sớm biết thôi.
+
+Giá bán dự kiến của Nokia 10 PureView là 799 USD (tương đương 18.5 triệu đồng) cho phiên bản 8 GB RAM.
+
+Kết luận
+Bên trên là tổng hợp những rò rỉ về chiếc điện thoại Nokia 10 PureView cho đến thời điểm hiện tại. Những cải tiến mà HMD Global đang nỗ lực đem lại cho chiếc flagship thương hiệu Nokia tiếp theo là rất đáng khen ngợi. Bạn có cảm nghĩ gì về Nokia 10 PureView? Hãy để lại ý kiến bên dưới phần bình luận nhé. ',
+                    'post_image' => 'untitled_800x450_800x450.png',
+                    'date' => date('M-D-Y')
                 ],
                 [
-                    'kind_of_news_id' => 4,
-                    'new_categories_id' => 1,
-                    'title' => 'Game liên minh huyền thoại',
-                    'slug' => Str::slug('Game liên minh huyền thoại', '-'),
-                    'description' => 'SwordArt và SofM bật khóc, cả đội Suning như mất hồn sau thất bại Chung kết CKTG 2020',
-                    'content' => 'Giải CKTG 2020 đã chính thức khép lại với ngôi vô địch thuộc về DAMWON Gaming. Nhưng bên cạnh niềm hân hoan của người chiến thắng cũng là nỗi buồn của những bại tướng. Sau khi trận Chung kết khép lại, toàn đội Suning gần như đã không thể kìm nén được cảm xúc buồn bã, thất vọng.
+                    'kind_of_news_id' => 5,
+                    'new_categories_id' => 8,
+                    'title' => 'Sony Xperia 5 II phiên bản màu Purple ra mắt',
+                    'slug' => 'sony-xperia-5-ii-phien-ban-mau-purple-ra-mat',
+                    'description' => 'Chiếc smartphone hàng đầu Sony Xperia 5 II (hay Xperia 5 Mark II) ra mắt hồi tháng 4 năm nay, hiện được Sony bổ sung thêm tùy chọn màu sắc mới.',
+                    'content' => 'Chiếc smartphone hàng đầu Sony Xperia 5 II (hay Xperia 5 Mark II) ra mắt hồi tháng 4 năm nay, hiện được Sony bổ sung thêm tùy chọn màu sắc mới.
+Hiện người dùng tại Nhật Bản đã có thể đặt mua trước phiên bản Sony Xperia 5 II màu Tím thông qua nhà mạng Docomo, và máy sẽ được giao cũng như chính thức mở bán độc quyền tại nhà mạng này vào ngày 12/11/2020.
 
-                        SwordArt đã bật khóc ngay trong buổi họp báo, trong khi SofM cũng không kìm nén được nước mắt, và các thành viên còn lại, bao gồm cả Ban huấn luyện, đều gục đầu tiếc nuối.
-                        Mặc dù các fan hâm mộ đã an ủi rằng việc Suning vào được đến Chung kết đã là quá tốt rồi. Nhưng thực tế, đối với các tuyển thủ, thất bại trong trận đấu cuối cùng tranh ngôi vị vô địch luôn là một trải nghiệm không hề dễ chịu. Vậy nên, người hâm mộ SN và SofM khi chứng kiến những hình ảnh này có lẽ cũng không biết nói gì hơn ngoài việc gửi gắm sự tin tưởng và động viên, rằng: "Chúng ta sẽ trở lại mạnh mẽ vào năm sau!"
+Sony Xperia 5 II có thêm tùy chọn màu Tím
+Sony Xperia 5 II có thêm tùy chọn màu Tím (Ảnh chụp màn hình trên trang web của Docomo)
+Theo trang web của Docomo, Sony Xperia 5 II màu Tím chỉ được bán online mà thôi, vì vậy bạn sẽ không tìm thấy được phiên bản này ở các cửa hàng bán lẻ.
 
-                        Đối với những thành viên của Suning, dù thất bại nhưng đây vẫn là một trải nghiệm quý giá đối với họ. 3/5 tuyển thủ trong đội hình chính của bầy sư tử là những tài năng trẻ và sát cánh cùng họ là 2 ngôi sao dày dặn kinh nghiệm và tài năng đã được minh chứng, đội hình này chắc chắn sẽ không dừng lại ở ngôi vị Á quân CKTG 2020 mà sẽ tiếp tục hướng tới mục tiêu lớn hơn ở những mùa giải sau.',
-                    'post_image' => 'sofm.jpg'
+Sony Xperia 5 II màu Tím chỉ được bán online
+Như vậy, tính tới nay Sony Xperia 5 II đã có tổng cộng 5 màu sắc, bao gồm: Đen, Xanh, Xám, Hồng và Tím. Không giống như các quốc gia khác có 256 GB bộ nhớ trong, Sony Xperia 5 II bán ra ở thị trường nội địa chỉ có ROM 128 GB, nhưng người dùng có thể mở rộng không gian lưu trữ thông qua khe cắm microSD.
+
+Bạn nhận xét thế nào về các phiên bản màu của Sony Xperia 5 II, nhất là màu Tím mới ra mắt?',
+                    'post_image' => 'xperia-5-ii-so-52a-tim_800x450.jpg',
+                    'date' => date('M-D-Y')
                 ],
                 [
-                    'kind_of_news_id' => 3,
+                    'kind_of_news_id' => 10,
                     'new_categories_id' => 6,
-                    'title' => 'Bão số 9',
-                    'slug' => Str::slug('Bão số 9', '-'),
-                    'description' => 'Sau bão số 9, bão số 10 ảnh hưởng ra sao?',
-                    'content' => 'Thông tin tại cuộc họp ứng phó mưa lũ diễn ra sáng nay 29-10, ông Hoàng Phúc Lâm - phó giám đốc Trung tâm Dự báo khí tượng thủy văn quốc gia - cho biết lúc 4h sáng nay, bão đang ở kinh tuyến 137, cách biển Đông gần 2.000km.
+                    'title' => 'Cùng so sánh điểm hiệu năng của Kirin 9000, Snapdragon 875 và Exynos 2100',
+                    'slug' => 'cung-so-sanh-diem-hieu-nang-cua-kirin-9000-snapdragon-875-va-exynos-2100',
+                    'description' => 'Những bộ vi xử lý hàng đầu trên smartphone như Snapdragon 875 của Qualcomm, Kirin 9000 của Huawei hay Exynos 2100 được sản xuất bởi Samsung sẽ sử dụng quy trình 5 nm mới nhất.',
+                    'content' => 'Những bộ vi xử lý hàng đầu trên smartphone như Snapdragon 875 của Qualcomm, Kirin 9000 của Huawei hay Exynos 2100 được sản xuất bởi Samsung sẽ sử dụng quy trình 5 nm mới nhất. Công nghệ này giúp chúng mạnh hơn, nhanh hơn và hoạt động tốt hơn so với thế hệ cũ.
+Cùng so sánh hiệu năng của Snapdragon 875, Kirin 9000 và Exynos 2100
+Nguồn ảnh: Gizchina
+Trong khi Qualcomm và Huawei sử dụng quy trình 5 nm của TSMC, thì Samsung sẽ sản xuất chip dựa trên quy trình 5 nm của riêng mình. Trên thực tế, Samsung là nhà sản xuất smartphone duy nhất có thể thiết kế và sản xuất chip cho smartphone. Huawei và Qualcomm chỉ thiết kế chứ không sản xuất loại chip này.
 
-                        Các dự báo cho thấy khoảng sáng 1-11 bão có thể vào Biển Đông. Trung tâm Dự báo khí tượng thủy văn quốc gia dự kiến ngày 30-10 sẽ phát tin về cơn bão này. 
-                        
-                        Dự báo xa cho thấy bão Goni có khả năng ảnh hưởng Trung Bộ vào tuần sau. Tuy nhiên từ mai 30-10, không khí lạnh đang dồn xuống khá mạnh nên khi bão Goni vào gần Biển Đông sẽ có tương tác với không khí lạnh. Khi đó, diễn biến của cơn bão tương đối phức tạp.
-                        
-                        Các dự báo cho thấy khi vào Biển Đông, cơn bão có xu hướng di chuyển hướng lên phía Bắc, gần khối không khí lạnh. Do đó dự báo mưa ở Trung Bộ trong nửa đầu tháng 11 còn phức tạp.
-                        
-                        Mô hình dự báo của Nhật Bản cho thấy đường đi của bão có sự "đánh võng" theo hướng tây nam từ vị trí nó hình thành, sau đó đổi hướng tây bắc khi vào Biển Đông và hướng vào các tỉnh miền Trung. 
-                        
-                        Tương tự, mô hình dự báo của Hải quân Hoa Kỳ cho thấy đỉnh điểm cơn bão này có thể đạt mức Cat.3 theo thang bão Saffir-Simpson với sức gió có thể đạt gần 200km/h vào ngày 31-10 ở gần Philippines. 
-                        
-                        Tuy nhiên khi vào Biển Đông, cơn bão này nhanh chóng giảm cấp, vào ngày 2-11 sức gió của cơn bão này giảm còn khoảng 120km/h khi còn cách rất xa đất liền nước ta.
-                        
-                        Theo các chuyên gia nhận định, cơn bão này có hướng đi và vị trí đổ bộ thấp hơn so với bão số 9 (Molave) và sức mạnh cũng không bằng. Nguyên nhân do không khí lạnh từ phía Bắc tràn xuống áp chế khiến vùng biển nó đi qua bị khô lạnh và giảm dần năng lượng. 
-                        
-                        Dự báo nếu cơn bão này vào đất liền có thể đổ bộ tại khu vực từ Phú Yên đến Nha Trang với cấp gió khoảng cấp 7-8 (50 - 75km/h).
-                        
-                        Cùng thời điểm áp thấp nhiệt đới trên mạnh lên thành bão số 10, trên khu vực Thái Bình Dương sẽ xuất hiện thêm một số vùng thấp, trong đó một vùng sẽ mạnh lên thành bão nhưng hướng di chuyển có xu hướng vào khu vực Đài Loan.',
-                    'post_image' => 'bao-so9.jpg'
+Trong 3 loại vi xử lý kể trên, chỉ có Kirin 9000 là đã ra mắt, Snapdragon 875 và Exynos 2100 sẽ được công bố trong vài tuần nữa. Điều này cũng cho thấy chỉ có điểm số của Kirin 9000 là chính thức, hai vi xử lý còn lại chỉ mang tính chất tham khảo.
+
+Cùng so sánh hiệu năng của Snapdragon 875, Kirin 9000 và Exynos 2100
+Nguồn ảnh: Gizchina
+Nhìn vào bài kiểm tra đơn lõi, Snapdragon 875 dẫn đầu với 1.105 điểm, Exynos 2100 đứng thứ hai với 1.140 điểm trong khi Kirin 9000 là 1.001 điểm. Đối với điểm số đa lõi, Kirin 9000 của Huawei đang dẫn đầu với 3.653 điểm trong khi Snapdragon 875 và Exynos 2100 đạt điểm số lần lượt là 3.512 và 3.107.
+
+Vậy vi xử lý nào dành chiến thắng trong cuộc đua này?
+
+Câu trả lời là không có. Hiệu suất CPU trên Snapdragon 875 có lợi thế hơn Kirin 9000 nhờ vào thiết kế. Tuy nhiên về GPU thì Kirin 9000 lại "nhỉnh" hơn một chút với chip đồ hoạ Mali-G78 tối đa 24 lõi.
+
+Cùng so sánh hiệu năng của Snapdragon 875, Kirin 9000 và Exynos 2100
+Nguồn ảnh: Gizchina
+Exynos 2100 hứa hẹn sẽ tốt hơn nhiều so với Exynos 990. Tuy nhiên hiệu năng của vi xử lý này không được đánh giá cao trong các bài kiểm tra ban đầu. Samsung sẽ còn nhiều điều cần phải làm với Exynos 2100 nếu muốn cạnh tranh với TSMC. Về Snapdragon 875, vi xử lý của Qualcomm có thể được ra mắt trong Hội nghị thượng đỉnh Snapdragon hàng năm được tổ chức vào tháng 12.
+
+Bạn đánh giá như thế nào về ba bộ vi xử lý này?',
+                    'post_image' => 'snapdragon-875-2_800x450.jpg',
+                    'date' => date('M-D-Y')
                 ],
+                [
+                    'kind_of_news_id' => 5,
+                    'new_categories_id' => 8,
+                    'title' => 'Siêu phẩm Samsung Galaxy S21 Ultra sẽ đi kèm với màn hình độ phân giải QHD+',
+                    'slug' => 'sieu-pham-samsung-galaxy-s21-ultra-se-di-kem-voi-man-hinh-do-phan-giai-qhd+',
+                    'description' => 'Báo cáo mới nhất cho hay, Galaxy S21 Ultra sẽ đi kèm với màn hình độ phân giải QHD+, tốc độ làm tươi 120Hz. Trong khi trước đó, có thông tin cho rằng S21 Ultra sẽ có màn hình 144Hz.',
+                    'content' => 'Báo cáo mới nhất cho hay, Galaxy S21 Ultra sẽ đi kèm với màn hình độ phân giải QHD+, tốc độ làm tươi 120Hz. Trong khi trước đó, có thông tin cho rằng S21 Ultra sẽ có màn hình 144Hz.
+Samsung được cho là sẽ tổ chức sự kiện ra mắt dòng Galaxy S21 vào khoảng tháng 1/2021. Gã khổng lồ công nghệ Hàn Quốc dự kiến ​​sẽ ra mắt ba model mới thuộc dòng Galaxy S21, đó là Galaxy S21, Galaxy S21+ và Galaxy S21 Ultra.
+
+Samsung Galaxy S20 Ultra và Note 20 Ultra có màn hình QHD+, hỗ trợ tốc độ làm tươi 120Hz. Tuy nhiên, nếu bạn muốn sử dụng tốc độ làm tươi 120Hz, bạn bắt buộc phải điều chỉnh độ phân giải xuống Full HD+ hoặc HD+. Các flagship của Samsung năm 2020 chỉ hỗ trợ 60Hz ở độ phân giải QHD+.
+
+Để so sánh, Ice Universe tuyên bố rằng Galaxy S21 Ultra sắp tới sẽ hỗ trợ sự kết hợp của độ phân giải QHD+ và tốc độ làm tươi 120Hz.
+
+Galaxy S21 Ultra được tin sẽ có màn hình Dynamic AMOLED 6.8 inch, chạy Android 11, giao diện One UI 3.0. Máy có camera chính mặt sau 108 MP, có pin 5.000 mAh và sử dụng chip Snapdragon 875 hoặc Exynos 2100.',
+                    'post_image' => 'samsung-galaxy-s21-1_1280x720-800-resize.jpg',
+                    'date' => date('M-D-Y')
+                ]
             ]
         );
     }
