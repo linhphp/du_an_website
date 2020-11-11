@@ -122,7 +122,7 @@ class ProductsTableSeeder extends Seeder
                 ],
                 [
                     'brand_id' => 4,
-                    'category_id' => 3,
+                    'category_id' => 1,
                     'name' => 'Lenovo IdeaPad',
                     'image1' => 'lenovo-ideapad-s145-81w8001xvn-a4-216292-600x600.jpg',
                     'image2' => 'lenovo-ideapad-s145-15iil-i3-1005g1-4gb-256gb-win1-1-org.jpg',
