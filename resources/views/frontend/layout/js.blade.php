@@ -18,6 +18,7 @@
     <script src="frontend/js/jflickrfeed.min.js"></script>
     <script src="frontend/js/jquery.bxslider.min.js"></script>
     <script src="frontend/js/main.js"></script>
+    <script src="frontend/js/address.js"></script>
     <script>
         $(function() {
             "use strict";

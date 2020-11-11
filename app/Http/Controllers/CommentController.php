@@ -8,24 +8,18 @@ use Illuminate\Http\Request;
 use Auth;
 class CommentController extends Controller
 {
-    public function __construct ()
-    {
-        $this->middleware('checkout');
-    }
 
     public function store(Request $request, $id)
     {
         $product = Product::find($id);
-        if($product) {
-            Comment::create(
-                [
-                    'product_id' => $product->id,
-                    'user_id' => Auth::id(),
-                    'content' => $request->content
-                ]);
+        // return $request->product_id;
+        $data = new Comment;
+        $data->user_name = $request->name;
+        $data->product_id = $product->id;
+        $data->content = $request->message;
+        $data->save();
 
-            return redirect()->back();
-        }
+        return 'successfully';
     }
 
     public function addChildenComment(Request $request, $id)

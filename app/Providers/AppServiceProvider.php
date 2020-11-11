@@ -40,15 +40,19 @@ class AppServiceProvider extends ServiceProvider
             $cates = Category::paginate(4)->pluck('id','name');
             $brands = Brand::paginate(4)->pluck('id','name');
             $totalQty = 0;
+            $totalPrice = 0;
+            $cartDetails = [];
             $cart = Cart::where([['user_id', Auth::id()], ['status', 1]])->first();
-            if ($cart) {
-                $cartDetails = CartDetail::where([['cart_id', $cart->id], ['destroy', null]])->get();
+            if ($cart) {    
+                $cartDetails = CartDetail::join('products', 'products.id', '=', 'cart_details.product_id')
+                    ->where([['cart_id', $cart->id], ['destroy', null]])->get();
                 foreach ($cartDetails as $cartD)
                 {
                     $totalQty += $cartD->qty;
+                    $totalPrice += $cartD->price * $cartD->qty;
                 }
             }
-            $view->with(['cates' => $cates, 'brands' =>$brands, 'totalQty' => $totalQty]);
+            $view->with(['cates' => $cates, 'brands' =>$brands, 'totalQty' => $totalQty, 'totalPrice' => $totalPrice, 'cartDetails' => $cartDetails]);
         });
     }
 }

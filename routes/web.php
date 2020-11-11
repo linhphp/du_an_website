@@ -105,7 +105,7 @@ Route::group(['middleware' => 'locale'], function ()
                 ->name('cart.show');
             Route::get('cart/update', [CartController::class, 'cartUpdate'])
                 ->name('cart.update');
-            Route::post('cart/{id}/remote', [CartController::class , 'cartRemote'])
+            Route::post('cart/{id}/remove', [CartController::class , 'cartRemove'])
                 ->name('cart.remote');
             Route::get('cart/{id}/checkout', [CartController::class, 'getFormCheckout'])->name('checkout.get');
             Route::post('cart/{id}/checkout', [CartController::class, 'checkout'])->name('checkout.post');
@@ -113,16 +113,16 @@ Route::group(['middleware' => 'locale'], function ()
 
         Route::prefix('user')->group( function ()
         {
-            Route::view('sign-in', 'frontend.pages.signin')
+            Route::view('sign-in', 'frontend.pages.login')
                 ->name('signIn')
                 ->middleware('checkoutUser');
-            Route::view('sign-up', 'frontend.pages.signup')
+            Route::view('sign-up', 'frontend.pages.signUp')
                 ->name('signUp');
             Route::post('sign-up', [UserController::class, 'signUp'])->name('signup.post');
             Route::post('sign-in', [UserController::class, 'signIn'])
                 ->name('sigin.post');
-            Route::post('sign_out', [UserController::class, 'signOut'])
-                ->name('signOut.post');
+            Route::get('sign_out', [UserController::class, 'signOut'])
+                ->name('signOut.get');
         });
 
         Route::prefix('bills')->group( function ()

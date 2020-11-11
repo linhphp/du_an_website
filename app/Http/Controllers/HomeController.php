@@ -53,9 +53,7 @@ class HomeController extends Controller
                 if ($brand && $category) {
                     $relatedProducts = Product::where([['brand_id', $brand->id], ['category_id', $category->id], ['id', '<>', $product->id]])
                         ->get();
-                    $comments = Comment::join('users', 'users.id', '=', 'comments.user_id')
-                        ->select('users.name', 'users.avatar as image_user', 'comments.*')
-                        ->where('comments.product_id', $product->id)
+                    $comments = Comment::where('product_id', $product->id)
                         ->orderBy('id', 'desc')
                         ->paginate(5);
                     $producByCategories = Product::where([['category_id', $category->id], ['id', '<>', $product->id]])
