@@ -134,7 +134,6 @@ Route::group(['middleware' => 'locale'], function ()
         
         Route::prefix('news')->group( function ($id)
         {
-
             Route::get('/{id}', [HomeController::class, 'getNews'])->name('news');
             Route::get('categories/{id}', [HomeController::class, 'getCategories'])->name('news.categories');
             Route::get('post/{slug}', [HomeController::class, 'getPost'])->name('getPost');

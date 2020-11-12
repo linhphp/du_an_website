@@ -36,7 +36,7 @@
                                                 <span class="discount-box top-left bg-danger">-{{ $product->discount }}%</span>
                                                 @endif
                                                 <figure class="product-image-container">
-                                                    <a href="product.html" title="White linen sheer dress"><img src="storage/image/{{ $product->image1 }}" alt="Product image" class="product-image"> <img src="storage/image/{{ $product->image2 }}" alt="Product image hover" class="product-image-hover"></a>
+                                                    <a href="{{ route('product.detail', $product->id) }}" title="White linen sheer dress"><img src="storage/image/{{ $product->image1 }}" alt="Product image" class="product-image"> <img src="storage/image/{{ $product->image2 }}" alt="Product image hover" class="product-image-hover"></a>
                                                 </figure>
                                                 <div class="product-action-container">
                                                     <div class="product-action-wrapper action-responsive">
@@ -49,7 +49,7 @@
                                                 </div>
                                             </div>
                                             <input type="hidden" value="1" name="qty">
-                                            <h3 class="product-name"><a href="product.html" title="White linen sheer dress">{{ $product->name }}</a></h3>
+                                            <h3 class="product-name"><a href="{{ route('product.detail', $product->id) }}" title="White linen sheer dress">{{ $product->name }}</a></h3>
                                             <div class="product-price-container">
                                                 @if($product->price * $product->discount == 0)
                                                 <span class="product-price">

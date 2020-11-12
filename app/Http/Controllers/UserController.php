@@ -86,7 +86,7 @@ class UserController extends Controller
         $user->avatar = $fileName;
         $file->move('storage/image',$fileName);
         $user->save();
-        
+
         return redirect()->back();
     }
 

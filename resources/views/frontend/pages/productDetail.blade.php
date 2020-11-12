@@ -124,7 +124,7 @@ $product_id =$product->id;
                             <input type="hidden" name="product_id" value="{{ $product->id }}">
                             <div class="form-group">
                                 @if(Auth::check())
-                                <input type="text" class="form-control input-lg" placeholder="{{ Auth::user()->name }}" ng-model="comment.name" value="{{ Auth::user()->name }}" ng-required="true" name="name">
+                                <input type="text" class="form-control input-lg" placeholder="{{ Auth::user()->name }}" ng-model="comment.name" ng-required="true" name="name">
                                 @else
                                 <input type="text" class="form-control input-lg" placeholder="Enter your nickname *" ng-model="comment.name" ng-required="true" name="name">
                                 @endif
@@ -143,6 +143,9 @@ $product_id =$product->id;
             </div>
             <div class="tab-pane fade" id="accessories">
                 <div class="row">
+                    @if (count($relatedProducts) == 0)
+                    <h2>Không có sản phẩm liên quan</h2>
+                    @endif
                     @foreach($relatedProducts as $product)
                     <div class="col-sm-3 md-margin2x">
                         <form action="{{ route('cart.add', $product->id) }}" method="post">
@@ -183,9 +186,6 @@ $product_id =$product->id;
                         </form>
                     </div>
                     @endforeach
-            </div>
-            <div class="tab-pane fade" id="video">
-                <div class="embed-responsive embed-responsive-16by9"><iframe width="560" height="315" src="http://www.youtube.com/embed/hQfNtnKm5nA?list=UUJr72fY4cTaNZv7WPbvjaSw" allowfullscreen></iframe></div>
             </div>
         </div>
     </div>

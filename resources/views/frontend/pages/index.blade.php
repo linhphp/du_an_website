@@ -13,7 +13,7 @@
                         <div class="vcenter-container">
                             <div class="vcenter">
                                 <div class="banner-content text-uppercase">
-                                    <h4>News</h4><a href="#" class="btn btn-custom-7 min-width-md">NEXT NEWS</a></div>
+                                    <h4>News</h4><a href="{{ route('news', 'post') }}" class="btn btn-custom-7 min-width-md">NEXT NEWS</a></div>
                             </div>
                         </div>
                     </div>
@@ -26,7 +26,7 @@
                             <div class="vcenter">
                                 <div class="banner-content text-uppercase">
                                     <h4>hot product</h4>
-                                    <h3></h3><a href="#" class="btn btn-custom-7 min-width-md">Shop now</a></div>
+                                    <h3></h3><a href="{{ route('eshop') }}" class="btn btn-custom-7 min-width-md">Shop now</a></div>
                             </div>
                         </div>
                     </div>
@@ -170,11 +170,11 @@
                     @foreach($getNews as $news)
                     <article class="article">
                         <div class="article-media-container">
-                            <a href="single.html"><img src="storage/image/{{$news->post_image}}" class="img-responsive" alt="Post 1"></a>
+                            <a href="{{ route('post', $news->slug) }}"><img src="storage/image/{{$news->post_image}}" class="img-responsive" alt="Post 1"></a>
                         </div>
                         <div class="article-meta-box"><span class="article-icon article-date-icon"></span> <span class="meta-box-text">{{ $news->date }}</span></div>
                         <div class="article-meta-box article-meta-comments"><span class="article-icon article-comment-icon"></span> <a href="#" class="meta-box-text">15 Com</a></div>
-                        <h3><a href="single.html">{{ $news->title }}</a></h3>
+                        <h3><a href="{{ route('post', $news->slug) }}">{{ $news->title }}</a></h3>
                         <p>{{ $news->description }}</p>
                     </article>
                     @endforeach
