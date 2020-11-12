@@ -13,14 +13,9 @@ class Comment extends Model
 
     protected $fillable = [
         'user_name',
-        'product_id',
         'parent_id',
+        'state',
         'content',
     ];
 
-
-    public function product ()
-    {
-    	return $this->belongsTo(Product::class, 'product_id', 'id');
-    }
 }

@@ -15,7 +15,7 @@ class CommentFactory extends Factory
         $product = Product::inRandomOrder()->first();
 
         return [
-            'product_id' => $product->id,
+            'parent_id' => $product->id,
             'user_name' => $this->faker->name,
             'content' => $this->faker->text(rand(50,100))
         ];
