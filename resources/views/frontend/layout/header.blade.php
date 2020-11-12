@@ -66,8 +66,8 @@
             </div>
             <div class="right-side">
                 <div class="search-container">
-                    <form action="#" class="search-form">
-                        <input type="search" name="s" class="s" placeholder="Search entry site here...">
+                    <form action="{{ route('search') }}" class="search-form">
+                        <input type="search" name="key" class="s" placeholder="Search entry site here...">
                         <a href="#" title="Close Search" class="search-close-btn"></a>
                         <input type="submit" value="Submit" class="search-submit-btn">
                     </form>

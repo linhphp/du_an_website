@@ -138,4 +138,5 @@ return [
     'views' => 'Views',
     'type_of_news' => 'Type of news',
     'related_posts' => 'Related Posts',
+    'results_found' => 'results found',
 ];
