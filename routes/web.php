@@ -82,7 +82,7 @@ Route::group(['middleware' => 'locale'], function ()
             ->name('eshop.category');
         Route::get('districts/{id}', [AddressController::class, 'getDistricts']);
         Route::get('wards/{id}', [AddressController::class, 'getWards']);
-        Route::get('message', [Homecontroller::class, 'message'])->name('message');
+        // Route::get('message', [Homecontroller::class, 'message'])->name('message');
         Route::post('comment/{id}', [CommentController::class, 'storeProduct'])->name('comment.post');
         Route::post('comment/post/{id}', [CommentController::class, 'storePost'])->name('comment');
         Route::get('about-us', [HomeController::class, 'aboutUs'])->name('aboutUs');
@@ -96,7 +96,7 @@ Route::group(['middleware' => 'locale'], function ()
             Route::post('user/update', [UserController::class, 'update'])
                 ->name('user.update');
         });
-        Route::get('product/search', [HomeController::class, 'search'])->name('search');
+        Route::get('search', [HomeController::class, 'search'])->name('search');
         Route::prefix('checkout')->group( function ()
         {
             Route::post('cart/{id}', [CartController::class, 'cartAdd'])

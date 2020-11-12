@@ -20,11 +20,6 @@ use Mail;
 
 class HomeController extends Controller
 {
-    public function message(Request $request)
-    {
-        echo 'loi';
-        // return view('frontend.pages.message');
-    }
 
     public function index (Request $request)
     {
@@ -68,7 +63,6 @@ class HomeController extends Controller
             }
         }
 
-        return redirect()->route('message');
     }
 
     public function eshop (Request $request)
@@ -215,9 +209,11 @@ class HomeController extends Controller
 
     public function search(Request $request)
     {
+        $key = $request->key;
         $products = Product::where('name', 'like', '%'.$key.'%')
             ->orWhere('price', 'like', $key)
             ->paginate(Config::get('paginate.eshop'));
+
         return view('frontend.pages.search', compact('products', 'key'));
     }
 }
