@@ -207,10 +207,14 @@ class HomeController extends Controller
 
     public function search(Request $request)
     {
+        $meta_desc = "Chuyên sản phẩm, phụ kiện chính hãng";
+        $meta_keywords = "Sản phẩm, phụ kiện điện tử";
+        $meta_title ="ThucLinh.shop";
+        $url_canonical = $request->url();
         $key = $request->key;
         $products = Product::where('name', 'like', '%'.$key.'%')
             ->orWhere('price', 'like', $key)
             ->paginate(Config::get('paginate.eshop'));
-        return view('frontend.pages.search', compact('products', 'key'));
+        return view('frontend.pages.search', compact('products', 'key', 'meta_desc', 'meta_keywords', 'meta_title', 'url_canonical'));
     }
 }
