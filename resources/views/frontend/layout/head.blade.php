@@ -1,4 +1,4 @@
-<head>
+</head>
     <meta charset="utf-8">
     <title>@yield('title') </title>
     <meta name="description" content="Granada is premium, bootstrap based and responsive ecommerce template">
