@@ -83,8 +83,8 @@ Route::group(['middleware' => 'locale'], function ()
         Route::get('districts/{id}', [AddressController::class, 'getDistricts']);
         Route::get('wards/{id}', [AddressController::class, 'getWards']);
         Route::get('message', [Homecontroller::class, 'message'])->name('message');
-        Route::post('comment/{id}', [CommentController::class, 'store'])->name('comment.post');
-        Route::post('childen/{id}', [CommentController::class, 'addChildenComment'])->name('childen.post');
+        Route::post('comment/{id}', [CommentController::class, 'storeProduct'])->name('comment.post');
+        Route::post('comment/post/{id}', [CommentController::class, 'storePost'])->name('comment');
         Route::get('about-us', [HomeController::class, 'aboutUs'])->name('aboutUs');
         Route::post('send-email', [Homecontroller::class, 'sendEmail'])->name('sendEmail');
         Route::get('profile', [HomeController::class, 'getProfile'])
@@ -105,7 +105,7 @@ Route::group(['middleware' => 'locale'], function ()
                 ->name('cart.show');
             Route::get('cart/update', [CartController::class, 'cartUpdate'])
                 ->name('cart.update');
-            Route::post('cart/{id}/remote', [CartController::class , 'cartRemote'])
+            Route::post('cart/{id}/remove', [CartController::class , 'cartRemove'])
                 ->name('cart.remote');
             Route::get('cart/{id}/checkout', [CartController::class, 'getFormCheckout'])->name('checkout.get');
             Route::post('cart/{id}/checkout', [CartController::class, 'checkout'])->name('checkout.post');
@@ -113,16 +113,16 @@ Route::group(['middleware' => 'locale'], function ()
 
         Route::prefix('user')->group( function ()
         {
-            Route::view('sign-in', 'frontend.pages.signin')
+            Route::view('sign-in', 'frontend.pages.login')
                 ->name('signIn')
                 ->middleware('checkoutUser');
-            Route::view('sign-up', 'frontend.pages.signup')
+            Route::view('sign-up', 'frontend.pages.signUp')
                 ->name('signUp');
             Route::post('sign-up', [UserController::class, 'signUp'])->name('signup.post');
             Route::post('sign-in', [UserController::class, 'signIn'])
                 ->name('sigin.post');
-            Route::post('sign_out', [UserController::class, 'signOut'])
-                ->name('signOut.post');
+            Route::get('sign_out', [UserController::class, 'signOut'])
+                ->name('signOut.get');
         });
 
         Route::prefix('bills')->group( function ()
@@ -132,10 +132,11 @@ Route::group(['middleware' => 'locale'], function ()
         });
         Route::get('change-language/{language}', [HomeController::class, 'changeLanguage'])->name('change_language');
         
-        Route::prefix('news')->group( function ()
+        Route::prefix('news')->group( function ($id)
         {
-            Route::get('/', [HomeController::class, 'getNews'])->name('news');
-            Route::get('/{slug}', [HomeController::class, 'getPost'])->name('post');
+            Route::get('/{id}', [HomeController::class, 'getNews'])->name('news');
+            Route::get('categories/{id}', [HomeController::class, 'getCategories'])->name('news.categories');
+            Route::get('post/{slug}', [HomeController::class, 'getPost'])->name('post');
         });
     });
 });

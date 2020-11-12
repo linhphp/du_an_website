@@ -34,9 +34,14 @@ class CartController extends Controller
                 $cartDetail = CartDetail::where([['cart_id', $cart->id], ['product_id', $product->id]])
                     ->first();
                 if ($cartDetail) {
-                    $cartDetail->qty++;
+                    if ($cartDetail->destroy !=null) {
+                        $cartDetail->qty = 1;
+                        $cartDetail->destroy = null;
+                    }
+                    else {
+                        $cartDetail->qty++;
+                    }
                     $cartDetail->save();
-                    echo 'luu 1';
                 }
                 else {
                     $cartDetail = new CartDetail;
@@ -60,7 +65,7 @@ class CartController extends Controller
                 $cartDetail = new CartDetail;
                 $cartDetail->cart_id = $cart->id;
                 $cartDetail->product_id = $product->id;
-                $cartDetail->qty = $request->qty;;
+                $cartDetail->qty = $request->qty;
                 $cartDetail->save();
                 echo 'luu 3';
             }
@@ -74,24 +79,22 @@ class CartController extends Controller
     public function getCartDetail ($cart)
     {
         return $cartDetails = CartDetail::join('products', 'products.id', '=', 'cart_details.product_id')
-            ->select('products.name', 'products.price', 'products.discount', 'products.image','cart_details.*')
+            ->select('products.name', 'products.price', 'products.discount', 'products.image1','cart_details.*')
             ->all($cart);
     }
 
     public function cartShow (Request $request)
     {
-        $meta_desc = "Chuyên sản phẩm, phụ kiện chính hãng";
-        $meta_keywords = "Sản phẩm, phụ kiện điện tử";
-        $meta_title ="ThucLinh.shop";
-        $url_canonical = $request->url();
         $cart = Cart::where([['user_id', Auth::id()], ['status',1]])->first();
         if ($cart) {
             $cartDetails = $this->getCartDetail($cart->id);
-            return view('frontend.pages.cart', compact('cartDetails', 'cart', 'meta_desc', 'meta_keywords', 'meta_title', 'url_canonical'));
+
+            return view('frontend.pages.checkout.cart', compact('cartDetails', 'cart'));
         }
-        return redirect()->back();
+        return redirect()->route('home');
     }
-    public function cartRemote ($id)
+
+    public function cartRemove ($id)
     {
     	$cartDetail = CartDetail::find($id);
         if ($cartDetail) {
@@ -140,7 +143,8 @@ class CartController extends Controller
         if ($cart) {
             $cartDetails = $this->getCartDetail($cart->id);
 
-            return view('frontend.pages.checkout',compact('cart', 'cartDetails', 'provinces', 'customer'));
+            return view('frontend.pages.checkout.getFormCheckout',compact('cart', 'cartDetails', 'provinces', 'customer'));
+
         }
         return redirect()->route('message');
     }
@@ -157,6 +161,8 @@ class CartController extends Controller
 
     public function checkout (Request $request, $id)
     {
+        // echo($request->province. ' ' . $request->district. ' ' . $request->ward. ' ' . $request->street);
+        // dd($request);
         $cart = Cart::where([['user_id', Auth::id()], ['status', 1], ['id', $id]])->first();
         $cartDetails = $this->getCartDetail($cart->id);
         if($request->address != null) {
@@ -172,16 +178,18 @@ class CartController extends Controller
             $customer->name = ucwords($request->name);
             $customer->email = $request->email;
             $customer->phone = $request->phone;
-            $customer->address = $this->getAddress($request->city, $request->district, $request->ward, $request->street);
+            $customer->address = $this->getAddress($request->province, $request->district, $request->ward, $request->street);
             $customer->save();
         }
 
         $bill = new Bill;
         $bill->customer_id = $customer->id;
-        $bill->note = $request->note;
+        if ($request->note) {
+            $bill->note = $request->note;
+        }
         $bill->status_id = 1;
         $bill->payment = $request->payment;
-        $bill->total_price = $request->total_price;
+        $bill->total_price = $request->totalPrice;
         $bill->save();
 
         foreach ($cartDetails as $cartDetail)
@@ -205,10 +213,10 @@ class CartController extends Controller
         $data['total_price'] = $request->total_price;
         $email = $customer->email;
         $name = $customer->name;
-        Mail::send('frontend.pages.email', $data, function ($message) use ($email, $name) {
-            $message->from('nvtbdn.hplong@gmail.com', 'Long');
+        Mail::send('frontend.pages.checkout.email', $data, function ($message) use ($email, $name) {
+            $message->from('lethihohuong@gmail.com', 'Ho Huong');
             $message->to($email, $name);
-            $message->cc('thuclinh854@gmail.com', 'Thục Linh');
+            $message->cc('thuclinh997@gmail.com', 'Thục Linh');
             $message->subject('Xác nhận thông tin mua hàng');
         });
 

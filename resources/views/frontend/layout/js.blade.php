@@ -17,6 +17,10 @@
     <script src="frontend/js/jquery.nouislider.min.js"></script>
     <script src="frontend/js/jflickrfeed.min.js"></script>
     <script src="frontend/js/jquery.bxslider.min.js"></script>
+    <script src="frontend/js/address.js"></script>
+    <script src="frontend/js/imagesloaded.min.js"></script>
+    <script src="frontend/js/jquery.prettyPhoto.js"></script>
+    <script src="frontend/js/isotope.min.js"></script>
     <script src="frontend/js/main.js"></script>
     <script>
         $(function() {

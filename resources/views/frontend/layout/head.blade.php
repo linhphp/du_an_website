@@ -12,7 +12,13 @@
     <link rel="icon" type="image/png" href="images/icons/icon.html">
     <link rel="apple-touch-icon" sizes="57x57" href="frontend/images/icons/apple-icon-57x57.html">
     <link rel="apple-touch-icon" sizes="72x72" href="frontend/images/icons/apple-icon-72x72.html">
-    <script src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="frontend/css/animate.css">
+    <link rel="stylesheet" href="frontend/css/prettyPhoto.css">
+    <link rel="stylesheet" href="css/jquery.selectbox.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js
+"></script>
+<script type="text/javascript" src="frontend/angular/app.js"></script>
     <script>
         window.jQuery || document.write('<script src="frontend/js/jquery-2.1.1.min.js"><\/script>');
     </script>
