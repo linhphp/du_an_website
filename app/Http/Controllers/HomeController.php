@@ -124,7 +124,6 @@ class HomeController extends Controller
                 ->where('news.kind_of_news_id', $id)
                 ->orderDesc()
                 ->paginate(Config::get('paginate.news'));
-
         }
 
         return view('frontend.pages.blog.blog', compact('getNews', 'kindNews'));
@@ -216,7 +215,6 @@ class HomeController extends Controller
 
     public function search(Request $request)
     {
-        $key = $request->key;
         $products = Product::where('name', 'like', '%'.$key.'%')
             ->orWhere('price', 'like', $key)
             ->paginate(Config::get('paginate.eshop'));

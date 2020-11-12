@@ -122,6 +122,26 @@ Samsung Galaxy S20 Ultra và Note 20 Ultra có màn hình QHD+, hỗ trợ tốc
 Galaxy S21 Ultra được tin sẽ có màn hình Dynamic AMOLED 6.8 inch, chạy Android 11, giao diện One UI 3.0. Máy có camera chính mặt sau 108 MP, có pin 5.000 mAh và sử dụng chip Snapdragon 875 hoặc Exynos 2100.',
                     'post_image' => 'samsung-galaxy-s21-1_1280x720-800-resize.jpg',
                     'date' => date('M-D-Y')
+                ],
+                [
+                    'kind_of_news_id' => 2,
+                    'news_category_id' => 3,
+                    'title' => 'Nokia chơi lớn giảm sốc lên đến 2 triệu, chỉ áp dụng trong vòng 3 ngày vàng tết độc thân, deal ngon thế này không nên bỏ lỡ',
+                    'slug' => 'nokia-choi-lon-giam-soc-len-den-2-trieu-chi-ap-dung-trong-vong-3-nagy-vang-tet-doc-than-deal-ngon-the-nay-khong-nen-bo-lo',
+                    'description' => 'Mừng tết độc thân, Thế Giới Di Động tặng bạn ngay ưu đãi khuyến mãi 15% trên các dòng máy Nokia, giảm tiền trực tiếp lên đến 2 triệu đồng và tặng kèm hỗ trợ trả góp 0%. Mời bạn tham khảo một số mẫu smartphone dưới đây nhé!',
+                    'content' => 'Mừng tết độc thân, Thế Giới Di Động tặng bạn ngay ưu đãi khuyến mãi 15% trên các dòng máy Nokia, giảm tiền trực tiếp lên đến 2 triệu đồng và tặng kèm hỗ trợ trả góp 0%. Mời bạn tham khảo một số mẫu smartphone dưới đây nhé!
+Thời gian khuyến mãi kéo dài từ 9/11/2020 - 11/11/2020.
+
+Nokia 2.4: Giảm 400.000 đồng
+Một trong những smartphone nổi bật trong phân khúc điện thoại tầm trung, Nokia 2.4 gây ấn tượng với 3 sắc màu cá tính: Xám than chì màu, xanh lục bảo và tím hoàng hôn.
+
+Máy có kích thước vừa vặn 165.85 x 76.3 x 8.69 mm, được trang bị màn hình giọt nước tràn viền 6.5 inch, độ phân giải HD+. Camera chính 13 MP, camera trước 5 MP, mặt lưng được trang bị bảo mật vân tay một chạm.
+
+Nokia 2.4 được trang bị chip CPU 8 nhân MediaTek Helio P22 với tốc độ xử lý 2.0 GHz, bộ nhớ trong 32 GB có thể mở rộng qua thẻ MicroSD tối đa 512 GB và được chạy trên điều hành Android 10.
+
+Được mệnh danh là chiếc điện thoại pin trâu khi được trang bị viên pin có dung lượng lớn lên đến 4.500 mAh đủ để sử dụng cả một ngày dài mà không lo hết pin.',
+                    'post_image' => 'nokia83xanh_800x450_800x450.jpg',
+                    'date' => date('M-D-Y')
                 ]
             ]
         );

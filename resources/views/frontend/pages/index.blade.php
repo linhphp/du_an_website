@@ -170,11 +170,11 @@
                     @foreach($getNews as $news)
                     <article class="article">
                         <div class="article-media-container">
-                            <a href="single.html"><img src="storage/image/{{$news->post_image}}" class="img-responsive" alt="Post 1"></a>
+                            <a href="{{ route('post', $news->slug) }}"><img src="storage/image/{{$news->post_image}}" class="img-responsive" alt="Post 1"></a>
                         </div>
                         <div class="article-meta-box"><span class="article-icon article-date-icon"></span> <span class="meta-box-text">{{ $news->date }}</span></div>
                         <div class="article-meta-box article-meta-comments"><span class="article-icon article-comment-icon"></span> <a href="#" class="meta-box-text">15 Com</a></div>
-                        <h3><a href="single.html">{{ $news->title }}</a></h3>
+                        <h3><a href="{{ route('post', $news->slug) }}">{{ $news->title }}</a></h3>
                         <p>{{ $news->description }}</p>
                     </article>
                     @endforeach
