@@ -13,7 +13,7 @@
                         <div class="vcenter-container">
                             <div class="vcenter">
                                 <div class="banner-content text-uppercase">
-                                    <h4>News</h4><a href="#" class="btn btn-custom-7 min-width-md">NEXT NEWS</a></div>
+                                    <h4>News</h4><a href="{{ route('news', 'post') }}" class="btn btn-custom-7 min-width-md">NEXT NEWS</a></div>
                             </div>
                         </div>
                     </div>
@@ -26,7 +26,7 @@
                             <div class="vcenter">
                                 <div class="banner-content text-uppercase">
                                     <h4>hot product</h4>
-                                    <h3></h3><a href="#" class="btn btn-custom-7 min-width-md">Shop now</a></div>
+                                    <h3></h3><a href="{{ route('eshop') }}" class="btn btn-custom-7 min-width-md">Shop now</a></div>
                             </div>
                         </div>
                     </div>
