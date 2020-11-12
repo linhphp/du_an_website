@@ -11,6 +11,8 @@ use App\Models\Comment;
 use App\Models\News;
 use App\Models\User;
 use App\Models\Slide;
+use App\Models\KindOfNews;
+use App\Models\NewsCategory;
 use Session;
 use Config;
 use Illuminate\Support\Facades\Auth;
@@ -53,7 +55,7 @@ class HomeController extends Controller
                 if ($brand && $category) {
                     $relatedProducts = Product::where([['brand_id', $brand->id], ['category_id', $category->id], ['id', '<>', $product->id]])
                         ->get();
-                    $comments = Comment::where('product_id', $product->id)
+                    $comments = Comment::where([['parent_id', $product->id], ['state', 1]])
                         ->orderBy('id', 'desc')
                         ->paginate(5);
                     $producByCategories = Product::where([['category_id', $category->id], ['id', '<>', $product->id]])
@@ -83,10 +85,11 @@ class HomeController extends Controller
     public function eshopBrand ($id)
     {
         $brand = Brand::find($id);
+        $brands = Brand::all()->pluck('name', 'id');
         if ($brand) {
             $products = Product::where('brand_id', $brand->id)->get();
 
-            return view('frontend.pages.brandProduct', compact('products', 'brand'));
+            return view('frontend.pages.brandProduct', compact('products', 'brand', 'brands'));
         }
 
         return redirect()->route('message');
@@ -104,23 +107,71 @@ class HomeController extends Controller
         return redirect()->route('message');
     }
 
-    public function getNews (Request $request)
+    public function getNews (Request $request, $id)
     {
-        $getNews = News::join('kind_of_news', 'kind_of_news.id', '=', 'news.kind_of_news_id')
-            ->join('news_categories', 'news_categories.id', '=', 'news.new_categories_id')
-            ->select('news.*', 'kind_of_news.name as kind_name', 'news_categories.name as cate_name')
-            ->orderDesc()
-            ->simplePaginate(Config::get('paginate.news'));
+        $kindNews = KindOfNews::where('id', $id)->first();
+        if (!$kindNews) {
+            $getNews = News::join('kind_of_news', 'kind_of_news.id', '=', 'news.kind_of_news_id')
+                ->join('news_categories', 'news_categories.id', '=', 'news.news_category_id')
+                ->select('news.*', 'kind_of_news.name as kind_name', 'news_categories.name as cate_name')
+                ->orderDesc()
+                ->paginate(Config::get('paginate.news'));
+        }
+        else {
+            $getNews = News::join('kind_of_news', 'kind_of_news.id', '=', 'news.kind_of_news_id')
+                ->join('news_categories', 'news_categories.id', '=', 'news.news_category_id')
+                ->select('news.*', 'kind_of_news.name as kind_name', 'news_categories.name as cate_name')
+                ->where('news.kind_of_news_id', $id)
+                ->orderDesc()
+                ->paginate(Config::get('paginate.news'));
 
-        return view('frontend.pages.news', compact('getNews'));
+        }
+
+        return view('frontend.pages.blog.blog', compact('getNews', 'kindNews'));
+    }
+
+    public function getCategories ($id)
+    {
+        $getCategories = NewsCategory::find($id);
+        if ($getCategories) {
+            $getNews = News::join('kind_of_news', 'kind_of_news.id', '=', 'news.kind_of_news_id')
+                ->join('news_categories', 'news_categories.id', '=', 'news.news_category_id')
+                ->select('news.*', 'kind_of_news.name as kind_name', 'news_categories.name as cate_name')
+                ->where('news.news_category_id', $id)
+                ->orderDesc()
+                ->paginate(Config::get('paginate.news'));
+
+            return view('frontend.pages.blog.newsCategories', compact('getNews', 'getCategories'));
+
+        }
+    }
+
+    public function viewsPlush ($slug)
+    {
+        $getPost = News::where('slug', $slug)->first();
+        if($getPost){
+            $getPost->views++;
+            $getPost->save();
+
+            return redirect()->route('getPost', $getPost->slug);
+        }
     }
 
     public function getPost (Request $request, $slug)
     {
-        $getPost = news::where('slug',$slug)
+        $getPost = news::join('kind_of_news', 'kind_of_news.id', '=', 'news.kind_of_news_id')
+            ->join('news_categories', 'news_categories.id', '=', 'news.news_category_id')
+            ->select('news.*', 'kind_of_news.name as kind_name', 'news_categories.name as cate_name')
+            ->where('slug',$slug)
             ->first();
+        if ($getPost) {
+            $comments = Comment::where([['parent_id', $getPost->id], ['state', 2]])
+                ->orderBy('id', 'desc')
+                ->paginate(5);
+            $getNews = News::where([['kind_of_news_id', $getPost->kind_of_news_id], ['id', '<>', $getPost->id]])->get();
+            return view('frontend.pages.blog.post', compact('getPost', 'getNews', 'comments'));
+        }
 
-        return view('frontend.pages.post', compact('getPost'));
     }
 
     public function changeLanguage ($language)

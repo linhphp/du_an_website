@@ -11,6 +11,7 @@ class AddNewsTable extends Migration
     {
         Schema::table('news', function (Blueprint $table) {
             $table->string('date');
+            $table->string('views')->default(0);
             $table->softDeletes();
         });
     }
@@ -19,6 +20,7 @@ class AddNewsTable extends Migration
     {
         Schema::table('news', function (Blueprint $table) {
             $table->dropColumn('date');
+            $table->dropColumn('views');
             $table->softDeletes();
         });
     }

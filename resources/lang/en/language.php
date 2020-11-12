@@ -134,4 +134,8 @@ return [
     'maybe_you_are_interested' => 'Maybe you are interested',
     'confirm_order' => 'Confirm order',
     'create_account' => 'Create Account',
+    'blog'=>'Blog',
+    'views' => 'Views',
+    'type_of_news' => 'Type of news',
+    'related_posts' => 'Related Posts',
 ];

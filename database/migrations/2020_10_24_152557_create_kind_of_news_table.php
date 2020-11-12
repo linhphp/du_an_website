@@ -16,8 +16,8 @@ class CreateKindOfNewsTable extends Migration
         Schema::create('kind_of_news', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('name');
-            $table->integer('new_categories_id')->unsigned();
-            $table->foreign('new_categories_id')
+            $table->integer('news_category_id')->unsigned();
+            $table->foreign('news_category_id')
                   ->references('id')
                   ->on('news_categories')
                   ->onDelete('cascade');  

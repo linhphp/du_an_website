@@ -176,7 +176,7 @@
                     <li><a href="{{ route('home') }}">@lang('language.home') </a>
                     </li>
                     <li><a href="{{ route('eshop') }}">@lang('language.shopping') </a>
-                    <li><a href="category.html">@lang('language.news') </a>
+                    <li><a href="{{ route('news','post') }}">@lang('language.news') </a>
                     </li>
                 </ul>
             </div>

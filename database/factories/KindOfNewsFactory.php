@@ -25,7 +25,7 @@ class KindOfNewsFactory extends Factory
         $cate_id = NewsCategory::inRandomOrder()->first();
         return [
             'name' => $this->faker->name,
-            'new_categories_id' => $cate_id->id
+            'news_category_id' => $cate_id->id
         ];
     }
 }

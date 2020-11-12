@@ -14,8 +14,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         \App\Models\User::factory(10)->create();
-        \App\Models\NewsCategory::factory(10)->create();
-        \App\Models\KindOfNews::factory(20)->create();
+        \App\Models\NewsCategory::factory(5)->create();
+        \App\Models\KindOfNews::factory(5)->create();
 
          $this->call([
 	        BrandsTableSeeder::class,

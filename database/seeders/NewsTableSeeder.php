@@ -19,7 +19,7 @@ class NewsTableSeeder extends Seeder
             [
                 [
                     'kind_of_news_id' => 2,
-                    'new_categories_id' => 3,
+                    'news_category_id' => 3,
                     'title' => 'rò rỉ Nokia 10 PureView',
                     'slug' => 'ro-ri-nokia-10-pureview',
                     'description' => 'Tổng hợp rò rỉ Nokia 10 PureView: Chiếc flagship mới từ hãng Nokia huyền thoại với nhiều điểm mạnh vô cùng hấp dẫn',
@@ -58,8 +58,8 @@ Bên trên là tổng hợp những rò rỉ về chiếc điện thoại Nokia 
                     'date' => date('M-D-Y')
                 ],
                 [
-                    'kind_of_news_id' => 5,
-                    'new_categories_id' => 8,
+                    'kind_of_news_id' => 1,
+                    'news_category_id' => 4,
                     'title' => 'Sony Xperia 5 II phiên bản màu Purple ra mắt',
                     'slug' => 'sony-xperia-5-ii-phien-ban-mau-purple-ra-mat',
                     'description' => 'Chiếc smartphone hàng đầu Sony Xperia 5 II (hay Xperia 5 Mark II) ra mắt hồi tháng 4 năm nay, hiện được Sony bổ sung thêm tùy chọn màu sắc mới.',
@@ -78,8 +78,8 @@ Bạn nhận xét thế nào về các phiên bản màu của Sony Xperia 5 II,
                     'date' => date('M-D-Y')
                 ],
                 [
-                    'kind_of_news_id' => 10,
-                    'new_categories_id' => 6,
+                    'kind_of_news_id' => 4,
+                    'news_category_id' => 1,
                     'title' => 'Cùng so sánh điểm hiệu năng của Kirin 9000, Snapdragon 875 và Exynos 2100',
                     'slug' => 'cung-so-sanh-diem-hieu-nang-cua-kirin-9000-snapdragon-875-va-exynos-2100',
                     'description' => 'Những bộ vi xử lý hàng đầu trên smartphone như Snapdragon 875 của Qualcomm, Kirin 9000 của Huawei hay Exynos 2100 được sản xuất bởi Samsung sẽ sử dụng quy trình 5 nm mới nhất.',
@@ -107,8 +107,8 @@ Bạn đánh giá như thế nào về ba bộ vi xử lý này?',
                     'date' => date('M-D-Y')
                 ],
                 [
-                    'kind_of_news_id' => 5,
-                    'new_categories_id' => 8,
+                    'kind_of_news_id' => 3,
+                    'news_category_id' => 5,
                     'title' => 'Siêu phẩm Samsung Galaxy S21 Ultra sẽ đi kèm với màn hình độ phân giải QHD+',
                     'slug' => 'sieu-pham-samsung-galaxy-s21-ultra-se-di-kem-voi-man-hinh-do-phan-giai-qhd+',
                     'description' => 'Báo cáo mới nhất cho hay, Galaxy S21 Ultra sẽ đi kèm với màn hình độ phân giải QHD+, tốc độ làm tươi 120Hz. Trong khi trước đó, có thông tin cho rằng S21 Ultra sẽ có màn hình 144Hz.',
