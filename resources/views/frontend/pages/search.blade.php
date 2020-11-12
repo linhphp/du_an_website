@@ -23,6 +23,8 @@
                 <div class="lg-margin"></div>
                 <div class="row">
                     <div class="col-md-12 padding-right-lg">
+                    	<h4>{{ count($products) }} @lang('language.results_found') </h4>
+                    	@if(count($products) > 0)
                         <div class="category-list">
                 	        @foreach($products as $product)
                 	        <form action="{{ route('cart.add', $product->id) }}" method="post">
@@ -86,6 +88,7 @@
                             	{{ $products->render('vendor.pagination.default') }}
                             </div>
                         </div>
+                        @endif
                         <div class="md-margin2x visible-sm visible-xs"></div>
                     </div>
                 </div>

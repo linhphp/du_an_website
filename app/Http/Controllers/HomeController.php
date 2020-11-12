@@ -210,9 +210,14 @@ class HomeController extends Controller
     public function search(Request $request)
     {
         $key = $request->key;
-        $products = Product::where('name', 'like', '%'.$key.'%')
+        if ($key) {
+            $products = Product::where('name', 'like', '%'.$key.'%')
             ->orWhere('price', 'like', $key)
-            ->paginate(Config::get('paginate.eshop'));
+            ->paginate(Config::get('paginate.eshop'));  
+        }
+        else {
+            $products = [];
+        }
 
         return view('frontend.pages.search', compact('products', 'key'));
     }
