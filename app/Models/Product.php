@@ -40,8 +40,8 @@ class Product extends Model
     	return $this->belongsTo(Category::class, 'category_id', 'id');
     }
     
-    public function emages ()
+    public function images ()
     {
-    	return $this->hasMany(Emage::class, 'product_id' , 'id');
+    	return $this->hasMany(Image::class, 'product_id' , 'id');
     }
 }

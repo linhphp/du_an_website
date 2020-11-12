@@ -1,6 +1,7 @@
 @extends('frontend.layout.master')
 @section('title')
 @lang('language.home')
+@endsection
 @section('content')
 <section id="content" role="main">
     @include('frontend/layout/slide')
@@ -200,5 +201,4 @@
     <div class="md-margin2x half hidden-xs"></div>
     <div class="lg-margin visible-xs"></div>
 </section>
-@endsection
 @endsection
