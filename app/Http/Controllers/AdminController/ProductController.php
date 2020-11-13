@@ -16,46 +16,39 @@ class ProductController extends Controller
         $products = Product::join('brands', 'brands.id', '=', 'products.brand_id')
             ->join('categories','categories.id', '=', 'products.category_id')
             ->select('products.*', 'brands.name as brand_name', 'categories.name as cate_name')
-            ->orderDesc()->paginate(Config::get('paginate.pro'));
+            ->orderDesc()->get();
 
-        return view('backend.pages.products.index', compact('products'));
+        return view('backend.pages.products.product.index', compact('products'));
     }
 
     public function create()
     {
         $brands = Brand::all()->pluck('id', 'name');
         $categories = Category::all()->pluck('id', 'name');
-        return view('backend.pages.products.create', compact('brands', 'categories'));
+        return view('backend.pages.products.product.create', compact('brands', 'categories'));
     }
 
     public function store(Request $request)
     {
-        $file = $request->file('image');
-        $fileName = $file->getClientOriginalName('image');
-        $file->move('storage/image',$fileName);
+        $file1 = $request->file('image1');
+        $fileName1 = $file1->getClientOriginalName('image1');
+        $file1->move('storage/image',$fileName1);
+        $file2 = $request->file('image2');
+        $fileName2 = $file2->getClientOriginalName('image2');
+        $file2->move('storage/image',$fileName2);
+        
         $product = new Product;
         $product->brand_id = $request->brand_id;
         $product->category_id = $request->category_id;
         $product->name = $request->name;
         $product->price = $request->price;
         $product->discount = $request->discount;
-        $product->image = $fileName;
+        $product->image1 = $fileName1;
+        $product->image2 = $fileName2;
         $product->accessories = $request->accessories;
         $product->desc = $request->desc;
-        $product->content = $request->content;
         $product->quantity = 1;
         $product->save();
-        foreach($request->imageDetails as $img)
-        {
-            $fileNameImage = $img->getClientOriginalName($img);
-            $img->move('storage/image', $fileNameImage);
-            Image::create(
-                [
-                    'product_id' => $product->id,
-                    'image' => $fileNameImage
-                ]
-            );
-        }
 
         return redirect()->route('products.index');    
     }
@@ -68,23 +61,42 @@ class ProductController extends Controller
     public function edit($id)
     {
         //
-        $brands = Brand::all();
-        $categories = Category::all();
+        $brands = Brand::all()->pluck('id', 'name');
+        $categories = Category::all()->pluck('id', 'name');
         $product = Product::find($id);
-        return view('backend.pages.products.edit', compact('brands', 'categories', 'product'));
+        return view('backend.pages.products.product.edit', compact('brands', 'categories', 'product'));
     }
 
     public function update(Request $request, $id)
     {
-        $file = $request->file('image');
-        $fileName = $file->getClientOriginalName('image');
-        $file->move('storage/image',$fileName);
-        $product = $request->all();
-        $product['quantity'] = 1;
-        $product['image'] = $fileName;
-        Product::find($id)->update($product);
-        
-        return redirect()->back();
+        $file1 = $request->file('image1');
+        if ($file1) {
+            $fileName1 = $file1->getClientOriginalName('image1');
+            $file1->move('storage/image',$fileName1);
+        }
+        $file2 = $request->file('image2');
+        if ($file2) {
+            $fileName2 = $file2->getClientOriginalName('image2');
+            $file2->move('storage/image',$fileName2);
+        }
+        $product = Product::find($id);
+        $product->brand_id = $request->brand_id;
+        $product->category_id = $request->category_id;
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->discount = $request->discount;
+        if ($file1) {
+            $product->image1 = $fileName1;
+        }
+        if ($file2) {
+            $product->image2 = $fileName2;
+        }
+        $product->accessories = $request->accessories;
+        $product->desc = $request->desc;
+        $product->quantity = 1;
+        $product->save();
+
+        return redirect()->route('products.index');
     }
 
     public function destroy($id)

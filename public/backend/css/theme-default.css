@@ -8464,6 +8464,11 @@ li.ext_zip {
   margin-left: 5px;
   margin-right: 0px;
 }
+
+a.title {
+  color: #434a54;
+}
+
 /* Animations */
 @-webkit-keyframes pulsate {
   0% {

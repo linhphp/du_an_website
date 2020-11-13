@@ -33,7 +33,7 @@
 	                                <div class="col-sm-9 clearfix">
 	                                    <div class="product-top">
 	                                        <figure class="product-image-container">
-	                                            <a href="{{ route('product.detail', $product->id) }}" title="White linen sheer dress"><img src="storage/image/{{ $product->image1 }}" alt="Product image" class="product-image"> <img src="storage/image/{{ $product->image1 }}" alt="Product image hover" class="product-image-hover"></a>
+	                                            <a href="{{ route('product.detail', $product->id) }}" title="White linen sheer dress"><img src="storage/image/{{ $product->image1 }}" alt="Product image" class="product-image"> <img src="storage/image/{{ $product->image2 }}" alt="Product image hover" class="product-image-hover"></a>
 	                                        </figure>
 	                                    </div>
 	                                    <div class="product-list-content">

@@ -10,6 +10,8 @@ use App\Http\Controllers\AdminController\BillAdminController;
 use App\Http\Controllers\AdminController\NewsCategoryController;
 use App\Http\Controllers\AdminController\KindOfNewsController;
 use App\Http\Controllers\AdminController\NewsController;
+use App\Http\Controllers\AdminController\UserAdminController;
+use App\Http\Controllers\AdminController\CommentAdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AddressController;
@@ -30,21 +32,24 @@ use App\Http\Controllers\CommentController;
 //
 Route::group(['middleware' => 'locale'], function ()
 { 
-    Route::middleware(['checklogin'])->group( function ()
-    {
+    // Route::middleware(['checklogin'])->group( function ()
+    // {
         Route::get('/', [UserController::class, 'index'])
             ->name('home.admin');
         Route::resource('brands', BrandController::class)
             ->except(['create', 'edit', 'show']);
         Route::resource('categories', CategoryController::class)
             ->except(['create', 'edit', 'show']);
-        Route::resource('news', NewsController::class)
-            ->except(['show']);
-        Route::resource('new-categories', NewsCategoryController::class)
+        Route::resource('news', NewsController::class);
+        Route::resource('news-categories', NewsCategoryController::class)
             ->except(['create', 'edit', 'show']);
         Route::resource('kind-of-news', KindOfNewsController::class)
             ->except(['edit', 'show']);
         Route::resource('products', ProductController::class);
+        Route::resource('users', UserAdminController::class);
+        Route::get('comments/news', [CommentAdminController::class, 'commentsNews'])->name('comments.news');
+        Route::get('comment/product', [CommentAdminController::class, 'commentsProduct'])->name('comments.product');
+        Route::DELETE('comments/delete/{id}', [CommentAdminController::class, 'destroy'])->name('comments.destroy');
         Route::prefix('carts')->group( function ()
         {
            Route::get('/', [CartAdminController::class, 'cartShows'])->name('adminCart.show'); 
@@ -56,7 +61,7 @@ Route::group(['middleware' => 'locale'], function ()
             route::get('update', [BillAdminController::class, 'billUpdate'])->name('billAdmin.update');
             route::get('{id}/detail', [BillAdminController::class, 'billDetail'])->name('billAdmin.detail');
         });
-    });
+    // });
     Route::view('login', 'backend.login')
         ->name('login.admin')
         ->middleware(['checklogout']);
@@ -82,7 +87,7 @@ Route::group(['middleware' => 'locale'], function ()
             ->name('eshop.category');
         Route::get('districts/{id}', [AddressController::class, 'getDistricts']);
         Route::get('wards/{id}', [AddressController::class, 'getWards']);
-        // Route::get('message', [Homecontroller::class, 'message'])->name('message');
+        Route::view('message', 'frontend.pages.message')->name('message');
         Route::post('comment/{id}', [CommentController::class, 'storeProduct'])->name('comment.post');
         Route::post('comment/post/{id}', [CommentController::class, 'storePost'])->name('comment');
         Route::get('about-us', [HomeController::class, 'aboutUs'])->name('aboutUs');

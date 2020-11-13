@@ -17,9 +17,9 @@ class BillAdminController extends Controller
     	$status = Status::all()->pluck('id', 'name');
     	$bills = Bill::joinCustomer()
     	    ->orderBy('updated_at', 'desc')
-    	    ->paginate(Config::get('paginnate.pro'));
+    	    ->get();
 
-    	return view('backend.pages.bills.index', compact('bills', 'status'));
+    	return view('backend.pages.checkout.bills.billShow', compact('bills', 'status'));
     }
 
     public function billUpdate (Request $request)
@@ -36,6 +36,6 @@ class BillAdminController extends Controller
     	    ->get();
     	$customer = Bill::find($id)->customer->toArray();
 
-        return view('backend.pages.bills.show', compact('billDetails', 'customer'));
+        return view('backend.pages.checkout.bills.billDetail', compact('billDetails', 'customer'));
     }
 }

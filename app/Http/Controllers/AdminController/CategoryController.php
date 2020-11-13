@@ -15,19 +15,20 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::paginate(Config::get('paginate.pro'));
-        return view('backend.pages.categories.index', compact('categories'));
+        $categories = Category::all();
+        return view('backend.pages.products.categories', compact('categories'));
     }
 
     public function store(Request $request)
     {
         //
-        Category::create(
-            [
-                'name' => $request->name,
-                'status' => rand(1, 2)
-            ]
-        );
+        // $file = $request->file('image');
+        // $fileName = $request->file('image')->getClientOriginalName();
+        // $user->image = $fileName;
+        // $file->move('storage/image',$fileName);
+        $data = new Category;
+        $data->name = ucwords($request->name);
+        $data->save();
 
         return redirect()->back();
     }
@@ -36,8 +37,7 @@ class CategoryController extends Controller
     {
         Category::find($id)->update(
             [
-                'name' => $request->name,
-                'status' => rand(1, 2)
+                'name' => ucwords($request->name)
             ]
         );
 
