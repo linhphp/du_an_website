@@ -181,7 +181,9 @@
                 </ul>
             </div>
             <div class="col-md-2 logo-container">
-                <h1 class="logo clearfix"><a href="{{ route('home') }}" title="Granada - Premium Bootstrap eCommerce Template">Eshop</a></h1>
+                <h1 class=" logo clearfix"><a href="{{ route('home') }}" title="Granada - Premium Bootstrap eCommerce Template">
+                    <img width="100%" src="frontend/images/logo1.png" alt="">
+                </a></h1>
             </div>
             <div class="col-md-5 clearfix">
                 <nav>

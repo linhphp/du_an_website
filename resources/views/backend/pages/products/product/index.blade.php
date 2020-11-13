@@ -42,12 +42,12 @@
                                     </td>
                                     <td>{{ number_format($product->price) }} VNĐ</td>
                                     <th>{{ $product->quantity }}</th>
-                                    <td><a href="{{ route('products.edit', $product->id) }}" class="btn btn-default btn-rounded btn-condensed btn-sm"><span class="fa fa-pencil"></span></a></td>
+                                    <td><a title="edit" href="{{ route('products.edit', $product->id) }}" class="btn btn-default btn-rounded btn-condensed btn-sm"><span class="fa fa-pencil"></span></a></td>
                                     <td>
                                         <form action="{{ route('products.destroy', $product->id) }}" method="post">
                                             @method("DELETE")
                                             @csrf
-                                            <button class="btn btn-danger btn-rounded btn-condensed btn-sm" onclick="delete_row('trow_1');"><span class="fa fa-times"></span></button>
+                                            <button title="delete" class="btn btn-danger btn-rounded btn-condensed btn-sm" onclick="delete_row('trow_1');"><span class="fa fa-times"></span></button>
                                         </form>
                                     </td>
                                 </tr>

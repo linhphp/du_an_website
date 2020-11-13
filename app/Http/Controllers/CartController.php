@@ -220,6 +220,6 @@ class CartController extends Controller
             $message->subject('Xác nhận thông tin mua hàng');
         });
 
-        return redirect()->route('message')->with(['message' => '']);
+        return redirect()->route('message')->with(['cart' => '']);
     }
 }

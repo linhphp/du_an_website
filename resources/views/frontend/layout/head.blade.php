@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="frontend/css/revslider2.css">
     <link rel="stylesheet" href="frontend/css/style.css">
     <link rel="stylesheet" href="frontend/css/responsive.css">
-    <link rel="icon" type="image/png" href="images/icons/icon.html">
+    <link rel="icon" href="frontend/images/logoio.png" type="image/x-icon" />
     <link rel="apple-touch-icon" sizes="57x57" href="frontend/images/icons/apple-icon-57x57.html">
     <link rel="apple-touch-icon" sizes="72x72" href="frontend/images/icons/apple-icon-72x72.html">
 
