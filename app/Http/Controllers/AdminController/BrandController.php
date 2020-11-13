@@ -10,15 +10,14 @@ class BrandController extends Controller
 {
     public function index()
     {
-        $brands = Brand::paginate(Config::get('paginate.pro'));
-        return view('backend.pages.brand.index', compact('brands'));
+        $brands = Brand::all();
+        return view('backend.pages.products.brands', compact('brands'));
     }
     public function store(Request $request)
     {
         Brand::create(
             [
-                'name' => $request->name,
-                'status' => rand(1, 2)
+                'name' => ucwords($request->name)
             ]
         );
 
@@ -29,8 +28,7 @@ class BrandController extends Controller
     {
         Brand::find($id)->update(
             [
-                'name' => $request->name,
-                'status' => rand(1, 2)
+                'name' => ucwords($request->name)
             ]
         );
 
@@ -40,5 +38,8 @@ class BrandController extends Controller
     public function destroy($id)
     {
         //
+        Brand::find($id)->delete();
+
+        return redirect()->back();
     }
 }

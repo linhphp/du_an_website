@@ -139,4 +139,10 @@ return [
     'type_of_news' => 'Type of news',
     'related_posts' => 'Related Posts',
     'results_found' => 'results found',
+    'user' => 'User',
+    'category' => 'Category',
+    'content' => 'Content',
+    'news_categories' => 'News categories',
+    'type_of_news' => 'Type of news',
+    'comment' => 'Comment',
 ];

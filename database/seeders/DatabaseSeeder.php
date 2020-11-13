@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
             DistrictsTableSeeder::class,
             WardsTableSeeder::class,
         ]);
-        \App\Models\Comment::factory(500)->create();
+        \App\Models\Comment::factory(200)->create();
         \App\Models\Slide::factory(2)->create();
     }
 }

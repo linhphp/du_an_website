@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Product;
+use App\Models\Brand;
+use App\Models\Category;
+use App\Models\News;
 use Auth;
 use Cart;
 use Session;
@@ -17,8 +20,11 @@ class UserController extends Controller
     {
         $users = User::all();
         $products = Product::all();
+        $categories = Category::all();
+        $brands = Brand::all();
+        $news = News::all();
 
-        return view('backend.pages.index',compact('users', 'products'));
+        return view('backend.pages.index',compact('users', 'products', 'categories', 'brands', 'news'));
     }
 
     public function loginAdmin (Request $request)

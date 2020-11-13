@@ -1,61 +1,110 @@
-@extends('backend/layout.master')
-@section('title', 'home')
+@extends('backend.layouts.master')
+@section('title')
+@lang('language.home')
+@endsection
 @section('content')
-
-<section id="main-content">
-    <section class="wrapper">
-        <!-- //market-->
-        <div class="market-updates">
-            <div class="col-md-3 market-update-gd">
-                <div class="market-update-block clr-block-2">
-                    <div class="col-md-4 market-update-right">
-                        <i class="fa fa-product-hunt"></i>
+<ul class="breadcrumb">
+    <li><a href="#">Home</a></li>                    
+    <li class="active">Dashboard</li>
+</ul>
+<div class="page-content-wrap">
+    
+    <!-- START WIDGETS -->                    
+    <div class="row">
+        <div class="col-md-3">
+            
+            <!-- START WIDGET SLIDER -->
+            <div class="widget widget-default widget-carousel">
+                <div class="owl-carousel" id="owl-example">
+                    <div>
+                        <a href="{{ route('products.index') }}" class="title">                                
+                            <div class="widget-title">@lang('language.product')</div>
+                            <div class="widget-int">{{ count($products) }}</div>
+                        </a>
                     </div>
-                     <div class="col-md-8 market-update-left">
-                     <h4>Products</h4>
-                    <h3>{{ count($products) }}</h3>
-                  </div>
-                  <div class="clearfix"> </div>
+                    <div>
+                        <a href="{{ route('brands.index') }}" class="title">                              
+                            <div class="widget-title">@lang('language.brand') </div>
+                            <div class="widget-int">{{ count($brands) }}</div>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="{{ route('categories.index') }}" class="title">                          
+                            <div class="widget-title">@lang('language.categories') </div>
+                            <div class="widget-int">{{ count($categories) }}</div>
+                        </a>
+                    </div>
+                </div>                            
+                <div class="widget-controls">                                
+                    <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top" title="Remove Widget"><span class="fa fa-times"></span></a>
+                </div>                             
+            </div>         
+            <!-- END WIDGET SLIDER -->
+            
+        </div>
+        <div class="col-md-3">
+            
+            <!-- START WIDGET MESSAGES -->
+            <div class="widget widget-default widget-item-icon" onclick="location.href='pages-messages.html';">
+                <div class="widget-item-left">
+                    <span class="fa fa-envelope"></span>
+                </div>                             
+                <div class="widget-data">
+                    <a href="{{ route('news.index') }}" class="title">
+                        <div class="widget-int num-count">{{ count($news) }}</div>
+                        <div class="widget-title">News</div>
+                        <div class="widget-subtitle">In your mailbox</div>
+                    </a>
+                </div>      
+                <div class="widget-controls">                                
+                    <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top" title="Remove Widget"><span class="fa fa-times"></span></a>
                 </div>
-            </div>
-            <div class="col-md-3 market-update-gd">
-                <div class="market-update-block clr-block-1">
-                    <div class="col-md-4 market-update-right">
-                        <i class="fa fa-users" ></i>
-                    </div>
-                    <div class="col-md-8 market-update-left">
-                    <h4>Users</h4>
-                        <h3>{{ count($users) }}</h3>
-                    </div>
-                  <div class="clearfix"> </div>
+            </div>                            
+            <!-- END WIDGET MESSAGES -->
+            
+        </div>
+        <div class="col-md-3">
+            
+            <!-- START WIDGET REGISTRED -->
+            <div class="widget widget-default widget-item-icon" onclick="location.href='pages-address-book.html';">
+                <div class="widget-item-left">
+                    <span class="fa fa-user"></span>
                 </div>
-            </div>
-            <div class="col-md-3 market-update-gd">
-                <div class="market-update-block clr-block-3">
-                    <div class="col-md-4 market-update-right">
-                        <i class="fa fa-usd"></i>
-                    </div>
-                    <div class="col-md-8 market-update-left">
-                        <h4>Sales</h4>
-                        <h3>1,500</h3>
-                    </div>
-                  <div class="clearfix"> </div>
+                <div class="widget-data">
+                    <a href="{{ route('users.index') }}" class="title">
+                        <div class="widget-int num-count">{{ count($users) }}</div>
+                        <div class="widget-title">@lang('language.user') </div>
+                    </a>
                 </div>
-            </div>
-            <div class="col-md-3 market-update-gd">
-                <div class="market-update-block clr-block-4">
-                    <div class="col-md-4 market-update-right">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                <div class="widget-controls">                                
+                    <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top" title="Remove Widget"><span class="fa fa-times"></span></a>
+                </div>                            
+            </div>                            
+            <!-- END WIDGET REGISTRED -->
+            
+        </div>
+        <div class="col-md-3">
+            
+            <!-- START WIDGET CLOCK -->
+            <div class="widget widget-danger widget-padding-sm">
+                <div class="widget-big-int plugin-clock">00:00</div>                            
+                <div class="widget-subtitle plugin-date">Loading...</div>
+                <div class="widget-controls">                                
+                    <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="left" title="Remove Widget"><span class="fa fa-times"></span></a>
+                </div>                            
+                <div class="widget-buttons widget-c3">
+                    <div class="col">
+                        <a><span class="fa fa-clock-o"></span></a>
                     </div>
-                    <div class="col-md-8 market-update-left">
-                        <h4>Orders</h4>
-                        <h3>1,500</h3>
+                    <div class="col">
+                        <a><span class="fa fa-bell"></span></a>
                     </div>
-                  <div class="clearfix"> </div>
-                </div>
-            </div>
-           <div class="clearfix"> </div>
-        </div>    
-</section>
-
+                    <div class="col">
+                        <a><span class="fa fa-calendar"></span></a>
+                    </div>
+                </div>                            
+            </div>                        
+        </div>
+    </div>
+</div>
 @endsection

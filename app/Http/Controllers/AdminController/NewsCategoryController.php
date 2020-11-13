@@ -10,17 +10,16 @@ class NewsCategoryController extends Controller
 {
     public function index()
     {
-        $newCategories = NewsCategory::paginate(Config::get('paginate.pro'));
+        $newsCategories = NewsCategory::all();
 
-        return view('backend.pages.news_categories.create', compact('newCategories'));
+        return view('backend.pages.posts.newsCategories', compact('newsCategories'));
     }
 
     public function store(Request $request)
     {
         NewsCategory::create(
             [
-                'name' => $request->name,
-                'status' => rand(1, 2)
+                'name' => $request->name
             ]
         );
 
@@ -30,8 +29,7 @@ class NewsCategoryController extends Controller
     {
         NewsCategory::find($id)->update(
             [
-                'name' => $request->name,
-                'status' => rand(1, 2)
+                'name' => $request->name
             ]
         );
 

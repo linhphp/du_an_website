@@ -14,19 +14,19 @@ class NewsController extends Controller
 {
     public function index()
     {
-        $news = News::join('kind_of_news', 'kind_of_news.id', '=', 'news.kind_of_news_id')
-            ->join('news_categories', 'news_categories.id', '=', 'news.new_categories_id')
+        $getNews = News::join('kind_of_news', 'kind_of_news.id', '=', 'news.kind_of_news_id')
+            ->join('news_categories', 'news_categories.id', '=', 'news.news_category_id')
             ->select('news.*', 'kind_of_news.name as kind_name', 'news_categories.name as cate_name')
-            ->orderDesc()->paginate(Config::get('paginate.pro'));
+            ->orderDesc()->get();
         
-        return view('backend.pages.news.index', compact('news'));   
+        return view('backend.pages.posts.news.index', compact('getNews'));   
     }
     public function create()
     {
-        $newCategorys =  NewsCategory::all()->pluck('id', 'name');
+        $newsCategories =  NewsCategory::all()->pluck('id', 'name');
         $kindOfNews =  KindOfNews::all()->pluck('id', 'name');   
         
-        return view('backend.pages.news.create', compact('newCategorys', 'kindOfNews'));
+        return view('backend.pages.posts.news.create', compact('newsCategories', 'kindOfNews'));
     } 
 
     public function store(Request $request)
@@ -38,8 +38,9 @@ class NewsController extends Controller
         $news->description = $request->description; 
         $news->content = $request->content;
         $news->kind_of_news_id = $request->kind_of_news_id;
-        $news->new_categories_id = $request->new_categories_id;
+        $news->news_category_id = $request->news_category_id;
         $news->post_image = $request->post_image;
+        $news->date = date("D-M-Y");
         $news->save();
 
        $post_image = $request->post_image;
@@ -51,31 +52,35 @@ class NewsController extends Controller
             $news->post_image = $new_image;
         }
         $news->save();
-        $post_image == '';
 
         return redirect()->route('news.index')->with(['newsSuccess' => '']);    
     }
 
     public function edit($id)
     {
-        $newCategorys =  NewsCategory::all();
-        $kindOfNews =  KindOfNews::all(); 
+        $newsCategories =  NewsCategory::all()->pluck('id', 'name');
+        $kindOfNews =  KindOfNews::all()->pluck('id', 'name'); 
         $news = News::find($id);
       
-        return view('backend.pages.news.edit', compact('newCategorys', 'kindOfNews', 'news'));  
+        return view('backend.pages.posts.news.edit', compact('newsCategories', 'kindOfNews', 'news'));  
     }
 
     public function update(Request $request, $id)
     {
-        
+        $getNews = News::find($id);
         $file = $request->file('post_image');
-        $fileName = $file->getClientOriginalName('post_image');
-        $file->move('storage/image',$fileName);
         $news = $request->all();
-        $news['post_image'] = $fileName;
-        News::find($id)->update($news);
+        if ($file) {
+            $fileName = $file->getClientOriginalName('post_image');
+            $file->move('storage/image',$fileName);
+            $news['post_image'] = $fileName;
+        }
+        else {
+            $news['post_image'] = $getNews->post_image;
+        }
+        $getNews->update($news);
         
-        return redirect()->back()->with('thongbao', 'Sữa bài viết thành công');
+        return redirect()->route('news.index');
     }
 
     public function destroy($id)

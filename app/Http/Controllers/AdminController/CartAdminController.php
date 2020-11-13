@@ -18,9 +18,9 @@ class CartAdminController extends Controller
         $carts = Cart::join('users', 'users.id', '=', 'carts.user_id')
             ->select('users.name', 'users.email', 'carts.*')
             ->orderBy('updated_at', 'desc')
-            ->paginate(Config::get('paginate.pro'));
+            ->get();
 
-        return view('backend.pages.carts.index', compact('carts'));
+        return view('backend.pages.checkout.carts.cartShow', compact('carts'));
     }
 
     public function cartDetail ($id)
@@ -30,6 +30,6 @@ class CartAdminController extends Controller
             ->where('cart_details.cart_id', $id)
             ->get();
 
-        return view('backend.pages.carts.detail', compact('cartDetails'));
+        return view('backend.pages.checkout.carts.cartDetail', compact('cartDetails'));
     }
 }

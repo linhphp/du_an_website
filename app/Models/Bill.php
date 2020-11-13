@@ -27,8 +27,7 @@ class Bill extends Model
     public function scopeJoinCustomer ($query)
     {
         return $query->join('customers', 'customers.id', '=', 'bills.customer_id')
-            ->join('status', 'status.id', '=', 'bills.status_id')
-            ->select('status.name as status_name', 'customers.name', 'customers.email', 'customers.phone', 'customers.address', 'bills.*');
+            ->select('customers.name', 'customers.email', 'customers.phone', 'customers.address', 'bills.*');
     }
 
     public function billDetails ()
