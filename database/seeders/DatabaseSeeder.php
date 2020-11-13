@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(10)->create();
+        \App\Models\User::factory(100)->create();
         \App\Models\NewsCategory::factory(5)->create();
         \App\Models\KindOfNews::factory(5)->create();
 
@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
             DistrictsTableSeeder::class,
             WardsTableSeeder::class,
         ]);
-        \App\Models\Comment::factory(200)->create();
+        \App\Models\Comment::factory(600)->create();
         \App\Models\Slide::factory(2)->create();
     }
 }

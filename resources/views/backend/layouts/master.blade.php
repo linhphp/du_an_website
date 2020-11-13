@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <base href="{{ asset('') }}">
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="frontend/images/logoio.png" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" id="theme" href="backend/css/theme-default.css"/>
     <script src="https://cdn.ckeditor.com/ckeditor5/23.1.0/classic/ckeditor.js"></script>
 
