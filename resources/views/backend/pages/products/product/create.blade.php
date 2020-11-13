@@ -14,7 +14,7 @@
             <div class="col-md-12">
 
                 <form action="{{ route('products.store') }}" class="form-horizontal" method="post" enctype='multipart/form-data'>
-                	@csrf
+                    @csrf
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h3 class="panel-title"><strong>Create @lang('language.product') </strong></h3>
@@ -35,11 +35,11 @@
                                 <label class="col-md-3 col-xs-12 control-label">@lang('language.category')</label>
                                 <div class="col-md-6 col-xs-12">
                                     <div class="input-group">
-                                    	<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                        <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
                                         <select name="category_id" id="" class="form-control control-label">
-                                        	@foreach ($categories as $name => $id)
-                                        	<option class="form-control" value="{{ $id }}"> {{ $name }}</option>
-                                        	@endforeach
+                                            @foreach ($categories as $name => $id)
+                                            <option class="form-control" value="{{ $id }}"> {{ $name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -48,11 +48,11 @@
                                 <label class="col-md-3 col-xs-12 control-label">@lang('language.brand')</label>
                                 <div class="col-md-6 col-xs-12">
                                     <div class="input-group">
-                                    	<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                        <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
                                         <select name="brand_id" id="" class="form-control control-label">
-                                        	@foreach ($brands as $name => $id)
-                                        	<option class="form-control" value="{{ $id }}"> {{ $name }}</option>
-                                        	@endforeach
+                                            @foreach ($brands as $name => $id)
+                                            <option class="form-control" value="{{ $id }}"> {{ $name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>

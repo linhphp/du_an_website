@@ -29,6 +29,8 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => Hash::make('123456789'),
             'birth_date' => date('d-m-y'),
+            'gender' => $this->faker->title('male'|'female'),
+            'link_facebook' => $this->faker->url,
             'remember_token' => Str::random(10),
         ];
     }

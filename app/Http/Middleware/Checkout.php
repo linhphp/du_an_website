@@ -10,10 +10,8 @@ class Checkout
     public function handle(Request $request, Closure $next)
     {
         if (Auth::check()){
-            if (Auth::user()->jurisdiction == null) {
 
-                return $next($request);
-            }
+            return $next($request);
         }
 
         return redirect()->route('signIn');

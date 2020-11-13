@@ -15,9 +15,14 @@ class BrandController extends Controller
     }
     public function store(Request $request)
     {
+        $file = $request->file('image');
+        $fileName = $request->file('image')->getClientOriginalName();
+        $file->image = $fileName;
+        $file->move('storage/image',$fileName);
         Brand::create(
             [
-                'name' => ucwords($request->name)
+                'name' => ucwords($request->name),
+                'image' => $fileName
             ]
         );
 

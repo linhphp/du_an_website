@@ -12,7 +12,7 @@
                     <img src="backend/assets/images/users/avatar.jpg" alt="John Doe"/>
                 </div>
                 <div class="profile-data">
-                    <div class="profile-data-name">John Doe</div>
+                    <div class="profile-data-name">{{ Session::get('user')->name }}</div>
                     <div class="profile-data-title">Web Developer/Designer</div>
                 </div>
                 <div class="profile-controls">

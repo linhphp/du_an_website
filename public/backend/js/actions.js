@@ -252,16 +252,13 @@ var page_actions = function(){
         $(this).parent(".lockscreen-box").addClass("active").find("input").focus(); 
         return false;
     });
-    $(".lockscreen-box .user_signin").on("click",function(){        
-        $(".sign-in").show();
-        $(this).remove();
-        $(".user").hide().find("img").attr("src","assets/images/users/no-image.jpg");
-        $(".user").show();
-        return false;
-    });
-    /* END LOCK SCREEN */
-
-    /* SIDEBAR */
+    // $(".lockscreen-box .user_signin").on("click",function(){        
+    //     $(".sign-in").show();
+    //     $(this).remove();
+    //     $(".user").hide().find("img").attr("src","backend/assets/images/users/no-image.jpg");
+    //     $(".user").show();
+    //     return false;
+    // });
     $(".sidebar-toggle").on("click",function(){
         $("body").toggleClass("sidebar-opened");
         return false;

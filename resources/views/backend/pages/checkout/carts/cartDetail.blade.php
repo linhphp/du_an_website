@@ -32,14 +32,12 @@
                                     <td>{{ number_format($cart->price - ($cart->price * $cart->discount)/100) }} VNĐ</td>
                                     <td>{{ $cart->qty }}</td>
                                     <td>
-                                        @if($cart->status == 1)
-                                        {{ 'pending' }}
-                                        @elseif($cart->status == 2)
+                                        @if($cart->status == 2)
                                         {{ 'processing' }}
-                                        @elseif($cart->status == 3)
+                                        @elseif($cart->destroy == 1)
                                         {{ 'cancel' }}
-                                        @elseif($cart->status == 4)
-                                        {{ 'deluvery' }}
+                                        @elseif($cart->destroy == null)
+                                        {{ 'pending' }}
                                         @endif
                                     </td>
                                 </tr>

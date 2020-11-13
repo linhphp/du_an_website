@@ -8,11 +8,6 @@ use Config;
 
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $categories = Category::all();
@@ -22,12 +17,13 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         //
-        // $file = $request->file('image');
-        // $fileName = $request->file('image')->getClientOriginalName();
-        // $user->image = $fileName;
-        // $file->move('storage/image',$fileName);
+        $file = $request->file('image');
+        $fileName = $request->file('image')->getClientOriginalName();
+        $file->image = $fileName;
+        $file->move('storage/image',$fileName);
         $data = new Category;
         $data->name = ucwords($request->name);
+        $data->image = $fileName;
         $data->save();
 
         return redirect()->back();
