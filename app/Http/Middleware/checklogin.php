@@ -18,13 +18,21 @@ class checklogin
     public function handle(Request $request, Closure $next)
     {
         if (Session::has('user')) {
+            if (Session::has('lockScreen')) {
+
+                return redirect()->route('unlock.admin');
+            }
             if (Session::get('user')->jurisdiction == 2) {
 
                 return $next($request);
             }
+            
         }
-        Session::forget('user');
+        else {
+            Session::forget('user');
 
-        return redirect()->route('login.admin');
+            return redirect()->route('login.admin');
+        }
+
     }
 }

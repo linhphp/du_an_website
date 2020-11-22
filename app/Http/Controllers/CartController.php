@@ -19,11 +19,11 @@ use Mail;
 
 class CartController extends Controller
 {
-    public function __construct ()
+    //
+    public function __construct()
     {
         $this->middleware('checkout');
     }
-
     public function cartAdd (Request $request, $id)
     {
         $product = Product::find($id);
@@ -165,6 +165,7 @@ class CartController extends Controller
         // dd($request);
         $cart = Cart::where([['user_id', Auth::id()], ['status', 1], ['id', $id]])->first();
         $cartDetails = $this->getCartDetail($cart->id);
+        $cartDetails->status = 2;
         if($request->address != null) {
             $customer = Customer::where([['user_id', Auth::id()], ['id', $request->address]])->first();
             if ($customer) {
@@ -194,6 +195,8 @@ class CartController extends Controller
 
         foreach ($cartDetails as $cartDetail)
         {
+            $cartDetail->status = 2;
+            $cartDetail->save();
             $billDetail = new BillDetail;
             $billDetail->bill_id = $bill->id;
             $billDetail->product_id = $cartDetail->product_id;
@@ -210,7 +213,7 @@ class CartController extends Controller
         $data['payment'] = $bill->payment;
         $data['address'] = $customer->address;
         $data['carts'] = $cartDetails;
-        $data['total_price'] = $request->total_price;
+        $data['total_price'] = $request->totalPrice;
         $email = $customer->email;
         $name = $customer->name;
         Mail::send('frontend.pages.checkout.email', $data, function ($message) use ($email, $name) {

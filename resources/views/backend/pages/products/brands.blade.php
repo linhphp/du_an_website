@@ -4,24 +4,29 @@
 @endsection
 @section('content')
 <ul class="breadcrumb">
-    <li><a href="{{ route('home.admin') }}">@lang('language.home') </a></li>                    
+    <li><a href="{{ route('home.admin') }}">@lang('language.home') </a></li>
     <li class="active">@lang('language.brand') </li>
 </ul>
-<div class="page-content-wrap">                
-
+<div class="page-content-wrap">
     <div class="row">
         <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <h3>create @lang('language.brand')</h3>
-                    <form action="{{ route('brands.store') }}" method="post" class="form-inline" role="form">
+                    <form action="{{ route('brands.store') }}" method="post" class="form-inline" role="form" enctype='multipart/form-data'>
                         @csrf
-                            <div class="input-group" style="width: 80%">                                
+                            <div class="input-group" style="width: 100%">
                                 <label class="sr-only">Name</label>
                                 <input class="form-control" name="name" type="text" placeholder="name @lang('language.category')">
                             </div>
-                        <button type="submit" class="btn btn-danger">Create</button>
-                    </form>                   
+                            <div class="input-group" style="margin-top: 10px; margin-bottom: 10px; width: 100%">
+                                <label class="sr-only" >Image</label>
+                                <input type="file" class="form-control" name="image" id="filename" title="Browse file" />
+                            </div>
+                            <div class="input-group">
+                                <button type="submit" class="btn btn-danger">Create</button>
+                            </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -35,8 +40,8 @@
                                 <tr>
                                     <th>Name</th>
                                     <th></th>
+                                    <th>Image</th>
                                     <th></th>
-
                                 </tr>
                             </thead>
                             <tbody>
@@ -53,6 +58,9 @@
                                         </td>
                                     </form>
                                     <td>
+                                        <img src="storage/image/{{ $brand->image }}" width="50" alt="">
+                                    </td>
+                                    <td>
                                         <form action="{{ route('brands.destroy', $brand->id) }}" method="post">
                                             @method("DELETE")
                                             @csrf
@@ -67,10 +75,7 @@
                     </div>
                 </div>
             </div>
-            <!-- END DEFAULT DATATABLE -->
-
         </div>
-    </div>                                
-    
+    </div>
 </div>
 @endsection

@@ -32,8 +32,8 @@ use App\Http\Controllers\CommentController;
 //
 Route::group(['middleware' => 'locale'], function ()
 { 
-    // Route::middleware(['checklogin'])->group( function ()
-    // {
+    Route::middleware(['checklogin'])->group( function ()
+    {
         Route::get('/', [UserController::class, 'index'])
             ->name('home.admin');
         Route::resource('brands', BrandController::class)
@@ -61,10 +61,14 @@ Route::group(['middleware' => 'locale'], function ()
             route::get('update', [BillAdminController::class, 'billUpdate'])->name('billAdmin.update');
             route::get('{id}/detail', [BillAdminController::class, 'billDetail'])->name('billAdmin.detail');
         });
-    // });
-    Route::view('login', 'backend.login')
+        Route::get('lock', [UserController::class, 'lock'])->name('lock.admin');
+    });
+    Route::get('un-lock', [UserController::class, 'checkUnLock'])->name('unlock.admin');
+    Route::post('un-lock', [UserController::class, 'unlock'])->name('unlock.post');
+    Route::view('login', 'backend.pages.login')
         ->name('login.admin')
         ->middleware(['checklogout']);
+
     Route::post('login', [UserController::class, 'loginAdmin'])
         ->name('login.admin.post');
     Route::post('logout', [UserController::class, 'logoutAdmin'])

@@ -12,7 +12,7 @@
                     data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-start="1600" data-easing="Power3.easeInOut" data-endspeed="600"
                     style="z-index:12">{{ $slide->desc }}</div>
                 <div class="tp-caption rev-btn customin customout" data-x="center" data-y="391" data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                    data-speed="1200" data-start="2200" data-easing="Power3.easeInOut" data-endspeed="600" style="z-index:14"><a href="category.html" class="btn btn-custom-3 btn-lg min-width">Take look</a></div>
+                    data-speed="1200" data-start="2200" data-easing="Power3.easeInOut" data-endspeed="600" style="z-index:14"><a href="{{ route('eshop') }}" class="btn btn-custom-3 btn-lg min-width">Shop now</a></div>
             </li>
             @endforeach
         </ul>
