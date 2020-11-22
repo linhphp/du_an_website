@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <ul class="breadcrumb">
-                        <li><a href="index-2.html" title="Home">Home</a></li>
+                        <li><a href="{{ route('home') }}" title="Home">Home</a></li>
                         <li class="active">Register Account</li>
                     </ul>
                 </div>
@@ -20,9 +20,9 @@
     <div class="xs-margin half"></div>
     <div class="container">
         <form name="signUp" action="{{ route('signup.post') }}" id="register-form" method="post">
-        	@csrf
+            @csrf
             <div class="row">
-            	<div class="col-sm-6 padding-right-md">
+                <div class="col-sm-6 padding-right-md">
                 <h2 class="color2">@lang('language.already_account') </h2>
                 <p>If you are not a member, you need to go to register page and create an account.</p>
                 <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
@@ -50,8 +50,8 @@
                         <input ng-model="sign_up.re_password" ng-required="true" type="password" name="re_password" id="re_password" class="form-control input-lg" required>
                     </div>
                     
-		            <div class="xs-margin"></div>
-		            <input ng-disabled="signUp.$invalid" type="submit" class="btn btn-custom btn-lg" value="@lang('language.create_account') ">
+                    <div class="xs-margin"></div>
+                    <input ng-disabled="signUp.$invalid" type="submit" class="btn btn-custom btn-lg" value="@lang('language.create_account') ">
                 </div>
                 <div class="md-margin visible-xs clearfix"></div>
             </div>

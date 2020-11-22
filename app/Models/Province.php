@@ -18,6 +18,8 @@ class Province extends Model
         'name',
         'type',
     ];
+    
+    protected $primaryKey = 'province_code';
 
     public function scopeGetCity ($query, $provinceCode)
     {

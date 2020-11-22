@@ -12,6 +12,8 @@ class AddNewsTable extends Migration
         Schema::table('news', function (Blueprint $table) {
             $table->string('date');
             $table->string('views')->default(0);
+            $table->foreign('kind_of_news_id')->references('id')->on('kind_of_news');
+            $table->foreign('news_category_id')->references('id')->on('news_categories');
             $table->softDeletes();
         });
     }

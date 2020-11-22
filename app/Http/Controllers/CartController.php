@@ -19,11 +19,12 @@ use Mail;
 
 class CartController extends Controller
 {
-    //
-    public function __construct()
+
+    public function __construct ()
     {
         $this->middleware('checkout');
     }
+
     public function cartAdd (Request $request, $id)
     {
         $product = Product::find($id);

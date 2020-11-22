@@ -30,7 +30,14 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @php
+                                $qty =0;
+                                @endphp
                                 @foreach ($products as $product)
+                                @php
+                                $qty += $product->quantity;
+                                @endphp
+                                <tr>
                                     <td>{{ $product->name }}</td>
                                     <td>{{ $product->brand_name }}</td>
                                     <td>{{ $product->cate_name }}</td>
@@ -52,7 +59,6 @@
                                     </td>
                                 </tr>
                                 @endforeach
-
                             </tbody>
                         </table>
                     </div>

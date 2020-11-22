@@ -97,6 +97,8 @@ $product_id =$product->id;
                     <div class="col-sm-7 padding-right-md review-comments">
                         <h3>{{ count($comments) }} @lang('language.comments') </h3>
                         <ul class="review-comments">
+                            <div id="comment-add">
+                            </div>
                             @foreach($comments as $comment)
                             <li>
                                 <div class="review-comment">
@@ -240,30 +242,7 @@ $product_id =$product->id;
     <div class="md-margin3x"></div>
 </section>
 <script>
-// var app = angular.module('my-app', [], function($interpolateProvider) {
-// $interpolateProvider.startSymbol('<%');
-// $interpolateProvider.endSymbol('%>');
-// });
-$(document).ready(function(){
-    $('.pagination a').unbind('click').on('click', function(e) {
-         e.preventDefault();
-         var page = $(this).attr('href').split('page=')[1];
-         getPosts(page);
-         console.log(page);
-    });
-  
-    function getPosts(page)
-    {
-        $.ajax({
-             type: "GET",
-             url: '{{ route("product.detail", $product_id) }}?page='+ page
-        })
-        .success(function(data) {
-             $('body').html(data);
-             // console.log(data);
-        });
-    }
-});
+
 var product_id = "{{ $product_id }}";
 app.controller('CommentController', function($scope, $http) {
     $scope.save = function() {
@@ -274,8 +253,10 @@ app.controller('CommentController', function($scope, $http) {
                 data: data,
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             }).success(function(reponsse) {
-                console.log(reponsse);
-                location.reload();
+                console.log(reponsse.user_name);
+                $('div [id="comment-add"]').append(
+                    '<li style="margin-bottom: 47px">' + '<div class="review-comment">' + '<div class="ratings-container">' + '<div class="ratings">' + '<div class="ratings-result" data-result="80"></div>' + '</div>' + '</div>' + '<div class="review-comment-content">' + '<h4>'+ reponsse.user_name + '</h4>' + '<div class="review-comment-meta"' + reponsse.created_at + '</div>' +  '<p>' + reponsse.content + '</p>' + '</div> </div> </li>'
+                    );
             })
             .error(function(reponsse) {
                 console.log(reponsse);
