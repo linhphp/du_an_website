@@ -27,10 +27,18 @@
                                     <th>Quantity</th>
                                     <th></th>
                                     <th></th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @php
+                                $qty =0;
+                                @endphp
                                 @foreach ($products as $product)
+                                @php
+                                $qty += $product->quantity;
+                                @endphp
+                                <tr>
                                     <td>{{ $product->name }}</td>
                                     <td>{{ $product->brand_name }}</td>
                                     <td>{{ $product->cate_name }}</td>
@@ -42,6 +50,9 @@
                                     </td>
                                     <td>{{ number_format($product->price) }} VNĐ</td>
                                     <th>{{ $product->quantity }}</th>
+                                    <td>
+                                        <a href="" class="btn btn-default btn-rounded btn-condensed btn-sm"><span class="fa fa-eye"></span></a>
+                                    </td>
                                     <td><a title="edit" href="{{ route('products.edit', $product->id) }}" class="btn btn-default btn-rounded btn-condensed btn-sm"><span class="fa fa-pencil"></span></a></td>
                                     <td>
                                         <form action="{{ route('products.destroy', $product->id) }}" method="post">
@@ -52,7 +63,6 @@
                                     </td>
                                 </tr>
                                 @endforeach
-
                             </tbody>
                         </table>
                     </div>

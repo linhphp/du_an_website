@@ -46,8 +46,8 @@
         <!-- END MESSAGE BOX-->
 
         <!-- START PRELOADS -->
-        <audio id="audio-alert" src="audio/alert.mp3" preload="auto"></audio>
-        <audio id="audio-fail" src="audio/fail.mp3" preload="auto"></audio>
+        <audio id="audio-alert" src="backend/audio/alert.mp3" preload="auto"></audio>
+        <audio id="audio-fail" src="backend/audio/fail.mp3" preload="auto"></audio>
     @include('backend/layouts/js')     
 </body>
 </html>

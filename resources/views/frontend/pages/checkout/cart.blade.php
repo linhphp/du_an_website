@@ -61,9 +61,13 @@
                             </td>
                             <td class="product-price-col"><span class="product-price-special">{{ number_format($price) }} VNĐ</span></td>
                             <td>
+                                @if($cartDetail->pro_quantity == 0)
+                                <p>sản phẩm tạm hết hàng</p>
+                                @else
                                 <div class="custom-quantity-input">
                                     <input type="number" name="qty" value="{{ $cartDetail->qty }}" onchange="updateCart(this.value, '{{ $cartDetail->id }}')">
                                 </div>
+                                @endif
                             </td>
                             <td class="product-total-col"><span class="product-price-special">{{ number_format($cartDetail->price * $cartDetail->qty) }}</span></td>
                             <td>

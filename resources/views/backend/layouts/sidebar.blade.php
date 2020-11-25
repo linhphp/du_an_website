@@ -131,5 +131,11 @@
                 </li>
             </ul>
         </li>
+        <li>
+            <a href="{{ route('revenue') }}">
+                <span class="fa fa-files-o"></span>
+                <span class="xn-text">Revenue</span>
+            </a>
+        </li>
     </ul>
 </div>

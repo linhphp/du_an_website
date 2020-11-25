@@ -16,7 +16,7 @@ class CreateWardsTable extends Migration
         Schema::create('wards', function (Blueprint $table) {
             $table->id();
             $table->integer('ward_code');
-            $table->integer('district_code');
+            $table->unsignedBigInteger('district_code');
             $table->string('name');
             $table->string('type');
         });

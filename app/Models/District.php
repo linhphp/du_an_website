@@ -20,6 +20,8 @@ class District extends Model
         'type',
     ];
 
+    protected $primaryKey = 'district_code';
+
     public function scopeGetDistrict ($query, $districtCode)
     {
         return $query->where('district_code' , $districtCode)->first();

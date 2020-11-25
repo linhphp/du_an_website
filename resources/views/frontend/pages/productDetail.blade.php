@@ -26,8 +26,8 @@ $product_id =$product->id;
     <div class="carousel-container">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6 col-sm-push-6">
-                    <div class="product-single-carousel">
+                <div class="col-sm-6 col-sm-push-6" >
+                    <div class="product-single-carousel" style="height: 100%">
                         <div class="slide">
                             <img src="storage/image/{{ $product->image1 }}" alt="product 1" class="img-responsive">
                         </div>
@@ -44,7 +44,7 @@ $product_id =$product->id;
         <form action="{{ route('cart.add', $product->id) }}" name="cartAdd" method="post">
             @csrf
             <div class="container">
-                <div class="col-md-6 product-single-meta">
+                <div class="col-md-6 product-single-meta" style="height: 400px">
                     <h2 class="product-name">{{ $product->name }}</h2>
                     <div class="clearfix">
                         <div class="product-price-container pull-left">
@@ -66,9 +66,10 @@ $product_id =$product->id;
                         <li><span>@lang('language.brand'):</span> {{ $brand->name }}</li>
                     </ul>
                     <p class="hidden-md">{{ substr($product->desc, 0, 100) }}...</p>
+                    <span>Quantity: {{ $product->quantity }}</span>
                     <div class="product-action-container clearfix">
                         <div class="product-action-content clearfix">
-                            <input type="number" name="qty" class="product-amount-input" min="1" value="1">
+                            <input type="number" name="qty" class="product-amount-input" min="1" max="{{ $product->quantity }}" value="1">
                             <button title="Add to Cart" class="btn btn-custom-6 min-width-md" type="submit">@lang('language.add_to_cart') </button>
                         </div>
                         <div class="product-action-inner"> <a href="#" title="Wishlist" class="product-btn product-wishlist">Wishlist</a></div>
@@ -97,6 +98,8 @@ $product_id =$product->id;
                     <div class="col-sm-7 padding-right-md review-comments">
                         <h3>{{ count($comments) }} @lang('language.comments') </h3>
                         <ul class="review-comments">
+                            <div id="comment-add">
+                            </div>
                             @foreach($comments as $comment)
                             <li>
                                 <div class="review-comment">
@@ -240,30 +243,7 @@ $product_id =$product->id;
     <div class="md-margin3x"></div>
 </section>
 <script>
-// var app = angular.module('my-app', [], function($interpolateProvider) {
-// $interpolateProvider.startSymbol('<%');
-// $interpolateProvider.endSymbol('%>');
-// });
-$(document).ready(function(){
-    $('.pagination a').unbind('click').on('click', function(e) {
-         e.preventDefault();
-         var page = $(this).attr('href').split('page=')[1];
-         getPosts(page);
-         console.log(page);
-    });
-  
-    function getPosts(page)
-    {
-        $.ajax({
-             type: "GET",
-             url: '{{ route("product.detail", $product_id) }}?page='+ page
-        })
-        .success(function(data) {
-             $('body').html(data);
-             // console.log(data);
-        });
-    }
-});
+
 var product_id = "{{ $product_id }}";
 app.controller('CommentController', function($scope, $http) {
     $scope.save = function() {
@@ -274,8 +254,10 @@ app.controller('CommentController', function($scope, $http) {
                 data: data,
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             }).success(function(reponsse) {
-                console.log(reponsse);
-                location.reload();
+                console.log(reponsse.user_name);
+                $('div [id="comment-add"]').append(
+                    '<li style="margin-bottom: 47px">' + '<div class="review-comment">' + '<div class="ratings-container">' + '<div class="ratings">' + '<div class="ratings-result" data-result="80"></div>' + '</div>' + '</div>' + '<div class="review-comment-content">' + '<h4>'+ reponsse.user_name + '</h4>' + '<div class="review-comment-meta"' + reponsse.created_at + '</div>' +  '<p>' + reponsse.content + '</p>' + '</div> </div> </li>'
+                    );
             })
             .error(function(reponsse) {
                 console.log(reponsse);

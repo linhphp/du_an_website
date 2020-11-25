@@ -14,13 +14,10 @@ class CreateKindOfNewsTable extends Migration
     public function up()
     {
         Schema::create('kind_of_news', function (Blueprint $table) {
-            $table->Increments('id');
+            $table->id();
             $table->string('name');
-            $table->integer('news_category_id')->unsigned();
-            $table->foreign('news_category_id')
-                  ->references('id')
-                  ->on('news_categories')
-                  ->onDelete('cascade');  
+            $table->unsignedBigInteger('news_category_id');;
+            $table->foreign('news_category_id')->references('id')->on('news_categories');
             $table->timestamps();
         });
     }

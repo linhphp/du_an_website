@@ -21,11 +21,17 @@
 
 <script type="text/javascript" src="backend/js/plugins/datatables/jquery.dataTables.min.js"></script>    
 
+<script type="text/javascript" src="backend/js/plugins/tableexport/tableExport.js"></script>
+  <script type="text/javascript" src="backend/js/plugins/tableexport/jquery.base64.js"></script>
+  <script type="text/javascript" src="backend/js/plugins/tableexport/html2canvas.js"></script>
+  <script type="text/javascript" src="backend/js/plugins/tableexport/jspdf/libs/sprintf.js"></script>
+  <script type="text/javascript" src="backend/js/plugins/tableexport/jspdf/jspdf.js"></script>
+  <script type="text/javascript" src="backend/js/plugins/tableexport/jspdf/libs/base64.js"></script>  
+
 <script>
     ClassicEditor
         .create( document.querySelector( '#editor' ) )
         .catch( error => {
-            console.error( error );
         } );
 </script>
 

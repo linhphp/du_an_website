@@ -12,6 +12,7 @@ use App\Models\Ward;
 use App\Models\Customer;
 use App\Models\Bill;
 use App\Models\BillDetail;
+use App\Models\Revenue;
 use Session;
 use Auth;
 use Config;
@@ -19,11 +20,12 @@ use Mail;
 
 class CartController extends Controller
 {
-    //
-    public function __construct()
+
+    public function __construct ()
     {
         $this->middleware('checkout');
     }
+
     public function cartAdd (Request $request, $id)
     {
         $product = Product::find($id);
@@ -79,7 +81,7 @@ class CartController extends Controller
     public function getCartDetail ($cart)
     {
         return $cartDetails = CartDetail::join('products', 'products.id', '=', 'cart_details.product_id')
-            ->select('products.name', 'products.price', 'products.discount', 'products.image1','cart_details.*')
+            ->select('products.name', 'products.price', 'products.discount', 'products.image1','products.quantity as pro_quantity', 'cart_details.*')
             ->all($cart);
     }
 
@@ -126,9 +128,13 @@ class CartController extends Controller
     public function cartUpdate (Request $request)
     {
         $cartDetail = CartDetail::find($request->id);
+        $product = Product::find($cartDetail->product_id);
         $cartDetail->qty = $request->qty++;
         if ($cartDetail->qty <= 0) {
             $cartDetail->qty = 1;
+        }
+        if($cartDetail->qty >$product->quantity){
+            $cartDetail->qty = $product->quantity;
         }
         $cartDetail->save();
     }
@@ -165,6 +171,7 @@ class CartController extends Controller
         // dd($request);
         $cart = Cart::where([['user_id', Auth::id()], ['status', 1], ['id', $id]])->first();
         $cartDetails = $this->getCartDetail($cart->id);
+
         $cartDetails->status = 2;
         if($request->address != null) {
             $customer = Customer::where([['user_id', Auth::id()], ['id', $request->address]])->first();
@@ -200,6 +207,14 @@ class CartController extends Controller
             $billDetail = new BillDetail;
             $billDetail->bill_id = $bill->id;
             $billDetail->product_id = $cartDetail->product_id;
+            $product = Product::where('id', $cartDetail->product_id)->first();
+            $product->quantity -= $cartDetail->qty;
+            $product->save();
+            $revenue = Revenue::where('product_id', $cartDetail->product_id)->first();
+            $revenue->sold_quantity += $cartDetail->qty;
+            $revenue->the_remaining_quantity = $revenue->total_quantity - $revenue->sold_quantity;
+            $revenue->actual_revenue = $revenue->sold_quantity * $revenue->export_price;
+            $revenue->save();
             $billDetail->price = $cartDetail->price;
             $billDetail->qty = $cartDetail->qty;
             $billDetail->save();

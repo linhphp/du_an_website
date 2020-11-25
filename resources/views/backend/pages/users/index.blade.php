@@ -3,6 +3,18 @@
 @lang('language.user')
 @endsection
 @section('content')
+<script type="text/javascript">
+    function updateUser (jurisdiction, id)
+    {
+        $.get(
+            '{{ asset("user/update") }}',
+            {jurisdiction:jurisdiction, id:id},
+            function(){
+                location.reload();
+            }
+        );
+    }
+</script>
 <ul class="breadcrumb">
     <li><a href="{{ route('home.admin') }}">@lang('language.home') </a></li>                    
     <li class="active">@lang('language.user') </li>
@@ -26,7 +38,6 @@
                                     <th>Gender</th>
                                     <th>Link Facebook</th>
                                     <th></th>
-                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -34,11 +45,15 @@
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>
-                                        @if($user->jurisdiction == null)
-                                        {{ 'User' }}
-                                        @else
-                                        {{ 'Admin' }}
-                                        @endif
+                                        <select name="jurisdiction" id=""onchange="updateUser(this.value, '{{ $user->id }}')" class="form-control"> 
+                                            @if($user->jurisdiction == null)
+                                            <option selected value="">User</option>
+                                            <option value="2">Admin</option>
+                                            @else
+                                            <option selected value="2">Admin</option>
+                                            <option value="">User</option>
+                                            @endif
+                                        </select>
                                     </td>
                                     <td>
                                         @if($user->avatar == null)
@@ -67,10 +82,6 @@
                                         @else
                                         {{ $user->link_facebook }}
                                         @endif
-                                    </td>
-                                    
-                                    <td>
-                                        <a href="{{ route('products.edit', $user->id) }}" class="btn btn-default btn-rounded btn-condensed btn-sm"><span class="fa fa-pencil"></span></a>
                                     </td>
                                     <td>
                                         <form action="{{ route('users.destroy', $user->id) }}" method="post">

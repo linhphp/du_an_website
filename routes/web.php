@@ -12,6 +12,7 @@ use App\Http\Controllers\AdminController\KindOfNewsController;
 use App\Http\Controllers\AdminController\NewsController;
 use App\Http\Controllers\AdminController\UserAdminController;
 use App\Http\Controllers\AdminController\CommentAdminController;
+use App\Http\Controllers\AdminController\RevenueController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AddressController;
@@ -61,8 +62,13 @@ Route::group(['middleware' => 'locale'], function ()
             route::get('update', [BillAdminController::class, 'billUpdate'])->name('billAdmin.update');
             route::get('{id}/detail', [BillAdminController::class, 'billDetail'])->name('billAdmin.detail');
         });
-        Route::get('lock', [UserController::class, 'lock'])->name('lock.admin');
+        Route::get('lock', [UserController::class, 'lock'])
+            ->name('lock.admin');
+        Route::get('revenue', [RevenueController::class, 'index'])
+            ->name('revenue');
+        Route::get('user/update', [UserAdminController::class, 'updateJurisdiction']);
     });
+    // end middleware
     Route::get('un-lock', [UserController::class, 'checkUnLock'])->name('unlock.admin');
     Route::post('un-lock', [UserController::class, 'unlock'])->name('unlock.post');
     Route::view('login', 'backend.pages.login')

@@ -20,6 +20,8 @@ class Ward extends Model
     	'type',
     ];
 
+    protected $primaryKey = 'ward_code';
+
     public function scopeGetWard ($query, $wardCode)
     {
         return $query->where('ward_code' , $wardCode)->first();

@@ -35,7 +35,7 @@ Bills
                                     <th>Payment</th>
                                     <th>Status</th>
                                     <th>Price</th>
-                                    <th>date</th>
+                                    <th>Date</th>
                                     <th></th>
                                 </tr>
                             </thead>

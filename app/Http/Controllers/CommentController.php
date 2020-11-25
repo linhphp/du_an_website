@@ -20,8 +20,9 @@ class CommentController extends Controller
         $data->state = 1;
         $data->content = $request->message;
         $data->save();
-
-        return 'successfully';
+        $comment = Comment::where('id', $data->id)
+            ->select('user_name', 'created_at', 'content')->first();
+        return json_encode($comment);
     }
 
     public function storePost(Request $request, $id)
