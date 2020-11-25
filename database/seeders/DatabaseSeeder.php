@@ -1,7 +1,6 @@
 <?php
 
 namespace Database\Seeders;
-
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -28,6 +27,7 @@ class DatabaseSeeder extends Seeder
             ProvincesTableSeeder::class,
             DistrictsTableSeeder::class,
             WardsTableSeeder::class,
+            RevenueTableSeeder::class,
         ]);
         \App\Models\Comment::factory(600)->create();
         \App\Models\Slide::factory(2)->create();

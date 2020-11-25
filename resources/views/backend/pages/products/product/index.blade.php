@@ -27,6 +27,7 @@
                                     <th>Quantity</th>
                                     <th></th>
                                     <th></th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -49,6 +50,9 @@
                                     </td>
                                     <td>{{ number_format($product->price) }} VNĐ</td>
                                     <th>{{ $product->quantity }}</th>
+                                    <td>
+                                        <a href="" class="btn btn-default btn-rounded btn-condensed btn-sm"><span class="fa fa-eye"></span></a>
+                                    </td>
                                     <td><a title="edit" href="{{ route('products.edit', $product->id) }}" class="btn btn-default btn-rounded btn-condensed btn-sm"><span class="fa fa-pencil"></span></a></td>
                                     <td>
                                         <form action="{{ route('products.destroy', $product->id) }}" method="post">

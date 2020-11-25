@@ -26,8 +26,8 @@ $product_id =$product->id;
     <div class="carousel-container">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6 col-sm-push-6">
-                    <div class="product-single-carousel">
+                <div class="col-sm-6 col-sm-push-6" >
+                    <div class="product-single-carousel" style="height: 100%">
                         <div class="slide">
                             <img src="storage/image/{{ $product->image1 }}" alt="product 1" class="img-responsive">
                         </div>
@@ -44,7 +44,7 @@ $product_id =$product->id;
         <form action="{{ route('cart.add', $product->id) }}" name="cartAdd" method="post">
             @csrf
             <div class="container">
-                <div class="col-md-6 product-single-meta">
+                <div class="col-md-6 product-single-meta" style="height: 400px">
                     <h2 class="product-name">{{ $product->name }}</h2>
                     <div class="clearfix">
                         <div class="product-price-container pull-left">
@@ -66,9 +66,10 @@ $product_id =$product->id;
                         <li><span>@lang('language.brand'):</span> {{ $brand->name }}</li>
                     </ul>
                     <p class="hidden-md">{{ substr($product->desc, 0, 100) }}...</p>
+                    <span>Quantity: {{ $product->quantity }}</span>
                     <div class="product-action-container clearfix">
                         <div class="product-action-content clearfix">
-                            <input type="number" name="qty" class="product-amount-input" min="1" value="1">
+                            <input type="number" name="qty" class="product-amount-input" min="1" max="{{ $product->quantity }}" value="1">
                             <button title="Add to Cart" class="btn btn-custom-6 min-width-md" type="submit">@lang('language.add_to_cart') </button>
                         </div>
                         <div class="product-action-inner"> <a href="#" title="Wishlist" class="product-btn product-wishlist">Wishlist</a></div>

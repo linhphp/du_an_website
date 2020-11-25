@@ -20,7 +20,7 @@
                                 <tr>
                                     <th>@lang('language.name') </th>
                                     <th>Email </th>
-                                    <th>Status </th>
+                                    <th>State </th>
                                     <th></th>
                                 </tr>
                             </thead>

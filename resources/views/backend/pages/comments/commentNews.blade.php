@@ -22,7 +22,6 @@
                                     <th>Content</th>
                                     <th>Post</th>
                                     <th></th>
-                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -30,9 +29,6 @@
                                     <td>{{ $comment->user_name }}</td>
                                     <td>{{ $comment->content }}</td>
                                     <td>{{ $comment->title }}</td>
-                                    <td>
-                                        <a href="" class="btn btn-default btn-rounded btn-condensed btn-sm"><span class="fa fa-pencil"></span></a>
-                                    </td>
                                     <td>
                                         <form action="{{ route('comments.destroy', $comment->id) }}" method="post">
                                             @method("DELETE")
