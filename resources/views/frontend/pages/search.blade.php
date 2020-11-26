@@ -43,6 +43,7 @@
 	                                </div>
 	                                <input type="hidden" name="qty" value="1">
 	                                <div class="col-sm-3 product-list-meta">
+	                                @if($product->quantity > 0)
 	                                    @if($product->price * $product->discount == 0)
 	                                    <div class="product-price-container">
 			                                <span class="product-price">
@@ -80,6 +81,9 @@
 	                                        	<a href="#" title="Favorite" class="product-btn product-favorite">Favorite</a>
 	                                        </div>
 	                                    </div>
+	                                @else
+	                                <p class="product-price">Sản phẩm tạm hết hàng</p>
+	                                @endif
 	                                </div>
 	                            </div>
                             </form>

@@ -30,10 +30,11 @@ class HomeController extends Controller
             ->get();
         $brand = Brand::inRandomOrder()->first();
         $brands = Brand::select('image', 'name', 'id')->get();
-        $productsByBrand = Product::where('brand_id', $brand->id)
+        $productsByBrand = Product::where([['brand_id', $brand->id], ['quantity', '>', 0]])
             ->limit(Config::set('paginate.product'))
             ->get();
-        $products = Product::orderBy('id', 'desc')
+        $products = Product::where('quantity', '>', 0)
+            ->orderBy('id', 'desc')
             ->limit(Config::get('paginate.product'))
             ->get();
 
@@ -42,27 +43,24 @@ class HomeController extends Controller
 
     public function show (Request $request, $id)
     {
-        if ($request->ajax() || 'NULL') {
-        	$product = Product::find($id);
-            if ($product) {
-                $brand = Brand::find($product->brand_id);
-                $category = Category::find($product->category_id);
-                if ($brand && $category) {
-                    $relatedProducts = Product::where([['brand_id', $brand->id], ['category_id', $category->id], ['id', '<>', $product->id]])
-                        ->get();
-                    $comments = Comment::where([['parent_id', $product->id], ['state', 1]])
-                        ->orderBy('id', 'desc')
-                        ->paginate(5);
-                    $producByCategories = Product::where([['category_id', $category->id], ['id', '<>', $product->id]])
-                        ->limit(Config::get('paginate.product'))
-                        ->get();
+    	$product = Product::find($id);
+        if ($product) {
+            $brand = Brand::find($product->brand_id);
+            $category = Category::find($product->category_id);
+            if ($brand && $category) {
+                $relatedProducts = Product::where([['brand_id', $brand->id], ['category_id', $category->id], ['id', '<>', $product->id]])
+                    ->get();
+                $comments = Comment::where([['parent_id', $product->id], ['state', 1]])
+                    ->orderBy('id', 'desc')
+                    ->paginate(5);
+                $producByCategories = Product::where([['category_id', $category->id], ['id', '<>', $product->id]])
+                    ->limit(Config::get('paginate.product'))
+                    ->get();
 
-                    return view('frontend.pages.productDetail', compact('product', 'relatedProducts', 'comments', 'brand', 'producByCategories'));
-                }
-
+                return view('frontend.pages.productDetail', compact('product', 'relatedProducts', 'comments', 'brand', 'producByCategories'));
             }
-        }
 
+        }
     }
 
     public function eshop (Request $request)
@@ -70,6 +68,7 @@ class HomeController extends Controller
         $categories =Category::all()->pluck('name', 'id');
         $products = Product::join('categories', 'categories.id', 'products.category_id')
             ->select('products.*', 'categories.name as category_name')
+            ->where('quantity', '>', 0)
             ->orderDesc()
             ->paginate(Config::get('paginate.eshop'));
 
@@ -158,11 +157,12 @@ class HomeController extends Controller
             ->where('slug',$slug)
             ->first();
         if ($getPost) {
+            $countComments = Comment::where([['parent_id', $getPost->id], ['state', 2]])->get();
             $comments = Comment::where([['parent_id', $getPost->id], ['state', 2]])
                 ->orderBy('id', 'desc')
                 ->paginate(5);
             $getNews = News::where([['kind_of_news_id', $getPost->kind_of_news_id], ['id', '<>', $getPost->id]])->get();
-            return view('frontend.pages.blog.post', compact('getPost', 'getNews', 'comments'));
+            return view('frontend.pages.blog.post', compact('getPost', 'getNews', 'comments', 'countComments'));
         }
 
     }

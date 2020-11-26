@@ -49,8 +49,10 @@
                         @foreach($cartDetails as $cartDetail)
                         @php $price =  ($cartDetail->price -($cartDetail->price * $cartDetail->discout)/100);
                                 $totalPrice = $price * $cartDetail->qty;
-                                $totalP += $totalPrice;
-                                $totalQty += $cartDetail->qty;
+                                if ($cartDetail->pro_quantity > 0) {
+                                    $totalP += $totalPrice;
+                                    $totalQty += $cartDetail->qty;
+                                }
                         @endphp
                         <tr>
                             <td class="product-name-col">
@@ -60,16 +62,23 @@
                                 <h2 class="product-name"><a href="{{ route('product.detail', $cartDetail->product_id) }}">{{ $cartDetail->name }}</a></h2>
                             </td>
                             <td class="product-price-col"><span class="product-price-special">{{ number_format($price) }} VNĐ</span></td>
-                            <td>
                                 @if($cartDetail->pro_quantity == 0)
-                                <p>sản phẩm tạm hết hàng</p>
+                                <td>
+                                    <p class="product-price">sản phẩm tạm hết hàng</p>
+                                </td>
+                                <td></td>
                                 @else
-                                <div class="custom-quantity-input">
-                                    <input type="number" name="qty" value="{{ $cartDetail->qty }}" onchange="updateCart(this.value, '{{ $cartDetail->id }}')">
-                                </div>
-                                @endif
-                            </td>
+                                <td>
+                                    @if($cartDetail->pro_quantity <= 10)
+                                        <p class="product-price">còn lại {{ $cartDetail->pro_quantity  }} sản phẩm</p>
+                                    @endif
+                                    <div class="custom-quantity-input">
+                                        <input type="number" name="qty" value="{{ $cartDetail->qty }}" onchange="updateCart(this.value, '{{ $cartDetail->id }}')">
+                                    </div>
+
+                                </td>
                             <td class="product-total-col"><span class="product-price-special">{{ number_format($cartDetail->price * $cartDetail->qty) }}</span></td>
+                                @endif
                             <td>
                                 <a ng-click="remove({{ $cartDetail->id }})" class="close-button"></a>
                             </td>
