@@ -174,11 +174,11 @@ class HomeController extends Controller
         return redirect()->back();
     }
 
-    public function aboutUs (Request $request)
+    public function contact (Request $request)
     {
         $admins = User::where('jurisdiction', '>' , Config::get('auth.administrators'))->get();
 
-        return view('frontend/pages.aboutUs', compact('admins'));
+        return view('frontend/pages.contact', compact('admins'));
     }
 
     public function sendEmail (Request $request)
@@ -186,10 +186,12 @@ class HomeController extends Controller
         $name = $request->name;
         $subject = $request->subject;
         $data['note'] = $request->message;
+        $data['name'] = $name;
         $email = $request->email;
+        $data['email'] = $email;
         Mail::send('frontend.pages.sendMail', $data, function ($message) use ($email, $name, $subject) {
             $message->from($email, $name);
-            $message->to('thuclinh997@gmail.com', 'Cao Thục Linh');
+            $message->to('thuclinh854@gmail.com', 'Cao Thục Linh');
             $message->subject($subject);
         });
         return redirect()->route('message')->with(['successSendEMail' => '']);

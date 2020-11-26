@@ -29,7 +29,7 @@
 			                <button type="button" class="btn btn-custom btn-block">@lang('language.continue_shopping') </button>
 			            </div>
 			            <div class="col-md-6">
-			                <button type="button" class="btn btn-custom btn-block">@lang('language.track_your_order') </button>
+			                <a href="{{ route('bills.index') }}" class="btn btn-custom btn-block">@lang('language.track_your_order') </a>
 			            </div>
 			        </div>
 

@@ -145,4 +145,13 @@ return [
     'news_categories' => 'News categories',
     'type_of_news' => 'Type of news',
     'comment' => 'Comment',
+    'write_your_review' => 'Write Your Review',
+    'how_to_contact_us' => 'HOW TO CONTACT US',
+    'contact_details' => 'CONTACT DETAILS',
+    'contact_info' => 'Contact Info',
+    'post_comment' => 'Post Comment',
+    'email_invalidate' => 'Email invalidate',
+    'bill' => 'Bill',
+    'state' => 'State',
+
 ];
