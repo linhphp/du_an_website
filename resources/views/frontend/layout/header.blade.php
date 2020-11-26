@@ -199,13 +199,13 @@
                     </div>
                     <ul class="menu right-menu clearfix">
                         @if(Auth::check())
-                        <li class="megamenu-container"><a href="#">đơn hàng </a>
+                        <li class="megamenu-container"><a href="{{ route('bills.index') }}">đơn hàng </a>
                         </li>
                         @endif
                         {{-- <li class="megamenu-container"><a href="#">@lang('language.about_us') </a>
                         </li> --}}
                         
-                        <li class="megamenu-container"><a href="#">@lang('language.contact') </a>
+                        <li class="megamenu-container"><a href="{{ route('contact') }}">@lang('language.contact') </a>
                         </li>
                     </ul>
                 </nav>

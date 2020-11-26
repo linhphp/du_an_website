@@ -101,7 +101,7 @@ Route::group(['middleware' => 'locale'], function ()
         ->middleware('checkCart');
         Route::post('comment/{id}', [CommentController::class, 'storeProduct'])->name('comment.post');
         Route::post('comment/post/{id}', [CommentController::class, 'storePost'])->name('comment');
-        Route::get('about-us', [HomeController::class, 'aboutUs'])->name('aboutUs');
+        Route::get('contact', [HomeController::class, 'contact'])->name('contact');
         Route::post('send-email', [Homecontroller::class, 'sendEmail'])->name('sendEmail');
         Route::get('profile', [HomeController::class, 'getProfile'])
             ->name('profile')

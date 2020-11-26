@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 clearfix">
-                    <p class="copyright-text">&copy; 2014 Powered by WooCommerce&trade;. All Rights Reserved.</p>
+                    <p class="copyright-text">&copy; 2020 Powered by WooCommerce&trade;. All Rights Reserved.</p>
                     <ul class="social-links color2 clearfix">
                         <li>
                             <a href="#" class="social-icon icon-facebook" title="Facebook"></a>

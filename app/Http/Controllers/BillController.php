@@ -22,11 +22,8 @@ class BillController extends Controller
     	    ->orderBy('id', 'desc')
     	    ->get();
     	if (count($bills) != 0) {
-            $meta_desc = "Chuyên sản phẩm, phụ kiện chính hãng";
-			$meta_keywords = "Sản phẩm, phụ kiện điện tử";
-			$meta_title ="ThucLinh.shop";
-			$url_canonical = $request->url();
-    		return view('frontend.pages.bill', compact( 'meta_desc', 'meta_keywords', 'meta_title', 'url_canonical', 'bills'));
+
+    		return view('frontend.pages.checkout.bill', compact( 'bills'));
     	}
 
     	return redirect()->back();
