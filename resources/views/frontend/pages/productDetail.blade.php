@@ -66,6 +66,7 @@ $product_id =$product->id;
                         <li><span>@lang('language.brand'):</span> {{ $brand->name }}</li>
                     </ul>
                     <p class="hidden-md">{{ substr($product->desc, 0, 100) }}...</p>
+                    @if($product->quantity > 0)
                     <span>Quantity: {{ $product->quantity }}</span>
                     <div class="product-action-container clearfix">
                         <div class="product-action-content clearfix">
@@ -74,6 +75,9 @@ $product_id =$product->id;
                         </div>
                         <div class="product-action-inner"> <a href="#" title="Wishlist" class="product-btn product-wishlist">Wishlist</a></div>
                     </div>
+                    @else
+                    <p class="product-price">Sản phẩm tạm hết hàng</p>
+                    @endif
                 </div>
             </div>
         </form>

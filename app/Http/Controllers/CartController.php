@@ -42,6 +42,9 @@ class CartController extends Controller
                     }
                     else {
                         $cartDetail->qty++;
+                        if ($product->quantity <= $cartDetail->qty) {
+                            $cartDetail->qty = $product->quantity;
+                        }
                     }
                     $cartDetail->save();
                 }
@@ -90,7 +93,6 @@ class CartController extends Controller
         $cart = Cart::where([['user_id', Auth::id()], ['status',1]])->first();
         if ($cart) {
             $cartDetails = $this->getCartDetail($cart->id);
-
             return view('frontend.pages.checkout.cart', compact('cartDetails', 'cart'));
         }
         return redirect()->route('home');
@@ -147,7 +149,9 @@ class CartController extends Controller
         $provinces = Province::all()->pluck('province_code', 'name');
         $cart = Cart::where([['user_id', Auth::id()], ['status', 1], ['id', $id]])->first();
         if ($cart) {
-            $cartDetails = $this->getCartDetail($cart->id);
+            $cartDetails = CartDetail::join('products', 'products.id', '=', 'cart_details.product_id')
+                ->select('products.name', 'products.price', 'products.discount', 'products.image1','products.quantity as pro_quantity', 'cart_details.*')
+                ->where([['cart_details.cart_id', $id], ['cart_details.destroy', null],['products.quantity', '>', 0]])->get();
 
             return view('frontend.pages.checkout.getFormCheckout',compact('cart', 'cartDetails', 'provinces', 'customer'));
 
@@ -170,7 +174,9 @@ class CartController extends Controller
         // echo($request->province. ' ' . $request->district. ' ' . $request->ward. ' ' . $request->street);
         // dd($request);
         $cart = Cart::where([['user_id', Auth::id()], ['status', 1], ['id', $id]])->first();
-        $cartDetails = $this->getCartDetail($cart->id);
+        $cartDetails = CartDetail::join('products', 'products.id', '=', 'cart_details.product_id')
+            ->select('products.name', 'products.price', 'products.discount', 'products.image1','products.quantity as pro_quantity', 'cart_details.*')
+            ->where([['cart_details.cart_id', $id], ['cart_details.destroy', null],['products.quantity', '>', 0]])->get();
 
         $cartDetails->status = 2;
         if($request->address != null) {
@@ -201,23 +207,24 @@ class CartController extends Controller
         $bill->save();
 
         foreach ($cartDetails as $cartDetail)
-        {
-            $cartDetail->status = 2;
-            $cartDetail->save();
-            $billDetail = new BillDetail;
-            $billDetail->bill_id = $bill->id;
-            $billDetail->product_id = $cartDetail->product_id;
-            $product = Product::where('id', $cartDetail->product_id)->first();
-            $product->quantity -= $cartDetail->qty;
-            $product->save();
-            $revenue = Revenue::where('product_id', $cartDetail->product_id)->first();
-            $revenue->sold_quantity += $cartDetail->qty;
-            $revenue->the_remaining_quantity = $revenue->total_quantity - $revenue->sold_quantity;
-            $revenue->actual_revenue = $revenue->sold_quantity * $revenue->export_price;
-            $revenue->save();
-            $billDetail->price = $cartDetail->price;
-            $billDetail->qty = $cartDetail->qty;
-            $billDetail->save();
+        {   if ($cartDetail->pro_quantity >= $cartDetail->qty) {
+                $cartDetail->status = 2;
+                $cartDetail->save();
+                $billDetail = new BillDetail;
+                $billDetail->bill_id = $bill->id;
+                $billDetail->product_id = $cartDetail->product_id;
+                $product = Product::where('id', $cartDetail->product_id)->first();
+                $product->quantity -= $cartDetail->qty;
+                $product->save();
+                $revenue = Revenue::where('product_id', $cartDetail->product_id)->first();
+                $revenue->sold_quantity += $cartDetail->qty;
+                $revenue->the_remaining_quantity = $revenue->total_quantity - $revenue->sold_quantity;
+                $revenue->actual_revenue = $revenue->sold_quantity * $revenue->export_price;
+                $revenue->save();
+                $billDetail->price = $cartDetail->price;
+                $billDetail->qty = $cartDetail->qty;
+                $billDetail->save();
+            }
         }
         $cart->status = 2;
         $cart->save();

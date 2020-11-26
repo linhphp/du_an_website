@@ -47,7 +47,7 @@ class ProductController extends Controller
         $product->image2 = $fileName2;
         $product->accessories = $request->accessories;
         $product->desc = $request->desc;
-        $product->quantity = 1;
+        $product->quantity = $request->quantity;
         $product->save();
 
         return redirect()->route('products.index');    
@@ -93,7 +93,7 @@ class ProductController extends Controller
         }
         $product->accessories = $request->accessories;
         $product->desc = $request->desc;
-        $product->quantity = 1;
+        $product->quantity = $request->quantity;
         $product->save();
 
         return redirect()->route('products.index');

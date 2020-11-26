@@ -185,23 +185,4 @@
     </div>
     <div class="xlg-margin"></div>
 </section>
-<script type="text/javascript" >
-    var cart_id = "{{ $cartDetail->id }}";
-    app.controller('CartCheckoutController', function($scope,$http){
-        $scope.remove = function() {
-            $http({
-                    method: 'POST',
-                    url: 'index/checkout/cart/'+cart_id+'/remove',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-                }).success(function(reponsse) {
-                    console.log(reponsse);
-                    location.reload();
-                })
-                .error(function(reponsse) {
-                    console.log(reponsse);
-                    alert('loi xay ra'+reponsse);
-                })
-        }
-    })
-</script>
 @endsection

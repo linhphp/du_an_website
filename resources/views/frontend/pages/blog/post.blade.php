@@ -34,7 +34,7 @@
                         <span class="article-icon article-date-icon"></span>
                         <span class="meta-box-text">{{ $getPost->date }}</span>
                     </div>
-                    <div class="article-meta-box article-meta-comments"><span class="article-icon article-comment-icon"></span> <a href="#" class="meta-box-text">15 Com</a></div>
+                    <div class="article-meta-box article-meta-comments"><span class="article-icon article-comment-icon"></span> <a href="#" class="meta-box-text">{{ count($countComments) }} Com</a></div>
                     <h2>{{ $getPost->title }}</h2>
                     {!! $getPost->content !!}
                     <div class="sm-margin"></div>
