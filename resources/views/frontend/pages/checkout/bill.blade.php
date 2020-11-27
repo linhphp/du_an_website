@@ -46,23 +46,23 @@
                             <td>{{ $bill->payment }}</td>
                             
                             <td>
-                            	@if($bill->status_id == Config::get('status.pending'))
-                            	<p class="btn-warning">Pending</p>
+                                @if($bill->status_id == Config::get('status.pending'))
+                                <p class="btn-warning">Pending</p>
 
-                            	@elseif($bill->status_id == Config::get('status.processing'))
-                            	<p class="btn-secondary">Processing</p>
+                                @elseif($bill->status_id == Config::get('status.processing'))
+                                <p class="btn-secondary">Processing</p>
 
-                            	@elseif($bill->status_id == Config::get('status.cancel'))
-                            	<p class="btn-danger">Cancel</p>
+                                @elseif($bill->status_id == Config::get('status.cancel'))
+                                <p class="btn-danger">Cancel</p>
 
-                            	@elseif($bill->status_id == Config::get('status.delivery'))
-                            	<p class="btn-dark">delivery</p>
-                            	@elseif($bill->status_id == Config::get('status.hasTakenTheGoods'))
-                            	<p class="btn-info">hasTakenTheGoods</p>
-                            	@elseif($bill->status_id == Config::get('status.delivered'))
-                            	<p class="btn-success">delivered</p>
+                                @elseif($bill->status_id == Config::get('status.delivery'))
+                                <p class="btn-dark">delivery</p>
+                                @elseif($bill->status_id == Config::get('status.hasTakenTheGoods'))
+                                <p class="btn-info">hasTakenTheGoods</p>
+                                @elseif($bill->status_id == Config::get('status.delivered'))
+                                <p class="btn-success">delivered</p>
 
-                            	@endif
+                                @endif
                             </td>
                             <td>{{ number_format($bill->total_price) }} VND</td>
                             <td><a href="{{ route('bills.show', $bill->id) }}" class="btn btn-danger">@lang('language.detail') </a></td>
