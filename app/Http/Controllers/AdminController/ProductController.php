@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Image;
+use App\Models\Revenue;
 use Config;
 
 class ProductController extends Controller
@@ -36,7 +37,6 @@ class ProductController extends Controller
         $file2 = $request->file('image2');
         $fileName2 = $file2->getClientOriginalName('image2');
         $file2->move('storage/image',$fileName2);
-        
         $product = new Product;
         $product->brand_id = $request->brand_id;
         $product->category_id = $request->category_id;
@@ -49,6 +49,15 @@ class ProductController extends Controller
         $product->desc = $request->desc;
         $product->quantity = $request->quantity;
         $product->save();
+        $revenue = new Revenue;
+        $revenue->product_id =$product->id;
+        $revenue->import_price = $product->price * 0.7;
+        $revenue->export_price = $product->price - (($product->price * $product->discount)/100);
+        $revenue->total_quantity = $product->quantity;
+        $revenue->sold_quantity = 0;
+        $revenue->the_remaining_quantity = $product->quantity;
+        $revenue->actual_revenue = 0;
+        $revenue->save();
 
         return redirect()->route('products.index');    
     }
@@ -95,7 +104,12 @@ class ProductController extends Controller
         $product->desc = $request->desc;
         $product->quantity = $request->quantity;
         $product->save();
-
+        $revenue = Revenue::where('product_id', $product->id)->first();
+        $revenue->total_quantity += $product->quantity;
+        $revenue->import_price = $product->price * 0.7;
+        $revenue->export_price = $product->price - (($product->price * $product->discount)/100);
+        $revenue->the_remaining_quantity = $product->quantity;
+        $revenue->save();
         return redirect()->route('products.index');
     }
 

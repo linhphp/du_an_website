@@ -22,7 +22,7 @@ class BillDetail extends Model
     {
         return $query->join('products', 'products.id', '=', 'bill_details.product_id')
             ->join('bills', 'bills.id', '=', 'bill_details.bill_id')
-            ->select('bill_details.*', 'products.name', 'bills.total_price');
+            ->select('bill_details.*', 'products.name','products.image1', 'bills.total_price', 'bills.status_id');
     }
 
     public function bills ()

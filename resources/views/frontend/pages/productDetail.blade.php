@@ -65,7 +65,7 @@ $product_id =$product->id;
                         <li><span>@lang('language.accessories'):</span> {{ $product->accessories }}</li>
                         <li><span>@lang('language.brand'):</span> {{ $brand->name }}</li>
                     </ul>
-                    <p class="hidden-md">{{ substr($product->desc, 0, 100) }}...</p>
+                    <p class="hidden-md">{!! substr($product->desc, 0, 100) !!}...</p>
                     @if($product->quantity > 0)
                     <span>Quantity: {{ $product->quantity }}</span>
                     <div class="product-action-container clearfix">
