@@ -12,7 +12,7 @@
 
         <div class="row">
             <div class="col-md-12">
-
+                
                 <form action="{{ route('news.store') }}" class="form-horizontal" method="post" enctype='multipart/form-data'>
                 	@csrf
                     <div class="panel panel-default">

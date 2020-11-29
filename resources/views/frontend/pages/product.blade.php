@@ -66,10 +66,10 @@
                             </div>
                             <h3 class="product-name text-left"><a href="{{ route('product.detail', $product->id) }}" title="White linen sheer dress">{{ $product->name }}</a></h3>
                             <div class="product-action-container clearfix">
-                                <button type="submit" title="Add to Cart" class="product-add-btn"><span class="add-btn-text">@lang('language.add_to_cart') </span> <span class="product-btn product-cart">Cart</span>
+                                <button type="submit" title="Add to Cart" class="product-add-btn"><span class="add-btn-text">@lang('language.add_to_cart') </span> <span class="product-btn product-cart">@lang('language.cart') </span>
                                 </button>
                                 <div class="product-action-inner">
-                                    <a href="#" title="Favorite" class="product-btn product-favorite">Favorite</a>
+                                    <a href="#" title="Favorite" class="product-btn product-favorite">@lang('language.favorite') </a>
                                 </div>
                             </div>
                         </div>

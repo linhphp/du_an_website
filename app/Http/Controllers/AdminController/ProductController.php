@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AdminController;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use App\Models\Brand;
 use App\Models\Category;
@@ -29,7 +30,7 @@ class ProductController extends Controller
         return view('backend.pages.products.product.create', compact('brands', 'categories'));
     }
 
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
         $file1 = $request->file('image1');
         $fileName1 = $file1->getClientOriginalName('image1');

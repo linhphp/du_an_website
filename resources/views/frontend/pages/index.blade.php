@@ -13,7 +13,7 @@
                         <div class="vcenter-container">
                             <div class="vcenter">
                                 <div class="banner-content text-uppercase">
-                                    <h4>News</h4><a href="{{ route('news', 'post') }}" class="btn btn-custom-7 min-width-md">NEXT NEWS</a></div>
+                                    <h4>@lang('language.news')</h4><a href="{{ route('news', 'post') }}" class="btn btn-custom-7 min-width-md">NEXT NEWS</a></div>
                             </div>
                         </div>
                     </div>
@@ -25,8 +25,8 @@
                         <div class="vcenter-container">
                             <div class="vcenter">
                                 <div class="banner-content text-uppercase">
-                                    <h4>hot product</h4>
-                                    <h3></h3><a href="{{ route('eshop') }}" class="btn btn-custom-7 min-width-md">Shop now</a></div>
+                                    <h4>@lang('language.hot_product') </h4>
+                                    <h3></h3><a href="{{ route('eshop') }}" class="btn btn-custom-7 min-width-md">@lang('language.shop_now') </a></div>
                             </div>
                         </div>
                     </div>
@@ -69,10 +69,10 @@
                             </div>
                             <h3 class="product-name text-left"><a href="{{ route('product.detail', $product->id) }}" title="White linen sheer dress">{{ $product->name }}</a></h3>
                             <div class="product-action-container clearfix">
-                                <button type="submit" title="Add to Cart" class="product-add-btn"><span class="add-btn-text">@lang('language.add_to_cart') </span> <span class="product-btn product-cart">Cart</span>
+                                <button type="submit" title="Add to Cart" class="product-add-btn"><span class="add-btn-text">@lang('language.add_to_cart') </span> <span class="product-btn product-cart">@lang('language.cart') </span>
                                 </button>
                                 <div class="product-action-inner">
-                                    <a href="#" title="Favorite" class="product-btn product-favorite">Favorite</a>
+                                    <a href="#" title="Favorite" class="product-btn product-favorite">@lang('language.favorite') </a>
                                 </div>
                             </div>
                         </div>
@@ -117,10 +117,10 @@
                             </div>
                             <h3 class="product-name text-left"><a href="{{ route('product.detail', $product->id) }}" title="White linen sheer dress">{{ $product->name }}</a></h3>
                             <div class="product-action-container clearfix">
-                                <button type="submit" title="Add to Cart" class="product-add-btn"><span class="add-btn-text">@lang('language.add_to_cart') </span> <span class="product-btn product-cart">Cart</span>
+                                <button type="submit" title="Add to Cart" class="product-add-btn"><span class="add-btn-text">@lang('language.add_to_cart') </span> <span class="product-btn product-cart">@lang('language.cart') </span>
                                 </button>
                                 <div class="product-action-inner">
-                                    <a href="#" title="Favorite" class="product-btn product-favorite">Favorite</a>
+                                    <a href="#" title="Favorite" class="product-btn product-favorite">@lang('language.favorite') </a>
                                 </div>
                             </div>
                         </div>

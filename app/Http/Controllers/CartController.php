@@ -59,7 +59,7 @@ class CartController extends Controller
                         $cartDetail->qty = $request->qty;
                     }
                     $cartDetail->save();
-                    echo 'luu 2';
+                    // echo 'luu 2';
                 }
             }
             else {
@@ -72,7 +72,7 @@ class CartController extends Controller
                 $cartDetail->product_id = $product->id;
                 $cartDetail->qty = $request->qty;
                 $cartDetail->save();
-                echo 'luu 3';
+                // echo 'luu 3';
             }
 
             return redirect()->route('cart.show');
@@ -93,8 +93,10 @@ class CartController extends Controller
         $cart = Cart::where([['user_id', Auth::id()], ['status',1]])->first();
         if ($cart) {
             $cartDetails = $this->getCartDetail($cart->id);
+            
             return view('frontend.pages.checkout.cart', compact('cartDetails', 'cart'));
         }
+
         return redirect()->route('home');
     }
 

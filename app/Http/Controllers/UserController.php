@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
+use App\Http\Requests\SignUpRequest;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Brand;
@@ -28,7 +30,7 @@ class UserController extends Controller
         return view('backend.pages.index',compact('users', 'products', 'categories', 'brands', 'news'));
     }
 
-    public function loginAdmin (Request $request)
+    public function loginAdmin (UserRequest $request)
     {
         $user = User::where([['email', '=', $request->email], ['jurisdiction', 2]])
             ->first();
@@ -51,7 +53,7 @@ class UserController extends Controller
         return redirect()->route('login.admin');
     }
 
-    public function signIn (Request $request)
+    public function signIn (UserRequest $request)
     {
         $result = array('email' => $request->email, 'password' => $request->password);
         if (Auth::attempt($result)) {
@@ -61,7 +63,7 @@ class UserController extends Controller
         return redirect()->back();
     }
 
-    public function signUp (Request $request)
+    public function signUp (SignUpRequest $request)
     {
         $user = User::create(
             [
