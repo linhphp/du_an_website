@@ -11,7 +11,7 @@
                 <div class="col-sm-12">
                     <ul class="breadcrumb">
                         <li><a href="{{ route('home') }}" title="Home">@lang('language.home') </a></li>
-                        <li class="active">message</li>
+                        <li class="active">@lang('language.message') </li>
                     </ul>
                 </div>
             </div>

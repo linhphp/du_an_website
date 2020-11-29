@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <ul class="breadcrumb">
-                        <li><a href="{{ route('home') }}" title="Home">@lang('language.home') </a></li>
+                        <li><a href="{{ route('home') }}" title="@lang('language.home') ">@lang('language.home') </a></li>
                         <li class="active">@lang('language.brand') </li>
                         <li class="active">{{ $brand->name }}</li>
                     </ul>

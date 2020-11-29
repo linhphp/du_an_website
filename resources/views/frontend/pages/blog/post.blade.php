@@ -128,19 +128,19 @@
                         @endforeach
                     </ul>
                     <div class="row">{{ $comments->render('vendor.pagination.default') }}</div>
-                    <h3>Write your review</h3>
+                    <h3>@lang('language.write_you_review') </h3>
                     <form ng-controller="CommentController" name="commentPost" method="post" id="comment-form">
                         @csrf
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <input name="user_name" ng-model="comment.user_name" type="text" class="form-control input-lg" ng-required="true" placeholder="Enter your nickname *">
-                                    <span ng-show="commentPost.user_name.$error.required">Vui lòng nhập tên của bạn</span>
+                                    <span ng-show="commentPost.user_name.$error.required">@Lang('language.please_enter_your_name') </span>
                                 </div>
                             </div>
                             <div class="col-sm-12">
                                 <textarea name="message" ng-model="comment.message" ng-required="true" class="form-control min-height input-lg" cols="30" rows="6" placeholder="Write your review *"></textarea>
-                                <span ng-show="commentPost.message.$error.required">vui lòng nhập nội dung bình luận</span>
+                                <span ng-show="commentPost.message.$error.required">@lang('language.please_enter_your_comment') </span>
                             </div>
                         </div>
                         <div class="xss-margin"></div>
@@ -173,7 +173,7 @@
                     location.reload();
                 })
                 .error(function(reponsse) {
-                    alert('loi xay ra'+reponsse);
+                    alert('error'+reponsse);
                 })
             }
     });

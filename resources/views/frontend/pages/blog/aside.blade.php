@@ -19,7 +19,7 @@
     </div>
     
     <div class="widget">
-        <h3>Latest Posts</h3>
+        <h3>@lang('laguage.latest_posts') </h3>
         <div class="owl-carousel latest-posts-slider">
             @foreach($letestNews as $news)
             <div class="article-list">
@@ -33,10 +33,10 @@
             </div>
             @endforeach
         </div>
-    </div>
+    </div>{{-- 
     <div class="widget">
         <h3>TagCloud</h3>
-        <!-- <div class="tagcloud">
+        <div class="tagcloud">
             <a href="#" title="12 Post(s)">Photography</a>
             <a href="#" title="8 Post(s)">Dresses</a>
             <a href="#" title="4 Post(s)">Fashion</a>
@@ -49,6 +49,6 @@
             <a href="#" title="13 Post(s)">Design</a>
             <a href="#" title="13 Post(s)">Trends</a>
             <a href="#" title="13 Post(s)">Shoes</a>
-        </div> -->
-    </div>
+        </div>
+    </div> --}}
 </aside>

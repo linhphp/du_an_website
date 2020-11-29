@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <ul class="breadcrumb">
-                        <li><a href="{{ route('home') }}" title="Home">Home</a></li>
+                        <li><a href="{{ route('home') }}" title="@lang('language.home') ">@lang('language.home') </a></li>
                         <li class="active">Register Account</li>
                     </ul>
                 </div>
@@ -19,6 +19,7 @@
     </div>
     <div class="xs-margin half"></div>
     <div class="container">
+
         <form name="signUp" action="{{ route('signup.post') }}" id="register-form" method="post">
             @csrf
             <div class="row">
@@ -31,7 +32,16 @@
             </div>
             <div class="xlg-margin visible-xs clearfix"></div>
                 <div class="col-sm-6 ml-auto mr-auto padding-right-md">
+
                     <h2 class="color2">@lang('language.sign_up') </h2>
+                    <p>
+                        @php
+                        if(count($errors) > 0){
+                            foreach($errors->all() as $err)
+                                echo $err .'<br>';
+                        }
+                        @endphp
+                    </p>
                     <div class="form-group">
                         <label for="name" class="form-label">@lang('language.enter_name') <span class="required">*</span></label>
                         <input ng-model="sign_up.name" type="text" name="name" id="name" class="form-control input-lg" ng-required="true">
@@ -39,15 +49,17 @@
                     <div class="form-group">
                         <label for="email" class="form-label">Email<span class="required">*</span></label>
                         <input ng-model="sign_up.email" ng-required="true" type="email" name="email" id="email" class="form-control input-lg" required>
-                        <span ng-show=signUp.email.$error.email> Email Không đúng địng dạng</span>
+                        <span ng-show=signUp.email.$error.email> @lang('language.email_invalidate') </span>
                     </div>
                     <div class="form-group">
                         <label for="password" class="form-label">@lang('language.password')<span class="required">*</span></label>
                         <input ng-model="sign_up.password" ng-required="true" type="password" name="password" id="password" class="form-control input-lg" required>
+                        <span ng-show="signUp.password.$error.required" >@lang('language.enter_password') </span>
                     </div>
                     <div class="form-group">
                         <label for="re_password" class="form-label">@lang('language.re_password') <span class="required">*</span></label>
                         <input ng-model="sign_up.re_password" ng-required="true" type="password" name="re_password" id="re_password" class="form-control input-lg" required>
+                        <span ng-show="signUp.re_password.$error.required" >@lang('language.enter_re_password') </span>
                     </div>
                     
                     <div class="xs-margin"></div>

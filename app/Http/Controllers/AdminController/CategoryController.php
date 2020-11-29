@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AdminController;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use Config;
 
@@ -14,7 +15,7 @@ class CategoryController extends Controller
         return view('backend.pages.products.categories', compact('categories'));
     }
 
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
         //
         $file = $request->file('image');

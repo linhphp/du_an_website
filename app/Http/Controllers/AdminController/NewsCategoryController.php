@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AdminController;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\NewsCategoryRequest;
 use App\Models\NewsCategory;
 use Config;
 
@@ -15,7 +16,7 @@ class NewsCategoryController extends Controller
         return view('backend.pages.posts.newsCategories', compact('newsCategories'));
     }
 
-    public function store(Request $request)
+    public function store(NewsCategoryRequest $request)
     {
         NewsCategory::create(
             [
@@ -25,7 +26,7 @@ class NewsCategoryController extends Controller
 
         return redirect()->back();
     }
-    public function update(Request $request, $id)
+    public function update(NewsCategoryRequest $request, $id)
     {
         NewsCategory::find($id)->update(
             [

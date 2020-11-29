@@ -58,7 +58,7 @@ $product_id =$product->id;
                         <div class="ratings-container pull-right">
                             <div class="ratings">
                                 <div class="ratings-result" data-result="80"></div>
-                            </div><span class="ratings-amount">12 Review(s)</span><span class="separator">|</span> <a href="#" class="add-rating">add review</a></div>
+                            </div><span class="ratings-amount">12 @lang('language.review')(s)</span><span class="separator">|</span> <a href="#" class="add-rating">@lang('language.add_reviews') </a></div>
                     </div>
                     <div class="xs-margin"></div>
                     <ul>
@@ -76,7 +76,7 @@ $product_id =$product->id;
                         <div class="product-action-inner"> <a href="#" title="Wishlist" class="product-btn product-wishlist">Wishlist</a></div>
                     </div>
                     @else
-                    <p class="product-price">Sản phẩm tạm hết hàng</p>
+                    <p class="product-price">@lang('language.the_product_is_temporarily_out_of_stock') </p>
                     @endif
                 </div>
             </div>
@@ -86,7 +86,7 @@ $product_id =$product->id;
     <div class="container">
         <ul class="nav nav-pills" role="tablist">
             <li><a href="#description" role="tab" data-toggle="tab">@lang('language.desc') </a></li>
-            <li><a href="#details" role="tab" data-toggle="tab">Details</a></li>
+            <li><a href="#details" role="tab" data-toggle="tab">@lang('language.detail') </a></li>
             <li class="active"><a href="#comments" role="tab" data-toggle="tab">@lang('language.comments') </a></li>
             <li><a href="#accessories" role="tab" data-toggle="tab">@lang('language.related_products') </a></li>
         </ul>
@@ -125,24 +125,20 @@ $product_id =$product->id;
                     </div>
                     <div class="lg-margin clearfix visible-xs"></div>
                     <div class="col-sm-5 padding-left-md review-comment-form" ng-controller="CommentController">
-                        <h3>Write your Review</h3>
+                        <h3>@lang('language.write_your_review') </h3>
                         <form name="addComment" method="post">
                             @csrf
                             <input type="hidden" name="product_id" value="{{ $product->id }}">
                             <div class="form-group">
-                                @if(Auth::check())
-                                <input type="text" class="form-control input-lg" placeholder="{{ Auth::user()->name }}" ng-model="comment.name" ng-required="true" name="name">
-                                @else
-                                <input type="text" class="form-control input-lg" placeholder="Enter your nickname *" ng-model="comment.name" ng-required="true" name="name">
-                                @endif
-                                <span ng-show="addComment.name.$error.required"> vui lòng nhập vào tên</span>
+                                <input type="text" class="form-control input-lg" placeholder="Enter your nickname *" ng-model="comment.name" ng-required="true" name="user_name">
+                                <span ng-show="addComment.user_name.$error.required">@lang('language.enter_name') </span>
                             </div>
                             <div class="form-group">
                                 <textarea name="message" class="form-control input-lg min-height" cols="30" rows="6" placeholder="Write your review *" ng-model="comment.message" ng-required="true"></textarea>
-                                <span ng-show="addComment.message.$error.required">vui lòng nhận nội dung comment </span>
+                                <span ng-show="addComment.message.$error.required">@lang('language.please_enter_your_comment') </span>
                             </div>
                             <div class="xs-margin"></div>
-                            <button type="button" class="btn btn-custom-5 btn-lg min-width" ng-disabled="addComment.$invalid" ng-click="save()" >Submit Review</button>
+                            <button type="button" class="btn btn-custom-5 btn-lg min-width" ng-disabled="addComment.$invalid" ng-click="save()" >@lang('language.comment') </button>
                         </form>
                     </div>
                 </div>
@@ -151,7 +147,7 @@ $product_id =$product->id;
             <div class="tab-pane fade" id="accessories">
                 <div class="row">
                     @if (count($relatedProducts) == 0)
-                    <h2>Không có sản phẩm liên quan</h2>
+                    <h2>@lang('language.no_related_products') </h2>
                     @endif
                     @foreach($relatedProducts as $product)
                     <div class="col-sm-3 md-margin2x">
@@ -183,10 +179,10 @@ $product_id =$product->id;
                                 </div>
                                 <h3 class="product-name text-left"><a href="{{ route('product.detail', $product->id) }}" title="White linen sheer dress">{{ $product->name }}</a></h3>
                                 <div class="product-action-container clearfix">
-                                    <button type="submit" title="Add to Cart" class="product-add-btn"><span class="add-btn-text">@lang('language.add_to_cart') </span> <span class="product-btn product-cart">Cart</span>
+                                    <button type="submit" title="Add to Cart" class="product-add-btn"><span class="add-btn-text">@lang('language.add_to_cart') </span> <span class="product-btn product-cart">@lang('language.cart') </span>
                                     </button>
                                     <div class="product-action-inner">
-                                        <a href="#" title="Favorite" class="product-btn product-favorite">Favorite</a>
+                                        <a href="#" title="Favorite" class="product-btn product-favorite">@lang('language.favorite') </a>
                                     </div>
                                 </div>
                             </div>
@@ -231,10 +227,10 @@ $product_id =$product->id;
                                 </div>
                                 <h3 class="product-name text-left"><a href="{{ route('product.detail', $product->id) }}" title="White linen sheer dress">{{ $product->name }}</a></h3>
                                 <div class="product-action-container clearfix">
-                                    <button type="submit" title="Add to Cart" class="product-add-btn"><span class="add-btn-text">@lang('language.add_to_cart') </span> <span class="product-btn product-cart">Cart</span>
+                                    <button type="submit" title="Add to Cart" class="product-add-btn"><span class="add-btn-text">@lang('language.add_to_cart') </span> <span class="product-btn product-cart">@lang('language.cart') </span>
                                     </button>
                                     <div class="product-action-inner">
-                                        <a href="#" title="Favorite" class="product-btn product-favorite">Favorite</a>
+                                        <a href="#" title="Favorite" class="product-btn product-favorite">@lang('language.favorite') </a>
                                     </div>
                                 </div>
                             </div>
@@ -265,7 +261,7 @@ app.controller('CommentController', function($scope, $http) {
             })
             .error(function(reponsse) {
                 console.log(reponsse);
-                alert('loi xay ra'+reponsse);
+                alert('error'+reponsse);
             })
         }
 });
