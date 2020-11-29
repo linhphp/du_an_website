@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <ul class="breadcrumb">
-                        <li><a href="{{ route('home') }}" title="Home">@lang('language.home') </a></li>
+                        <li><a href="{{ route('home') }}" title="@lang('language.home') ">@lang('language.home') </a></li>
                         <li class="active">@lang('language.bill') </li>
                     </ul>
                 </div>
@@ -26,23 +26,23 @@
                 <p>@lang('language.telephone_number'): <span class="text-danger">{{ $bill->phone }}</span></p>
                 <p>@lang('language.address'): <span class="text-danger">{{ $bill->address }}</span></p>
                 <p>@lang('language.state'):
-                    @if($bill->status_id == Config::get('status.pending'))
-                    <span class="btn btn-warning">Pending</span>
+                     @if($bill->status_id == Config::get('status.pending'))
+                        <span class="btn-warning btn">@lang('language.pending') </span>
 
-                    @elseif($bill->status_id == Config::get('status.processing'))
-                    <span class="btn btn-secondary">Processing</span>
+                        @elseif($bill->status_id == Config::get('status.processing'))
+                        <span class="btn-secondary btn">@lang('language.processing') </span>
 
-                    @elseif($bill->status_id == Config::get('status.cancel'))
-                    <span class="btn btn-danger">Cancel</span>
+                        @elseif($bill->status_id == Config::get('status.cancel'))
+                        <span class="btn-danger btn">@lang('language.cancel') </span>
 
-                    @elseif($bill->status_id == Config::get('status.delivery'))
-                    <span class="btn btn-dark">delivery</span>
-                    @elseif($bill->status_id == Config::get('status.hasTakenTheGoods'))
-                    <span class="btn btn-info">hasTakenTheGoods</span>
-                    @elseif($bill->status_id == Config::get('status.delivered'))
-                    <span class="btn btn-success">delivered</span>
+                        @elseif($bill->status_id == Config::get('status.delivery'))
+                        <span class="btn-dark btn">@lang('language.delivery') </span>
+                        @elseif($bill->status_id == Config::get('status.hasTakenTheGoods'))
+                        <span class="btn-info btn">@lang('language.has_taken_the_goods') </span>
+                        @elseif($bill->status_id == Config::get('status.delivered'))
+                        <span class="btn-success btn">@lang('language.delivered') </span>
 
-                    @endif
+                        @endif
                 </p>
             </div>
             <div class="col-md-12">

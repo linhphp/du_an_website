@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AdminController;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\BrandRequest;
 use App\Models\Brand;
 use Config;
 
@@ -13,7 +14,7 @@ class BrandController extends Controller
         $brands = Brand::all();
         return view('backend.pages.products.brands', compact('brands'));
     }
-    public function store(Request $request)
+    public function store(brandRequest $request)
     {
         $file = $request->file('image');
         $fileName = $request->file('image')->getClientOriginalName();

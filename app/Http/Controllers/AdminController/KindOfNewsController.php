@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AdminController;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\TypeOfNewsRequest;
 use App\Models\NewsCategory;
 use App\Models\KindOfNews;
 use Config;
@@ -19,7 +20,7 @@ class KindOfNewsController extends Controller
         return view('backend.pages.posts.typeNews', compact('kindOfNews', 'newsCategories'));    
     }
 
-    public function store(Request $request)
+    public function store(TypeOfNewsRequest $request)
     {
         $kindOfNews = New KindOfNews;
         $kindOfNews ->name = $request->name;

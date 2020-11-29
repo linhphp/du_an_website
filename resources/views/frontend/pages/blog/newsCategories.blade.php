@@ -23,7 +23,7 @@
                     	@if(count($getNews) == 0)
                     	<article class="article">
                     		<h2>
-                                Không có bài viết thuộc Danh mục {{ $getCategories->name }}
+                                @lang('no_category') {{ $getCategories->name }}
                             </h2>
                     	</article>
                     	@endif

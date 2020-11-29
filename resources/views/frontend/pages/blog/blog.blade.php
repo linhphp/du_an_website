@@ -23,7 +23,7 @@
                     	@if(count($getNews) == 0)
                     	<article class="article">
                     		<h2>
-                                Không có bài viết thuộc thể loại {{ $kindNews->name }}
+                                @lang('language.no_type') {{ $kindNews->name }}
                             </h2>
                     	</article>
                     	@endif

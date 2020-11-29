@@ -10,8 +10,8 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <ul class="breadcrumb">
-                                <li><a href="index-2.html" title="Home">Home</a></li>
-                                <li class="active">Contact</li>
+                                <li><a href="index-2.html" title="@lang('language.home') ">@lang('language.home') </a></li>
+                                <li class="active">@lang('language.contact') </li>
                             </ul>
                         </div>
                     </div>
@@ -72,7 +72,7 @@
                             <div class="col-md-7 contact-box">
                                 <h3>@lang('language.contact_details') </h3>
                                 <ul class="contact-list">
-                                    <li><span>Phone:</span>0522-451-655</li>
+                                    <li><span>@lang('language.telephone_number') :</span>0522-451-655</li>
                                     <li><span>Email:</span>thuclinh854@gmail.com</li>
                                     <li><span>Skype:</span>Eshop</li>
                                 </ul>

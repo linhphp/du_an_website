@@ -31,17 +31,23 @@
                 <form name="login" action="{{ route('sigin.post') }}" id="login-form" method="post">
                     @csrf
                     <h2 class="color2">@lang('language.sign_in') </h2>
+                    @php
+                    if(count($errors) > 0){
+                        foreach($errors->all() as $err)
+                            echo $err .'<br>';
+                    }
+                    @endphp
                     <div class="form-group">
                         <label for="email" class="form-label">Email<span class="required">*</span></label>
                         <input type="email" name="email" id="email" class="form-control input-lg" ng-model="postLogin.email" placeholder="" ng-required="true">
-                        <span class="required" ng-show="login.email.$error.required" >Nhập email của bạn</span>
-                        <span class="required" ng-show="login.email.$error.email" >email không đúng định dạng</span>
+                        <span class="required" ng-show="login.email.$error.required" >@lang('language.enter_email') </span>
+                        <span class="required" ng-show="login.email.$error.email" >@lang('language.email_invalidate') </span>
                         
                     </div>
                     <div class="form-group">
                         <label for="password" class="form-label">@lang('language.password') <span class="required">*</span></label>
                         <input type="password" name="password" id="password" class="form-control input-lg" ng-model="postLogin.password" ng-required="true">
-                        <span ng-show="login.password.$error.required">Nhâp mật khẩu của bạn</span>
+                        <span ng-show="login.password.$error.required">@lang('language.enter_password')</span>
                     </div>
                     <div class="xs-margin"></div><input ng-disabled="login.$invalid" type="submit" class="btn btn-custom btn-lg min-width" value="@lang('language.sign_in') ">
                 </form>

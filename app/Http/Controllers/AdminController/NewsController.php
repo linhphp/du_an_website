@@ -9,6 +9,7 @@ use App\Models\KindOfNews;
 use App\Models\News;
 use Session;
 use Config;
+use App\Http\Requests\NewsRequest;
 
 class NewsController extends Controller
 {
@@ -29,7 +30,7 @@ class NewsController extends Controller
         return view('backend.pages.posts.news.create', compact('newsCategories', 'kindOfNews'));
     } 
 
-    public function store(Request $request)
+    public function store(NewsRequest $request)
     {
         
         $news = new news;

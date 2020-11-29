@@ -68,21 +68,21 @@
 	                                        <div class="ratings">
 	                                            <div class="ratings-result" data-result="80"></div>
 	                                        </div>
-	                                        <span class="ratings-amount">2 review(s)</span>
+	                                        <span class="ratings-amount">2 @lang('language.review') (s)</span>
 	                                    </div>
 	                                    <div class="product-action-container">
 	                                    	<button type="submit" title="Add to Cart" class="btn btn-custom btn-block">
-	                                    		<span class="add-btn-text">Add to Cart</span>
+	                                    		<span class="add-btn-text">@lang('language.add_to_cart') </span>
 	                                    	</button>
 	                                        <div class="sm-margin">
 	                                        	
 	                                        </div>
 	                                        <div class="product-list-action-wrapper">
-	                                        	<a href="#" title="Favorite" class="product-btn product-favorite">Favorite</a>
+	                                        	<a href="#" title="Favorite" class="product-btn product-favorite">@lang('language.favorite') </a>
 	                                        </div>
 	                                    </div>
 	                                @else
-	                                <p class="product-price">Sản phẩm tạm hết hàng</p>
+	                                <p class="product-price">@lang('language.the_product_is_temporarily_out_of_stock')</p>
 	                                @endif
 	                                </div>
 	                            </div>
