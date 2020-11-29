@@ -1,6 +1,6 @@
 @extends('backend.layouts.master')
 @section('title')
-    @lang('language.product')
+@lang('language.product')
 @endsection
 @section('content')
 
@@ -15,10 +15,10 @@
 
                 <form action="{{ route('products.update', $product->id) }}" class="form-horizontal" method="post" enctype='multipart/form-data'>
                     @method('PATCH')
-                	@csrf
+                    @csrf
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><strong>Edit @lang('language.product') </strong></h3>
+                            <h3 class="panel-title"><strong>@lang('language.edit') @lang('language.product') </strong></h3>
                         </div>
                         <div class="panel-body">
 
@@ -36,15 +36,15 @@
                                 <label class="col-md-3 col-xs-12 control-label">@lang('language.category')</label>
                                 <div class="col-md-6 col-xs-12">
                                     <div class="input-group">
-                                    	<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                        <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
                                         <select name="category_id" id="" class="form-control control-label">
-                                        	@foreach ($categories as $name => $id)
+                                            @foreach ($categories as $name => $id)
                                             @if($id == $product->category_id)
-                                        	<option selected class="form-control" value="{{ $id }}"> {{ $name }}</option>
+                                            <option selected class="form-control" value="{{ $id }}"> {{ $name }}</option>
                                             @else
                                             <option class="form-control" value="{{ $id }}"> {{ $name }}</option>
                                             @endif
-                                        	@endforeach
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -53,21 +53,21 @@
                                 <label class="col-md-3 col-xs-12 control-label">@lang('language.brand')</label>
                                 <div class="col-md-6 col-xs-12">
                                     <div class="input-group">
-                                    	<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                        <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
                                         <select name="brand_id" id="" class="form-control control-label">
-                                        	@foreach ($brands as $name => $id)
+                                            @foreach ($brands as $name => $id)
                                             @if($id == $product->brand_id)
-                                        	<option selected class="form-control" value="{{ $id }}"> {{ $name }}</option>
+                                            <option selected class="form-control" value="{{ $id }}"> {{ $name }}</option>
                                             @else
                                             <option class="form-control" value="{{ $id }}"> {{ $name }}</option>
                                             @endif
-                                        	@endforeach
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-3 col-xs-12 control-label">Image 1</label>
+                                <label class="col-md-3 col-xs-12 control-label">@lang('language.image') 1</label>
                                 <div class="col-md-6 col-xs-12">
                                     <input type="file" class="fileinput btn-primary" name="image1" id="filename"
                                         title="Browse file" />
@@ -75,7 +75,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-3 col-xs-12 control-label">Image 2</label>
+                                <label class="col-md-3 col-xs-12 control-label">@lang('language.image') 2</label>
                                 <div class="col-md-6 col-xs-12">
                                     <input type="file" class="fileinput btn-primary" name="image2" id="filename"
                                         title="Browse file" />
@@ -133,7 +133,7 @@
                             </div>
                             <div class="panel-footer">
                                 <button class="btn btn-default">Clear Form</button>
-                                <button type="submit" class="btn btn-primary pull-right">update</button>
+                                <button type="submit" class="btn btn-primary pull-right">@lang('language.update')</button>
                             </div>
                         </div>
                 </form>

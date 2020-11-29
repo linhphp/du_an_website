@@ -18,9 +18,9 @@
                         <table class="table datatable">
                             <thead>
                                 <tr>
-                                    <th>User name </th>
-                                    <th>Content</th>
-                                    <th>Post</th>
+                                    <th>@lang('language.user_name') </th>
+                                    <th>@lang('language.content') </th>
+                                    <th>@lang('language.post') </th>
                                     <th></th>
                                 </tr>
                             </thead>

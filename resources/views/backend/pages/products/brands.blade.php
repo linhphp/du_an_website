@@ -16,15 +16,15 @@
                     <form action="{{ route('brands.store') }}" method="post" class="form-inline" role="form" enctype='multipart/form-data'>
                         @csrf
                             <div class="input-group" style="width: 100%">
-                                <label class="sr-only">Name</label>
+                                <label class="sr-only">@lang('language.name')</label>
                                 <input class="form-control" name="name" type="text" placeholder="name @lang('language.category')">
                             </div>
                             <div class="input-group" style="margin-top: 10px; margin-bottom: 10px; width: 100%">
-                                <label class="sr-only" >Image</label>
+                                <label class="sr-only" >@lang('language.image')</label>
                                 <input type="file" class="form-control" name="image" id="filename" title="Browse file" />
                             </div>
                             <div class="input-group">
-                                <button type="submit" class="btn btn-danger">Create</button>
+                                <button type="submit" class="btn btn-danger">@lang('language.create')</button>
                             </div>
                     </form>
                 </div>
@@ -38,9 +38,9 @@
                         <table class="table datatable">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
+                                    <th>@lang('language.name')</th>
                                     <th></th>
-                                    <th>Image</th>
+                                    <th>@lang('language.image')</th>
                                     <th></th>
                                 </tr>
                             </thead>

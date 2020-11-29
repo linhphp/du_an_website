@@ -13,14 +13,14 @@
         <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <h3>create @lang('language.news_categories')</h3>
+                    <h3>@lang('language.create') @lang('language.news_categories')</h3>
                     <form action="{{ route('news-categories.store') }}" method="post" class="form-inline" role="form">
                         @csrf
                             <div class="input-group" style="width: 80%">                                
-                                <label class="sr-only">Name</label>
+                                <label class="sr-only">@lang('language.name')</label>
                                 <input class="form-control" name="name" type="text" placeholder="name @lang('language.category')">
                             </div>
-                        <button type="submit" class="btn btn-danger">Create</button>
+                        <button type="submit" class="btn btn-danger">@lang('language.create')</button>
                     </form>                   
                 </div>
             </div>
@@ -33,7 +33,7 @@
                         <table class="table datatable">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
+                                    <th>@lang('language.name')</th>
                                     <th></th>
                                     <th></th>
 

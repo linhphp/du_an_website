@@ -18,12 +18,12 @@
                     @csrf
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><strong>Edit @lang('language.news') </strong></h3>
+                            <h3 class="panel-title"><strong>@lang('language.edit') @lang('language.news') </strong></h3>
                         </div>
                         <div class="panel-body">
 
                             <div class="form-group">
-                                <label class="col-md-3 col-xs-12 control-label">Title</label>
+                                <label class="col-md-3 col-xs-12 control-label">@lang('language.title') </label>
                                 <div class="col-md-6 col-xs-12">
                                     <div class="input-group">
                                         <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
@@ -67,7 +67,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-3 col-xs-12 control-label">Image</label>
+                                <label class="col-md-3 col-xs-12 control-label">@lang('language.image') </label>
                                 <div class="col-md-6 col-xs-12">
                                     <input type="file" class="fileinput btn-primary" name="post_image" id="filename"
                                         title="Browse file" value="{{ $news->post_image }}" />
@@ -95,7 +95,7 @@
                             </div>
                             <div class="panel-footer">
                                 <button class="btn btn-default">Clear Form</button>
-                                <button type="submit" class="btn btn-primary pull-right">Update</button>
+                                <button type="submit" class="btn btn-primary pull-right">@lang('language.update')</button>
                             </div>
                         </div>
                 </form>

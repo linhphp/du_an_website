@@ -19,9 +19,9 @@
                             <thead>
                                 <tr>
                                     <th>@lang('language.name') @lang('language.product') </th>
-                                    <th>Price </th>
-                                    <th>Quantity</th>
-                                    <th>Status </th>
+                                    <th>@lang('language.price') </th>
+                                    <th>@lang('language.quantity') </th>
+                                    <th>@lang('language.state') </th>
                                 </tr>
                             </thead>
                             <tbody>

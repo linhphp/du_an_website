@@ -13,7 +13,7 @@
         <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <h3>create @lang('language.category')</h3>
+                    <h3>@lang('language.create') @lang('language.category')</h3>
                     <form action="{{ route('categories.store') }}" method="post" class="form-inline" role="form" enctype='multipart/form-data'>
                         @csrf
                             <div class="input-group" style="width: 100%">
@@ -24,7 +24,7 @@
                                 <input type="file" class="form-control" name="image" id="filename" title="Browse file" />
                             </div>
                             <div class="input-group">
-                                <button type="submit" class="btn btn-danger">Create</button>
+                                <button type="submit" class="btn btn-danger">@lang('language.create')</button>
                             </div>
                     </form>
                 </div>
@@ -38,9 +38,9 @@
                         <table class="table datatable">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
+                                    <th>@lang('language.name')</th>
                                     <th></th>
-                                    <th>Image</th>
+                                    <th>@lang('language.image')</th>
                                     <th></th>
 
                                 </tr>
