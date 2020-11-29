@@ -18,10 +18,10 @@
                         <table class="table datatable">
                             <thead>
                                 <tr>
-                                    <th>Title </th>
+                                    <th>@lang('language.title') </th>
                                     <th>@lang('language.news_categories') </th>
                                     <th>@lang('language.type_of_news') </th>
-                                    <th>Image</th>
+                                    <th>@lang('language.image')</th>
                                     <th>@lang('language.desc') </th>
                                     <th></th>
                                     <th></th>

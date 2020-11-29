@@ -4,8 +4,8 @@
 @endsection
 @section('content')
 <ul class="breadcrumb">
-    <li><a href="#">Home</a></li>                    
-    <li class="active">Dashboard</li>
+    <li><a href="#">@lang('language.home')</a></li>                    
+    <li class="active">@lang('language.dashboard') </li>
 </ul>
 <div class="page-content-wrap">
     
@@ -52,7 +52,7 @@
                 <div class="widget-data">
                     <a href="{{ route('news.index') }}" class="title">
                         <div class="widget-int num-count">{{ count($news) }}</div>
-                        <div class="widget-title">News</div>
+                        <div class="widget-title">@lang('language.news') </div>
                         <div class="widget-subtitle">In your mailbox</div>
                     </a>
                 </div>      

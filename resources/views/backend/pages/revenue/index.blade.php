@@ -1,6 +1,6 @@
 @extends('backend.layouts.master')
 @section('title')
-REVENUE
+@lang('language.revenue')
 @endsection
 @section('content')
 
@@ -9,7 +9,7 @@ REVENUE
         
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">REVENUE</h3>
+                <h3 class="panel-title">@lang('language.revenue')</h3>
                 {{-- <div class="btn-group pull-right">
                     <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
                     	<i class="fa fa-bars"></i> Export Data
@@ -32,14 +32,14 @@ REVENUE
                         <thead>
                             <tr>
                             	<th>STT</th>
-                            	<th>Product</th>
-                            	<th>Import price</th>
-                            	<th>Export price</th>
-                            	<th>Total quantity</th>
-                            	<th>Sold quantity</th>
-                            	<th>The remaining quantity</th>
-                            	<th>State</th>
-                            	<th>Sctual revenue</th>
+                            	<th>@lang('language.product') </th>
+                            	<th>@lang('language.import_price') </th>
+                            	<th>@lang('language.export_price') </th>
+                            	<th>@lang('language.total_quantity')</th>
+                            	<th>@lang('language.sold_quantity')</th>
+                            	<th>@lang('language.the_remaining_quantity') </th>
+                            	<th>@lang('language.state') </th>
+                            	<th>@lang('language.actual_revenue') </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -62,9 +62,9 @@ REVENUE
                                 <td>{{ $revenue->the_remaining_quantity }}</td>
                                 <td style="width: 80px;">
                                 	@if($revenue->the_remaining_quantity == 0)
-                                	<p class="btn btn-danger">Hết hàng</p>
+                                	<p class="btn btn-danger">@lang('language.out_of_stock') </p>
                                 	@else
-                                	<p class="btn btn-success">Còn hàng</p>
+                                	<p class="btn btn-success">@lang('language.stocking') </p>
                                 	@endif
                                 </td>
                                 <td>{{ number_format($revenue->actual_revenue) }} VND</td>
@@ -73,7 +73,7 @@ REVENUE
                         </tbody>
                         <tfoot>
                         	<tr>
-                        		<td colspan="8" style="text-align: center; color: darkred; font-weight: bold;">Total Price</td>
+                        		<td colspan="8" style="text-align: center; color: darkred; font-weight: bold;">@lang('language.total_price') </td>
                         		<td>{{ number_format($sctual) }} VND</td>
                         	</tr>
                         </tfoot>

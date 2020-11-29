@@ -23,10 +23,10 @@ class StatusTableSeeder extends Seeder
                     'name' => 'delivery'
                 ],
                 [
-                    'name' => 'has taken the goods'
+                    'name' => 'has_taken_the_goods'
                 ],
                 [
-                    'name' => 'Delivered'
+                    'name' => 'delivered'
                 ]
             ],
             ['name']

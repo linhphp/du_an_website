@@ -13,7 +13,7 @@
                 </div>
                 <div class="profile-data">
                     <div class="profile-data-name">{{ Session::get('user')->name }}</div>
-                    <div class="profile-data-title">Web Developer/Designer</div>
+                    <div class="profile-data-title">@lang('language.web_dev') </div>
                 </div>
                 <div class="profile-controls">
                     <a href="pages-profile.html" class="profile-control-left">
@@ -22,7 +22,7 @@
                 </div>
             </div>
         </li>
-        <li class="xn-title">Navigation</li>
+        <li class="xn-title">Menu</li>
         <li>
             <a href="{{ route('categories.index') }}">
                 <span class="fa fa-files-o"></span>
@@ -43,12 +43,12 @@
             <ul>
                 <li>
                     <a href="{{ route('products.index') }}">
-                        <span class="fa fa-list-alt"></span> index
+                        <span class="fa fa-list-alt"></span>@lang('language.list') 
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('products.create') }}">
-                        <span class="fa fa-list-alt"></span> create
+                        <span class="fa fa-list-alt"></span>@lang('language.create') 
                     </a>
                 </li>
             </ul>
@@ -73,12 +73,12 @@
             <ul>
                 <li>
                     <a href="{{ route('news.index') }}">
-                        <span class="fa fa-list-alt"></span> index
+                        <span class="fa fa-list-alt"></span> @lang('language.list')
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('news.create') }}">
-                        <span class="fa fa-list-alt"></span> create
+                        <span class="fa fa-list-alt"></span> @lang('language.create')
                     </a>
                 </li>
             </ul>
@@ -91,12 +91,12 @@
             <ul>
                 <li>
                     <a href="{{ route('users.index') }}">
-                        <span class="fa fa-list-alt"></span> index
+                        <span class="fa fa-list-alt"></span> @lang('language.list')
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('users.create') }}">
-                        <span class="fa fa-list-alt"></span> create
+                        <span class="fa fa-list-alt"></span> @lang('language.create')
                     </a>
                 </li>
             </ul>
@@ -110,7 +110,7 @@
         <li>
             <a href="{{ route('billAdmin.show') }}">
                 <span class="fa fa-files-o"></span>
-                <span class="xn-text">Bills</span>
+                <span class="xn-text">@lang('language.bills') </span>
             </a>
         </li>
         <li class="xn-openable">
@@ -121,12 +121,12 @@
             <ul>
                 <li>
                     <a href="{{ route('comments.product') }}">
-                        <span class="fa fa-list-alt"></span> Comment Product
+                        <span class="fa fa-list-alt"></span>@lang('language.comment_product')
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('comments.news') }}">
-                        <span class="fa fa-list-alt"></span> Comment News
+                        <span class="fa fa-list-alt"></span>@lang('languae.comment_news') 
                     </a>
                 </li>
             </ul>
@@ -134,7 +134,7 @@
         <li>
             <a href="{{ route('revenue') }}">
                 <span class="fa fa-files-o"></span>
-                <span class="xn-text">Revenue</span>
+                <span class="xn-text">@lang('language.revenue') </span>
             </a>
         </li>
     </ul>

@@ -17,7 +17,7 @@
                     @csrf
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><strong>Create @lang('language.product') </strong></h3>
+                            <h3 class="panel-title"><strong>@lang('language.create') @lang('language.product') </strong></h3>
                         </div>
                         <div class="panel-body">
 
@@ -58,7 +58,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-3 col-xs-12 control-label">Image 1</label>
+                                <label class="col-md-3 col-xs-12 control-label">@lang('language.image') 1</label>
                                 <div class="col-md-6 col-xs-12">
                                     <input type="file" class="fileinput btn-primary" name="image1" id="filename"
                                         title="Browse file" />
@@ -66,7 +66,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-3 col-xs-12 control-label">Image 2</label>
+                                <label class="col-md-3 col-xs-12 control-label">@lang('language.image') 2</label>
                                 <div class="col-md-6 col-xs-12">
                                     <input type="file" class="fileinput btn-primary" name="image2" id="filename"
                                         title="Browse file" />
@@ -124,7 +124,7 @@
                             </div>
                             <div class="panel-footer">
                                 <button class="btn btn-default">Clear Form</button>
-                                <button type="submit" class="btn btn-primary pull-right">create</button>
+                                <button type="submit" class="btn btn-primary pull-right">@lang('language.create')</button>
                             </div>
                         </div>
                 </form>

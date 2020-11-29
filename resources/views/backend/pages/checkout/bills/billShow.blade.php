@@ -1,6 +1,6 @@
 @extends('backend.layouts.master')
 @section('title')
-Bills
+@lang('language.bills')
 @endsection
 @section('content')
 <script type="text/javascript">
@@ -17,7 +17,7 @@ Bills
 </script>
 <ul class="breadcrumb">
     <li><a href="{{ route('home.admin') }}">@lang('language.home') </a></li>                    
-    <li class="active">Bills </li>
+    <li class="active">@lang('language.bills') </li>
 </ul>
 <div class="page-content-wrap">                
 
@@ -25,17 +25,17 @@ Bills
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <h3>Bill</h3>
+                    <h3>@lang('language.bill')</h3>
                     <div class="table-responsive">
                         <table class="table datatable">
                             <thead>
                                 <tr>
-                                    <th>Customer</th>
-                                    <th>Note</th>
-                                    <th>Payment</th>
-                                    <th>Status</th>
-                                    <th>Price</th>
-                                    <th>Date</th>
+                                    <th>@lang("language.customer") </th>
+                                    <th>@lang('language.note') </th>
+                                    <th>@lang('language.payment_methods') </th>
+                                    <th>@lang('language.state') </th>
+                                    <th>@lang('language.price') </th>
+                                    <th>@lang('language.date') </th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -53,9 +53,9 @@ Bills
                                         <select name="status" class="form-control" id="" onchange="updateBill(this.value, '{{ $bill->id }}')">
                                             @foreach ($status as $name => $id)
                                             @if ($id == $bill->status_id)
-                                            <option value="{{ $id }}" selected class="form-control">{{ $name }}</option>
+                                            <option value="{{ $id }}" selected class="form-control">@lang("language.$name") </option>
                                             @else
-                                            <option value="{{ $id }}" class="form-control" >{{ $name }}</option>
+                                            <option value="{{ $id }}" class="form-control" >@lang("language.$name") </option>
                                             @endif
                                             @endforeach
                                         </select>

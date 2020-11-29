@@ -13,7 +13,7 @@
         <div class="col-md-5">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <h3>create @lang('language.type_of_news')</h3>
+                    <h3>@lang('language.create') @lang('language.type_of_news')</h3>
                     <form action="{{ route('kind-of-news.store') }}" method="post" class="form-inline" role="form">
                         @csrf
                             <div class="input-group" style="width: 100%">
@@ -35,7 +35,7 @@
                                 </select>
                                 </div>                     
                             </div>
-                        <button type="submit" class="btn btn-danger">Create</button>
+                        <button type="submit" class="btn btn-danger">@lang('language.create') </button>
                     </form>                   
                 </div>
             </div>
@@ -48,7 +48,7 @@
                         <table class="table datatable">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
+                                    <th>@lang('language.name') </th>
                                     <th></th>
                                     <th>@lang('language.news_categories') </th>
                                     <th></th>

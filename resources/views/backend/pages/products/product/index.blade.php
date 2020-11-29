@@ -21,12 +21,12 @@
                                     <th>@lang('language.name') </th>
                                     <th>@lang('language.brand') </th>
                                     <th>@lang('language.category') </th>
-                                    <th>Image 1 </th>
-                                    <th>Image 2 </th>
+                                    <th>@lang('language.image') 1 </th>
+                                    <th>@lang('language.image') 2 </th>
                                     <th>@lang('language.price') </th>
-                                    <th>Quantity</th>
+                                    <th>@lang('language.quantity')</th>
                                     <th></th>
-                                    <th></th>
+                                    {{-- <th></th> --}}
                                     <th></th>
                                 </tr>
                             </thead>
@@ -49,10 +49,10 @@
                                         <img width="50" src="storage/image/{{ $product->image2 }}" alt="">
                                     </td>
                                     <td>{{ number_format($product->price) }} VNĐ</td>
-                                    <th>{{ $product->quantity }}</th>
-                                    <td>
+                                    <td>{{ $product->quantity }}</td>
+                                    {{-- <td>
                                         <a href="" class="btn btn-default btn-rounded btn-condensed btn-sm"><span class="fa fa-eye"></span></a>
-                                    </td>
+                                    </td> --}}
                                     <td><a title="edit" href="{{ route('products.edit', $product->id) }}" class="btn btn-default btn-rounded btn-condensed btn-sm"><span class="fa fa-pencil"></span></a></td>
                                     <td>
                                         <form action="{{ route('products.destroy', $product->id) }}" method="post">
