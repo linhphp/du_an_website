@@ -128,14 +128,14 @@
                         @endforeach
                     </ul>
                     <div class="row">{{ $comments->render('vendor.pagination.default') }}</div>
-                    <h3>@lang('language.write_you_review') </h3>
+                    <h3>@lang('language.write_your_review') </h3>
                     <form ng-controller="CommentController" name="commentPost" method="post" id="comment-form">
                         @csrf
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group">
-                                    <input name="user_name" ng-model="comment.user_name" type="text" class="form-control input-lg" ng-required="true" placeholder="Enter your nickname *">
-                                    <span ng-show="commentPost.user_name.$error.required">@Lang('language.please_enter_your_name') </span>
+                                    <input name="name" ng-model="comment.name" type="text" class="form-control input-lg" ng-required="true" placeholder="Enter your nickname *">
+                                    <span ng-show="commentPost.name.$error.required">@Lang('language.please_enter_your_name') </span>
                                 </div>
                             </div>
                             <div class="col-sm-12">

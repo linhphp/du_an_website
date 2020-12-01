@@ -130,8 +130,8 @@ $product_id =$product->id;
                             @csrf
                             <input type="hidden" name="product_id" value="{{ $product->id }}">
                             <div class="form-group">
-                                <input type="text" class="form-control input-lg" placeholder="Enter your nickname *" ng-model="comment.name" ng-required="true" name="user_name">
-                                <span ng-show="addComment.user_name.$error.required">@lang('language.enter_name') </span>
+                                <input type="text" class="form-control input-lg" placeholder="Enter your nickname *" ng-model="comment.name" ng-required="true" name="name">
+                                <span ng-show="addComment.user_name.$error.required">@lang('language.name') </span>
                             </div>
                             <div class="form-group">
                                 <textarea name="message" class="form-control input-lg min-height" cols="30" rows="6" placeholder="Write your review *" ng-model="comment.message" ng-required="true"></textarea>

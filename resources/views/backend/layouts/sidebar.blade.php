@@ -116,7 +116,7 @@
         <li class="xn-openable">
             <a href="#">
                 <span class="fa fa-files-o"></span>
-                <span class="xn-text">@lang('language.comment')</span>
+                <span class="xn-text">@lang('language.comments')</span>
             </a>
             <ul>
                 <li>
@@ -126,7 +126,7 @@
                 </li>
                 <li>
                     <a href="{{ route('comments.news') }}">
-                        <span class="fa fa-list-alt"></span>@lang('languae.comment_news') 
+                        <span class="fa fa-list-alt"></span>@lang('language.comment_news') 
                     </a>
                 </li>
             </ul>

@@ -144,7 +144,7 @@
                 </div>
                 <div class="language-dropdown dropdown">
                     <a title="Language" class="dropdown-toggle" data-toggle="dropdown">
-                        <span class="long-name">English</span>
+                        <span class="long-name">Language</span>
                         <span class="short-name">Eng</span>
                         <span class="dropdown-arrow"></span>
                     </a>
@@ -199,7 +199,7 @@
                     </div>
                     <ul class="menu right-menu clearfix">
                         @if(Auth::check())
-                        <li class="megamenu-container"><a href="{{ route('bills.index') }}">đơn hàng </a>
+                        <li class="megamenu-container"><a href="{{ route('bills.index') }}">@lang('language.bills') </a>
                         </li>
                         @endif
                         {{-- <li class="megamenu-container"><a href="#">@lang('language.about_us') </a>

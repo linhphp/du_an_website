@@ -16,7 +16,7 @@ class CommentController extends Controller
         $product = Product::find($id);
         // return $request->product_id;
         $data = new Comment;
-        $data->user_name = $request->user_name;
+        $data->user_name = $request->name;
         $data->parent_id = $product->id;
         $data->state = 1;
         $data->content = $request->message;
@@ -30,7 +30,7 @@ class CommentController extends Controller
         {
             $news = News::find($id);
             $data = new Comment;
-            $data->user_name = $request->user_name;
+            $data->user_name = $request->name;
             $data->parent_id = $news->id;
             $data->state = 2;
             $data->content = $request->message;
